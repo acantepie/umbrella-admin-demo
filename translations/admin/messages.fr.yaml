@@ -1,0 +1,64 @@
+menu:
+  configuration: Configuration
+  admin: Administration
+  users: Utilisateurs
+  groups: Groupes
+  widget: Widgets
+  datatables: Datatables
+  simple_datatable: Simple
+  array_datatable: Array data
+  multiple_datatable: Multiple
+  multi_level: Multi Level
+  second_level: Second Level
+  third_level: Third Level
+  item1: Item 1
+  item2: Item 2
+  item11: Item 1.1
+  item12: Item 1.2
+  forms: Forms
+  trees: Arbres
+  icons: Icones
+  icon_md: Material Design
+  toast: Toast
+  base_ui: Base UI
+  tab: tab
+  treetables: Tree tables
+  simple_treetable: Simple
+  test_treetable: Test
+  ajax_handler_ctrl: Ajax handler
+
+action:
+  add_cat: Ajouter un chat
+  edit_cat: Modifier un chat
+  add_node: Ajouter un noeud
+  edit_node: Modifier un noeud
+
+table:
+  nbPattes: "# pattes"
+
+form:
+  label:
+    name: Nom
+    amount: Montant
+    color: Couleur
+    text: Texte
+    inputGroup: Input group
+    date: Date
+    dateTime: Date + Horaires
+    country: Pays
+    regions: Régions
+    entity: Entité
+    entities: Entités
+    tags: Tags
+    collectionItems: Collection
+    collectionSimple: Collection non composé
+    collectionStrings: Collection (string)
+    collectionFiles: Collection (fichier)
+    file: Fichier
+    loader: Loader
+    allowToastClose: Fermeture manuelle
+    hideAfter: Masqué aprés (ms)
+    type: Type
+    position: Position
+    label: Libellé
+    description: Description

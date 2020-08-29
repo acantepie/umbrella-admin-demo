@@ -1,0 +1,27 @@
+framework:
+    default_locale: fr
+    translator:
+        default_path: '%kernel.project_dir%/translations'
+        fallbacks: fr
+
+    secret: '%env(APP_SECRET)%'
+    http_method_override: true
+
+    session:
+        handler_id: null
+        cookie_secure: auto
+        cookie_samesite: lax
+        save_path:   "%kernel.project_dir%/var/sessions/%kernel.environment%"
+
+    php_errors:
+        log: true
+
+    router:
+        utf8: true
+
+    assets:
+        json_manifest_path: '../public/build/manifest.prod.json'
+
+    validation:
+        enable_annotations: true
+        email_validation_mode: html5

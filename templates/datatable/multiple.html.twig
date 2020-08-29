@@ -1,0 +1,15 @@
+{% extends "@UmbrellaAdmin/Layout/layout.html.twig" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            {{ render_table(table1) }}
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            {{ render_table(table2) }}
+        </div>
+    </div>
+{% endblock %}

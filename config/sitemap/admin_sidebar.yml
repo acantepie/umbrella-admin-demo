@@ -1,0 +1,64 @@
+widget:
+    type: title
+
+datatables:
+    icon: uil-table
+    children:
+        simple_datatable:
+            route: app_admin_datatable_simple
+        array_datatable:
+            route: app_admin_datatable_array
+        multiple_datatable:
+            route: app_admin_datatable_multiple
+
+treetables:
+    icon: uil-trees
+    children:
+        simple_treetable:
+            route: app_admin_treetable_index
+
+ajax_handler_ctrl:
+    icon: uil-exchange
+    route: app_admin_ajaxhandler_index
+
+forms:
+    icon: uil-document-layout-center
+    route: app_admin_form_index
+
+icons:
+    icon: uil-circle-layer
+    children:
+        icon_md:
+            route: app_admin_icon_md
+
+base_ui:
+    icon: uil-box
+    children:
+        toast:
+            route: app_admin_toast_index
+
+multi_level:
+    icon: uil-folder-plus
+    children:
+        second_level:
+            children:
+                item1: {}
+                item2: {}
+        third_level:
+            children:
+                item1: {}
+                item2:
+                    children:
+                        item11: {}
+                        item12: {}
+
+configuration:
+    type: title
+
+users:
+    icon: uil-user
+    route: umbrella_user_user_index
+
+groups:
+    icon: uil-users-alt
+    route: umbrella_user_usergroup_index

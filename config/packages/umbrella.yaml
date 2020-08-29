@@ -1,0 +1,12 @@
+umbrella_core:
+  webpack:
+    dev_server_enable: "%env(bool:WEBPACK_DEV_SERVER_ENABLE)%"
+
+umbrella_admin:
+  menu:
+    file: "../config/sitemap/admin_sidebar.yml"
+  theme:
+    name: "Umbrella"
+  assets:
+    script_entry: /build/admin.js
+    stylesheet_entry: /build/admin.css
