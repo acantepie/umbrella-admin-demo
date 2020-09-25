@@ -20,7 +20,7 @@ security:
                 users:
                     umbrella:  { password: umbrella, roles: [ 'ROLE_GODLIKE_ADMIN']}
         bo_umbrella_provider:
-            id: Umbrella\UserBundle\Security\UserProvider
+            id: Umbrella\AdminBundle\Security\UserProvider
 
     access_control:
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -35,14 +35,14 @@ security:
 
         bo_firewall:
             pattern: ^/admin
-            user_checker: Umbrella\UserBundle\Security\UserChecker
+            user_checker: Umbrella\AdminBundle\Security\UserChecker
             anonymous: ~
-            entry_point: Umbrella\UserBundle\Security\AuthenticationEntryPoint
+            entry_point: Umbrella\AdminBundle\Security\AuthenticationEntryPoint
             form_login:
                 provider: bo_provider
-                login_path: umbrella_user_login
-                check_path: umbrella_user_login
+                login_path: umbrella_admin_login
+                check_path: umbrella_admin_login
                 default_target_path: app_admin_default_index
             logout:
-                path: umbrella_user_logout
-                target: umbrella_user_login
+                path: umbrella_admin_logout
+                target: umbrella_admin_login

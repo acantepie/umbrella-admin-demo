@@ -21,6 +21,6 @@ class DefaultController extends BaseController
      */
     public function indexAction()
     {
-        return $this->redirectToRoute('umbrella_user_user_index');
+        return $this->redirectToRoute('umbrella_admin_user_index');
     }
 }

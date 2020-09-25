@@ -49,10 +49,6 @@
         },
         {
             "type": "vcs",
-            "url": "git@github.com:acantepie/UmbrellaUser.git"
-        },
-        {
-            "type": "vcs",
             "url": "git@github.com:acantepie/UmbrellaAdmin.git"
         },
         {

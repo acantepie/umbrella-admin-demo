@@ -57,8 +57,8 @@ configuration:
 
 users:
     icon: uil-user
-    route: umbrella_user_user_index
+    route: umbrella_admin_user_index
 
 groups:
     icon: uil-users-alt
-    route: umbrella_user_usergroup_index
+    route: umbrella_admin_usergroup_index

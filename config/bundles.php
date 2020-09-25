@@ -15,7 +15,6 @@ return [
     Liip\ImagineBundle\LiipImagineBundle::class => ['all' => true],
     Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle::class => ['all' => true],
     Umbrella\CoreBundle\UmbrellaCoreBundle::class => ['all' => true],
-    Umbrella\UserBundle\UmbrellaUserBundle::class => ['all' => true],
     Umbrella\AdminBundle\UmbrellaAdminBundle::class => ['all' => true],
     Umbrella\MakerBundle\UmbrellaMakerBundle::class => ['all' => true],
     Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],

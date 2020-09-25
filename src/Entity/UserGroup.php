@@ -10,7 +10,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Umbrella\UserBundle\Entity\BaseUserGroup;
+use Umbrella\AdminBundle\Entity\BaseUserGroup;
 
 /**
  * Class UserGroup

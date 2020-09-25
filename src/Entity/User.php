@@ -9,11 +9,10 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints as Assert;
 use Umbrella\CoreBundle\Entity\UmbrellaFile;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Umbrella\UserBundle\Entity\BaseUser;
+use Umbrella\AdminBundle\Entity\BaseUser;
 
 /**
  * Class User
