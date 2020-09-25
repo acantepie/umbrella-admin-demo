@@ -26,6 +26,7 @@ menu:
   simple_treetable: Simple
   test_treetable: Test
   ajax_handler_ctrl: Ajax handler
+  tasks: Taches
 
 action:
   add_cat: Ajouter un chat

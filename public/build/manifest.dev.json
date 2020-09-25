@@ -2,6 +2,5 @@
   "/build/admin.css": "/build/admin.dev.css",
   "/build/admin.js": "/build/admin.dev.js",
   "/build/fonts/admin.scss": "/build/fonts/unicons-9.woff2",
-  "/build/images/admin.scss": "/build/images/expand.png",
-  "/build/images/mail_sent.svg": "/build/images/mail_sent.svg"
+  "/build/images/admin.scss": "/build/images/expand.png"
 }

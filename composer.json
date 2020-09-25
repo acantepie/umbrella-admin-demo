@@ -18,6 +18,7 @@
         "symfony/framework-bundle": "5.0.*",
         "symfony/http-client": "5.0.*",
         "symfony/intl": "5.0.*",
+        "symfony/lock": "5.0.*",
         "symfony/mailer": "5.0.*",
         "symfony/monolog-bundle": "^3.1",
         "symfony/orm-pack": "*",
@@ -32,7 +33,6 @@
         "symfony/yaml": "5.0.*",
         "umbrella/adminbundle": "dev-master",
         "umbrella/corebundle": "dev-master",
-        "umbrella/userbundle": "dev-master",
         "umbrella/makerbundle": "dev-master"
     },
     "require-dev": {

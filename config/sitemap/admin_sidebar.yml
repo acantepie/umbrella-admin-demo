@@ -55,6 +55,10 @@ multi_level:
 configuration:
     type: title
 
+tasks:
+    icon: uil-process
+    route: umbrella_admin_task_index
+
 users:
     icon: uil-user
     route: umbrella_admin_user_index
