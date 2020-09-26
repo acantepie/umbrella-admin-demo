@@ -80,11 +80,6 @@ vendor_fix: ## fix vendor
 	mv vendor_fix/UmbrellaCore/.git vendor/umbrella/corebundle
 	cd vendor/umbrella/corebundle && git add -A . && cd ../../..
 
-	git clone --no-checkout git@github.com:acantepie/UmbrellaUser.git vendor_fix/UmbrellaUser
-	rm -Rf vendor/umbrella/userbundle/.git
-	mv vendor_fix/UmbrellaUser/.git vendor/umbrella/userbundle
-	cd vendor/umbrella/userbundle && git add -A . && cd ../../..
-
 	git clone --no-checkout git@github.com:acantepie/UmbrellaAdmin.git vendor_fix/UmbrellaAdmin
 	rm -Rf vendor/umbrella/adminbundle/.git
 	mv vendor_fix/UmbrellaAdmin/.git vendor/umbrella/adminbundle

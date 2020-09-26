@@ -29,7 +29,7 @@ class ArraySource extends AbstractTableSource
     /**
      * @inheritdoc
      */
-    public function search($dataClass, array $columns, array $query)
+    public function search($dataClass, array $columns, array $query) : DataTableResult
     {
         $result = new DataTableResult();
 
