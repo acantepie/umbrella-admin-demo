@@ -8,10 +8,10 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\CoreBundle\Entity\BaseEntity;
 use Umbrella\CoreBundle\Entity\UmbrellaFile;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class FormEntity
@@ -79,13 +79,13 @@ class FormEntity extends BaseEntity
      * @var array
      * @ORM\Column(type="json_array", nullable=true)
      */
-    public $regions = array();
+    public $regions = [];
 
     /**
      * @var array
      * @ORM\Column(type="json_array", nullable=true)
      */
-    public $tags = array();
+    public $tags = [];
 
     /**
      * @var FormJoinEntity
@@ -107,7 +107,6 @@ class FormEntity extends BaseEntity
 
     // Collection
 
-
     /**
      * @var FormJoinEntity[]|ArrayCollection
      * @ORM\OneToMany(targetEntity="FormJoinEntity", mappedBy="parent", orphanRemoval=true, cascade={"ALL"})
@@ -119,7 +118,7 @@ class FormEntity extends BaseEntity
      * @var array
      * @ORM\Column(type="json_array", nullable=true)
      */
-    public $collectionStrings = array();
+    public $collectionStrings = [];
 
     /**
      * @var UmbrellaFile[]|ArrayCollection
@@ -132,7 +131,6 @@ class FormEntity extends BaseEntity
      */
     public $collectionFiles;
 
-
     // Other
 
     /**
@@ -141,7 +139,6 @@ class FormEntity extends BaseEntity
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", onDelete="SET NULL")
      */
     public $file;
-
 
     /**
      * FormEntity constructor.
@@ -174,6 +171,4 @@ class FormEntity extends BaseEntity
     {
         $this->collectionFiles->removeElement($file);
     }
-
-
 }

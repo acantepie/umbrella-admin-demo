@@ -9,9 +9,9 @@
 namespace App\Controller\Admin;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
  * Class AjaxHandlerController
@@ -39,6 +39,7 @@ class AjaxHandlerController extends BaseController
 
     /**
      * @Route("/sleep/{sleep}", requirements={"sleep" = "\d+"})
+     * @param mixed $sleep
      */
     public function sleepAction(Request $request, $sleep = 5)
     {
@@ -63,5 +64,13 @@ class AjaxHandlerController extends BaseController
         throw new HttpException(401);
     }
 
-
+    /**
+     * @Route("/custom")
+     */
+    public function customAction(Request  $request)
+    {
+        return $this->jsResponseBuilder()
+            ->add('say', ['msg' => 'Hello world !!!!'])
+            ->add('say', ['msg' => 'Bye bye']);
+    }
 }

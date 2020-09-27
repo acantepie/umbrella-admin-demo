@@ -3,11 +3,21 @@ menu:
   admin: Administration
   users: Utilisateurs
   groups: Groupes
-  widget: Widgets
+  tasks: Taches
+
   datatables: Datatables
   simple_datatable: Simple
-  array_datatable: Array data
   multiple_datatable: Multiple
+  api_datatable : Source (Api - fishbase)
+
+  ajax_handler_ctrl: Ajax handler
+
+  forms: Forms
+
+  base_ui: Base UI
+  icon_md: Icon Material Design
+  toast: Toast
+
   multi_level: Multi Level
   second_level: Second Level
   third_level: Third Level
@@ -15,31 +25,28 @@ menu:
   item2: Item 2
   item11: Item 1.1
   item12: Item 1.2
-  forms: Forms
-  trees: Arbres
-  icons: Icones
-  icon_md: Material Design
-  toast: Toast
-  base_ui: Base UI
-  tab: tab
-  treetables: Tree tables
-  simple_treetable: Simple
-  test_treetable: Test
-  ajax_handler_ctrl: Ajax handler
-  tasks: Taches
+
 
 action:
-  add_cat: Ajouter un chat
-  edit_cat: Modifier un chat
-  add_node: Ajouter un noeud
-  edit_node: Modifier un noeud
+  add_fish: Ajouter un poisson
+  edit_fish: Modifier un poisson
 
 table:
-  nbPattes: "# pattes"
+  name: Nom
+  edible: Comestible
+  habitats: Habitats
+  picture: Imgage
+  species: Espece
+  genus: Genre
+  subfamily: Sous-famille
+  comments: Commentaire
 
 form:
   label:
     name: Nom
+    edible: Comestible
+    habitats: Habitats
+
     amount: Montant
     color: Couleur
     text: Texte
@@ -63,3 +70,13 @@ form:
     position: Position
     label: Libellé
     description: Description
+
+  placeholder:
+    habitat: habitat
+
+
+fish:
+  habitat:
+    sea: Mer, Océen
+    river: Rivière
+    lake: Lac, Etangs

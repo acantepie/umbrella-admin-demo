@@ -8,11 +8,11 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Umbrella\CoreBundle\Entity\UmbrellaFile;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Umbrella\AdminBundle\Entity\BaseUser;
+use Umbrella\CoreBundle\Entity\UmbrellaFile;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Class User

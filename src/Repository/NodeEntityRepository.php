@@ -16,7 +16,6 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
  */
 class NodeEntityRepository extends NestedTreeRepository
 {
-
     /**
      * @return NodeEntity
      */
@@ -27,5 +26,4 @@ class NodeEntityRepository extends NestedTreeRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
-
 }

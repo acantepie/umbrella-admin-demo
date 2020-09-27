@@ -8,11 +8,10 @@
 
 namespace App\Controller\Admin;
 
-
 use App\Form\ToastType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Component\Toast\Toast;
+use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
@@ -22,7 +21,6 @@ use Umbrella\CoreBundle\Controller\BaseController;
  */
 class ToastController extends BaseController
 {
-
     /**
      * @Route("")
      */
@@ -39,12 +37,8 @@ class ToastController extends BaseController
                 ->toast($toast);
         }
 
-        return $this->render('toast/index.html.twig', array(
+        return $this->render('toast/index.html.twig', [
             'form' => $form->createView()
-        ));
+        ]);
     }
-
-
-
-
 }

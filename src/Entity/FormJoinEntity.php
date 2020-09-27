@@ -8,8 +8,8 @@
 
 namespace App\Entity;
 
-use Umbrella\CoreBundle\Entity\BaseEntity;
 use Doctrine\ORM\Mapping as ORM;
+use Umbrella\CoreBundle\Entity\BaseEntity;
 use Umbrella\CoreBundle\Model\OrderableTrait;
 
 /**
@@ -37,7 +37,6 @@ class FormJoinEntity extends BaseEntity implements \JsonSerializable
      */
     public $label;
 
-
     /**
      * @var string
      *
@@ -45,17 +44,16 @@ class FormJoinEntity extends BaseEntity implements \JsonSerializable
      */
     public $description;
 
-
     /**
      * @inheritdoc
      */
     public function jsonSerialize()
     {
-        return array(
+        return [
             'id' => $this->id,
             'text' => $this->label,
             'description' => $this->description
-        );
+        ];
     }
 
     /**

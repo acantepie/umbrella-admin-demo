@@ -6,16 +6,10 @@ datatables:
     children:
         simple_datatable:
             route: app_admin_datatable_simple
-        array_datatable:
-            route: app_admin_datatable_array
         multiple_datatable:
             route: app_admin_datatable_multiple
-
-treetables:
-    icon: uil-trees
-    children:
-        simple_treetable:
-            route: app_admin_treetable_index
+        api_datatable:
+            route: app_admin_datatable_api
 
 ajax_handler_ctrl:
     icon: uil-exchange
@@ -25,15 +19,11 @@ forms:
     icon: uil-document-layout-center
     route: app_admin_form_index
 
-icons:
-    icon: uil-circle-layer
-    children:
-        icon_md:
-            route: app_admin_icon_md
-
 base_ui:
     icon: uil-box
     children:
+        icon_md:
+            route: app_admin_icon_md
         toast:
             route: app_admin_toast_index
 

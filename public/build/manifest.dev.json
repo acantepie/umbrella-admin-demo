@@ -1,5 +1,4 @@
 {
   "/build/admin.css": "/build/admin.dev.css",
-  "/build/admin.js": "/build/admin.dev.js",
-  "/build/fonts/admin.scss": "/build/fonts/Nunito-SemiBold.woff"
+  "/build/admin.js": "/build/admin.dev.js"
 }

@@ -8,10 +8,10 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Umbrella\CoreBundle\Entity\BaseEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @Gedmo\Tree(type="nested")
@@ -88,7 +88,7 @@ class NodeEntity extends BaseEntity
     }
 
     /**
-     * @param NodeEntity $child
+     * @param  NodeEntity $child
      * @return $this
      */
     public function addChild(NodeEntity $child)
@@ -99,7 +99,7 @@ class NodeEntity extends BaseEntity
     }
 
     /**
-     * @param NodeEntity $child
+     * @param  NodeEntity $child
      * @return $this
      */
     public function removeChild(NodeEntity $child)
@@ -116,5 +116,4 @@ class NodeEntity extends BaseEntity
     {
         return $this->parent;
     }
-
 }

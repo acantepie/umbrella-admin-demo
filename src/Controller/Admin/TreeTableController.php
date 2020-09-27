@@ -8,13 +8,13 @@
 
 namespace App\Controller\Admin;
 
-use App\DataTable\NodeTableType;
+use App\Model\TreeNode;
 use App\Entity\NodeEntity;
 use App\Form\NodeEntityType;
-use App\Model\TreeNode;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use App\DataTable\NodeTableType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
@@ -35,13 +35,14 @@ class TreeTableController extends BaseController
             return new JsonResponse($table->getApiResults());
         }
 
-        return $this->render('@UmbrellaAdmin/DataTable/index.html.twig', array(
+        return $this->render('@UmbrellaAdmin/DataTable/index.html.twig', [
             'table' => $table,
-        ));
+        ]);
     }
 
     /**
      * @Route("/edit/{id}", requirements={"id"="\d+"})
+     * @param null|mixed $id
      */
     public function editAction(Request $request, $id = null)
     {
@@ -69,15 +70,16 @@ class TreeTableController extends BaseController
         }
 
         return $this->jsResponseBuilder()
-            ->openModalView('@UmbrellaAdmin/Layout/edit_modal.html.twig', array(
+            ->openModalView('@UmbrellaAdmin/Layout/edit_modal.html.twig', [
                 'form' => $form->createView(),
                 'title' => $entity->id ? $this->trans('action.edit_node') :  $this->trans('action.add_node'),
                 'entity' => $entity,
-            ));
+            ]);
     }
 
     /**
      * @Route("/delete/{id}", requirements={"id"="\d+"})
+     * @param mixed $id
      */
     public function deleteAction($id)
     {
@@ -89,9 +91,6 @@ class TreeTableController extends BaseController
             ->toastSuccess('message.entity_deleted');
     }
 
-    /**
-     *
-     */
     private function treeData()
     {
         $root = new TreeNode(1, null, null);

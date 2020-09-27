@@ -9,11 +9,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\FormEntity;
-use App\Entity\FormJoinEntity;
 use App\Form\FormEntityType;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Entity\FormJoinEntity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
@@ -23,14 +23,12 @@ use Umbrella\CoreBundle\Controller\BaseController;
  */
 class FormController extends BaseController
 {
-
     /**
      * @Route("")
      */
     public function indexAction(Request $request)
     {
         $this->initData();
-
 
         /** @var FormEntity $entity */
         $entity = $this->loadEntity(FormEntity::class);
@@ -44,9 +42,9 @@ class FormController extends BaseController
             return $this->redirectToRoute('app_admin_form_index');
         }
 
-        return $this->render('form/index.html.twig', array(
+        return $this->render('form/index.html.twig', [
             'form' => $form->createView()
-        ));
+        ]);
     }
 
     /**
@@ -54,7 +52,7 @@ class FormController extends BaseController
      */
     public function getAction()
     {
-       return new JsonResponse($this->em()->getRepository(FormJoinEntity::class)->findAll());
+        return new JsonResponse($this->em()->getRepository(FormJoinEntity::class)->findAll());
     }
 
     /**
@@ -94,7 +92,5 @@ class FormController extends BaseController
 
             $this->em()->flush();
         }
-
     }
-
 }

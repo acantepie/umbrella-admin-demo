@@ -8,9 +8,9 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\AdminBundle\Entity\BaseUserGroup;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class UserGroup

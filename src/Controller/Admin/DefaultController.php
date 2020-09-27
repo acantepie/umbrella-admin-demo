@@ -13,7 +13,6 @@ use Umbrella\CoreBundle\Controller\BaseController;
  */
 class DefaultController extends BaseController
 {
-
     /**
      * @Route("/")
      *

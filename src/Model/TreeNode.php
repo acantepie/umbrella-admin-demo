@@ -36,7 +36,7 @@ class TreeNode
     /**
      * @var TreeNode[]
      */
-    public $children = array();
+    public $children = [];
 
     /**
      * TreeNode constructor.
@@ -60,7 +60,7 @@ class TreeNode
     }
 
     /**
-     * @param TreeNode $node
+     * @param  TreeNode $node
      * @return $this
      */
     public function addChild(TreeNode $node)
@@ -79,7 +79,7 @@ class TreeNode
     }
 
     /**
-     * @param bool $includeMyself
+     * @param  bool  $includeMyself
      * @return array
      */
     public function all($includeMyself = true)
@@ -98,5 +98,4 @@ class TreeNode
     {
         return $this->parent === null;
     }
-
 }

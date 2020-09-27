@@ -8,7 +8,6 @@
 
 namespace App\Controller\Admin;
 
-
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
@@ -26,5 +25,4 @@ class IconController extends BaseController
     {
         return $this->render('icon/md.html.twig');
     }
-
 }
