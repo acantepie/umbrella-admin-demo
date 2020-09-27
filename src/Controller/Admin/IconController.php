@@ -25,4 +25,12 @@ class IconController extends BaseController
     {
         return $this->render('icon/md.html.twig');
     }
+
+    /**
+     * @Route("/unicon")
+     */
+    public function uniconAction()
+    {
+        return $this->render('icon/unicon.html.twig');
+    }
 }

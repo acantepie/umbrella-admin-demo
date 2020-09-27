@@ -1,4 +1,4 @@
-widget:
+umbrella_components:
     type: title
 
 datatables:
@@ -11,38 +11,32 @@ datatables:
         api_datatable:
             route: app_admin_datatable_api
 
-ajax_handler_ctrl:
+js_response:
     icon: uil-exchange
-    route: app_admin_ajaxhandler_index
+    children:
+        js_response_handler:
+            route: app_admin_ajaxhandler_index
 
 forms:
     icon: uil-document-layout-center
     route: app_admin_form_index
 
-base_ui:
-    icon: uil-box
+toast:
+    icon: uil-chat
+    route: app_admin_toast_index
+
+ui:
+    type: title
+
+icon:
+    icon: uil-streering
     children:
         icon_md:
             route: app_admin_icon_md
-        toast:
-            route: app_admin_toast_index
+        icon_unicon:
+            route: app_admin_icon_unicon
 
-multi_level:
-    icon: uil-folder-plus
-    children:
-        second_level:
-            children:
-                item1: {}
-                item2: {}
-        third_level:
-            children:
-                item1: {}
-                item2:
-                    children:
-                        item11: {}
-                        item12: {}
-
-configuration:
+admin:
     type: title
 
 tasks:

@@ -1,33 +1,27 @@
 menu:
-  configuration: Configuration
-  admin: Administration
-  users: Utilisateurs
-  groups: Groupes
-  tasks: Taches
-
-  widget: Widget
+  umbrella_components: Composants
 
   datatables: Datatables
   simple_datatable: Simple
   multiple_datatable: Multiple
-  api_datatable : Source (Api - fishbase)
+  api_datatable: Source (Api - fishbase)
 
-  ajax_handler_ctrl: Ajax handler
+  js_response: JsResponse
+  js_response_handler: JsResponseHandler
 
   forms: Forms
-
-  base_ui: Base UI
-  icon_md: Icon Material Design
   toast: Toast
 
-  multi_level: Multi Level
-  second_level: Second Level
-  third_level: Third Level
-  item1: Item 1
-  item2: Item 2
-  item11: Item 1.1
-  item12: Item 1.2
+  ui: UI widget
 
+  icon: Icones
+  icon_md: Material Design
+  icon_unicon: Unicons
+
+  admin: Administration
+  tasks: Taches
+  users: Utilisateurs
+  groups: Groupes
 
 action:
   add_fish: Ajouter un poisson
