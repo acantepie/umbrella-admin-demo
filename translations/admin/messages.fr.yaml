@@ -5,6 +5,8 @@ menu:
   groups: Groupes
   tasks: Taches
 
+  widget: Widget
+
   datatables: Datatables
   simple_datatable: Simple
   multiple_datatable: Multiple
