@@ -6,6 +6,10 @@ menu:
   multiple_datatable: Multiple
   api_datatable: Source (Api - fishbase)
 
+  tasks: Taches
+  file_writer: File Writer
+
+
   js_response: JsResponse
   js_response_handler: JsResponseHandler
 
@@ -19,7 +23,7 @@ menu:
   icon_unicon: Unicons
 
   admin: Administration
-  tasks: Taches
+  admin_tasks: Taches
   users: Utilisateurs
   groups: Groupes
 
@@ -36,12 +40,14 @@ table:
   genus: Genre
   subfamily: Sous-famille
   comments: Commentaire
+  speciesId: Code espece
 
 form:
   label:
     name: Nom
     edible: Comestible
     habitats: Habitats
+    speciesId: Code espece (FishBase)
 
     amount: Montant
     color: Couleur

@@ -22,7 +22,11 @@ class FishType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', TextType::class);
-        $builder->add('description', TextareaType::class);
+        $builder->add('description', TextareaType::class, [
+            'attr' => [
+                'rows' => 8
+            ]
+        ]);
         $builder->add('color', ColorType::class);
         $builder->add('edible', CustomCheckboxType::class, [
             'required' => false

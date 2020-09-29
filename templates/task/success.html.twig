@@ -1,0 +1,23 @@
+{% extends "@UmbrellaAdmin/Layout/layout.html.twig" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+
+            <div class="alert alert-success">
+                Tâche enregistré avec l'identifiant {{ task.id }}.
+            </div>
+
+            <p>Vous pouvez :</p>
+
+            <ul>
+                <li>Lancer l'execution des taches en attente avec la commande <code>php bin/console task:schedule</code></li>
+                <li>Lancer l'execution de votre tache uniquement avec la commande <code>php bin/console task:run {{ task.id }}</code></li>
+                <li>Voir l'avancement de vos taches avec la commande <code>php bin/console task:list [--pending] [--done]</code>
+                    ou dans <a href="{{ path('umbrella_admin_task_index') }}" class="text-primary">l'interface admin</a></li>
+            </ul>
+
+            <p>Si votre code éspece existe, votre poisson sera visible <a href="{{ path('app_admin_datatable_simple') }}" class="text-primary">ici</a></p>
+        </div>
+    </div>
+{% endblock %}

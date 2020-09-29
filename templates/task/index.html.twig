@@ -1,0 +1,89 @@
+{% extends "@UmbrellaAdmin/Layout/layout.html.twig" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">How to</h4>
+
+            <p>Créer une entité dans votre application héritant de <code>Umbrella\CoreBundle\Entity\BaseTask</code> :</p>
+            <pre class="border-dark border p-2">
+/**
+ * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks
+ */
+class MyTask extends BaseTask
+{
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $foo;
+
+}
+            </pre>
+            <p>Configurer le mapping dans <code>config.yml</code> :</p>
+            <pre class="border-dark border p-2">
+umbrella_core:
+    task:
+        class: App/Entity/MyTask
+            </pre>
+
+            <p>
+                Créer un <code>TaskHandler</code>, cette classe définira le comportement de votre tâche :<br>
+            </p>
+
+            <pre class="border-dark border p-2">
+class MyTaskHandler extends AbstractTaskHandler
+{
+
+    /**
+     * @inheritDoc
+     */
+    public function execute()
+    {
+        $task = $this->taskHelper->getTask();speciedId
+
+        if ($task->foo == 'bar') {
+                // do something
+        }
+    }
+}
+            </pre>
+
+            <p>Enregistrer votre tache :</p>
+            <pre class="border-dark border p-2">
+use Umbrella\CoreBundle\Component\Task\TaskManager;
+...
+
+$task = new MyTask(MyTaskHandler::class);
+$task->foo = 'bar';
+$taskManager->register($task);
+            </pre>
+
+            <p>Executer votre tache :</p>
+            <pre class="border-dark border p-2">
+php bin/console task:schedule
+            </pre>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Essayer - Ajouter une nouvelle espece de poisson</h4>
+
+            <p>
+                 Ajoutera un nouveau poisson en base si il trouve une correspondance avec le <b>code espece</b> dans FishBase
+                - <a href="{{ path('app_admin_datatable_api') }}" class="text-primary">Codes disponibles</a>
+            </p>
+
+            <form method="post">
+                {{ form_rest(form) }}
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="mdi mdi-check mr-1"></i> Enregistrer
+                </button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

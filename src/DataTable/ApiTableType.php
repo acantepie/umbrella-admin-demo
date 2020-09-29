@@ -33,6 +33,13 @@ class ApiTableType extends DataTableType
      */
     public function buildTable(DataTableBuilder $builder, array $options = [])
     {
+        $builder->add('speciesId', PropertyColumnType::class, [
+            'orderable' => false,
+            'property_path' => '[SpecCode]',
+            'renderer' => function (array $arr) {
+                return sprintf('#%d', $arr['SpecCode']);
+            }
+        ]);
         $builder->add('picture', ColumnType::class, [
             'renderer' => function (array $species) {
                 if (empty($species['PicPreferredName'])) {

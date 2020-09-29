@@ -11,6 +11,14 @@ datatables:
         api_datatable:
             route: app_admin_datatable_api
 
+tasks:
+    icon: uil-process
+    route: app_admin_task_index
+
+file_writer:
+    icon: uil-file-plus-alt
+    route: app_admin_filewriter_index
+
 js_response:
     icon: uil-exchange
     children:
@@ -39,7 +47,7 @@ icon:
 admin:
     type: title
 
-tasks:
+admin_tasks:
     icon: uil-process
     route: umbrella_admin_task_index
 
