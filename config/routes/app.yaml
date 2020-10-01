@@ -1,9 +1,5 @@
-umbrella_user:
-  resource: "@UmbrellaAdminBundle/Resources/config/user_routing.yml"
-  prefix: /admin
-
-umbrella_task:
-  resource: "@UmbrellaAdminBundle/Resources/config/task_routing.yml"
+umbrella_admin_:
+  resource: "@UmbrellaAdminBundle/Resources/config/routing.yml"
   prefix: /admin
 
 admin_:

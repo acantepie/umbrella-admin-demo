@@ -3,8 +3,13 @@
 namespace App\DataFixtures;
 
 use App\Entity\Fish;
+use App\Entity\Task;
+use App\FileWriter\FwFishHandler;
 use Doctrine\Persistence\ObjectManager;
+use Umbrella\CoreBundle\Entity\BaseTask;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Umbrella\CoreBundle\Entity\UmbrellaFileWriterConfig;
+use Umbrella\CoreBundle\Component\FileWriter\Handler\TaskFileWriterHandler;
 
 class AppFixtures extends Fixture
 {
@@ -14,6 +19,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $this->loadFish($manager);
+        $this->loadFileWriterTask($manager);
     }
 
     /**
@@ -60,6 +66,60 @@ class AppFixtures extends Fixture
         $e->habitats = [Fish::HABITAT_LAKE, Fish::HABITAT_RIVER];
         $e->color = '#b0bec5';
         $manager->persist($e);
+
+        $manager->flush();
+    }
+
+    /**
+     * @param ObjectManager $manager
+     */
+    private function loadFileWriterTask(ObjectManager $manager)
+    {
+        $fw = new UmbrellaFileWriterConfig(FwFishHandler::class);
+        $fw->outputFilePath = 'foo/bar/test.txt';
+        $fw->outputPrettyFilename = 'test.txt';
+        $t = new Task(TaskFileWriterHandler::class);
+        $t->type = BaseTask::TYPE_FILEWRITER;
+        $t->fileWriterConfig = $fw;
+        $t->state = BaseTask::STATE_PENDING;
+        $t->displayAsNotification = true;
+        $manager->persist($t);
+
+        $fw = new UmbrellaFileWriterConfig(FwFishHandler::class);
+        $fw->outputFilePath = 'foo/bar/test2.txt';
+        $fw->outputPrettyFilename = 'test2.txt';
+        $t = new Task(TaskFileWriterHandler::class);
+        $t->type = BaseTask::TYPE_FILEWRITER;
+        $t->fileWriterConfig = $fw;
+        $t->state = BaseTask::STATE_RUNNING;
+        $t->startedAt = new \DateTime('-1 minutes');
+        $t->displayAsNotification = true;
+        $manager->persist($t);
+
+        $fw = new UmbrellaFileWriterConfig(FwFishHandler::class);
+        $fw->outputFilePath = 'foo/bar/test3.txt';
+        $fw->outputPrettyFilename = 'test3.txt';
+        $t = new Task(TaskFileWriterHandler::class);
+        $t->type = BaseTask::TYPE_FILEWRITER;
+        $t->fileWriterConfig = $fw;
+        $t->state = BaseTask::STATE_FINISHED;
+        $t->startedAt = new \DateTime('-5 minutes');
+        $t->endedAt = new \DateTime('-1 minutes');
+        $t->displayAsNotification = true;
+        $manager->persist($t);
+
+        $fw = new UmbrellaFileWriterConfig(FwFishHandler::class);
+        $fw->outputFilePath = 'foo/bar/test4.txt';
+        $fw->outputPrettyFilename = 'test4.txt';
+        $t = new Task(TaskFileWriterHandler::class);
+        $t->type = BaseTask::TYPE_FILEWRITER;
+        $t->fileWriterConfig = $fw;
+        $t->state = BaseTask::STATE_FAILED;
+        $t->errorOutput = 'Ooops, There is an error ...';
+        $t->startedAt = new \DateTime('-5 minutes');
+        $t->endedAt = new \DateTime('-1 minutes');
+        $t->displayAsNotification = true;
+        $manager->persist($t);
 
         $manager->flush();
     }

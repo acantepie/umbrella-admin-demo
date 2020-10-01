@@ -12,8 +12,7 @@ class FwFishHandler extends AbstractFileWriterHandler
     /**
      * @inheritDoc
      */
-    public function generate()
+    public function execute()
     {
-        // TODO
     }
 }
