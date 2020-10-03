@@ -46,6 +46,7 @@ class FileWriterController extends BaseController
         $config = new FileWriterTaskConfig(CsvFileWriterHandler::class);
         $config->fwLabel = 'Exemple - mode synchrone';
         $config->fwOutputPrettyFilename = 'exemple1.csv';
+
         return $this->manager->syncDownloadResponse($config);
     }
 
@@ -58,9 +59,7 @@ class FileWriterController extends BaseController
         $config->fwLabel = 'Exemple - mode asynchrone';
         $config->fwOutputPrettyFilename = 'exemple2.csv';
         $config->fwDisplayAsNotification = true;
-        $task = $this->manager->schedule($config);
 
-        return $this->jsResponseBuilder()
-            ->toastSuccess(sprintf('La tache %d a été enregistré.', $task->id));
+        return $this->manager->asyncJsResponse($config);
     }
 }
