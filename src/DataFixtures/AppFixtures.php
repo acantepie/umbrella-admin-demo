@@ -3,21 +3,58 @@
 namespace App\DataFixtures;
 
 use App\Entity\Fish;
+use App\Entity\User;
+use App\Entity\UserGroup;
 use Umbrella\CoreBundle\Entity\Task;
 use Doctrine\Persistence\ObjectManager;
 use App\FileWriter\CsvFileWriterHandler;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Umbrella\AdminBundle\Entity\FileWriterTaskConfig;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
 {
+    /**
+     * @var UserPasswordEncoderInterface
+     */
+    private $userPasswordEncoder;
+
+    /**
+     * AppFixtures constructor.
+     * @param UserPasswordEncoderInterface $userPasswordEncoder
+     */
+    public function __construct(UserPasswordEncoderInterface $userPasswordEncoder)
+    {
+        $this->userPasswordEncoder = $userPasswordEncoder;
+    }
+
     /**
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
     {
+        $this->loadUser($manager);
         $this->loadFish($manager);
-        $this->loadFileWriterTask($manager);
+        //$this->loadFileWriterTask($manager);
+    }
+
+    private function loadUser(ObjectManager $manager)
+    {
+        $u = new User();
+        $u->firstname = 'Adrien';
+        $u->lastname = 'Cantepie';
+        $u->email = 'adrien.cantepie@gmail.com';
+        $u->plainPassword = $u->email;
+        $u->password = $this->userPasswordEncoder->encodePassword($u, $u->plainPassword);
+
+        $g = new UserGroup();
+        $g->title = 'Administrateur';
+        $g->roles = ['ROLE_ADMIN'];
+        $u->addGroup($g);
+
+        $manager->persist($g);
+        $manager->persist($u);
+        $manager->flush();
     }
 
     /**
