@@ -67,10 +67,6 @@ db-update: ## update database
 project-update: ## update project from git
 	git pull
 
-acl: ## set facl for web & var folders (only use on facl enabled system)
-	sudo setfacl -R -m u:www-data:rwX -m u:`whoami`:rwX public var
-	sudo setfacl -dR -m u:www-data:rwX -m u:`whoami`:rwX public var
-
 vendor_fix: ## fix vendor
 	rm -Rf vendor_fix
 	mkdir vendor_fix

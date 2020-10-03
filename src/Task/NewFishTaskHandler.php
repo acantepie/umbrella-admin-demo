@@ -4,6 +4,7 @@ namespace App\Task;
 
 use App\Entity\Fish;
 use Doctrine\ORM\EntityManagerInterface;
+use Umbrella\CoreBundle\Entity\BaseTaskConfig;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Umbrella\CoreBundle\Component\Task\Handler\AbstractTaskHandler;
 
@@ -37,11 +38,9 @@ class NewFishTaskHandler extends AbstractTaskHandler
     /**
      * @inheritDoc
      */
-    public function execute()
+    public function execute(BaseTaskConfig $config)
     {
-        $speciesId = $this->taskHelper->getTask()->speciesId;
-
-        $response = $this->client->request('GET', 'https://fishbase.ropensci.org/species/' . $speciesId);
+        $response = $this->client->request('GET', 'https://fishbase.ropensci.org/species/' . $config->speciesId);
         $data = json_decode($response->getContent(), true);
         $fishData = $data['data'][0];
 

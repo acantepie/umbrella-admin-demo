@@ -5,26 +5,23 @@
         <div class="card-body">
             <h4 class="header-title">How to</h4>
 
-            <p>Créer une entité dans votre application héritant de <code>Umbrella\CoreBundle\Entity\BaseTask</code> :</p>
+            <p>Créer une entité dans votre application héritant de <code>Umbrella\CoreBundle\Entity\BaseTaskConfig</code> :</p>
             <pre class="border-dark border p-2">
+use Doctrine\ORM\Mapping as ORM;
+use Umbrella\CoreBundle\Entity\BaseTaskConfig;
+
 /**
+ * Class Task
  * @ORM\Entity()
- * @ORM\HasLifecycleCallbacks
  */
-class MyTask extends BaseTask
+class TaskConfig extends BaseTaskConfig
 {
     /**
-     * @ORM\Column(type="string")
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
      */
     public $foo;
-
 }
-            </pre>
-            <p>Configurer le mapping dans <code>config.yml</code> :</p>
-            <pre class="border-dark border p-2">
-umbrella_core:
-    task:
-        class: App/Entity/MyTask
             </pre>
 
             <p>
@@ -38,25 +35,23 @@ class MyTaskHandler extends AbstractTaskHandler
     /**
      * @inheritDoc
      */
-    public function execute()
+    public function execute(BaseTaskConfig $config)
     {
-        $task = $this->taskHelper->getTask();speciedId
-
-        if ($task->foo == 'bar') {
+        if ($config->foo == 'bar') {
                 // do something
         }
     }
 }
             </pre>
 
-            <p>Enregistrer votre tache :</p>
+            <p>Enregistrer votre configuration :</p>
             <pre class="border-dark border p-2">
 use Umbrella\CoreBundle\Component\Task\TaskManager;
 ...
 
-$task = new MyTask(MyTaskHandler::class);
-$task->foo = 'bar';
-$taskManager->register($task);
+$taskConfig = new TaskConfig(MyTaskHandler::class);
+$taskConfig->foo = 'bar';
+$taskManager->register($taskConfig);
             </pre>
 
             <p>Executer votre tache :</p>

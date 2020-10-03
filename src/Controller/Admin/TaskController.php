@@ -2,8 +2,9 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Task;
+use App\Entity\TaskConfig;
 use App\Task\NewFishTaskHandler;
+use Umbrella\CoreBundle\Entity\Task;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
@@ -29,10 +30,9 @@ class TaskController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $task = new Task(NewFishTaskHandler::class);
-            $task->speciesId = intval($form->getData()['speciesId']);
-            $taskManager->register($task);
-
+            $config = new TaskConfig(NewFishTaskHandler::class);
+            $config->speciesId = intval($form->getData()['speciesId']);
+            $task = $taskManager->register($config);
             return $this->redirectToRoute('app_admin_task_success', ['id' => $task->id]);
         }
 

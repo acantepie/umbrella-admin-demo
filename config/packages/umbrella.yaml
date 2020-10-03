@@ -10,3 +10,5 @@ umbrella_admin:
   assets:
     script_entry: /build/admin.js
     stylesheet_entry: /build/admin.css
+  filewriter:
+    notification_enable: true
