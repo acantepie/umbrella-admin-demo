@@ -17,4 +17,16 @@ class FileWriterConfig extends UmbrellaFileWriterConfig
      * @ORM\Column(type="string", nullable=true)
      */
     public $habitat;
+
+    /**
+     * @var array
+     * @ORM\Column(type="json", nullable=true)
+     */
+    public $fishIds = [];
+
+    /**
+     * @var array
+     * @ORM\Column(type="json", nullable=true)
+     */
+    public $datatableQuery = [];
 }

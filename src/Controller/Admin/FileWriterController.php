@@ -111,11 +111,15 @@ class FileWriterController extends BaseController
     {
         $config = new FileWriterConfig(FishFileWriterHandler::class);
         $config->fwOutputPrettyFilename = 'datatable_recherche.csv';
+        $config->fwDisplayAsNotification = true;
+        $config->fwLabel = 'Export des poissons recherchés';
+        $config->datatableQuery = $request->query->all();
 
-        dump($request->query->all());
-        die;
-
-        return $this->manager->syncDownloadResponse($config);
+        if ($request->isXmlHttpRequest()) {
+            return $this->manager->asyncJsResponse($config);
+        } else {
+            return $this->manager->syncDownloadResponse($config);
+        }
     }
 
     /**
@@ -125,10 +129,14 @@ class FileWriterController extends BaseController
     {
         $config = new FileWriterConfig(FishFileWriterHandler::class);
         $config->fwOutputPrettyFilename = 'datatable_selection.csv';
+        $config->fwDisplayAsNotification = true;
+        $config->fwLabel = 'Export des poissons sélectionnés';
+        $config->fishIds = (array) $request->query->get('ids');
 
-        dump($request->query->all());
-        die;
-
-        return $this->manager->syncDownloadResponse($config);
+        if ($request->isXmlHttpRequest()) {
+            return $this->manager->asyncJsResponse($config);
+        } else {
+            return $this->manager->syncDownloadResponse($config);
+        }
     }
 }
