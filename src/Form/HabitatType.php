@@ -27,7 +27,7 @@ class HabitatType extends AbstractType
     {
         $resolver->setDefaults([
             'required' => false,
-            'multiple' => false,
+            'multiple' => true,
             'choices' => [
                 Fish::HABITAT_SEA,
                 Fish::HABITAT_RIVER,

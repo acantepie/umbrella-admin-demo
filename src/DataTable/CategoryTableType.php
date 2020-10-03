@@ -14,9 +14,9 @@ use Umbrella\CoreBundle\Component\Toolbar\ToolbarBuilder;
 use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\Component\Column\Type\ActionColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Type\DataTableType;
+use Umbrella\CoreBundle\Component\Toolbar\Action\AddActionType;
 use Umbrella\CoreBundle\Component\Column\Type\CheckBoxColumnType;
 use Umbrella\CoreBundle\Component\Column\Type\PropertyColumnType;
-use Umbrella\CoreBundle\Component\Toolbar\Action\AddButtonActionType;
 use Umbrella\CoreBundle\Component\DataTable\RowAction\RowActionBuilder;
 
 /**
@@ -29,7 +29,7 @@ class CategoryTableType extends DataTableType
      */
     public function buildToolbar(ToolbarBuilder $builder, array $options = [])
     {
-        $builder->addAction('add', AddButtonActionType::class, [
+        $builder->addAction('add', AddActionType::class, [
             'route' => 'app_admin_treetable_edit',
             'xhr' => true,
         ]);
@@ -49,9 +49,9 @@ class CategoryTableType extends DataTableType
         ]);
         $builder->add('actions', ActionColumnType::class, [
             'action_builder' => function (RowActionBuilder $builder, NodeEntity $entity) {
-                $builder->createAdd('app_admin_treetable_edit', ['parentId' => $entity->id]);
-                $builder->createEdit('app_admin_treetable_edit', ['id' => $entity->id]);
-                $builder->createDelete('app_admin_treetable_delete', ['id' => $entity->id]);
+                $builder->createXhrAdd('app_admin_treetable_edit', ['parentId' => $entity->id]);
+                $builder->createXhrEdit('app_admin_treetable_edit', ['id' => $entity->id]);
+                $builder->createXhrDelete('app_admin_treetable_delete', ['id' => $entity->id]);
             }
         ]);
     }

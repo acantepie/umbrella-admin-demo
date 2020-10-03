@@ -32,6 +32,8 @@ menu:
 action:
   add_fish: Ajouter un poisson
   edit_fish: Modifier un poisson
+  export_selected: Exporter la sélection
+  export_searched: Exporter la recherche
 
 table:
   name: Nom

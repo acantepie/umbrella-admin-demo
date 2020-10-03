@@ -25,7 +25,7 @@ class AjaxHandlerController extends BaseController
      */
     public function indexAction(Request $request)
     {
-        return $this->render('ajax_handler/index.html.twig');
+        return $this->render('ajaxhandler/index.html.twig');
     }
 
     /**

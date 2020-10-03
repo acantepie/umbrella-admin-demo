@@ -9,7 +9,7 @@
 namespace App\Controller\Admin;
 
 use App\DataTable\ApiTableType;
-use App\DataTable\SimpleTableType;
+use App\DataTable\FishTableType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -25,7 +25,7 @@ class DatatableController extends BaseController
      */
     public function simpleAction(Request $request)
     {
-        $table = $this->createTable(SimpleTableType::class);
+        $table = $this->createTable(FishTableType::class);
         $table->handleRequest($request);
 
         if ($table->isCallback()) {
@@ -44,10 +44,10 @@ class DatatableController extends BaseController
     {
         // If same action handle multiple instance on same TableType you must type different id for each of them
 
-        $edibleTable = $this->createTable(SimpleTableType::class, ['id' => 'simple_table_1', 'edible' => true]);
+        $edibleTable = $this->createTable(FishTableType::class, ['id' => 'simple_table_1', 'edible' => true]);
         $edibleTable->handleRequest($request);
 
-        $notEdibleTable = $this->createTable(SimpleTableType::class, ['id' => 'simple_table_2', 'edible' => false]);
+        $notEdibleTable = $this->createTable(FishTableType::class, ['id' => 'simple_table_2', 'edible' => false]);
         $notEdibleTable->handleRequest($request);
 
         if ($edibleTable->isCallback()) {

@@ -3,10 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Form\HabitatType;
+use App\DataTable\FishTableType;
 use App\Entity\FileWriterConfig;
-use App\FileWriter\CsvFileWriterHandler;
+use App\FileWriter\FishFileWriterHandler;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Umbrella\CoreBundle\Controller\BaseController;
 use Umbrella\AdminBundle\FileWriter\FileWriterManager;
 
@@ -40,7 +42,7 @@ class FileWriterController extends BaseController
             ->add('habitat', HabitatType::class, ['multiple' => false])
             ->getForm();
 
-        return $this->render('file_writer/index.html.twig', [
+        return $this->render('filewriter/simple.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -50,7 +52,7 @@ class FileWriterController extends BaseController
      */
     public function syncAction(Request $request)
     {
-        $config = new FileWriterConfig(CsvFileWriterHandler::class);
+        $config = new FileWriterConfig(FishFileWriterHandler::class);
         $config->fwLabel = 'Exemple - mode synchrone';
         $config->fwOutputPrettyFilename = 'sync-exemple.csv';
 
@@ -62,7 +64,7 @@ class FileWriterController extends BaseController
      */
     public function asyncAction(Request $request)
     {
-        $config = new FileWriterConfig(CsvFileWriterHandler::class);
+        $config = new FileWriterConfig(FishFileWriterHandler::class);
         $config->fwLabel = 'Exemple - mode asynchrone';
         $config->fwOutputPrettyFilename = 'async-exemple.csv';
         $config->fwDisplayAsNotification = true;
@@ -73,9 +75,9 @@ class FileWriterController extends BaseController
     /**
      * @Route("/with-param")
      */
-    public function withParamAction(Request  $request)
+    public function withParamAction(Request $request)
     {
-        $config = new FileWriterConfig(CsvFileWriterHandler::class);
+        $config = new FileWriterConfig(FishFileWriterHandler::class);
         $config->fwLabel = 'Exemple - mode paramétré';
         $config->fwOutputPrettyFilename = 'param-exemple.csv';
         $config->habitat = $request->query->get('form')['habitat'];
@@ -85,7 +87,48 @@ class FileWriterController extends BaseController
     /**
      * @Route("/datatable")
      */
-    public function datatableAction(Request  $request)
+    public function datatableAction(Request $request)
     {
+        $table = $this->createTable(FishTableType::class, [
+            'disabled' => true,
+            'exportable' => true
+        ]);
+        $table->handleRequest($request);
+
+        if ($table->isCallback()) {
+            return new JsonResponse($table->getApiResults());
+        }
+
+        return $this->render('filewriter/datatable.html.twig', [
+            'table' => $table
+        ]);
+    }
+
+    /**
+     * @Route("/datatable/searched")
+     */
+    public function datatableSearchedAction(Request $request)
+    {
+        $config = new FileWriterConfig(FishFileWriterHandler::class);
+        $config->fwOutputPrettyFilename = 'datatable_recherche.csv';
+
+        dump($request->query->all());
+        die;
+
+        return $this->manager->syncDownloadResponse($config);
+    }
+
+    /**
+     * @Route("/datatable/selected")
+     */
+    public function datatableSelectedAction(Request  $request)
+    {
+        $config = new FileWriterConfig(FishFileWriterHandler::class);
+        $config->fwOutputPrettyFilename = 'datatable_selection.csv';
+
+        dump($request->query->all());
+        die;
+
+        return $this->manager->syncDownloadResponse($config);
     }
 }
