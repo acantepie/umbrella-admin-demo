@@ -5,11 +5,8 @@ namespace App\DataFixtures;
 use App\Entity\Fish;
 use App\Entity\User;
 use App\Entity\UserGroup;
-use Umbrella\CoreBundle\Entity\Task;
 use Doctrine\Persistence\ObjectManager;
-use App\FileWriter\CsvFileWriterHandler;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Umbrella\AdminBundle\Entity\FileWriterTaskConfig;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
@@ -101,52 +98,6 @@ class AppFixtures extends Fixture
         $e->habitats = [Fish::HABITAT_LAKE, Fish::HABITAT_RIVER];
         $e->color = '#b0bec5';
         $manager->persist($e);
-
-        $manager->flush();
-    }
-
-    /**
-     * @param ObjectManager $manager
-     */
-    private function loadFileWriterTask(ObjectManager $manager)
-    {
-        $fw = new FileWriterTaskConfig(CsvFileWriterHandler::class);
-        $fw->fwLabel = 'Test 1';
-        $fw->fwOutputFilename = 'test.txt';
-        $t = new Task();
-        $t->config = $fw;
-        $t->state = Task::STATE_PENDING;
-        $manager->persist($t);
-
-        $fw = new FileWriterTaskConfig(CsvFileWriterHandler::class);
-        $fw->fwLabel = 'Test 2';
-        $fw->fwOutputFilename = 'test.txt';
-        $t = new Task();
-        $t->config = $fw;
-        $t->state = Task::STATE_RUNNING;
-        $t->startedAt = new \DateTime('-1 minutes');
-        $manager->persist($t);
-
-        $fw = new FileWriterTaskConfig(CsvFileWriterHandler::class);
-        $fw->fwLabel = 'Test 3';
-        $fw->fwOutputFilename = 'test.txt';
-        $t = new Task();
-        $t->config = $fw;
-        $t->state = Task::STATE_FINISHED;
-        $t->startedAt = new \DateTime('-5 minutes');
-        $t->endedAt = new \DateTime('-1 minutes');
-        $manager->persist($t);
-
-        $fw = new FileWriterTaskConfig(CsvFileWriterHandler::class);
-        $fw->fwLabel = 'Test 4';
-        $fw->fwOutputFilename = 'test.txt';
-        $t = new Task();
-        $t->config = $fw;
-        $t->state = Task::STATE_FAILED;
-        $t->errorOutput = 'Ooops, There is an error ...';
-        $t->startedAt = new \DateTime('-5 minutes');
-        $t->endedAt = new \DateTime('-1 minutes');
-        $manager->persist($t);
 
         $manager->flush();
     }

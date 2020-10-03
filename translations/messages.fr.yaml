@@ -7,8 +7,10 @@ menu:
   api_datatable: Source (Api - fishbase)
 
   tasks: Taches
-  file_writer: File Writer
 
+  filewriter: File Writer
+  filewriter_simple: Simple
+  filewriter_datatable: Datatable
 
   js_response: JsResponse
   js_response_handler: JsResponseHandler
@@ -46,6 +48,7 @@ form:
   label:
     name: Nom
     edible: Comestible
+    habitat: Habitat
     habitats: Habitats
     speciesId: Code espece (FishBase)
 

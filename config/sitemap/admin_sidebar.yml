@@ -15,9 +15,13 @@ tasks:
     icon: uil-process
     route: app_admin_task_index
 
-file_writer:
+filewriter:
     icon: uil-file-plus-alt
-    route: app_admin_filewriter_index
+    children:
+        filewriter_simple:
+            route: app_admin_filewriter_simple
+        filewriter_datatable:
+            route: app_admin_filewriter_datatable
 
 js_response:
     icon: uil-exchange

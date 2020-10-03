@@ -4,7 +4,7 @@ namespace App\FileWriter;
 
 use App\Entity\Fish;
 use Doctrine\ORM\EntityManagerInterface;
-use Umbrella\AdminBundle\Entity\FileWriterTaskConfig;
+use Umbrella\AdminBundle\Entity\UmbrellaFileWriterConfig;
 use Umbrella\AdminBundle\FileWriter\Handler\AbstractFileWriterHandler;
 
 /**
@@ -29,11 +29,10 @@ class CsvFileWriterHandler extends AbstractFileWriterHandler
     /**
      * @inheritDoc
      */
-    public function execute(FileWriterTaskConfig $config)
+    public function execute(UmbrellaFileWriterConfig $config)
     {
         $resource = fopen($this->getOuputFilePath($config), 'w');
-
-        $fishes = $this->em->getRepository(Fish::class)->findAll();
+        $fishes = $this->getResults($config);
 
         fputcsv($resource, ['id', 'name', 'description', 'edible']);
 
@@ -47,5 +46,23 @@ class CsvFileWriterHandler extends AbstractFileWriterHandler
         }
 
         fclose($resource);
+    }
+
+    /**
+     * @param  UmbrellaFileWriterConfig $config
+     * @return Fish[]
+     */
+    private function getResults(UmbrellaFileWriterConfig  $config)
+    {
+        $qb = $this->em->createQueryBuilder();
+        $qb->select('e');
+        $qb->from(Fish::class, 'e');
+
+        if (!empty($config->habitat)) {
+            $qb->andWhere('e.habitats LIKE :habitat');
+            $qb->setParameter('habitat', '%' . $config->habitat . '%');
+        }
+
+        return $qb->getQuery()->getResult();
     }
 }
