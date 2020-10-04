@@ -18,6 +18,11 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class AppFixtures extends Fixture
 {
     /**
+     * @var Fish[]
+     */
+    private $fishes = [];
+
+    /**
      * @var UserPasswordEncoderInterface
      */
     private $userPasswordEncoder;
@@ -36,39 +41,10 @@ class AppFixtures extends Fixture
      */
     public function load(ObjectManager $manager)
     {
-        $this->loadFormExample($manager);
         $this->loadUser($manager);
         $this->loadFish($manager);
         $this->loadFishCategory($manager);
-    }
-
-    private function loadFormExample(ObjectManager $manager)
-    {
-        $e = new BaseExample();
-        $manager->persist($e);
-
-        $e = new DateExample();
-        $manager->persist($e);
-
-        $e = new Select2Example();
-        $manager->persist($e);
-
-        $e = new CollectionExample();
-        $manager->persist($e);
-
-        $i = new CollectionItemExample();
-        $i->label = 'Gardon';
-        $i->description = 'Poisson d\'eau douce trés commun';
-        $i->parent = $e;
-        $manager->persist($i);
-
-        $i = new CollectionItemExample();
-        $i->label = 'Anguille';
-        $i->description = 'Poisson long et visqueux';
-        $i->parent = $e;
-        $manager->persist($i);
-
-        $manager->flush();
+        $this->loadFormExample($manager);
     }
 
     private function loadUser(ObjectManager $manager)
@@ -103,6 +79,8 @@ class AppFixtures extends Fixture
         $e->habitats = [Fish::HABITAT_LAKE, Fish::HABITAT_RIVER, Fish::HABITAT_SEA];
         $manager->persist($e);
 
+        $this->fishes[] = $e;
+
         $e = new Fish();
         $e->name = 'Poisson rouge';
         $e->description = 'Poisson de compagnie';
@@ -110,6 +88,8 @@ class AppFixtures extends Fixture
         $e->habitats = [Fish::HABITAT_LAKE];
         $e->color = '#f44336';
         $manager->persist($e);
+
+        $this->fishes[] = $e;
 
         $e = new Fish();
         $e->name = 'Anguille';
@@ -188,6 +168,40 @@ class AppFixtures extends Fixture
         $c3->description = 'Taille > 1m';
         $c3->parent = $r;
         $manager->persist($c3);
+
+        $manager->flush();
+    }
+
+    private function loadFormExample(ObjectManager $manager)
+    {
+        $e = new BaseExample();
+        $manager->persist($e);
+
+        $e = new DateExample();
+        $manager->persist($e);
+
+        $e = new Select2Example();
+        $e->requiredManyFishSpecies = ['Saumon', 'Lamproie'];
+        foreach ($this->fishes as $fish) {
+            $e->fishes->add($fish);
+        }
+        $e->tags = [Fish::HABITAT_LAKE, Fish::HABITAT_RIVER];
+        $manager->persist($e);
+
+        $e = new CollectionExample();
+        $manager->persist($e);
+
+        $i = new CollectionItemExample();
+        $i->label = 'Gardon';
+        $i->description = 'Poisson d\'eau douce trés commun';
+        $i->parent = $e;
+        $manager->persist($i);
+
+        $i = new CollectionItemExample();
+        $i->label = 'Anguille';
+        $i->description = 'Poisson long et visqueux';
+        $i->parent = $e;
+        $manager->persist($i);
 
         $manager->flush();
     }

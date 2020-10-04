@@ -19,8 +19,6 @@ menu:
   forms: Forms
   toast: Toast
 
-  ui: UI widget
-
   icon: Icones
   icon_md: Material Design
   icon_unicon: Unicons

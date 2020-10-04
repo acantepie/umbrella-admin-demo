@@ -38,9 +38,6 @@ toast:
     icon: uil-chat
     route: app_admin_toast_index
 
-ui:
-    type: title
-
 icon:
     icon: uil-streering
     children:
