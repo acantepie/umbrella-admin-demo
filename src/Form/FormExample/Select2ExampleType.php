@@ -93,7 +93,8 @@ class Select2ExampleType extends AbstractType
         ]);
 
         $builder->add('tags', TagType::class, [
-            'help' => 'type word then press enter'
+            'help' => 'type word then press enter',
+            'required' => false
         ]);
     }
 
