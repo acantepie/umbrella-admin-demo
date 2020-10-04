@@ -10,8 +10,10 @@ namespace App\Controller\Admin;
 
 use App\Entity\Fish;
 use App\Entity\FormExample\BaseExample;
+use App\Entity\FormExample\CollectionExample;
 use App\Entity\FormExample\DateExample;
 use App\Form\FormExample\BaseExampleType;
+use App\Form\FormExample\CollectionExampleType;
 use App\Form\FormExample\DateExampleType;
 use App\Entity\FormExample\Select2Example;
 use App\Entity\FormExample\CkeditorExample;
@@ -126,6 +128,32 @@ class FormController extends BaseController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/collection")
+     */
+    public function collectionAction(Request  $request)
+    {
+        $this->setMenuActive();
+
+        /** @var Select2Example $entity */
+        $entity = $this->loadOne(CollectionExample::class);
+
+        $form = $this->createForm(CollectionExampleType::class, $entity);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->persistAndFlush($entity);
+
+            $this->toastSuccess('message.entity_updated');
+            return $this->redirectToRoute('app_admin_form_collection');
+        }
+
+        return $this->render('form/collection.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
 
     /**
      * @Route("/fish-api")

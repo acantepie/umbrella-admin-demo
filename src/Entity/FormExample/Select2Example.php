@@ -36,7 +36,7 @@ class Select2Example extends BaseEntity
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    public $requiredFishSpecies;
+    public $requiredFishSpecies = 'Saumon';
 
     /**
      * @ORM\Column(type="json", nullable=true)

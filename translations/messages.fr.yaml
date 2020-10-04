@@ -81,6 +81,10 @@ form:
     manySpecies: Especes
     tags: Tags
 
+    items: Items
+    strings: Chaines de caractères
+    files: Fichiers
+
     loader: Loader
     allowToastClose: Fermeture manuelle
     hideAfter: Masqué aprés (ms)

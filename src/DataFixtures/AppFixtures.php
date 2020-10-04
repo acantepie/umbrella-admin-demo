@@ -3,6 +3,8 @@
 namespace App\DataFixtures;
 
 use App\Entity\Fish;
+use App\Entity\FormExample\CollectionExample;
+use App\Entity\FormExample\CollectionItemExample;
 use App\Entity\User;
 use App\Entity\UserGroup;
 use App\Entity\FishCategory;
@@ -50,6 +52,21 @@ class AppFixtures extends Fixture
 
         $e = new Select2Example();
         $manager->persist($e);
+
+        $e = new CollectionExample();
+        $manager->persist($e);
+
+        $i = new CollectionItemExample();
+        $i->label = 'Gardon';
+        $i->description = 'Poisson d\'eau douce trés commun';
+        $i->parent = $e;
+        $manager->persist($i);
+
+        $i = new CollectionItemExample();
+        $i->label = 'Anguille';
+        $i->description = 'Poisson long et visqueux';
+        $i->parent = $e;
+        $manager->persist($i);
 
         $manager->flush();
     }
