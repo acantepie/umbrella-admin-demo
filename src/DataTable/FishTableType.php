@@ -17,14 +17,16 @@ use Umbrella\CoreBundle\Component\Action\Action;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Umbrella\CoreBundle\Component\Toolbar\ToolbarBuilder;
+use Umbrella\CoreBundle\Component\Action\ActionListBuilder;
 use Umbrella\CoreBundle\Component\Action\Type\AddActionType;
 use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
-use Umbrella\CoreBundle\Component\Action\Type\ExportActionType;
 use Umbrella\CoreBundle\Component\Column\Type\ActionColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Type\DataTableType;
 use Umbrella\CoreBundle\Component\Column\Type\BooleanColumnType;
+use Umbrella\CoreBundle\Component\Action\Type\DropdownActionType;
 use Umbrella\CoreBundle\Component\Column\Type\CheckBoxColumnType;
 use Umbrella\CoreBundle\Component\Column\Type\PropertyColumnType;
+use Umbrella\CoreBundle\Component\Action\Type\DropdownItemActionType;
 use Umbrella\CoreBundle\Component\DataTable\RowAction\RowActionBuilder;
 use Umbrella\CoreBundle\Component\DataTable\Source\Modifier\EntitySearchModifier;
 
@@ -67,14 +69,36 @@ class FishTableType extends DataTableType
         }
 
         if ($options['exportable']) {
-            $builder->addAction('export_searched', ExportActionType::class, [
-                'route' => 'app_admin_filewriter_datatablesearched',
-                'extra_data' => Action::DATA_DATATABLE_FILTER
+            $builder->addAction('export_searched', DropdownActionType::class, [
+                'icon' => 'mdi mdi-file-download-outline',
+                'dropdown_button_class' => 'btn btn-light',
+                'item_builder' => function (ActionListBuilder $builder) {
+                    $builder->add('export_searched_sync', DropdownItemActionType::class, [
+                        'route' => 'app_admin_filewriter_datatablesearched',
+                        'extra_data' => Action::DATA_DATATABLE_FILTER
+                    ]);
+                    $builder->add('export_searched_async', DropdownItemActionType::class, [
+                        'route' => 'app_admin_filewriter_datatablesearched',
+                        'extra_data' => Action::DATA_DATATABLE_FILTER,
+                        'xhr' => true
+                    ]);
+                }
             ]);
 
-            $builder->addAction('export_selected', ExportActionType::class, [
-                'route' => 'app_admin_filewriter_datatableselected',
-                'extra_data' => Action::DATA_DATATABLE_SELECTION
+            $builder->addAction('export_selected', DropdownActionType::class, [
+                'icon' => 'mdi mdi-file-download-outline',
+                'dropdown_button_class' => 'btn btn-light',
+                'item_builder' => function (ActionListBuilder $builder) {
+                    $builder->add('export_selected_sync', DropdownItemActionType::class, [
+                        'route' => 'app_admin_filewriter_datatableselected',
+                        'extra_data' => Action::DATA_DATATABLE_SELECTION
+                    ]);
+                    $builder->add('export_selected_async', DropdownItemActionType::class, [
+                        'route' => 'app_admin_filewriter_datatableselected',
+                        'extra_data' => Action::DATA_DATATABLE_SELECTION,
+                        'xhr' => true
+                    ]);
+                }
             ]);
         }
     }

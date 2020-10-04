@@ -33,8 +33,15 @@ menu:
 action:
   add_fish: Ajouter un poisson
   edit_fish: Modifier un poisson
+
   export_selected: Exporter la sélection
+  export_selected_sync: Export - Synchrone
+  export_selected_async: Export - Asynchrone
+
   export_searched: Exporter la recherche
+  export_searched_sync: Export - Synchrone
+  export_searched_async: Export - Asynchrone
+
   add_fishcategory: Ajouter une catégorie
   edit_fishcategory: Modifier une catégorie
 
