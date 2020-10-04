@@ -87,7 +87,20 @@ module.exports = {
                 toType: 'dir'
             },
             {
-                from: '{config.js,contents.css,styles.js,adapters/**/*,lang/**/*,plugins/**/*,skins/**/*,vendor/**/*}',
+                from: '{' + [
+                    'config.js',
+                    'contents.css',
+                    'styles.js',
+                    'adapters/**/*',
+                    'lang/**/*',
+                    'plugins/**/*',
+                    'plugins/**/*',
+                    'skins/**/*',
+                    'vendor/**/*'
+                ].join(',') + '}',
+                ignore: [
+                    '**/lang/!(fr|en).js' // Exclude all lang except fr and en
+                ],
                 to: path.resolve( __dirname + '/public/build', 'ckeditor4' ),
                 context: path.resolve( __dirname, 'node_modules', 'ckeditor4' )
             }
