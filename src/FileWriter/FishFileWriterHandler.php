@@ -75,7 +75,6 @@ class FishFileWriterHandler extends AbstractFileWriterHandler
             // if you want modify query (do this before handleRequest of course)
             $table->getSource()->addModifier(new EntityCallbackSourceModifier(function (QueryBuilder  $qb, $data) {
                 //$qb->andWhere('e.edible = TRUE');
-
             }));
 
             $table->handleRequestData($config->datatableQuery);

@@ -10,6 +10,7 @@ namespace App\Controller\Admin;
 
 use App\DataTable\ApiTableType;
 use App\DataTable\FishTableType;
+use App\DataTable\FishCategoryTableType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -70,6 +71,23 @@ class DatatableController extends BaseController
     public function apiAction(Request $request)
     {
         $table = $this->createTable(ApiTableType::class);
+        $table->handleRequest($request);
+
+        if ($table->isCallback()) {
+            return new JsonResponse($table->getApiResults());
+        }
+
+        return $this->render('@UmbrellaAdmin/DataTable/index.html.twig', [
+            'table' => $table
+        ]);
+    }
+
+    /**
+     * @Route("/tree")
+     */
+    public function treeAction(Request  $request)
+    {
+        $table = $this->createTable(FishCategoryTableType::class);
         $table->handleRequest($request);
 
         if ($table->isCallback()) {

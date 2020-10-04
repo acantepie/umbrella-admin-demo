@@ -10,7 +10,8 @@ datatables:
             route: app_admin_datatable_multiple
         api_datatable:
             route: app_admin_datatable_api
-
+        tree_datatable:
+            route: app_admin_datatable_tree
 tasks:
     icon: uil-process
     route: app_admin_task_index

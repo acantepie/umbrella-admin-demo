@@ -5,6 +5,7 @@ menu:
   simple_datatable: Simple
   multiple_datatable: Multiple
   api_datatable: Source (Api - fishbase)
+  tree_datatable: Tree
 
   tasks: Taches
 
@@ -37,6 +38,7 @@ action:
 
 table:
   name: Nom
+  description: Description
   edible: Comestible
   habitats: Habitats
   picture: Imgage

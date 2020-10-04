@@ -8,16 +8,16 @@
 
 namespace App\Repository;
 
-use App\Entity\NodeEntity;
+use App\Entity\FishCategory;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 /**
- * Class NodeEntityRepository
+ * Class FishCategoryRepository
  */
-class NodeEntityRepository extends NestedTreeRepository
+class FishCategoryRepository extends NestedTreeRepository
 {
     /**
-     * @return NodeEntity
+     * @return FishCategory
      */
     public function findRoot()
     {

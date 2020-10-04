@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Fish;
 use App\Entity\User;
 use App\Entity\UserGroup;
+use App\Entity\FishCategory;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -32,7 +33,7 @@ class AppFixtures extends Fixture
     {
         $this->loadUser($manager);
         $this->loadFish($manager);
-        //$this->loadFileWriterTask($manager);
+        $this->loadFishCategory($manager);
     }
 
     private function loadUser(ObjectManager $manager)
@@ -98,6 +99,36 @@ class AppFixtures extends Fixture
         $e->habitats = [Fish::HABITAT_LAKE, Fish::HABITAT_RIVER];
         $e->color = '#b0bec5';
         $manager->persist($e);
+
+        $manager->flush();
+    }
+
+    /**
+     * @param ObjectManager $manager
+     */
+    private function loadFishCategory(ObjectManager $manager)
+    {
+        $r = new FishCategory();
+        $r->name = 'Root';
+        $manager->persist($r);
+
+        $c1 = new FishCategory();
+        $c1->name = 'Petit';
+        $c1->description = 'Taille < 30cm';
+        $c1->parent = $r;
+        $manager->persist($c1);
+
+        $c2 = new FishCategory();
+        $c2->name = 'Moyen';
+        $c2->description = 'Taille comprise entre 30cm et 1m';
+        $c2->parent = $r;
+        $manager->persist($c2);
+
+        $c3 = new FishCategory();
+        $c3->name = 'Grand';
+        $c3->description = 'Taille > 1m';
+        $c3->parent = $r;
+        $manager->persist($c3);
 
         $manager->flush();
     }
