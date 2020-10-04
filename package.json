@@ -8,6 +8,7 @@
     "bootstrap": "^4.4.1",
     "bootstrap-datepicker": "^1.9.0",
     "bootstrap-tagsinput": "^0.7.1",
+    "ckeditor4": "^4.15.0",
     "datatables.net": "^1.10.20",
     "datatables.net-bs4": "^1.10.20",
     "datatables.net-fixedheader": "^3.1.6",

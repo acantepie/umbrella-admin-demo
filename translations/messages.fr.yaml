@@ -83,6 +83,9 @@ form:
     strings: Chaines de caractères
     files: Fichiers
 
+    text1: Texte 1
+    text2: Texte 2
+
     loader: Loader
     allowToastClose: Fermeture manuelle
     hideAfter: Masqué aprés (ms)

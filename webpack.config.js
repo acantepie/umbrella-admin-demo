@@ -21,7 +21,8 @@ CONFIG.alias = {
 CONFIG.entry = {
     // umbrella_core: './vendor/umbrella/corebundle/Resources/webpack/App.js',
     // umbrella_admin: './vendor/umbrella/adminbundle/Resources/webpack/Admin.js',
-    admin: './assets/admin/Admin.js'
+    admin: './assets/admin/Admin.js',
+    ckeditor: './vendor/umbrella/corebundle/Resources/assets/vendor/ckeditor/ckeditor.js'
 };
 
 CONFIG.output = {
@@ -84,6 +85,11 @@ module.exports = {
                 from: './vendor/umbrella/corebundle/Resources/assets/images',
                 to: './images',
                 toType: 'dir'
+            },
+            {
+                from: '{config.js,contents.css,styles.js,adapters/**/*,lang/**/*,plugins/**/*,skins/**/*,vendor/**/*}',
+                to: path.resolve( __dirname + '/public/build', 'ckeditor4' ),
+                context: path.resolve( __dirname, 'node_modules', 'ckeditor4' )
             }
         ]),
         new MiniCssExtractPlugin({

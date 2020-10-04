@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use App\Entity\FormExample\CkeditorExample;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Umbrella\CoreBundle\Form\CkeditorType;
 
 /**
  * Class CkEditorExampleType
@@ -17,6 +18,8 @@ class CkEditorExampleType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->add('text1', CkeditorType::class);
+        $builder->add('text2', CkeditorType::class);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Fish;
+use App\Entity\FormExample\CkeditorExample;
 use App\Entity\FormExample\CollectionExample;
 use App\Entity\FormExample\CollectionItemExample;
 use App\Entity\User;
@@ -178,6 +179,9 @@ class AppFixtures extends Fixture
         $manager->persist($e);
 
         $e = new DateExample();
+        $manager->persist($e);
+
+        $e = new CkeditorExample();
         $manager->persist($e);
 
         $e = new Select2Example();
