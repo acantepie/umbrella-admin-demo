@@ -120,9 +120,27 @@ class AppFixtures extends Fixture
 
         $cc1 = new FishCategory();
         $cc1->name = 'Eau chaude';
-        $cc1->description = "Eau T° > 15°";
+        $cc1->description = 'Eau T° > 15°';
         $cc1->parent = $c1;
         $manager->persist($cc1);
+
+        $cc2 = new FishCategory();
+        $cc2->name = 'Eau froide';
+        $cc2->description = 'Eau T° < 15°';
+        $cc2->parent = $c1;
+        $manager->persist($cc2);
+
+        $ccc1 = new FishCategory();
+        $ccc1->name = 'Lac de montagne';
+        $ccc1->description = 'Lac d\'altitude';
+        $ccc1->parent = $cc2;
+        $manager->persist($ccc1);
+
+        $ccc2 = new FishCategory();
+        $ccc2->name = 'Océan Atlantique';
+        $ccc2->description = '';
+        $ccc2->parent = $cc2;
+        $manager->persist($ccc2);
 
         $c2 = new FishCategory();
         $c2->name = 'Moyen';

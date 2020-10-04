@@ -35,6 +35,8 @@ action:
   edit_fish: Modifier un poisson
   export_selected: Exporter la sélection
   export_searched: Exporter la recherche
+  add_fishcategory: Ajouter une catégorie
+  edit_fishcategory: Modifier une catégorie
 
 table:
   name: Nom

@@ -69,12 +69,12 @@ class FishTableType extends DataTableType
         if ($options['exportable']) {
             $builder->addAction('export_searched', ExportActionType::class, [
                 'route' => 'app_admin_filewriter_datatablesearched',
-                'extra_data' => Action::DATA_DATATABLE_FILTER,
+                'extra_data' => Action::DATA_DATATABLE_FILTER
             ]);
 
             $builder->addAction('export_selected', ExportActionType::class, [
                 'route' => 'app_admin_filewriter_datatableselected',
-                'extra_data' => Action::DATA_DATATABLE_SELECTION,
+                'extra_data' => Action::DATA_DATATABLE_SELECTION
             ]);
         }
     }

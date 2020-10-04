@@ -9,6 +9,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\FishCategory;
+use App\Form\FishCategoryType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
@@ -25,13 +26,8 @@ class FishCategoryCRUDController extends BaseController
     public function editAction(Request $request, $id = null)
     {
         if ($id === null) {
-            if ($request->query->has('parentId')) {
-                $parent = $this->findOrNotFound(FishCategory::class, $request->query->get('parentId'));
-            } else {
-                $parent = $this->getRepository(FishCategory::class)->findRoot();
-            }
             $entity = new FishCategory();
-            $entity->parent = $parent;
+            $entity->parent = $this->getRepository(FishCategory::class)->findRoot(true);
         } else {
             $entity = $this->findOrNotFound(FishCategory::class, $id);
         }
@@ -43,14 +39,14 @@ class FishCategoryCRUDController extends BaseController
             $this->persistAndFlush($entity);
             return $this->jsResponseBuilder()
                 ->closeModal()
-                ->toastSuccess('message.entity_update')
+                ->toastSuccess('message.entity_updated')
                 ->reloadTable();
         }
 
         return $this->jsResponseBuilder()
             ->openModalView('@UmbrellaAdmin/Layout/edit_modal.html.twig', [
                 'form' => $form->createView(),
-                'title' => $entity->id ? $this->trans('action.edit_node') :  $this->trans('action.add_node'),
+                'title' => $entity->id ? $this->trans('action.edit_fishcategory') :  $this->trans('action.add_fishcategory'),
                 'entity' => $entity,
             ]);
     }
