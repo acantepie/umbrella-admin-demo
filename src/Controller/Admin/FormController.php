@@ -10,16 +10,16 @@ namespace App\Controller\Admin;
 
 use App\Entity\Fish;
 use App\Entity\FormExample\BaseExample;
-use App\Entity\FormExample\CollectionExample;
 use App\Entity\FormExample\DateExample;
 use App\Form\FormExample\BaseExampleType;
-use App\Form\FormExample\CollectionExampleType;
 use App\Form\FormExample\DateExampleType;
 use App\Entity\FormExample\Select2Example;
 use App\Entity\FormExample\CkeditorExample;
 use App\Form\FormExample\Select2ExampleType;
+use App\Entity\FormExample\CollectionExample;
 use App\Form\FormExample\CkEditorExampleType;
 use Symfony\Component\HttpFoundation\Request;
+use App\Form\FormExample\CollectionExampleType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Umbrella\CoreBundle\Controller\BaseController;
@@ -153,7 +153,6 @@ class FormController extends BaseController
             'form' => $form->createView()
         ]);
     }
-
 
     /**
      * @Route("/fish-api")

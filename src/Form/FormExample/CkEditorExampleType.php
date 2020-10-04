@@ -3,10 +3,10 @@
 namespace App\Form\FormExample;
 
 use Symfony\Component\Form\AbstractType;
+use Umbrella\CoreBundle\Form\CkeditorType;
 use App\Entity\FormExample\CkeditorExample;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\Form\CkeditorType;
 
 /**
  * Class CkEditorExampleType

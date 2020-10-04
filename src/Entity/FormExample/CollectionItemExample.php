@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Entity\FormExample;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -13,7 +12,6 @@ use Umbrella\CoreBundle\Model\OrderableTrait;
  */
 class CollectionItemExample
 {
-
     use OrderableTrait;
 
     /**

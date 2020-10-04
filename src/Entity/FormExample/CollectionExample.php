@@ -2,10 +2,10 @@
 
 namespace App\Entity\FormExample;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\CoreBundle\Entity\BaseEntity;
 use Umbrella\CoreBundle\Entity\UmbrellaFile;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class BaseExample
@@ -65,5 +65,4 @@ class CollectionExample extends BaseEntity
         $item->parent = null;
         $this->items->removeElement($item);
     }
-
 }

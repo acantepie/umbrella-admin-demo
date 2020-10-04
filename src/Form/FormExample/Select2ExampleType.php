@@ -3,10 +3,10 @@
 namespace App\Form\FormExample;
 
 use App\Entity\Fish;
+use Umbrella\CoreBundle\Form\TagType;
 use Symfony\Component\Form\AbstractType;
 use Umbrella\CoreBundle\Form\Choice2Type;
 use Umbrella\CoreBundle\Form\Entity2Type;
-use Umbrella\CoreBundle\Form\TagType;
 use Umbrella\CoreBundle\Utils\ArrayUtils;
 use App\Entity\FormExample\Select2Example;
 use Umbrella\CoreBundle\Form\AsyncEntity2Type;

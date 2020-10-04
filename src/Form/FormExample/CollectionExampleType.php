@@ -1,19 +1,17 @@
 <?php
 
-
 namespace App\Form\FormExample;
 
-use App\Entity\FormExample\CollectionExample;
-use App\Entity\FormExample\CollectionItemExample;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Count;
 use Umbrella\CoreBundle\Form\OrderType;
-use Umbrella\CoreBundle\Form\TitleType;
-use Umbrella\CoreBundle\Form\UmbrellaCollectionType;
+use Symfony\Component\Form\AbstractType;
+use App\Entity\FormExample\CollectionExample;
 use Umbrella\CoreBundle\Form\UmbrellaFileType;
+use Symfony\Component\Form\FormBuilderInterface;
+use App\Entity\FormExample\CollectionItemExample;
+use Symfony\Component\Validator\Constraints\Count;
+use Umbrella\CoreBundle\Form\UmbrellaCollectionType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
  * Class CollectionExampleType
