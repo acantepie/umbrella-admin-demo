@@ -50,4 +50,12 @@ class Fish extends BaseEntity
      * @ORM\Column(type="boolean", nullable=false)
      */
     public $edible = false;
+
+    /**
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        return (string) $this->name;
+    }
 }

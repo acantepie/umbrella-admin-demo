@@ -8,9 +8,15 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\FormEntity;
-use App\Form\FormEntityType;
-use App\Entity\FormJoinEntity;
+use App\Entity\Fish;
+use App\Entity\FormExample\BaseExample;
+use App\Entity\FormExample\DateExample;
+use App\Form\FormExample\BaseExampleType;
+use App\Form\FormExample\DateExampleType;
+use App\Entity\FormExample\Select2Example;
+use App\Entity\FormExample\CkeditorExample;
+use App\Form\FormExample\Select2ExampleType;
+use App\Form\FormExample\CkEditorExampleType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,73 +30,151 @@ use Umbrella\CoreBundle\Controller\BaseController;
 class FormController extends BaseController
 {
     /**
-     * @Route("")
+     * @Route("/base")
      */
-    public function indexAction(Request $request)
+    public function baseAction(Request $request)
     {
-        $this->initData();
+        /** @var BaseExample $entity */
+        $entity = $this->loadOne(BaseExample::class);
 
-        /** @var FormEntity $entity */
-        $entity = $this->loadEntity(FormEntity::class);
-        $form = $this->createForm(FormEntityType::class, $entity);
+        $form = $this->createForm(BaseExampleType::class, $entity);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->persistAndFlush($entity);
 
             $this->toastSuccess('message.entity_updated');
-            return $this->redirectToRoute('app_admin_form_index');
+            return $this->redirectToRoute('app_admin_form_base');
         }
 
-        return $this->render('form/index.html.twig', [
+        return $this->render('form/base.html.twig', [
             'form' => $form->createView()
         ]);
     }
 
     /**
-     * @Route("/get")
+     * @Route("/date")
      */
-    public function getAction()
+    public function dateAction(Request  $request)
     {
-        return new JsonResponse($this->em()->getRepository(FormJoinEntity::class)->findAll());
+        $this->setMenuActive();
+
+        /** @var DateExample $entity */
+        $entity = $this->loadOne(DateExample::class);
+
+        $form = $this->createForm(DateExampleType::class, $entity);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->persistAndFlush($entity);
+
+            $this->toastSuccess('message.entity_updated');
+            return $this->redirectToRoute('app_admin_form_date');
+        }
+
+        return $this->render('form/date.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/ckeditor")
+     */
+    public function ckeditorAction(Request  $request)
+    {
+        $this->setMenuActive();
+
+        /** @var DateExample $entity */
+        $entity = $this->loadOne(CkeditorExample::class);
+
+        $form = $this->createForm(CkEditorExampleType::class, $entity);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->persistAndFlush($entity);
+
+            $this->toastSuccess('message.entity_updated');
+            return $this->redirectToRoute('app_admin_form_ckeditor');
+        }
+
+        return $this->render('form/ckeditor.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/select2")
+     */
+    public function select2Action(Request  $request)
+    {
+        $this->setMenuActive();
+
+        /** @var Select2Example $entity */
+        $entity = $this->loadOne(Select2Example::class);
+
+        $form = $this->createForm(Select2ExampleType::class, $entity);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->persistAndFlush($entity);
+
+            $this->toastSuccess('message.entity_updated');
+            return $this->redirectToRoute('app_admin_form_select2');
+        }
+
+        return $this->render('form/select2.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/fish-api")
+     */
+    public function fishApiAction(Request $request)
+    {
+        $qb = $this->em()->createQueryBuilder();
+        $qb->select('e');
+        $qb->from(Fish::class, 'e');
+
+        $q = trim($request->query->get('q'));
+        if (!empty($q)) {
+            $qb->andWhere('LOWER(e.search) LIKE :search');
+            $qb->setParameter('search', '%' . strtolower($q) . '%');
+        }
+
+        $serialized = [];
+
+        /** @var Fish $fish */
+        foreach ($qb->getQuery()->getResult() as $fish) {
+            $serialized[] = [
+                'id' => $fish->id,
+                'text' => $fish->name,
+                'description' => $fish->description
+            ];
+        }
+
+        return new JsonResponse($serialized);
     }
 
     /**
      * @param $entityClass
-     * @return object
+     * @return mixed
      */
-    private function loadEntity($entityClass)
+    private function loadOne($entityClass)
     {
-        $entity = $this->em()->createQuery(sprintf('SELECT e FROM %s e', $entityClass))->setMaxResults(1)->getOneOrNullResult();
-        return $entity ? $entity : new $entityClass();
+        return $this->em()
+            ->createQueryBuilder()
+            ->select('e')
+            ->from($entityClass, 'e')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 
-    private function initData()
+    private function setMenuActive()
     {
-        $repo = $this->em()->getRepository(FormJoinEntity::class);
-
-        if (count($repo->findAll()) === 0) {
-            $e = new FormJoinEntity();
-            $e->label = 'Cheval';
-            $e->description = 'Animal d\'elevage a 4 pattes';
-            $this->em()->persist($e);
-
-            $e = new FormJoinEntity();
-            $e->label = 'Chat';
-            $e->description = 'Animal de compagnie';
-            $this->em()->persist($e);
-
-            $e = new FormJoinEntity();
-            $e->label = 'Poisson';
-            $e->description = 'Animal vivan dans l\'eau';
-            $this->em()->persist($e);
-
-            $e = new FormJoinEntity();
-            $e->label = 'Oiseau';
-            $e->description = 'Animal a plume';
-            $this->em()->persist($e);
-
-            $this->em()->flush();
-        }
+        return $this->getMenu('admin_sidebar')
+            ->findByPath('forms')
+            ->setCurrent(true);
     }
 }

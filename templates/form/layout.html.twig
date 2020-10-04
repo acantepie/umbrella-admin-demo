@@ -1,0 +1,54 @@
+{% extends "@UmbrellaAdmin/Layout/layout.html.twig" %}
+
+{% set current_route = app.request.attributes.get('_route') %}
+
+{% block content %}
+    <ul class="nav nav-pills bg-nav-pills mb-3">
+        <li class="nav-item">
+            <a href="{{ path('app_admin_form_base') }}" class="nav-link rounded-0 {{ current_route == 'app_admin_form_base' ? 'active' }}">
+                <span>Base</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ path('app_admin_form_date') }}" class="nav-link rounded-0 {{ current_route == 'app_admin_form_date' ? 'active' }}">
+                <span>Date</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ path('app_admin_form_ckeditor') }}" class="nav-link rounded-0 {{ current_route == 'app_admin_form_ckeditor' ? 'active' }}">
+                <span>Ckeditor</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ path('app_admin_form_select2') }}" class="nav-link rounded-0 {{ current_route == 'app_admin_form_select2' ? 'active' }}">
+                <span>Select2</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active">
+            {% block tab_content %}
+                <form enctype="multipart/form-data" method="POST" data-mount="Form">
+
+                    <div class="d-flex mb-3">
+                        <span class="ml-auto"></span>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="mdi mdi-check"></i> {{ 'action.save' | trans }}
+                        </button>
+                    </div>
+
+                    {{ form_errors(form) }}
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">{% block card_tile %}{% endblock %}</h4>
+                            {{ form_rest(form) }}
+                        </div>
+                    </div>
+
+                </form>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

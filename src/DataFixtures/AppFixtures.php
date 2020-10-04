@@ -6,7 +6,10 @@ use App\Entity\Fish;
 use App\Entity\User;
 use App\Entity\UserGroup;
 use App\Entity\FishCategory;
+use App\Entity\FormExample\BaseExample;
+use App\Entity\FormExample\DateExample;
 use Doctrine\Persistence\ObjectManager;
+use App\Entity\FormExample\Select2Example;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -31,9 +34,24 @@ class AppFixtures extends Fixture
      */
     public function load(ObjectManager $manager)
     {
+        $this->loadFormExample($manager);
         $this->loadUser($manager);
         $this->loadFish($manager);
         $this->loadFishCategory($manager);
+    }
+
+    private function loadFormExample(ObjectManager $manager)
+    {
+        $e = new BaseExample();
+        $manager->persist($e);
+
+        $e = new DateExample();
+        $manager->persist($e);
+
+        $e = new Select2Example();
+        $manager->persist($e);
+
+        $manager->flush();
     }
 
     private function loadUser(ObjectManager $manager)

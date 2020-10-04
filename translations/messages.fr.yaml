@@ -68,19 +68,19 @@ form:
     amount: Montant
     color: Couleur
     text: Texte
-    inputGroup: Input group
-    date: Date
-    dateTime: Date + Horaires
-    country: Pays
-    regions: Régions
-    entity: Entité
-    entities: Entités
-    tags: Tags
-    collectionItems: Collection
-    collectionSimple: Collection non composé
-    collectionStrings: Collection (string)
-    collectionFiles: Collection (fichier)
+    url: Url
     file: Fichier
+    pdf: Fichier PDF
+
+    date: Date
+    past: Date passée
+    future: Date future
+    dateTime: Date + Horaires
+
+    species: Espece
+    manySpecies: Especes
+    tags: Tags
+
     loader: Loader
     allowToastClose: Fermeture manuelle
     hideAfter: Masqué aprés (ms)

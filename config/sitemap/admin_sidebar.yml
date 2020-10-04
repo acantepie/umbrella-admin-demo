@@ -32,7 +32,7 @@ js_response:
 
 forms:
     icon: uil-document-layout-center
-    route: app_admin_form_index
+    route: app_admin_form_base
 
 toast:
     icon: uil-chat
