@@ -8,13 +8,13 @@ help: ## Outputs this help screen
 	@grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}{printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
 
 ## --- Install & Update --------------------
-install-dev: init-dev-env vendor-install node-install webpack-dev cc ## DEV env : install for dev environment
+install-dev: dump-env-dev vendor-install node-install webpack-dev cc db-create db-update ## DEV env : install for dev environment
 
-update-dev: project-update vendor-install vendor-umbrella-update node-install db-update cc ## DEV env : update project, vendors (php & node), database and cache clear (dev & prod)
+update-dev: project-update vendor-install vendor-umbrella-update node-install cc db-update ## DEV env : update project, vendors (php & node), database and cache clear (dev & prod)
 
-update: project-update vendor-install vendor-umbrella-update db-update cc ## PROD env : update project, vendor (php), database and cache clear prod
+update: project-update vendor-install vendor-umbrella-update cc db-update ## PROD env : update project, vendor (php), database and cache clear prod
 
-init-dev-env:
+dump-env-dev:
 	echo "APP_ENV=dev" > .env.local
 
 ## --- Symfony -----------------------------
