@@ -71,7 +71,6 @@ class FishTableType extends DataTableType
         if ($options['exportable']) {
             $builder->addAction('export_searched', DropdownActionType::class, [
                 'icon' => 'mdi mdi-file-download-outline',
-                'dropdown_button_class' => 'btn btn-light',
                 'item_builder' => function (ActionListBuilder $builder) {
                     $builder->add('export_searched_sync', DropdownItemActionType::class, [
                         'route' => 'app_admin_filewriter_datatablesearched',
@@ -87,7 +86,6 @@ class FishTableType extends DataTableType
 
             $builder->addAction('export_selected', DropdownActionType::class, [
                 'icon' => 'mdi mdi-file-download-outline',
-                'dropdown_button_class' => 'btn btn-light',
                 'item_builder' => function (ActionListBuilder $builder) {
                     $builder->add('export_selected_sync', DropdownItemActionType::class, [
                         'route' => 'app_admin_filewriter_datatableselected',
