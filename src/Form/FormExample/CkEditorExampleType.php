@@ -18,8 +18,17 @@ class CkEditorExampleType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('text1', CkeditorType::class);
-        $builder->add('text2', CkeditorType::class);
+        $builder->add('text1', CkeditorType::class, [
+            'config_name' => 'full',
+            'config' => [
+                'uiColor' => '#EEF2F7'
+            ],
+            'help' => 'full config, override uiColor'
+        ]);
+        $builder->add('text2', CkeditorType::class, [
+            'config_name' => 'custom',
+            'help' => 'custom config (@see config/packages/umbrella.yaml)'
+        ]);
     }
 
     /**
