@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Umbrella\CoreBundle\Entity\BaseEntity;
 use Doctrine\Common\Collections\ArrayCollection;
+use Umbrella\CoreBundle\Model\TreeNodeInterface;
+use Umbrella\CoreBundle\Model\TreeNodeEntityTrait;
 use Umbrella\CoreBundle\Annotation\SearchableField;
 
 /**
@@ -16,25 +18,9 @@ use Umbrella\CoreBundle\Annotation\SearchableField;
  *
  * @ORM\HasLifecycleCallbacks
  */
-class FishCategory extends BaseEntity
+class FishCategory extends BaseEntity implements TreeNodeInterface
 {
-    /**
-     * @Gedmo\TreeLeft
-     * @ORM\Column(type="integer")
-     */
-    public $lft;
-
-    /**
-     * @Gedmo\TreeLevel
-     * @ORM\Column(type="integer")
-     */
-    public $lvl;
-
-    /**
-     * @Gedmo\TreeRight
-     * @ORM\Column(type="integer")
-     */
-    public $rgt;
+    use TreeNodeEntityTrait;
 
     /**
      * @var FishCategory
@@ -65,7 +51,6 @@ class FishCategory extends BaseEntity
     /**
      * @var string
      * @ORM\Column(type="string", nullable=false)
-     *
      * @SearchableField()
      */
     public $name;
@@ -86,20 +71,10 @@ class FishCategory extends BaseEntity
     }
 
     /**
-     * @param FishCategory $child
+     * @inheritDoc
      */
-    public function addChild(FishCategory $child)
+    public function __toString()
     {
-        $child->parent = $this;
-        $this->children->add($child);
-    }
-
-    /**
-     * @param FishCategory $child
-     */
-    public function removeChild(FishCategory $child)
-    {
-        $child->parent = null;
-        $this->children->removeElement($child);
+        return (string) $this->name;
     }
 }

@@ -58,14 +58,14 @@ class Select2ExampleType extends AbstractType
         $builder->add('manyTplFishSpecies', Choice2Type::class, [
             'label' => 'manySpecies',
             'choices' => ArrayUtils::values_as_keys(Select2Example::SPECIES),
-            'template_html' => '<span>[[text]]</span><br><span class="text-muted">[[data.description]]</span>',
+            'template_html' => '<span>[[text]]</span><br><span class="text-muted">[[description]]</span>',
             'choice_prefix' => null,
             'multiple' => true,
             'required' => false,
             'help' => 'templated choices',
-            'choice_attr' => function ($choice) {
+            'expose' => function ($choice) {
                 return [
-                    'data-description' => Select2Example::SPECIES_DESCRIPTION[$choice]
+                    'description' => Select2Example::SPECIES_DESCRIPTION[$choice]
                 ];
             }
         ]);
@@ -73,13 +73,13 @@ class Select2ExampleType extends AbstractType
         $builder->add('fishes', Entity2Type::class, [
             'label' => 'manySpecies',
             'class' => Fish::class,
-            'template_html' => '<span>[[text]]</span><br><span class="text-muted">[[data.description]]</span>',
+            'template_html' => '<span>[[text]]</span><br><span class="text-muted">[[description]]</span>',
             'choice_prefix' => null,
             'multiple' => true,
             'required' => false,
-            'choice_attr' => function ($choice) {
+            'expose' => function ($choice) {
                 return [
-                    'data-description' => $choice->description
+                    'description' => $choice->description
                 ];
             }
         ]);

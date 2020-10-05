@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\FishCategory;
 use Symfony\Component\Form\AbstractType;
+use Umbrella\CoreBundle\Form\EntityTree2Type;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,6 +25,9 @@ class FishCategoryType extends AbstractType
             'attr' => [
                 'rows' => 8
             ]
+        ]);
+        $builder->add('parent', EntityTree2Type::class, [
+            'class' => FishCategory::class,
         ]);
     }
 
