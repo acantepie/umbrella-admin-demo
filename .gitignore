@@ -7,7 +7,6 @@
 /var/*
 !/var/.gitkeep
 /vendor/
-composer.lock
 symfony.lock
 ###< symfony/framework-bundle ###
 
