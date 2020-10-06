@@ -3,7 +3,8 @@
 namespace App\Entity\FormExample;
 
 use Doctrine\ORM\Mapping as ORM;
-use Umbrella\CoreBundle\Model\OrderableTrait;
+use Umbrella\CoreBundle\Model\IdTrait;
+use Umbrella\CoreBundle\Model\OrderTrait;
 
 /**
  * Class CollectionItemExample
@@ -12,7 +13,8 @@ use Umbrella\CoreBundle\Model\OrderableTrait;
  */
 class CollectionItemExample
 {
-    use OrderableTrait;
+    use IdTrait;
+    use OrderTrait;
 
     /**
      * @ORM\Column(type="integer")

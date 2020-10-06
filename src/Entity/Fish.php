@@ -3,20 +3,28 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Umbrella\CoreBundle\Entity\BaseEntity;
+use Umbrella\CoreBundle\Annotation\Searchable;
 use Umbrella\CoreBundle\Annotation\SearchableField;
+use Umbrella\CoreBundle\Model\IdTrait;
+use Umbrella\CoreBundle\Model\SearchTrait;
+use Umbrella\CoreBundle\Model\TimestampTrait;
 
 /**
  * Class Fish
  *
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks
+ * @Searchable()
  */
-class Fish extends BaseEntity
+class Fish
 {
     const HABITAT_SEA = 'sea';
     const HABITAT_LAKE = 'lake';
     const HABITAT_RIVER = 'river';
+
+    use IdTrait;
+    use TimestampTrait;
+    use SearchTrait;
 
     /**
      * @var string

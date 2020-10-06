@@ -3,18 +3,19 @@
 namespace App\Entity\FormExample;
 
 use Doctrine\ORM\Mapping as ORM;
-use Umbrella\CoreBundle\Entity\BaseEntity;
 use Umbrella\CoreBundle\Entity\UmbrellaFile;
 use Doctrine\Common\Collections\ArrayCollection;
+use Umbrella\CoreBundle\Model\IdTrait;
 
 /**
  * Class BaseExample
  *
  * @ORM\Entity()
- * @ORM\HasLifecycleCallbacks()
  */
-class CollectionExample extends BaseEntity
+class CollectionExample
 {
+    use IdTrait;
+
     /**
      * @var CollectionItemExample[]|ArrayCollection
      * @ORM\OneToMany(targetEntity="App\Entity\FormExample\CollectionItemExample", mappedBy="parent", orphanRemoval=true, cascade={"ALL"})

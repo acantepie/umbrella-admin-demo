@@ -3,16 +3,15 @@
 namespace App\Entity\FormExample;
 
 use Doctrine\ORM\Mapping as ORM;
-use Umbrella\CoreBundle\Entity\BaseEntity;
 use Doctrine\Common\Collections\ArrayCollection;
+use Umbrella\CoreBundle\Model\IdTrait;
 
 /**
  * Class Select2Example
  *
  * @ORM\Entity()
- * @ORM\HasLifecycleCallbacks()
  */
-class Select2Example extends BaseEntity
+class Select2Example
 {
     const SPECIES = [
         'Gardon',
@@ -27,6 +26,8 @@ class Select2Example extends BaseEntity
         'Anguille' => 'Poisson long et visqueux',
         'Lamproie' => 'Poisson de vase, ayant une anatomie proche des poissons préhistoriques'
     ];
+
+    use IdTrait;
 
     /**
      * @ORM\Column(type="string", nullable=true)

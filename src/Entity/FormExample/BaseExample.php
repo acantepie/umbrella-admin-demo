@@ -3,17 +3,18 @@
 namespace App\Entity\FormExample;
 
 use Doctrine\ORM\Mapping as ORM;
-use Umbrella\CoreBundle\Entity\BaseEntity;
 use Umbrella\CoreBundle\Entity\UmbrellaFile;
+use Umbrella\CoreBundle\Model\IdTrait;
 
 /**
  * Class BaseExample
  *
  * @ORM\Entity()
- * @ORM\HasLifecycleCallbacks()
  */
-class BaseExample extends BaseEntity
+class BaseExample
 {
+    use IdTrait;
+
     /**
      * @var bool
      * @ORM\Column(type="boolean", options={"default": true})

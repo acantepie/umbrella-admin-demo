@@ -9,6 +9,7 @@ use Umbrella\AdminBundle\Entity\UmbrellaFileWriterConfig;
  * Class FileWriterConfig
  *
  * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks()
  */
 class FileWriterConfig extends UmbrellaFileWriterConfig
 {

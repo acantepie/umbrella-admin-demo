@@ -3,16 +3,17 @@
 namespace App\Entity\FormExample;
 
 use Doctrine\ORM\Mapping as ORM;
-use Umbrella\CoreBundle\Entity\BaseEntity;
+use Umbrella\CoreBundle\Model\IdTrait;
 
 /**
  * Class CkeditorExample
  *
  * @ORM\Entity()
- * @ORM\HasLifecycleCallbacks()
  */
-class CkeditorExample extends BaseEntity
+class CkeditorExample
 {
+    use IdTrait;
+
     /**
      * @var string
      * @ORM\Column(type="text", nullable=true)

@@ -3,16 +3,17 @@
 namespace App\Entity\FormExample;
 
 use Doctrine\ORM\Mapping as ORM;
-use Umbrella\CoreBundle\Entity\BaseEntity;
+use Umbrella\CoreBundle\Model\IdTrait;
 
 /**
  * Class DateExample
  *
  * @ORM\Entity()
- * @ORM\HasLifecycleCallbacks()
  */
-class DateExample extends BaseEntity
+class DateExample
 {
+
+    use IdTrait;
 
     /**
      * @var \DateTime

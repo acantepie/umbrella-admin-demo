@@ -4,10 +4,10 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Umbrella\CoreBundle\Entity\BaseEntity;
 use Doctrine\Common\Collections\ArrayCollection;
+use Umbrella\CoreBundle\Model\TimestampTrait;
 use Umbrella\CoreBundle\Model\TreeNodeInterface;
-use Umbrella\CoreBundle\Model\TreeNodeEntityTrait;
+use Umbrella\CoreBundle\Model\TreeNodeTrait;
 use Umbrella\CoreBundle\Annotation\SearchableField;
 
 /**
@@ -18,9 +18,10 @@ use Umbrella\CoreBundle\Annotation\SearchableField;
  *
  * @ORM\HasLifecycleCallbacks
  */
-class FishCategory extends BaseEntity implements TreeNodeInterface
+class FishCategory implements TreeNodeInterface
 {
-    use TreeNodeEntityTrait;
+    use TimestampTrait;
+    use TreeNodeTrait;
 
     /**
      * @var FishCategory
