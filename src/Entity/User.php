@@ -10,6 +10,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\AdminBundle\Entity\BaseUser;
+use Umbrella\CoreBundle\Annotation\Searchable;
 use Umbrella\CoreBundle\Entity\UmbrellaFile;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -18,9 +19,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * Class User
  *
  * @ORM\Entity()
- * @ORM\Table("umbrella_user")
- *
  * @ORM\HasLifecycleCallbacks
+ * @Searchable()
  * @UniqueEntity("email")
  */
 class User extends BaseUser

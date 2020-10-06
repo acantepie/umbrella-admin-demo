@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\ArrayCollection;
+use Umbrella\CoreBundle\Annotation\Searchable;
+use Umbrella\CoreBundle\Model\SearchTrait;
 use Umbrella\CoreBundle\Model\TimestampTrait;
 use Umbrella\CoreBundle\Model\TreeNodeInterface;
 use Umbrella\CoreBundle\Model\TreeNodeTrait;
@@ -17,11 +19,14 @@ use Umbrella\CoreBundle\Annotation\SearchableField;
  * @ORM\Entity(repositoryClass="App\Repository\FishCategoryRepository")
  *
  * @ORM\HasLifecycleCallbacks
+ * @Searchable()
+ *
  */
 class FishCategory implements TreeNodeInterface
 {
     use TimestampTrait;
     use TreeNodeTrait;
+    use SearchTrait;
 
     /**
      * @var FishCategory

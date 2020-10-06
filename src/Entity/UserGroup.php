@@ -11,14 +11,14 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\AdminBundle\Entity\BaseUserGroup;
 use Doctrine\Common\Collections\ArrayCollection;
+use Umbrella\CoreBundle\Annotation\Searchable;
 
 /**
  * Class UserGroup
  *
  * @ORM\Entity()
- * @ORM\Table("umbrella_user_group")
- *
  * @ORM\HasLifecycleCallbacks
+ * @Searchable()
  */
 class UserGroup extends BaseUserGroup
 {
