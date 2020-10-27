@@ -41,7 +41,7 @@ class FishCRUDController extends BaseController
         return $this->jsResponseBuilder()
             ->openModalView('@UmbrellaAdmin/Layout/edit_modal.html.twig', [
                 'form' => $form->createView(),
-                'title' => $entity->id ? $this->trans('action.edit_fish') :  $this->trans('action.add_fish')
+                'entity' => $entity
             ]);
     }
 
