@@ -11209,7 +11209,7 @@ window.CKEDITOR_BASEPATH = '/build/ckeditor4/';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/acantepie/Workspace/Umbrella2/node_modules/webpack-dev-server/client/index.js?http://127.0.0.1:9000 */"./node_modules/webpack-dev-server/client/index.js?http://127.0.0.1:9000");
+__webpack_require__(/*! /home/acantepie/projects/Umbrella2/node_modules/webpack-dev-server/client/index.js?http://127.0.0.1:9000 */"./node_modules/webpack-dev-server/client/index.js?http://127.0.0.1:9000");
 module.exports = __webpack_require__(/*! ./vendor/umbrella/corebundle/Resources/assets/vendor/ckeditor/ckeditor.js */"./vendor/umbrella/corebundle/Resources/assets/vendor/ckeditor/ckeditor.js");
 
 
