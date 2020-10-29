@@ -36,6 +36,8 @@ class FormController extends BaseController
      */
     public function baseAction(Request $request)
     {
+        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_base']);
+
         /** @var BaseExample $entity */
         $entity = $this->loadOne(BaseExample::class);
 
@@ -59,7 +61,8 @@ class FormController extends BaseController
      */
     public function dateAction(Request  $request)
     {
-        $this->setMenuActive();
+        $this->getMenu()->setCurrent(':forms');
+        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_date']);
 
         /** @var DateExample $entity */
         $entity = $this->loadOne(DateExample::class);
@@ -84,7 +87,8 @@ class FormController extends BaseController
      */
     public function ckeditorAction(Request  $request)
     {
-        $this->setMenuActive();
+        $this->getMenu()->setCurrent(':forms');
+        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_ckeditor']);
 
         /** @var DateExample $entity */
         $entity = $this->loadOne(CkeditorExample::class);
@@ -109,7 +113,8 @@ class FormController extends BaseController
      */
     public function select2Action(Request  $request)
     {
-        $this->setMenuActive();
+        $this->getMenu()->setCurrent(':forms');
+        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_select2']);
 
         /** @var Select2Example $entity */
         $entity = $this->loadOne(Select2Example::class);
@@ -134,7 +139,8 @@ class FormController extends BaseController
      */
     public function collectionAction(Request  $request)
     {
-        $this->setMenuActive();
+        $this->getMenu()->setCurrent(':forms');
+        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_collection']);
 
         /** @var Select2Example $entity */
         $entity = $this->loadOne(CollectionExample::class);
@@ -196,12 +202,5 @@ class FormController extends BaseController
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult();
-    }
-
-    private function setMenuActive()
-    {
-        return $this->getMenu('admin_sidebar')
-            ->findByPath('forms')
-            ->setCurrent(true);
     }
 }

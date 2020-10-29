@@ -28,6 +28,13 @@ menu:
   users: Utilisateurs
   groups: Groupes
 
+breadcrumb:
+  form_base: Base
+  form_date: Date
+  form_ckeditor: Ckeditor
+  form_select2: Select2
+  form_collection: Collection
+
 action:
   add_fish: Ajouter un poisson
   edit_fish: Modifier un poisson
