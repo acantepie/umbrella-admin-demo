@@ -8,7 +8,6 @@ use Umbrella\CoreBundle\Entity\BaseTaskConfig;
 /**
  * Class Task
  * @ORM\Entity()
- * @ORM\HasLifecycleCallbacks()
  */
 class TaskConfig extends BaseTaskConfig
 {
