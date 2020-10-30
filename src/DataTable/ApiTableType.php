@@ -34,7 +34,6 @@ class ApiTableType extends DataTableType
     public function buildTable(DataTableBuilder $builder, array $options = [])
     {
         $builder->add('speciesId', PropertyColumnType::class, [
-            'orderable' => false,
             'property_path' => '[SpecCode]',
             'renderer' => function (array $arr) {
                 return sprintf('#%d', $arr['SpecCode']);
@@ -51,19 +50,15 @@ class ApiTableType extends DataTableType
             }
         ]);
         $builder->add('species', PropertyColumnType::class, [
-            'orderable' => false,
             'property_path' => '[Species]'
         ]);
         $builder->add('genus', PropertyColumnType::class, [
-            'orderable' => false,
             'property_path' => '[Genus]'
         ]);
         $builder->add('subfamily', PropertyColumnType::class, [
-            'orderable' => false,
             'property_path' => '[Subfamily]'
         ]);
         $builder->add('comments', PropertyColumnType::class, [
-            'orderable' => false,
             'property_path' => '[Comments]',
         ]);
 
@@ -73,5 +68,6 @@ class ApiTableType extends DataTableType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefault('id_path', '[SpecCode]');
+        $resolver->setDefault('orderable', false);
     }
 }

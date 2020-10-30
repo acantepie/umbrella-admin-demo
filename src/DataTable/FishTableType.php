@@ -122,12 +122,12 @@ class FishTableType extends DataTableType
                     StringUtils::truncate($entity->description, 150)
                 );
             },
-            'default_order' => 'ASC',
+            'order' => 'ASC',
         ]);
         $builder->add('edible', BooleanColumnType::class);
 
         $builder->add('habitats', PropertyColumnType::class, [
-            'orderable' => false,
+            'order' => false,
             'renderer' => function (Fish $fish) {
                 $html = '';
                 foreach ($fish->habitats as $habitat) {
