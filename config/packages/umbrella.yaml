@@ -10,7 +10,7 @@ umbrella_core:
 
 umbrella_admin:
   menu:
-    file: "../config/sitemap/admin_sidebar.yml"
+    file: "../config/menu/admin_sidebar.yml"
   theme:
     name: "Umbrella"
   assets:

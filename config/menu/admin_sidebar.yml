@@ -47,6 +47,10 @@ icon:
         icon_unicon:
             route: app_admin_icon_unicon
 
+custom_menu:
+    icon: uil-bars
+    route: app_admin_custommenu_index
+
 admin:
     type: title
 

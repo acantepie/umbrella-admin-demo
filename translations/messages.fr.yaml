@@ -23,6 +23,8 @@ menu:
   icon_md: Material Design
   icon_unicon: Unicons
 
+  custom_menu: Custom Menu
+
   admin: Administration
   admin_tasks: Taches
   users: Utilisateurs
@@ -100,6 +102,9 @@ form:
     position: Position
     label: Libellé
     description: Description
+
+    shuffle: Mélanger le menu
+
 
   placeholder:
     habitat: habitat
