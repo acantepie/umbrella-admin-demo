@@ -61,7 +61,7 @@ class FormController extends BaseController
      */
     public function dateAction(Request  $request)
     {
-        $this->getMenu()->setCurrent(':forms');
+        $this->getMenu()->setCurrent('/:forms/');
         $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_date']);
 
         /** @var DateExample $entity */
@@ -87,7 +87,7 @@ class FormController extends BaseController
      */
     public function ckeditorAction(Request  $request)
     {
-        $this->getMenu()->setCurrent(':forms');
+        $this->getMenu()->setCurrent('/:forms/');
         $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_ckeditor']);
 
         /** @var DateExample $entity */
@@ -113,7 +113,7 @@ class FormController extends BaseController
      */
     public function select2Action(Request  $request)
     {
-        $this->getMenu()->setCurrent(':forms');
+        $this->getMenu()->setCurrent('/:forms/');
         $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_select2']);
 
         /** @var Select2Example $entity */
@@ -139,7 +139,7 @@ class FormController extends BaseController
      */
     public function collectionAction(Request  $request)
     {
-        $this->getMenu()->setCurrent(':forms');
+        $this->getMenu()->setCurrent('/:forms/');
         $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_collection']);
 
         /** @var Select2Example $entity */

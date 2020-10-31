@@ -19,3 +19,4 @@ services:
         tags:
             - {name: umbrella.menu.factory, method: createMenu, alias: custom_menu}
             - {name: umbrella.menu.renderer, method: renderMenu, alias: custom_menu}
+            - {name: umbrella.breadcrumb.renderer, method: renderBreadcrumb, alias: custom_menu}

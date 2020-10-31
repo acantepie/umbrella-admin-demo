@@ -19,49 +19,45 @@
 services:
 App\Menu\MyMenuFactory:
     tags:
-        - {name: umbrella.menu.factory, method: createMenu, alias: custom_menu}
+        - {name: umbrella.menu.factory, method: createMenu, alias: my_menu}
             </pre>
 
             <pre class="border-dark border p-2">
-/**
-* Class CustomMenu
-*/
 class MyMenuFactory
 {
+    /**
+     * @param MenuFactory $factory
+     * @return Menu
+     */
+    public function createMenu(MenuFactory $factory)
+    {
+        $menu = $factory->createMenu();
 
-/**
- * @param MenuFactory $factory
- * @return Menu
- */
-public function createMenu(MenuFactory $factory)
-{
-    $menu = $factory->createMenu();
+        $menu->getRoot()->addChild('foo', [
+            'label' => 'bar,
+            'route' => 'app_admin_bar_index
+        ]);
 
-    $menu->getRoot()->addChild('foo', [
-        'label' => 'bar,
-        'route' => 'app_admin_bar_index
-    ]);
-
-    return $menu;
-}
+        return $menu;
+    }
 }
             </pre>
 
-            <p>Ce menu sera alors accessible avec l'alias <b>custom_menu</b>. Par exemple <code>{{ "{{ render_menu('custom_menu') }}" }}</code> fera le rendu de ce menu dans un twig.</p>
+            <p>Ce menu sera alors accessible avec l'alias <b>my_menu</b>. Par exemple <code>{{ "{{ render_menu('my_menu') }}" }}</code> fera le rendu de ce menu dans un twig.</p>
 
             <p>Il est aussi possible de définir un <b>renderer</b> pour le menu ainsi que le breadcrumb.</p>
 
             <pre class="border-dark border p-2">
 services:
-# menu renderer
-App\Menu\MyMenuRenderer:
-    tags:
-        - {name: umbrella.menu.renderer, method: renderMenu, alias: custom_menu}
+    # menu renderer
+    App\Menu\MyMenuRenderer:
+        tags:
+            - {name: umbrella.menu.renderer, method: renderMenu, alias: my_menu}
 
-# breadcrumb renderer
-App\Menu\MyBreadcrumbRenderer:
-    tags:
-        - {name: umbrella.breadcrumb.renderer, method: renderBreadcrumb, alias: custom_menu}
+    # breadcrumb renderer
+    App\Menu\MyBreadcrumbRenderer:
+        tags:
+            - {name: umbrella.breadcrumb.renderer, method: renderBreadcrumb, alias: my_menu}
             </pre>
 
             <p>

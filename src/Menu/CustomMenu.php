@@ -3,11 +3,10 @@
 
 namespace App\Menu;
 
-use Symfony\Component\Yaml\Yaml;
 use Twig\Environment;
 use Umbrella\CoreBundle\Component\Menu\MenuFactory;
+use Umbrella\CoreBundle\Component\Menu\Model\Breadcrumb;
 use Umbrella\CoreBundle\Component\Menu\Model\Menu;
-use Umbrella\CoreBundle\Component\Menu\Model\MenuItem;
 
 /**
  * Class CustomMenu
@@ -36,20 +35,18 @@ class CustomMenu
     {
         $menu = $factory->createMenu();
 
-        $menu->getRoot()->addChild('nav', [
-            'label' => 'Navigation',
-            'type' => MenuItem::TYPE_TITLE
+        $nav = $menu->getRoot()->addChild('nav', [
+            'label' => 'Navigation'
         ]);
-        $menu->getRoot()->addChild('dashboard', [
+        $nav->addChild('dashboard', [
             'label' => 'Dashboards',
             'icon' => 'uil-home-alt'
         ]);
-        $menu->getRoot()->addChild('apps', [
-            'label' => 'Apps',
-            'type' => MenuItem::TYPE_TITLE
-        ]);
 
-        $multiLvl = $menu->getRoot()->addChild('multi_level', [
+        $app = $menu->getRoot()->addChild('apps', [
+            'label' => 'Apps'
+        ]);
+        $multiLvl = $app->addChild('multi_level', [
             'label' => 'Multi Level',
             'icon' => 'uil-folder-plus'
         ]);
@@ -85,6 +82,17 @@ class CustomMenu
        return $this->twig->render('menu/_custom_menu.html.twig', [
            'menu' => $menu,
        ]);
+    }
+
+    /**
+     * @param Breadcrumb $breadcrumb
+     * @return string
+     */
+    public function renderBreadcrumb(Breadcrumb $breadcrumb)
+    {
+        return $this->twig->render('menu/_custom_breadcrumb.html.twig', [
+            'breadcrumb' => $breadcrumb,
+        ]);
     }
 
 

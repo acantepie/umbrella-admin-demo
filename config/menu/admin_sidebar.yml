@@ -1,67 +1,65 @@
 umbrella_components:
-    type: title
-
-datatables:
-    icon: uil-table
     children:
-        simple_datatable:
-            route: app_admin_datatable_simple
-        multiple_datatable:
-            route: app_admin_datatable_multiple
-        api_datatable:
-            route: app_admin_datatable_api
-        tree_datatable:
-            route: app_admin_datatable_tree
+        datatables:
+            icon: uil-table
+            children:
+                simple_datatable:
+                    route: app_admin_datatable_simple
+                multiple_datatable:
+                    route: app_admin_datatable_multiple
+                api_datatable:
+                    route: app_admin_datatable_api
+                tree_datatable:
+                    route: app_admin_datatable_tree
 
-tasks:
-    icon: uil-process
-    route: app_admin_task_index
+        tasks:
+            icon: uil-process
+            route: app_admin_task_index
 
-filewriter:
-    icon: uil-file-plus-alt
-    children:
-        filewriter_simple:
-            route: app_admin_filewriter_simple
-        filewriter_datatable:
-            route: app_admin_filewriter_datatable
+        filewriter:
+            icon: uil-file-plus-alt
+            children:
+                filewriter_simple:
+                    route: app_admin_filewriter_simple
+                filewriter_datatable:
+                    route: app_admin_filewriter_datatable
 
-js_response:
-    icon: uil-exchange
-    children:
-        js_response_handler:
-            route: app_admin_ajaxhandler_index
+        js_response:
+            icon: uil-exchange
+            children:
+                js_response_handler:
+                    route: app_admin_ajaxhandler_index
 
-forms:
-    icon: uil-document-layout-center
-    route: app_admin_form_base
+        forms:
+            icon: uil-document-layout-center
+            route: app_admin_form_base
 
-toast:
-    icon: uil-chat
-    route: app_admin_toast_index
+        toast:
+            icon: uil-chat
+            route: app_admin_toast_index
 
-icon:
-    icon: uil-streering
-    children:
-        icon_md:
-            route: app_admin_icon_md
-        icon_unicon:
-            route: app_admin_icon_unicon
+        icon:
+            icon: uil-streering
+            children:
+                icon_md:
+                    route: app_admin_icon_md
+                icon_unicon:
+                    route: app_admin_icon_unicon
 
-menu:
-    icon: uil-bars
-    route: app_admin_menu_howto
+        menu:
+            icon: uil-bars
+            route: app_admin_menu_howto
 
 admin:
-    type: title
+    children:
+        admin_tasks:
+            icon: uil-process
+            route: umbrella_admin_task_index
 
-admin_tasks:
-    icon: uil-process
-    route: umbrella_admin_task_index
+        users:
+            icon: uil-user
+            route: umbrella_admin_user_index
 
-users:
-    icon: uil-user
-    route: umbrella_admin_user_index
-
-groups:
-    icon: uil-users-alt
-    route: umbrella_admin_usergroup_index
+        groups:
+            icon: uil-users-alt
+            route: umbrella_admin_usergroup_index
