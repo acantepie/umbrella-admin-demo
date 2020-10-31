@@ -26,6 +26,7 @@ class BaseExampleType extends AbstractType
     {
         $builder->add('active', CustomCheckboxType::class, [
             'required' => false,
+            'tr' => 'f',
             'help' => 'CustomCheckboxType (bootstrap type)'
         ]);
         $builder->add('amount', CustomRangeType::class, [

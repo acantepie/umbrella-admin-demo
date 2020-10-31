@@ -23,7 +23,7 @@ menu:
   icon_md: Material Design
   icon_unicon: Unicons
 
-  custom_menu: Custom Menu
+  menu: Menu
 
   admin: Administration
   admin_tasks: Taches
@@ -36,6 +36,8 @@ breadcrumb:
   form_ckeditor: Ckeditor
   form_select2: Select2
   form_collection: Collection
+  exemple: Exemple
+  howto: How to
 
 action:
   add_fish: Ajouter un poisson

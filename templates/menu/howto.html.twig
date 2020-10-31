@@ -1,0 +1,73 @@
+{% extends "menu/layout.html.twig" %}
+
+{% block tab_content %}
+    <div class="card">
+        <div class="card-body">
+
+            <p>Chaque menu est identifié par un alias, cet alias sera utilisé pour récupérer le menu via différentes fonctions.</p>
+            <p>
+                Par exemple la méthode <code>getMenu($name)</code> ou <code>getBreadcrumb($name)</code> dans un controller prend en paramètre un alias de menu, il en est de même pour les helper twig (<code>render_menu($name)</code> par exemple)<br>
+                Si aucun alias n'est précise, alors la fonction utilisera automatiquement l'alias par défault définit dans la config <code>umbrella_core.menu.default_alias</code><br>
+                Par défaut cet alias est <b>admin_sidebar</b>, ce qui correspond au menu définit dans <code>Umbrella/AdminBundle/Menu/AdminSidebar</code>
+            </p>
+
+            <p>
+                Pour créer un nouveau menu, vous devez à minimal déclarer une nouvelle factory :
+            </p>
+
+            <pre class="border-dark border p-2">
+services:
+App\Menu\MyMenuFactory:
+    tags:
+        - {name: umbrella.menu.factory, method: createMenu, alias: custom_menu}
+            </pre>
+
+            <pre class="border-dark border p-2">
+/**
+* Class CustomMenu
+*/
+class MyMenuFactory
+{
+
+/**
+ * @param MenuFactory $factory
+ * @return Menu
+ */
+public function createMenu(MenuFactory $factory)
+{
+    $menu = $factory->createMenu();
+
+    $menu->getRoot()->addChild('foo', [
+        'label' => 'bar,
+        'route' => 'app_admin_bar_index
+    ]);
+
+    return $menu;
+}
+}
+            </pre>
+
+            <p>Ce menu sera alors accessible avec l'alias <b>custom_menu</b>. Par exemple <code>{{ "{{ render_menu('custom_menu') }}" }}</code> fera le rendu de ce menu dans un twig.</p>
+
+            <p>Il est aussi possible de définir un <b>renderer</b> pour le menu ainsi que le breadcrumb.</p>
+
+            <pre class="border-dark border p-2">
+services:
+# menu renderer
+App\Menu\MyMenuRenderer:
+    tags:
+        - {name: umbrella.menu.renderer, method: renderMenu, alias: custom_menu}
+
+# breadcrumb renderer
+App\Menu\MyBreadcrumbRenderer:
+    tags:
+        - {name: umbrella.breadcrumb.renderer, method: renderBreadcrumb, alias: custom_menu}
+            </pre>
+
+            <p>
+                Si aucun menu renderer ou breadcrumb renderer n'est définit pour un alias. Alors le menu / breadcrumb renderer de l'alias par défaut sera utilisé (i.e: celui de l'alias <b>admin_sidebar</b>)
+            </p>
+
+        </div>
+    </div>
+{% endblock %}

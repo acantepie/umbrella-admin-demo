@@ -16,8 +16,6 @@ services:
 
     #Menu
     App\Menu\CustomMenu:
-        bind:
-            $ymlPath: "%kernel.project_dir%/config/menu/admin_sidebar.yml"
         tags:
             - {name: umbrella.menu.factory, method: createMenu, alias: custom_menu}
             - {name: umbrella.menu.renderer, method: renderMenu, alias: custom_menu}

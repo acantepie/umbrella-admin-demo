@@ -3,13 +3,11 @@
 
 namespace App\Menu;
 
-use App\Entity\CustomMenuConfig;
-use App\Repository\CustomMenuConfigRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Yaml\Yaml;
 use Twig\Environment;
 use Umbrella\CoreBundle\Component\Menu\MenuFactory;
 use Umbrella\CoreBundle\Component\Menu\Model\Menu;
+use Umbrella\CoreBundle\Component\Menu\Model\MenuItem;
 
 /**
  * Class CustomMenu
@@ -22,32 +20,12 @@ class CustomMenu
     protected $twig;
 
     /**
-     * @var EntityManagerInterface
-     */
-    private $em;
-
-    /**
-     * @var CustomMenuConfigRepository
-     */
-    private $configRepo;
-
-    /**
-     * @var string
-     */
-    private $ymlPath;
-
-    /**
      * CustomMenu constructor.
      * @param Environment $twig
-     * @param EntityManagerInterface $em
-     * @param string $ymlPath
      */
-    public function __construct(Environment $twig, EntityManagerInterface $em, string $ymlPath)
+    public function __construct(Environment $twig)
     {
         $this->twig = $twig;
-        $this->em = $em;
-        $this->configRepo = $em->getRepository(CustomMenuConfig::class);
-        $this->ymlPath = $ymlPath;
     }
 
     /**
@@ -56,22 +34,44 @@ class CustomMenu
      */
     public function createMenu(MenuFactory $factory)
     {
-        $config = $this->configRepo->getConfig();
-
-        $data = (array) Yaml::parse(file_get_contents($this->ymlPath));
-
-        $keys = array_keys($data);
-
-        // shuffle menu if config want it :)
-        if ($config->shuffle) {
-            shuffle($keys);
-        }
-
         $menu = $factory->createMenu();
 
-        foreach ($keys as $key) {
-            $menu->getRoot()->addChild($key, $data[$key]);
-        }
+        $menu->getRoot()->addChild('nav', [
+            'label' => 'Navigation',
+            'type' => MenuItem::TYPE_TITLE
+        ]);
+        $menu->getRoot()->addChild('dashboard', [
+            'label' => 'Dashboards',
+            'icon' => 'uil-home-alt'
+        ]);
+        $menu->getRoot()->addChild('apps', [
+            'label' => 'Apps',
+            'type' => MenuItem::TYPE_TITLE
+        ]);
+
+        $multiLvl = $menu->getRoot()->addChild('multi_level', [
+            'label' => 'Multi Level',
+            'icon' => 'uil-folder-plus'
+        ]);
+        $secondLvl = $multiLvl->addChild('second_level', [
+            'label' => 'Second Level'
+        ]);
+        $secondLvl->addChild('item1', [
+            'label' => 'Item 1'
+        ]);
+        $secondLvl->addChild('item2', [
+            'label' => 'Item 2'
+        ]);
+
+        $thirdLvl = $multiLvl->addChild('third_level', [
+            'label' => 'Third Level'
+        ]);
+        $thirdLvl->addChild('item1', [
+            'label' => 'Item 1'
+        ]);
+        $thirdLvl->addChild('item2', [
+            'label' => 'Item 2'
+        ]);
 
         return $menu;
     }
@@ -82,10 +82,13 @@ class CustomMenu
      */
     public function renderMenu(Menu $menu)
     {
-       return $this->twig->render('custommenu/menu.html.twig', [
+       return $this->twig->render('menu/_custom_menu.html.twig', [
            'menu' => $menu,
-           'config' => $this->configRepo->getConfig()
        ]);
     }
+
+
+
+
 
 }
