@@ -1,3 +1,16 @@
+ui:
+    children:
+        theme:
+            icon: uil-box
+            route: app_admin_theme_index
+        icon:
+            icon: uil-streering
+            children:
+                icon_md:
+                    route: app_admin_icon_md
+                icon_unicon:
+                    route: app_admin_icon_unicon
+
 umbrella_components:
     children:
         datatables:
@@ -37,14 +50,6 @@ umbrella_components:
         toast:
             icon: uil-chat
             route: app_admin_toast_index
-
-        icon:
-            icon: uil-streering
-            children:
-                icon_md:
-                    route: app_admin_icon_md
-                icon_unicon:
-                    route: app_admin_icon_unicon
 
         menu:
             icon: uil-bars

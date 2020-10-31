@@ -1,4 +1,11 @@
 menu:
+  ui: UI
+  theme: Thème
+  icon: Icones
+  icon_md: Material Design
+  icon_unicon: Unicons
+
+
   umbrella_components: Composants
 
   datatables: Datatables
@@ -18,10 +25,6 @@ menu:
 
   forms: Forms
   toast: Toast
-
-  icon: Icones
-  icon_md: Material Design
-  icon_unicon: Unicons
 
   menu: Menu
 
