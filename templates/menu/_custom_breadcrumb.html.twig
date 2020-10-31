@@ -1,4 +1,4 @@
-<ol class="breadcrumb">
+<ol class="breadcrumb {{ class }}">
     {% for item in breadcrumb %}
         {% if loop.last %}
             <li class="breadcrumb-item active" aria-current="page">{{ item.label }}</li>

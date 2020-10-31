@@ -7,6 +7,7 @@ use Twig\Environment;
 use Umbrella\CoreBundle\Component\Menu\MenuFactory;
 use Umbrella\CoreBundle\Component\Menu\Model\Breadcrumb;
 use Umbrella\CoreBundle\Component\Menu\Model\Menu;
+use Umbrella\CoreBundle\Utils\ArrayUtils;
 
 /**
  * Class CustomMenu
@@ -75,9 +76,10 @@ class CustomMenu
 
     /**
      * @param Menu $menu
+     * @param array $parameters
      * @return string
      */
-    public function renderMenu(Menu $menu)
+    public function renderMenu(Menu $menu, array $parameters = [])
     {
        return $this->twig->render('menu/_custom_menu.html.twig', [
            'menu' => $menu,
@@ -86,12 +88,14 @@ class CustomMenu
 
     /**
      * @param Breadcrumb $breadcrumb
+     * @param array $parameters
      * @return string
      */
-    public function renderBreadcrumb(Breadcrumb $breadcrumb)
+    public function renderBreadcrumb(Breadcrumb $breadcrumb, array $parameters = [])
     {
         return $this->twig->render('menu/_custom_breadcrumb.html.twig', [
             'breadcrumb' => $breadcrumb,
+            'class' => ArrayUtils::get($parameters, 'class')
         ]);
     }
 
