@@ -28,10 +28,10 @@ class MenuController extends BaseController
      */
     public function exempleAction()
     {
-        $this->getMenu()->setCurrent('/:menu/');
+        $this->getMenu()->setCurrent(':menu');
         $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.exemple']);
 
-        $this->getMenu('custom_menu')->setCurrent('/:item1/');
+        $this->getMenu('custom_menu')->setCurrent(':item1');
 
         return $this->render('menu/exemple.html.twig');
     }

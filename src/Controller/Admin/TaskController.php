@@ -47,7 +47,7 @@ class TaskController extends BaseController
      */
     public function successAction(Request $request, $id)
     {
-        $this->getMenu()->setCurrent('/:tasks/');
+        $this->getMenu()->setCurrent(':tasks');
 
         $task = $this->findOrNotFound(Task::class, $id);
 
