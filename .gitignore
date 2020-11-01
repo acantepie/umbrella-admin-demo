@@ -8,6 +8,7 @@
 !/var/.gitkeep
 /vendor/
 symfony.lock
+composer.lock
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
