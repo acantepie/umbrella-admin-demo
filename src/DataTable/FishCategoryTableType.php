@@ -4,13 +4,13 @@ namespace App\DataTable;
 
 use App\Entity\FishCategory;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\Component\Toolbar\ToolbarBuilder;
 use Umbrella\CoreBundle\Component\Action\Type\AddActionType;
-use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\Component\Column\Type\ActionColumnType;
-use Umbrella\CoreBundle\Component\DataTable\Type\DataTableType;
 use Umbrella\CoreBundle\Component\Column\Type\PropertyColumnType;
+use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\Component\DataTable\RowAction\RowActionBuilder;
+use Umbrella\CoreBundle\Component\DataTable\Type\DataTableType;
+use Umbrella\CoreBundle\Component\Toolbar\ToolbarBuilder;
 
 /**
  * Class FishCategoryTableType
@@ -18,18 +18,18 @@ use Umbrella\CoreBundle\Component\DataTable\RowAction\RowActionBuilder;
 class FishCategoryTableType extends DataTableType
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildToolbar(ToolbarBuilder $builder, array $options = [])
     {
         $builder->addAction('add', AddActionType::class, [
             'route' => 'app_admin_fishcategorycrud_edit',
-            'xhr' => true
+            'xhr' => true,
         ]);
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildTable(DataTableBuilder $builder, array $options = [])
     {
@@ -39,18 +39,18 @@ class FishCategoryTableType extends DataTableType
             'action_builder' => function (RowActionBuilder $builder, FishCategory $entity) {
                 $builder->createXhrEdit('app_admin_fishcategorycrud_edit', ['id' => $entity->id]);
                 $builder->createXhrDelete('app_admin_fishcategorycrud_delete', ['id' => $entity->id]);
-            }
+            },
         ]);
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'tree' => true,
-            'data_class' => FishCategory::class
+            'data_class' => FishCategory::class,
         ]);
     }
 }

@@ -20,12 +20,13 @@ use Umbrella\CoreBundle\Controller\BaseController;
 class FishCategoryCRUDController extends BaseController
 {
     /**
-     * @Route("/edit/{id}", requirements={"id"="\d+"})
-     * @param null|mixed $id
+     * @Route("/edit/{id}", requirements={"id": "\d+"})
+     *
+     * @param mixed|null $id
      */
     public function editAction(Request $request, $id = null)
     {
-        if ($id === null) {
+        if (null === $id) {
             $entity = new FishCategory();
             $entity->parent = $this->getRepository(FishCategory::class)->findRoot(true);
         } else {
@@ -37,6 +38,7 @@ class FishCategoryCRUDController extends BaseController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->persistAndFlush($entity);
+
             return $this->jsResponseBuilder()
                 ->closeModal()
                 ->toastSuccess('message.entity_updated')
@@ -51,7 +53,8 @@ class FishCategoryCRUDController extends BaseController
     }
 
     /**
-     * @Route("/delete/{id}", requirements={"id"="\d+"})
+     * @Route("/delete/{id}", requirements={"id": "\d+"})
+     *
      * @param mixed $id
      */
     public function deleteAction($id)

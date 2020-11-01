@@ -2,14 +2,14 @@
 
 namespace App\FileWriter;
 
-use App\Entity\Fish;
-use Doctrine\ORM\QueryBuilder;
 use App\DataTable\FishTableType;
 use App\Entity\FileWriterConfig;
+use App\Entity\Fish;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\QueryBuilder;
 use Umbrella\AdminBundle\Entity\UmbrellaFileWriterConfig;
-use Umbrella\CoreBundle\Component\DataTable\DataTableFactory;
 use Umbrella\AdminBundle\FileWriter\Handler\AbstractFileWriterHandler;
+use Umbrella\CoreBundle\Component\DataTable\DataTableFactory;
 use Umbrella\CoreBundle\Component\DataTable\Source\Modifier\EntityCallbackSourceModifier;
 
 /**
@@ -29,6 +29,7 @@ class FishFileWriterHandler extends AbstractFileWriterHandler
 
     /**
      * FishFileWriterHandler constructor.
+     *
      * @param EntityManagerInterface $em
      * @param DataTableFactory       $datatableFactory
      */
@@ -39,7 +40,7 @@ class FishFileWriterHandler extends AbstractFileWriterHandler
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function execute(UmbrellaFileWriterConfig $config)
     {
@@ -61,23 +62,25 @@ class FishFileWriterHandler extends AbstractFileWriterHandler
     }
 
     /**
-     * @param  FileWriterConfig $config
+     * @param FileWriterConfig $config
+     *
      * @return Fish[]
      */
-    private function getResults(UmbrellaFileWriterConfig  $config)
+    private function getResults(UmbrellaFileWriterConfig $config)
     {
         if ($config->datatableQuery) {
             $table = $this->datatableFactory->create(FishTableType::class, [
                 'disabled' => true,
-                'exportable' => true
+                'exportable' => true,
             ]);
 
             // if you want modify query (do this before handleRequest of course)
-            $table->getSource()->addModifier(new EntityCallbackSourceModifier(function (QueryBuilder  $qb, $data) {
+            $table->getSource()->addModifier(new EntityCallbackSourceModifier(function (QueryBuilder $qb, $data) {
                 //$qb->andWhere('e.edible = TRUE');
             }));
 
             $table->handleRequestData($config->datatableQuery);
+
             return $table->getResults()->data;
         } else {
             $qb = $this->em->createQueryBuilder();
@@ -89,7 +92,7 @@ class FishFileWriterHandler extends AbstractFileWriterHandler
                 $qb->setParameter('habitat', '%' . $config->habitat . '%');
             }
 
-            if (count($config->fishIds) > 0) {
+            if (\count($config->fishIds) > 0) {
                 $qb->andWhere('e.id IN (:ids)');
                 $qb->setParameter('ids', $config->fishIds);
             }

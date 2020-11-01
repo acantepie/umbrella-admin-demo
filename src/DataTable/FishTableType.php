@@ -11,24 +11,24 @@ namespace App\DataTable;
 use App\Entity\Fish;
 use App\Form\HabitatType;
 use Doctrine\ORM\QueryBuilder;
-use Umbrella\CoreBundle\Form\SearchType;
-use Umbrella\CoreBundle\Utils\StringUtils;
-use Umbrella\CoreBundle\Component\Action\Action;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Umbrella\CoreBundle\Component\Toolbar\ToolbarBuilder;
+use Umbrella\CoreBundle\Component\Action\Action;
 use Umbrella\CoreBundle\Component\Action\ActionListBuilder;
 use Umbrella\CoreBundle\Component\Action\Type\AddActionType;
-use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
-use Umbrella\CoreBundle\Component\Column\Type\ActionColumnType;
-use Umbrella\CoreBundle\Component\DataTable\Type\DataTableType;
-use Umbrella\CoreBundle\Component\Column\Type\BooleanColumnType;
 use Umbrella\CoreBundle\Component\Action\Type\DropdownActionType;
+use Umbrella\CoreBundle\Component\Action\Type\DropdownItemActionType;
+use Umbrella\CoreBundle\Component\Column\Type\ActionColumnType;
+use Umbrella\CoreBundle\Component\Column\Type\BooleanColumnType;
 use Umbrella\CoreBundle\Component\Column\Type\CheckBoxColumnType;
 use Umbrella\CoreBundle\Component\Column\Type\PropertyColumnType;
-use Umbrella\CoreBundle\Component\Action\Type\DropdownItemActionType;
+use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\Component\DataTable\RowAction\RowActionBuilder;
 use Umbrella\CoreBundle\Component\DataTable\Source\Modifier\EntitySearchModifier;
+use Umbrella\CoreBundle\Component\DataTable\Type\DataTableType;
+use Umbrella\CoreBundle\Component\Toolbar\ToolbarBuilder;
+use Umbrella\CoreBundle\Form\SearchType;
+use Umbrella\CoreBundle\Utils\StringUtils;
 
 /**
  * Class FishTableType
@@ -42,6 +42,7 @@ class FishTableType extends DataTableType
 
     /**
      * FishTableType constructor.
+     *
      * @param TranslatorInterface $translator
      */
     public function __construct(TranslatorInterface $translator)
@@ -50,7 +51,7 @@ class FishTableType extends DataTableType
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function buildToolbar(ToolbarBuilder $builder, array $options = [])
     {
@@ -58,13 +59,13 @@ class FishTableType extends DataTableType
         $builder->addFilter('habitat', HabitatType::class, [
             'label' => false,
             'placeholder' => 'form.placeholder.habitat',
-            'multiple' => false
+            'multiple' => false,
         ]);
 
         if (!$options['disabled']) {
             $builder->addAction('add', AddActionType::class, [
                 'route' => 'app_admin_fishcrud_edit',
-                'xhr' => true
+                'xhr' => true,
             ]);
         }
 
@@ -74,14 +75,14 @@ class FishTableType extends DataTableType
                 'item_builder' => function (ActionListBuilder $builder) {
                     $builder->add('export_searched_sync', DropdownItemActionType::class, [
                         'route' => 'app_admin_filewriter_datatablesearched',
-                        'extra_data' => Action::DATA_DATATABLE_FILTER
+                        'extra_data' => Action::DATA_DATATABLE_FILTER,
                     ]);
                     $builder->add('export_searched_async', DropdownItemActionType::class, [
                         'route' => 'app_admin_filewriter_datatablesearched',
                         'extra_data' => Action::DATA_DATATABLE_FILTER,
-                        'xhr' => true
+                        'xhr' => true,
                     ]);
-                }
+                },
             ]);
 
             $builder->addAction('export_selected', DropdownActionType::class, [
@@ -89,20 +90,20 @@ class FishTableType extends DataTableType
                 'item_builder' => function (ActionListBuilder $builder) {
                     $builder->add('export_selected_sync', DropdownItemActionType::class, [
                         'route' => 'app_admin_filewriter_datatableselected',
-                        'extra_data' => Action::DATA_DATATABLE_SELECTION
+                        'extra_data' => Action::DATA_DATATABLE_SELECTION,
                     ]);
                     $builder->add('export_selected_async', DropdownItemActionType::class, [
                         'route' => 'app_admin_filewriter_datatableselected',
                         'extra_data' => Action::DATA_DATATABLE_SELECTION,
-                        'xhr' => true
+                        'xhr' => true,
                     ]);
-                }
+                },
             ]);
         }
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function buildTable(DataTableBuilder $builder, array $options = [])
     {
@@ -133,8 +134,9 @@ class FishTableType extends DataTableType
                 foreach ($fish->habitats as $habitat) {
                     $html .= sprintf('<span class="badge badge-primary">%s</span>', $this->translator->trans('fish.habitat.' . $habitat));
                 }
+
                 return $html;
-            }
+            },
         ]);
 
         if (!$options['disabled']) {
@@ -142,7 +144,7 @@ class FishTableType extends DataTableType
                 'action_builder' => function (RowActionBuilder $builder, Fish $entity) {
                     $builder->createXhrEdit('app_admin_fishcrud_edit', ['id' => $entity->id]);
                     $builder->createXhrDelete('app_admin_fishcrud_delete', ['id' => $entity->id]);
-                }
+                },
             ]);
         }
 
@@ -162,7 +164,7 @@ class FishTableType extends DataTableType
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {

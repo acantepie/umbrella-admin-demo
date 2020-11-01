@@ -7,7 +7,8 @@ use Umbrella\CoreBundle\Entity\BaseTaskConfig;
 
 /**
  * Class Task
- * @ORM\Entity()
+ *
+ * @ORM\Entity
  */
 class TaskConfig extends BaseTaskConfig
 {

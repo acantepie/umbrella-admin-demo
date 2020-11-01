@@ -2,15 +2,15 @@
 
 namespace App\Entity\FormExample;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\CoreBundle\Entity\UmbrellaFile;
-use Doctrine\Common\Collections\ArrayCollection;
 use Umbrella\CoreBundle\Model\IdTrait;
 
 /**
  * Class BaseExample
  *
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class CollectionExample
 {
@@ -34,9 +34,9 @@ class CollectionExample
      *
      * @ORM\ManyToMany(targetEntity="Umbrella\CoreBundle\Entity\UmbrellaFile", cascade={"ALL"})
      * @ORM\JoinTable(name="collection_example_file",
-     *      joinColumns={@ORM\JoinColumn(name="collection_example_id", referencedColumnName="id", onDelete="CASCADE")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="file_id", referencedColumnName="id", unique=true, onDelete="CASCADE")}
-     *      )
+     *     joinColumns={@ORM\JoinColumn(name="collection_example_id", referencedColumnName="id", onDelete="CASCADE")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="file_id", referencedColumnName="id", unique=true, onDelete="CASCADE")}
+     * )
      */
     public $files;
 

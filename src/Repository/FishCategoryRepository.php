@@ -17,7 +17,8 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 class FishCategoryRepository extends NestedTreeRepository
 {
     /**
-     * @param  bool              $create
+     * @param bool $create
+     *
      * @return FishCategory|null
      */
     public function findRoot($create = false)

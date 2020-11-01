@@ -3,17 +3,17 @@
 namespace App\DataFixtures;
 
 use App\Entity\Fish;
-use App\Entity\User;
-use App\Entity\UserGroup;
 use App\Entity\FishCategory;
 use App\Entity\FormExample\BaseExample;
-use App\Entity\FormExample\DateExample;
-use Doctrine\Persistence\ObjectManager;
-use App\Entity\FormExample\Select2Example;
 use App\Entity\FormExample\CkeditorExample;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use App\Entity\FormExample\CollectionExample;
 use App\Entity\FormExample\CollectionItemExample;
+use App\Entity\FormExample\DateExample;
+use App\Entity\FormExample\Select2Example;
+use App\Entity\User;
+use App\Entity\UserGroup;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
@@ -30,6 +30,7 @@ class AppFixtures extends Fixture
 
     /**
      * AppFixtures constructor.
+     *
      * @param UserPasswordEncoderInterface $userPasswordEncoder
      */
     public function __construct(UserPasswordEncoderInterface $userPasswordEncoder)

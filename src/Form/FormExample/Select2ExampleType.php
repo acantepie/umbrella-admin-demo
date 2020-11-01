@@ -3,15 +3,15 @@
 namespace App\Form\FormExample;
 
 use App\Entity\Fish;
-use Umbrella\CoreBundle\Form\TagType;
-use Symfony\Component\Form\AbstractType;
-use Umbrella\CoreBundle\Form\Choice2Type;
-use Umbrella\CoreBundle\Form\Entity2Type;
-use Umbrella\CoreBundle\Utils\ArrayUtils;
 use App\Entity\FormExample\Select2Example;
-use Umbrella\CoreBundle\Form\AsyncEntity2Type;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Umbrella\CoreBundle\Form\AsyncEntity2Type;
+use Umbrella\CoreBundle\Form\Choice2Type;
+use Umbrella\CoreBundle\Form\Entity2Type;
+use Umbrella\CoreBundle\Form\TagType;
+use Umbrella\CoreBundle\Utils\ArrayUtils;
 
 /**
  * Class Select2ExampleType
@@ -26,7 +26,7 @@ class Select2ExampleType extends AbstractType
             'choice_prefix' => null,
             'required' => false,
             'help' => 'not required, single, placeholder',
-            'placeholder' => 'Espece'
+            'placeholder' => 'Espece',
         ]);
 
         $builder->add('requiredFishSpecies', Choice2Type::class, [
@@ -43,7 +43,7 @@ class Select2ExampleType extends AbstractType
             'multiple' => true,
             'required' => false,
             'help' => 'not required, multiple, placeholder',
-            'placeholder' => 'Especes'
+            'placeholder' => 'Especes',
         ]);
 
         $builder->add('requiredManyFishSpecies', Choice2Type::class, [
@@ -65,9 +65,9 @@ class Select2ExampleType extends AbstractType
             'help' => 'templated choices',
             'expose' => function ($choice) {
                 return [
-                    'description' => Select2Example::SPECIES_DESCRIPTION[$choice]
+                    'description' => Select2Example::SPECIES_DESCRIPTION[$choice],
                 ];
-            }
+            },
         ]);
 
         $builder->add('fishes', Entity2Type::class, [
@@ -79,9 +79,9 @@ class Select2ExampleType extends AbstractType
             'required' => false,
             'expose' => function ($choice) {
                 return [
-                    'description' => $choice->description
+                    'description' => $choice->description,
                 ];
-            }
+            },
         ]);
 
         $builder->add('fishesAsync', AsyncEntity2Type::class, [
@@ -94,7 +94,7 @@ class Select2ExampleType extends AbstractType
 
         $builder->add('tags', TagType::class, [
             'help' => 'type word then press enter',
-            'required' => true
+            'required' => true,
         ]);
     }
 
@@ -104,7 +104,7 @@ class Select2ExampleType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Select2Example::class
+            'data_class' => Select2Example::class,
         ]);
     }
 }

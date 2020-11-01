@@ -2,15 +2,15 @@
 
 namespace App\Controller\Admin;
 
-use App\Form\HabitatType;
 use App\DataTable\FishTableType;
 use App\Entity\FileWriterConfig;
 use App\FileWriter\FishFileWriterHandler;
+use App\Form\HabitatType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Umbrella\CoreBundle\Controller\BaseController;
 use Umbrella\AdminBundle\FileWriter\FileWriterManager;
+use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
  * Class FileWriterController
@@ -26,6 +26,7 @@ class FileWriterController extends BaseController
 
     /**
      * FileWriterController constructor.
+     *
      * @param FileWriterManager $manager
      */
     public function __construct(FileWriterManager $manager)
@@ -43,7 +44,7 @@ class FileWriterController extends BaseController
             ->getForm();
 
         return $this->render('filewriter/simple.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 
@@ -81,6 +82,7 @@ class FileWriterController extends BaseController
         $config->fwLabel = 'Exemple - mode paramétré';
         $config->fwOutputPrettyFilename = 'param-exemple.csv';
         $config->habitat = $request->query->get('form')['habitat'];
+
         return $this->manager->syncDownloadResponse($config);
     }
 
@@ -91,7 +93,7 @@ class FileWriterController extends BaseController
     {
         $table = $this->createTable(FishTableType::class, [
             'disabled' => true,
-            'exportable' => true
+            'exportable' => true,
         ]);
         $table->handleRequest($request);
 
@@ -100,7 +102,7 @@ class FileWriterController extends BaseController
         }
 
         return $this->render('filewriter/datatable.html.twig', [
-            'table' => $table
+            'table' => $table,
         ]);
     }
 
@@ -125,7 +127,7 @@ class FileWriterController extends BaseController
     /**
      * @Route("/datatable/selected")
      */
-    public function datatableSelectedAction(Request  $request)
+    public function datatableSelectedAction(Request $request)
     {
         $config = new FileWriterConfig(FishFileWriterHandler::class);
         $config->fwOutputPrettyFilename = 'datatable_selection.csv';

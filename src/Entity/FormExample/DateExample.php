@@ -8,11 +8,10 @@ use Umbrella\CoreBundle\Model\IdTrait;
 /**
  * Class DateExample
  *
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class DateExample
 {
-
     use IdTrait;
 
     /**

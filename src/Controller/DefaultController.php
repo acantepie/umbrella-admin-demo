@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Controller;
-
 
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
@@ -21,5 +19,4 @@ class DefaultController extends BaseController
     {
         return $this->redirectToRoute('app_admin_default_index');
     }
-
 }

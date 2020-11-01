@@ -4,9 +4,9 @@ namespace App\Task;
 
 use App\Entity\Fish;
 use Doctrine\ORM\EntityManagerInterface;
-use Umbrella\CoreBundle\Entity\BaseTaskConfig;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Umbrella\CoreBundle\Component\Task\Handler\AbstractTaskHandler;
+use Umbrella\CoreBundle\Entity\BaseTaskConfig;
 
 /**
  * Class NewFishTaskHandler
@@ -36,7 +36,7 @@ class NewFishTaskHandler extends AbstractTaskHandler
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function execute(BaseTaskConfig $config)
     {

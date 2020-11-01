@@ -4,12 +4,12 @@ namespace App\Form;
 
 use App\Entity\Fish;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Umbrella\CoreBundle\Form\CustomCheckboxType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Umbrella\CoreBundle\Form\CustomCheckboxType;
 
 /**
  * Class FishType
@@ -17,25 +17,25 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 class FishType extends AbstractType
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', TextType::class);
         $builder->add('description', TextareaType::class, [
             'attr' => [
-                'rows' => 8
-            ]
+                'rows' => 8,
+            ],
         ]);
         $builder->add('color', ColorType::class);
         $builder->add('edible', CustomCheckboxType::class, [
-            'required' => false
+            'required' => false,
         ]);
         $builder->add('habitats', HabitatType::class);
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {

@@ -10,18 +10,18 @@ namespace App\Controller\Admin;
 
 use App\Entity\Fish;
 use App\Entity\FormExample\BaseExample;
-use App\Entity\FormExample\DateExample;
-use App\Form\FormExample\BaseExampleType;
-use App\Form\FormExample\DateExampleType;
-use App\Entity\FormExample\Select2Example;
 use App\Entity\FormExample\CkeditorExample;
-use App\Form\FormExample\Select2ExampleType;
 use App\Entity\FormExample\CollectionExample;
+use App\Entity\FormExample\DateExample;
+use App\Entity\FormExample\Select2Example;
+use App\Form\FormExample\BaseExampleType;
 use App\Form\FormExample\CkEditorExampleType;
-use Symfony\Component\HttpFoundation\Request;
 use App\Form\FormExample\CollectionExampleType;
-use Symfony\Component\Routing\Annotation\Route;
+use App\Form\FormExample\DateExampleType;
+use App\Form\FormExample\Select2ExampleType;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
@@ -48,18 +48,19 @@ class FormController extends BaseController
             $this->persistAndFlush($entity);
 
             $this->toastSuccess('message.entity_updated');
+
             return $this->redirectToRoute('app_admin_form_base');
         }
 
         return $this->render('form/base.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/date")
      */
-    public function dateAction(Request  $request)
+    public function dateAction(Request $request)
     {
         $this->getMenu()->setCurrent(':forms');
         $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_date']);
@@ -74,18 +75,19 @@ class FormController extends BaseController
             $this->persistAndFlush($entity);
 
             $this->toastSuccess('message.entity_updated');
+
             return $this->redirectToRoute('app_admin_form_date');
         }
 
         return $this->render('form/date.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/ckeditor")
      */
-    public function ckeditorAction(Request  $request)
+    public function ckeditorAction(Request $request)
     {
         $this->getMenu()->setCurrent(':forms');
         $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_ckeditor']);
@@ -100,18 +102,19 @@ class FormController extends BaseController
             $this->persistAndFlush($entity);
 
             $this->toastSuccess('message.entity_updated');
+
             return $this->redirectToRoute('app_admin_form_ckeditor');
         }
 
         return $this->render('form/ckeditor.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/select2")
      */
-    public function select2Action(Request  $request)
+    public function select2Action(Request $request)
     {
         $this->getMenu()->setCurrent(':forms');
         $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_select2']);
@@ -126,18 +129,19 @@ class FormController extends BaseController
             $this->persistAndFlush($entity);
 
             $this->toastSuccess('message.entity_updated');
+
             return $this->redirectToRoute('app_admin_form_select2');
         }
 
         return $this->render('form/select2.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/collection")
      */
-    public function collectionAction(Request  $request)
+    public function collectionAction(Request $request)
     {
         $this->getMenu()->setCurrent(':forms');
         $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_collection']);
@@ -152,11 +156,12 @@ class FormController extends BaseController
             $this->persistAndFlush($entity);
 
             $this->toastSuccess('message.entity_updated');
+
             return $this->redirectToRoute('app_admin_form_collection');
         }
 
         return $this->render('form/collection.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 
@@ -182,7 +187,7 @@ class FormController extends BaseController
             $serialized[] = [
                 'id' => $fish->id,
                 'text' => $fish->name,
-                'description' => $fish->description
+                'description' => $fish->description,
             ];
         }
 
@@ -191,6 +196,7 @@ class FormController extends BaseController
 
     /**
      * @param $entityClass
+     *
      * @return mixed
      */
     private function loadOne($entityClass)

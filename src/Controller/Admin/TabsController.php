@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Controller\Admin;
-
 
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
@@ -14,14 +12,11 @@ use Umbrella\CoreBundle\Controller\BaseController;
  */
 class TabsController extends BaseController
 {
-
     /**
      * @Route("")
      */
     public function indexAction()
     {
         return $this->render('tabs/index.html.twig');
-
     }
-
 }

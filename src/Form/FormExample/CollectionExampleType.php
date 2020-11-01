@@ -2,16 +2,16 @@
 
 namespace App\Form\FormExample;
 
-use Umbrella\CoreBundle\Form\OrderType;
-use Symfony\Component\Form\AbstractType;
 use App\Entity\FormExample\CollectionExample;
-use Umbrella\CoreBundle\Form\UmbrellaFileType;
-use Symfony\Component\Form\FormBuilderInterface;
 use App\Entity\FormExample\CollectionItemExample;
-use Symfony\Component\Validator\Constraints\Count;
-use Umbrella\CoreBundle\Form\UmbrellaCollectionType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Count;
+use Umbrella\CoreBundle\Form\OrderType;
+use Umbrella\CoreBundle\Form\UmbrellaCollectionType;
+use Umbrella\CoreBundle\Form\UmbrellaFileType;
 
 /**
  * Class CollectionExampleType
@@ -19,7 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 class CollectionExampleType extends AbstractType
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -31,28 +31,28 @@ class CollectionExampleType extends AbstractType
             'constraints' => [
                 new Count([
                     'min' => 1,
-                    'max' => 5
-                ])
-            ]
+                    'max' => 5,
+                ]),
+            ],
         ]);
 
         $builder->add('strings', UmbrellaCollectionType::class, [
             'entry_type' => TextType::class,
-            'help' => 'Collection with not compound entryType'
+            'help' => 'Collection with not compound entryType',
         ]);
 
         $builder->add('files', UmbrellaCollectionType::class, [
-            'entry_type' => UmbrellaFileType::class
+            'entry_type' => UmbrellaFileType::class,
         ]);
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => CollectionExample::class
+            'data_class' => CollectionExample::class,
         ]);
     }
 }
@@ -60,7 +60,7 @@ class CollectionExampleType extends AbstractType
 class ItemType extends AbstractType
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -70,12 +70,12 @@ class ItemType extends AbstractType
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => CollectionItemExample::class
+            'data_class' => CollectionItemExample::class,
         ]);
     }
 }

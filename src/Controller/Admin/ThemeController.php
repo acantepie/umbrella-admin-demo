@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controller\Admin;
 
 use Symfony\Component\Routing\Annotation\Route;

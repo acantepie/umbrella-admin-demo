@@ -12,9 +12,9 @@ use Umbrella\CoreBundle\Model\TimestampTrait;
 /**
  * Class Fish
  *
- * @ORM\Entity()
+ * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
- * @Searchable()
+ * @Searchable
  */
 class Fish
 {
@@ -30,14 +30,14 @@ class Fish
      * @var string
      * @ORM\Column(type="string", nullable=false)
      *
-     * @SearchableField()
+     * @SearchableField
      */
     public $name;
 
     /**
      * @var string
      * @ORM\Column(type="text", nullable=true)
-     * @SearchableField()
+     * @SearchableField
      */
     public $description;
 
@@ -60,7 +60,7 @@ class Fish
     public $edible = false;
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function __toString()
     {

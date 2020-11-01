@@ -10,17 +10,19 @@ use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
  * Class FishCRUDController
+ *
  * @Route("/fish")
  */
 class FishCRUDController extends BaseController
 {
     /**
-     * @Route(path="/edit/{id}", requirements={"id"="\d+"})
-     * @param null|mixed $id
+     * @Route(path="/edit/{id}", requirements={"id": "\d+"})
+     *
+     * @param mixed|null $id
      */
     public function editAction(Request $request, $id = null)
     {
-        if ($id === null) {
+        if (null === $id) {
             $entity = new Fish();
         } else {
             $entity = $this->findOrNotFound(Fish::class, $id);
@@ -41,12 +43,13 @@ class FishCRUDController extends BaseController
         return $this->jsResponseBuilder()
             ->openModalView('@UmbrellaAdmin/edit_modal.html.twig', [
                 'form' => $form->createView(),
-                'entity' => $entity
+                'entity' => $entity,
             ]);
     }
 
     /**
-     * @Route(path="/delete/{id}", requirements={"id"="\d+"})
+     * @Route(path="/delete/{id}", requirements={"id": "\d+"})
+     *
      * @param mixed $id
      */
     public function deleteAction(Request $request, $id)

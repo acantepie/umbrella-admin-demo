@@ -4,8 +4,8 @@ namespace App\Form;
 
 use App\Entity\Fish;
 use Symfony\Component\Form\AbstractType;
-use Umbrella\CoreBundle\Form\Choice2Type;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Umbrella\CoreBundle\Form\Choice2Type;
 
 /**
  * Class HabitatType
@@ -13,7 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class HabitatType extends AbstractType
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getParent()
     {
@@ -21,7 +21,7 @@ class HabitatType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
@@ -31,12 +31,12 @@ class HabitatType extends AbstractType
             'choices' => [
                 Fish::HABITAT_SEA,
                 Fish::HABITAT_RIVER,
-                Fish::HABITAT_LAKE
+                Fish::HABITAT_LAKE,
             ],
             'choice_label' => function ($c) {
                 return $c;
             },
-            'choice_prefix' => 'fish.habitat.'
+            'choice_prefix' => 'fish.habitat.',
         ]);
     }
 }

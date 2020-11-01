@@ -8,7 +8,7 @@ use Umbrella\CoreBundle\Model\IdTrait;
 /**
  * Class CkeditorExample
  *
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class CkeditorExample
 {

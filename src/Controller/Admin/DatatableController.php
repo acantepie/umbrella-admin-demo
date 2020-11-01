@@ -9,11 +9,11 @@
 namespace App\Controller\Admin;
 
 use App\DataTable\ApiTableType;
-use App\DataTable\FishTableType;
 use App\DataTable\FishCategoryTableType;
+use App\DataTable\FishTableType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
@@ -34,7 +34,7 @@ class DatatableController extends BaseController
         }
 
         return $this->render('@UmbrellaAdmin/DataTable/index.html.twig', [
-            'table' => $table
+            'table' => $table,
         ]);
     }
 
@@ -61,7 +61,7 @@ class DatatableController extends BaseController
 
         return $this->render('datatable/multiple.html.twig', [
             'edible_table' => $edibleTable,
-            'notedible_table' => $notEdibleTable
+            'notedible_table' => $notEdibleTable,
         ]);
     }
 
@@ -78,14 +78,14 @@ class DatatableController extends BaseController
         }
 
         return $this->render('@UmbrellaAdmin/DataTable/index.html.twig', [
-            'table' => $table
+            'table' => $table,
         ]);
     }
 
     /**
      * @Route("/tree")
      */
-    public function treeAction(Request  $request)
+    public function treeAction(Request $request)
     {
         $table = $this->createTable(FishCategoryTableType::class);
         $table->handleRequest($request);
@@ -95,7 +95,7 @@ class DatatableController extends BaseController
         }
 
         return $this->render('@UmbrellaAdmin/DataTable/index.html.twig', [
-            'table' => $table
+            'table' => $table,
         ]);
     }
 }

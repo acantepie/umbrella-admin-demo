@@ -11,7 +11,6 @@ use Umbrella\CoreBundle\Component\DataTable\Source\AbstractTableSource;
  */
 class ApiSource extends AbstractTableSource
 {
-
     /**
      * @var HttpClientInterface
      */
@@ -19,6 +18,7 @@ class ApiSource extends AbstractTableSource
 
     /**
      * ApiSource constructor.
+     *
      * @param HttpClientInterface $client
      */
     public function __construct(HttpClientInterface $client)
@@ -28,8 +28,9 @@ class ApiSource extends AbstractTableSource
 
     /**
      * @param $dataClass
-     * @param  array           $columns
-     * @param  array           $query
+     * @param array $columns
+     * @param array $query
+     *
      * @return DataTableResult
      *
      * Fishbase : https://fr.wikipedia.org/wiki/FishBase
@@ -42,8 +43,8 @@ class ApiSource extends AbstractTableSource
         $options = [
             'query' => [
                 'offset' => $queryData['start'],
-                'limit' => $queryData['start'] + $queryData['length']
-            ]
+                'limit' => $queryData['start'] + $queryData['length'],
+            ],
         ];
 
         $response = $this->client->request('GET', 'https://fishbase.ropensci.org/species', $options);
@@ -53,6 +54,7 @@ class ApiSource extends AbstractTableSource
         $result->draw = $queryData['draw'];
         $result->data = $data['data'];
         $result->count = $data['count'];
+
         return $result;
     }
 }

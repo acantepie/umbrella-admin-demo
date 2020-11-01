@@ -2,12 +2,12 @@
 
 namespace App\DataTable;
 
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Umbrella\CoreBundle\Component\Column\Type\ColumnType;
+use Umbrella\CoreBundle\Component\Column\Type\PropertyColumnType;
 use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\Component\DataTable\Type\DataTableType;
-use Umbrella\CoreBundle\Component\Column\Type\PropertyColumnType;
 
 /**
  * Class ApiTableType
@@ -21,6 +21,7 @@ class ApiTableType extends DataTableType
 
     /**
      * ApiTableType constructor.
+     *
      * @param HttpClientInterface $client
      */
     public function __construct(HttpClientInterface $client)
@@ -29,7 +30,7 @@ class ApiTableType extends DataTableType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildTable(DataTableBuilder $builder, array $options = [])
     {
@@ -37,7 +38,7 @@ class ApiTableType extends DataTableType
             'property_path' => '[SpecCode]',
             'renderer' => function (array $arr) {
                 return sprintf('#%d', $arr['SpecCode']);
-            }
+            },
         ]);
         $builder->add('picture', ColumnType::class, [
             'renderer' => function (array $species) {
@@ -46,17 +47,18 @@ class ApiTableType extends DataTableType
                 }
 
                 $url = 'https://www.fishbase.se/images/species/' . $species['PicPreferredName'];
+
                 return sprintf('<a href="%s" target="_blank"><img src="%s" class="img-thumbnail" width="200"></a>', $url, $url);
-            }
+            },
         ]);
         $builder->add('species', PropertyColumnType::class, [
-            'property_path' => '[Species]'
+            'property_path' => '[Species]',
         ]);
         $builder->add('genus', PropertyColumnType::class, [
-            'property_path' => '[Genus]'
+            'property_path' => '[Genus]',
         ]);
         $builder->add('subfamily', PropertyColumnType::class, [
-            'property_path' => '[Subfamily]'
+            'property_path' => '[Subfamily]',
         ]);
         $builder->add('comments', PropertyColumnType::class, [
             'property_path' => '[Comments]',

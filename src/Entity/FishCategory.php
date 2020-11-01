@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Doctrine\Common\Collections\ArrayCollection;
 use Umbrella\CoreBundle\Annotation\Searchable;
+use Umbrella\CoreBundle\Annotation\SearchableField;
 use Umbrella\CoreBundle\Model\SearchTrait;
 use Umbrella\CoreBundle\Model\TimestampTrait;
 use Umbrella\CoreBundle\Model\TreeNodeInterface;
 use Umbrella\CoreBundle\Model\TreeNodeTrait;
-use Umbrella\CoreBundle\Annotation\SearchableField;
 
 /**
  * Class FishCategory
@@ -19,8 +19,7 @@ use Umbrella\CoreBundle\Annotation\SearchableField;
  * @ORM\Entity(repositoryClass="App\Repository\FishCategoryRepository")
  *
  * @ORM\HasLifecycleCallbacks
- * @Searchable()
- *
+ * @Searchable
  */
 class FishCategory implements TreeNodeInterface
 {
@@ -50,21 +49,21 @@ class FishCategory implements TreeNodeInterface
      * @var FishCategory[]|ArrayCollection
      *
      * @ORM\OneToMany(targetEntity="FishCategory", mappedBy="parent", cascade={"ALL"})
-     * @ORM\OrderBy({"lft" = "ASC"})
+     * @ORM\OrderBy({"lft": "ASC"})
      */
     public $children;
 
     /**
      * @var string
      * @ORM\Column(type="string", nullable=false)
-     * @SearchableField()
+     * @SearchableField
      */
     public $name;
 
     /**
      * @var string
      * @ORM\Column(type="text", nullable=true)
-     * @SearchableField()
+     * @SearchableField
      */
     public $description;
 
@@ -77,7 +76,7 @@ class FishCategory implements TreeNodeInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function __toString()
     {

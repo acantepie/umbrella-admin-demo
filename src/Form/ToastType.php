@@ -9,13 +9,13 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Umbrella\CoreBundle\Component\Toast\Toast;
-use Symfony\Component\Form\FormBuilderInterface;
-use Umbrella\CoreBundle\Form\CustomCheckboxType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Umbrella\CoreBundle\Component\Toast\Toast;
+use Umbrella\CoreBundle\Form\CustomCheckboxType;
 
 /**
  * Class ToastType
@@ -23,19 +23,19 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 class ToastType extends AbstractType
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('loader', CustomCheckboxType::class, [
-            'required' => false
+            'required' => false,
         ]);
         $builder->add('allowToastClose', CustomCheckboxType::class, [
-            'required' => false
+            'required' => false,
         ]);
         $builder->add('hideAfter', NumberType::class);
         $builder->add('title', TextType::class, [
-            'required' => false
+            'required' => false,
         ]);
         $builder->add('text', TextType::class);
         $builder->add('type', ChoiceType::class, [
@@ -43,12 +43,12 @@ class ToastType extends AbstractType
                 Toast::INFO,
                 Toast::SUCCESS,
                 Toast::WARNING,
-                Toast::ERROR
+                Toast::ERROR,
             ],
             'choice_prefix' => null,
             'choice_label' => function ($choice) {
                 return $choice;
-            }
+            },
         ]);
         $builder->add('position', ChoiceType::class, [
             'choices' => [
@@ -58,22 +58,22 @@ class ToastType extends AbstractType
                 Toast::TOP_RIGHT,
                 Toast::TOP_LEFT,
                 Toast::TOP_CENTER,
-                Toast::MID_CENTER
+                Toast::MID_CENTER,
             ],
             'choice_prefix' => null,
             'choice_label' => function ($choice) {
                 return $choice;
-            }
+            },
         ]);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Toast::class
+            'data_class' => Toast::class,
         ]);
     }
 }

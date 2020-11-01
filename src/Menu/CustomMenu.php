@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Menu;
 
 use Twig\Environment;
@@ -21,6 +20,7 @@ class CustomMenu
 
     /**
      * CustomMenu constructor.
+     *
      * @param Environment $twig
      */
     public function __construct(Environment $twig)
@@ -30,6 +30,7 @@ class CustomMenu
 
     /**
      * @param MenuFactory $factory
+     *
      * @return Menu
      */
     public function createMenu(MenuFactory $factory)
@@ -37,70 +38,67 @@ class CustomMenu
         $menu = $factory->createMenu();
 
         $nav = $menu->getRoot()->addChild('nav', [
-            'label' => 'Navigation'
+            'label' => 'Navigation',
         ]);
         $nav->addChild('dashboard', [
             'label' => 'Dashboards',
-            'icon' => 'uil-home-alt'
+            'icon' => 'uil-home-alt',
         ]);
 
         $app = $menu->getRoot()->addChild('apps', [
-            'label' => 'Apps'
+            'label' => 'Apps',
         ]);
         $multiLvl = $app->addChild('multi_level', [
             'label' => 'Multi Level',
-            'icon' => 'uil-folder-plus'
+            'icon' => 'uil-folder-plus',
         ]);
         $secondLvl = $multiLvl->addChild('second_level', [
-            'label' => 'Second Level'
+            'label' => 'Second Level',
         ]);
         $secondLvl->addChild('item1', [
-            'label' => 'Item 1'
+            'label' => 'Item 1',
         ]);
         $secondLvl->addChild('item2', [
-            'label' => 'Item 2'
+            'label' => 'Item 2',
         ]);
 
         $thirdLvl = $multiLvl->addChild('third_level', [
-            'label' => 'Third Level'
+            'label' => 'Third Level',
         ]);
         $thirdLvl->addChild('item1', [
-            'label' => 'Item 1'
+            'label' => 'Item 1',
         ]);
         $thirdLvl->addChild('item2', [
-            'label' => 'Item 2'
+            'label' => 'Item 2',
         ]);
 
         return $menu;
     }
 
     /**
-     * @param Menu $menu
+     * @param Menu  $menu
      * @param array $parameters
+     *
      * @return string
      */
     public function renderMenu(Menu $menu, array $parameters = [])
     {
-       return $this->twig->render('menu/_custom_menu.html.twig', [
+        return $this->twig->render('menu/_custom_menu.html.twig', [
            'menu' => $menu,
        ]);
     }
 
     /**
      * @param Breadcrumb $breadcrumb
-     * @param array $parameters
+     * @param array      $parameters
+     *
      * @return string
      */
     public function renderBreadcrumb(Breadcrumb $breadcrumb, array $parameters = [])
     {
         return $this->twig->render('menu/_custom_breadcrumb.html.twig', [
             'breadcrumb' => $breadcrumb,
-            'class' => ArrayUtils::get($parameters, 'class')
+            'class' => ArrayUtils::get($parameters, 'class'),
         ]);
     }
-
-
-
-
-
 }

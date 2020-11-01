@@ -9,7 +9,7 @@ use Umbrella\CoreBundle\Model\IdTrait;
 /**
  * Class BaseExample
  *
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class BaseExample
 {
@@ -29,7 +29,7 @@ class BaseExample
 
     /**
      * @var int
-     * @ORM\Column(type="smallint", nullable=false, options={"default":0})
+     * @ORM\Column(type="smallint", nullable=false, options={"default": 0})
      */
     public $amount = 0;
 

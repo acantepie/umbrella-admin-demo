@@ -9,9 +9,9 @@
 namespace App\Controller\Admin;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
  * Class AjaxHandlerController
@@ -38,12 +38,14 @@ class AjaxHandlerController extends BaseController
     }
 
     /**
-     * @Route("/sleep/{sleep}", requirements={"sleep" = "\d+"})
+     * @Route("/sleep/{sleep}", requirements={"sleep": "\d+"})
+     *
      * @param mixed $sleep
      */
     public function sleepAction(Request $request, $sleep = 5)
     {
         sleep($sleep);
+
         return $this->jsResponseBuilder()
             ->toastSuccess('Toast displayed after ' . $sleep . 's !');
     }
@@ -67,7 +69,7 @@ class AjaxHandlerController extends BaseController
     /**
      * @Route("/custom")
      */
-    public function customAction(Request  $request)
+    public function customAction(Request $request)
     {
         return $this->jsResponseBuilder()
             ->add('say', ['msg' => 'Hello world !!!!'])

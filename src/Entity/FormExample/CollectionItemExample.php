@@ -9,7 +9,7 @@ use Umbrella\CoreBundle\Model\OrderTrait;
 /**
  * Class CollectionItemExample
  *
- * @ORM\Entity()
+ * @ORM\Entity
  */
 class CollectionItemExample
 {

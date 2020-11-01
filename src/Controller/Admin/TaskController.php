@@ -4,13 +4,13 @@ namespace App\Controller\Admin;
 
 use App\Entity\TaskConfig;
 use App\Task\NewFishTaskHandler;
-use Umbrella\CoreBundle\Entity\Task;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Umbrella\CoreBundle\Controller\BaseController;
-use Umbrella\CoreBundle\Component\Task\TaskManager;
 use Symfony\Component\Validator\Constraints\Positive;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Umbrella\CoreBundle\Component\Task\TaskManager;
+use Umbrella\CoreBundle\Controller\BaseController;
+use Umbrella\CoreBundle\Entity\Task;
 
 /**
  * Class TaskControllerrell
@@ -31,18 +31,20 @@ class TaskController extends BaseController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $config = new TaskConfig(NewFishTaskHandler::class);
-            $config->speciesId = intval($form->getData()['speciesId']);
+            $config->speciesId = \intval($form->getData()['speciesId']);
             $task = $taskManager->register($config);
+
             return $this->redirectToRoute('app_admin_task_success', ['id' => $task->id]);
         }
 
         return $this->render('task/index.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("success/{id}", requirements={"id"="\d+"})
+     * @Route("success/{id}", requirements={"id": "\d+"})
+     *
      * @param mixed $id
      */
     public function successAction(Request $request, $id)
@@ -52,7 +54,7 @@ class TaskController extends BaseController
         $task = $this->findOrNotFound(Task::class, $id);
 
         return $this->render('task/success.html.twig', [
-            'task' => $task
+            'task' => $task,
         ]);
     }
 }
