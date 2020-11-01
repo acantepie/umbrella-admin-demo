@@ -37,7 +37,7 @@ dump-env: ## optimize env vars for prod env
 	composer dump-env prod
 
 acl:
-	httpuser="$$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)";  sudo setfacl -dR -m u:$$httpuser:rwX -m u:$(whoami):rwX var; sudo setfacl -R -m u:$$httpuser:rwX -m u:$(whoami):rwX var
+	httpuser="$$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)";  sudo setfacl -dR -m u:$$httpuser:rwX -m u:$(whoami):rwX var public; sudo setfacl -R -m u:$$httpuser:rwX -m u:$(whoami):rwX var public
 
 ## --- Node & Webpack ----------------------
 webpack-dev: ## Build webpack package on dev env
