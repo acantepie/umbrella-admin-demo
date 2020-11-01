@@ -1,7 +1,8 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    ->in(__DIR__.'/src');
+    ->in(__DIR__.'/src')
+    ->in(__DIR__.'/vendor/umbrella');
 
 return PhpCsFixer\Config::create()
     ->setRules([
@@ -12,10 +13,9 @@ return PhpCsFixer\Config::create()
         'no_superfluous_phpdoc_tags' => false,
         'concat_space' => ['spacing' => 'one'],
         'phpdoc_to_comment' => false,
-        'native_constant_invocation' => true,
-        'native_function_invocation' => ['include' => ['@compiler_optimized']],
         'array_syntax' => ['syntax' => 'short'],
         'ordered_imports' => ['sort_algorithm' => 'alpha'],
+        'fully_qualified_strict_types' => true
     ])
     ->setRiskyAllowed(true)
     ->setFinder($finder)
