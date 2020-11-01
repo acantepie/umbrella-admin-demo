@@ -33,7 +33,9 @@ yarn-error.log
 ###> Tools / Other ###
 /.idea/*
 *.DS_Store
-.php_cs.cache
 ###< Tools / Other ###
 
-
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###

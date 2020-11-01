@@ -41,6 +41,9 @@ acl:
 	sudo setfacl -dR -m u:$(HTTP_USER):rwX -m u:$(whoami):rwX var public
 	sudo setfacl -R -m u:$(HTTP_USER):rwX -m u:$(whoami):rwX var public
 
+php-cs-fix:
+	vendor/bin/php-cs-fixer fix
+
 ## --- Node & Webpack ----------------------
 webpack-dev: ## Build webpack package on dev env
 	export NODE_ENV="development" && $(WEBPACK) --config webpack.config.js
