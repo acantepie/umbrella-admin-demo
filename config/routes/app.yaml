@@ -2,6 +2,11 @@ umbrella_admin_:
   resource: "@UmbrellaAdminBundle/Resources/config/routing.yml"
   prefix: /admin
 
+app_:
+  resource: "../../src/Controller/"
+  type: annotation
+  prefix: /
+
 admin_:
   resource: "../../src/Controller/Admin/"
   type: annotation
