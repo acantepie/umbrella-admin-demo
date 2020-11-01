@@ -31,12 +31,12 @@
         "symfony/validator": "5.0.*",
         "symfony/web-link": "5.0.*",
         "symfony/yaml": "5.0.*",
+        "doctrine/doctrine-fixtures-bundle": "^3.3",
         "umbrella/adminbundle": "dev-master",
         "umbrella/corebundle": "dev-master",
         "umbrella/makerbundle": "dev-master"
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "^3.3",
         "phpstan/phpstan": "^0.12.25",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.21",
