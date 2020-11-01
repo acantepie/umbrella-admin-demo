@@ -10,9 +10,9 @@ help: ## Outputs this help screen
 ## --- Install & Update --------------------
 install-dev: dump-env-dev vendor-install node-install webpack-dev cc db-create db-update ## DEV env : install for dev environment
 
-update-dev: project-update vendor-install vendor-umbrella-update node-install cc db-update ## DEV env : update project, vendors (php & node), database and cache clear (dev & prod)
+update-dev: project-update vendor-update node-install cc db-update ## DEV env : update project, vendors (php & node), database and cache clear (dev & prod)
 
-update: project-update vendor-install vendor-umbrella-update cc db-update ## PROD env : update project, vendor (php), database and cache clear prod
+update: project-update vendor-update cc db-update ## PROD env : update project, vendor (php), database and cache clear prod
 
 dump-env-dev:
 	echo "APP_ENV=dev" > .env.local

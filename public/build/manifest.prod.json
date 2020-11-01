@@ -1,6 +1,6 @@
 {
-  "/build/admin.css": "/build/admin_e4cb79b1d4814a3cbb8c.css",
-  "/build/admin.js": "/build/admin_115e5adf2a2af7fed986.js",
+  "/build/admin.css": "/build/admin_a638dc04887286ee5595.css",
+  "/build/admin.js": "/build/admin_7900c501d2f43818fd7a.js",
   "/build/ckeditor.js": "/build/ckeditor_782bafe20fe2990d028b.js",
   "/build/ckeditor4/adapters/jquery.js": "/build/ckeditor4/adapters/jquery.js",
   "/build/ckeditor4/config.js": "/build/ckeditor4/config.js",
@@ -558,6 +558,7 @@
   "/build/ckeditor4/vendor/promise.js": "/build/ckeditor4/vendor/promise.js",
   "/build/fonts/admin.scss": "/build/fonts/unicons-9.woff2",
   "/build/images/admin.scss": "/build/images/expand.png",
+  "/build/images/hyper-logo-dark.png": "/build/images/hyper-logo-dark.png",
   "/build/images/hyper-logo.png": "/build/images/hyper-logo.png",
   "/build/images/mail_sent.svg": "/build/images/mail_sent.svg"
 }
