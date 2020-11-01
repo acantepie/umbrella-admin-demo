@@ -38,8 +38,8 @@ dump-env: ## optimize env vars for prod env
 	composer dump-env prod
 
 acl:
-	sudo setfacl -dR -m u:$(HTTP_USER):rwX -m u:$(whoami):rwX var public/umbrella-file
-	sudo setfacl -R -m u:$(HTTP_USER):rwX -m u:$(whoami):rwX var public/umbrella-file
+	sudo setfacl -dR -m u:$(HTTP_USER):rwX -m u:$(whoami):rwX var public
+	sudo setfacl -R -m u:$(HTTP_USER):rwX -m u:$(whoami):rwX var public
 
 ## --- Node & Webpack ----------------------
 webpack-dev: ## Build webpack package on dev env
