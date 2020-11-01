@@ -3,18 +3,11 @@
 {% set current_route = app.request.attributes.get('_route') %}
 
 {% block content %}
-    <ul class="nav nav-pills bg-nav-pills mb-3">
-        <li class="nav-item">
-            <a href="{{ path('app_admin_menu_howto') }}" class="nav-link rounded-0 {{ current_route == 'app_admin_menu_howto' ? 'active' }}">
-                <span>How to</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ path('app_admin_menu_exemple') }}" class="nav-link rounded-0 {{ current_route == 'app_admin_menu_exemple' ? 'active' }}">
-                <span>Exemple</span>
-            </a>
-        </li>
-    </ul>
+    {{ nav_config({'active_strategy': 'current_route'}, 'pills') }}
+    {{ nav_start() }}
+        {{ nav_item({'label' : 'How to', 'route': 'app_admin_menu_howto'}) }}
+        {{ nav_item({'label' : 'Exemple', 'route': 'app_admin_menu_exemple'}) }}
+    {{ nav_end() }}
 
     <div class="tab-content">
         <div class="tab-pane active">

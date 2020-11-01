@@ -3,33 +3,14 @@
 {% set current_route = app.request.attributes.get('_route') %}
 
 {% block content %}
-    <ul class="nav nav-pills bg-nav-pills mb-3">
-        <li class="nav-item">
-            <a href="{{ path('app_admin_form_base') }}" class="nav-link rounded-0 {{ current_route == 'app_admin_form_base' ? 'active' }}">
-                <span>Base</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ path('app_admin_form_date') }}" class="nav-link rounded-0 {{ current_route == 'app_admin_form_date' ? 'active' }}">
-                <span>Date</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ path('app_admin_form_ckeditor') }}" class="nav-link rounded-0 {{ current_route == 'app_admin_form_ckeditor' ? 'active' }}">
-                <span>Ckeditor</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ path('app_admin_form_select2') }}" class="nav-link rounded-0 {{ current_route == 'app_admin_form_select2' ? 'active' }}">
-                <span>Select2</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ path('app_admin_form_collection') }}" class="nav-link rounded-0 {{ current_route == 'app_admin_form_collection' ? 'active' }}">
-                <span>Collection</span>
-            </a>
-        </li>
-    </ul>
+    {{ nav_config({'active_strategy': 'current_route'}, 'pills') }}
+    {{ nav_start() }}
+        {{ nav_item({'label' : 'Base', 'route': 'app_admin_form_base'}) }}
+        {{ nav_item({'label' : 'Date', 'route': 'app_admin_form_date'}) }}
+        {{ nav_item({'label' : 'Ckeditor', 'route': 'app_admin_form_ckeditor'}) }}
+        {{ nav_item({'label' : 'Select2', 'route': 'app_admin_form_select2'}) }}
+        {{ nav_item({'label' : 'Collection', 'route': 'app_admin_form_collection'}) }}
+    {{ nav_end() }}
 
     <div class="tab-content">
         <div class="tab-pane active">
