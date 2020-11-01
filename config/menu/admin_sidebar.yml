@@ -10,6 +10,9 @@ ui:
                     route: app_admin_icon_md
                 icon_unicon:
                     route: app_admin_icon_unicon
+        tabs:
+            icon: uil-layers-alt
+            route: app_admin_tabs_index
 
 umbrella_components:
     children:
