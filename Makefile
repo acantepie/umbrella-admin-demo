@@ -4,6 +4,7 @@ SHELL := '/bin/bash'
 CONSOLE=bin/console
 WEBPACK=node_modules/.bin/webpack
 WEBPACK_DEV_SERVER=node_modules/.bin/webpack-dev-server
+HTTP_USER=$$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)
 
 help: ## Outputs this help screen
 	@grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}{printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
@@ -37,7 +38,8 @@ dump-env: ## optimize env vars for prod env
 	composer dump-env prod
 
 acl:
-	httpuser="$$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)";  sudo setfacl -dR -m u:$$httpuser:rwX -m u:$(whoami):rwX var public; sudo setfacl -R -m u:$$httpuser:rwX -m u:$(whoami):rwX var public
+	sudo setfacl -dR -m u:$(HTTP_USER):rwX -m u:$(whoami):rwX var public/umbrella-file
+	sudo setfacl -R -m u:$(HTTP_USER):rwX -m u:$(whoami):rwX var public/umbrella-file
 
 ## --- Node & Webpack ----------------------
 webpack-dev: ## Build webpack package on dev env
