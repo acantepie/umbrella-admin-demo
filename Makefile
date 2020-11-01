@@ -1,5 +1,6 @@
 .PHONY: help
 
+SHELL := '/bin/bash'
 CONSOLE=bin/console
 WEBPACK=node_modules/.bin/webpack
 WEBPACK_DEV_SERVER=node_modules/.bin/webpack-dev-server
@@ -34,6 +35,9 @@ vendor-update: ## composer update vendors
 
 dump-env: ## optimize env vars for prod env
 	composer dump-env prod
+
+acl:
+	httpuser="$$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)";  sudo setfacl -dR -m u:$$httpuser:rwX -m u:$(whoami):rwX var; sudo setfacl -R -m u:$$httpuser:rwX -m u:$(whoami):rwX var
 
 ## --- Node & Webpack ----------------------
 webpack-dev: ## Build webpack package on dev env
