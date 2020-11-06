@@ -17,6 +17,6 @@ class ThemeController extends BaseController
      */
     public function indexAction()
     {
-        return $this->render('theme/index.html.twig');
+
     }
 }

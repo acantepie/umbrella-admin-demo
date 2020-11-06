@@ -1,4 +1,7 @@
 menu:
+  umbrella2: Umbrella 2.0
+  about: A propos
+
   ui: UI
   theme: Thème
   icon: Icones
@@ -121,3 +124,6 @@ fish:
     sea: Mer, Océen
     river: Rivière
     lake: Lac, Etangs
+
+message:
+  signin_to_bo: "Site de démonstration pour <b>Umbrella v2.0</b>.<br><br>Identifiant : <b>umbrella</b><br> Mot de passe : <b>umbrella</b>"

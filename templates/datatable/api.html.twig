@@ -1,0 +1,37 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+    {{ nav_config({'active_strategy': 'first'}, 'pills') }}
+    {{ nav_start() }}
+    {{ nav_item({'label' : 'Exemple', 'url' : '#exemple'}) }}
+    {{ nav_item({'label' : 'How to', 'url': '#how-to'}) }}
+    {{ nav_end() }}
+
+    <div class="tab-content">
+
+        <div class="tab-pane active" id="exemple">
+            <div class="card">
+                <div class="card-body">
+                    {{ render_table(table) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="how-to">
+            <div class="card">
+                <div class="card-body">
+                    <h4>DataTableType</h4>
+
+                    <p>Class <code>App\DataTable\ApiTableType</code>:</p>
+                    <pre class="border-dark border p-2">{{  source('datatable/_datatable_api.txt') }}</pre>
+
+                    <h4>Source</h4>
+
+                    <p>Class <code>App\DataTable\ApiSource</code>:</p>
+                    <pre class="border-dark border p-2">{{ source('datatable/_source_api.txt') }}</pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

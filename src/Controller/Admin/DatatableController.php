@@ -33,7 +33,7 @@ class DatatableController extends BaseController
             return new JsonResponse($table->getApiResults());
         }
 
-        return $this->render('@UmbrellaAdmin/DataTable/index.html.twig', [
+        return $this->render('datatable/simple.html.twig', [
             'table' => $table,
         ]);
     }
@@ -77,7 +77,7 @@ class DatatableController extends BaseController
             return new JsonResponse($table->getApiResults());
         }
 
-        return $this->render('@UmbrellaAdmin/DataTable/index.html.twig', [
+        return $this->render('datatable/api.html.twig', [
             'table' => $table,
         ]);
     }
@@ -94,7 +94,7 @@ class DatatableController extends BaseController
             return new JsonResponse($table->getApiResults());
         }
 
-        return $this->render('@UmbrellaAdmin/DataTable/index.html.twig', [
+        return $this->render('datatable/tree.html.twig', [
             'table' => $table,
         ]);
     }

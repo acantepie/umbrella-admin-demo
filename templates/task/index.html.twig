@@ -6,58 +6,19 @@
             <h4 class="header-title">How to</h4>
 
             <p>Créer une entité dans votre application héritant de <code>Umbrella\CoreBundle\Entity\BaseTaskConfig</code> :</p>
-            <pre class="border-dark border p-2">
-use Doctrine\ORM\Mapping as ORM;
-use Umbrella\CoreBundle\Entity\BaseTaskConfig;
-
-/**
- * Class Task
- * @ORM\Entity()
- */
-class TaskConfig extends BaseTaskConfig
-{
-    /**
-     * @var string
-     * @ORM\Column(type="string", nullable=true)
-     */
-    public $foo;
-}
-            </pre>
+            <pre class="border-dark border p-2">{{ source('task/_task_config.txt') }}</pre>
 
             <p>
                 Créer un <code>TaskHandler</code>, cette classe définira le comportement de votre tâche :<br>
             </p>
 
-            <pre class="border-dark border p-2">
-class MyTaskHandler extends AbstractTaskHandler
-{
-
-    /**
-     * @inheritDoc
-     */
-    public function execute(BaseTaskConfig $config)
-    {
-        if ($config->foo == 'bar') {
-                // do something
-        }
-    }
-}
-            </pre>
+            <pre class="border-dark border p-2">{{ source('task/_task_handler.txt') }}</pre>
 
             <p>Enregistrer votre configuration :</p>
-            <pre class="border-dark border p-2">
-use Umbrella\CoreBundle\Component\Task\TaskManager;
-...
-
-$taskConfig = new TaskConfig(MyTaskHandler::class);
-$taskConfig->foo = 'bar';
-$taskManager->register($taskConfig);
-            </pre>
+            <pre class="border-dark border p-2">{{ source('task/_task_register.txt') }}</pre>
 
             <p>Executer votre tache :</p>
-            <pre class="border-dark border p-2">
-php bin/console task:schedule
-            </pre>
+            <pre class="border-dark border p-2">php bin/console task:schedule</pre>
 
         </div>
     </div>

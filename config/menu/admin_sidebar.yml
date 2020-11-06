@@ -1,8 +1,11 @@
+umbrella2:
+    children:
+        about:
+            icon: mdi mdi-lifebuoy
+            route: app_admin_default_about
+
 ui:
     children:
-        theme:
-            icon: uil-box
-            route: app_admin_theme_index
         icon:
             icon: uil-streering
             children:

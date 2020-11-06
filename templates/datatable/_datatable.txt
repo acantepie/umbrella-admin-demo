@@ -1,0 +1,55 @@
+class MyTable extends DataTableType
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function buildToolbar(ToolbarBuilder $builder, array $options = [])
+    {
+        $builder->addFilter('search', TextType::class);
+        $builder->addFilter(...);
+
+        $builder->addAction('add', AddActionType::class, [
+            'route' => 'app_mytable_edit',
+            'xhr' => true,
+        ]);
+        $builder->addAction(...):
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function buildTable(DataTableBuilder $builder, array $options = [])
+    {
+        $builder->add('name', PropertyColumnType::class);
+        $builder->add('edible', BooleanColumnType::class);
+        $builder->add(...);
+
+        $builder->add('actions', ActionColumnType::class, [
+            'action_builder' => function (RowActionBuilder $builder, MyEntity $entity) {
+                 $builder->create()
+                        ->setRoute('app_mytable_show')
+                        ->addRouteParam('id', $entity->id)
+                        ->setIcon('mdi mdi-pencil')
+                        ->setXhr(true);
+
+                 $builder->create()
+                        ->(...);
+            },
+        ]);
+
+        $builder->addEntityCallbackSourceModifier(function (QueryBuilder $qb, array $formData) use ($options) {
+            $qb->andWhere(...);
+        });
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => MyEntity::class,
+            ...
+        ]);
+    }
+}

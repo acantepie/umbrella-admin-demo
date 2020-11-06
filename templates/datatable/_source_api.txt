@@ -1,0 +1,37 @@
+class ApiSource extends AbstractTableSource
+{
+    /**
+     * @var HttpClientInterface
+     */
+    private $client;
+
+    /**
+     * ApiSource constructor.
+     *
+     * @param HttpClientInterface $client
+     */
+    public function __construct(HttpClientInterface $client)
+    {
+        $this->client = $client;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function search($dataClass, array $columns, array $query): DataTableResult
+    {
+        $queryData = $query['query'];
+
+        $response = $this->client->request('GET', 'https://my_api');
+        $data = json_decode($response->getContent(), true);
+
+        ...
+
+        $result = new DataTableResult();
+        $result->draw = $queryData['draw'];
+        $result->data = $data['data'];
+        $result->count = $data['count'];
+
+        return $result;
+    }
+}

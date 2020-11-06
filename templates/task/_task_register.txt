@@ -1,0 +1,6 @@
+use Umbrella\CoreBundle\Component\Task\TaskManager;
+...
+
+$taskConfig = new TaskConfig(MyTaskHandler::class);
+$taskConfig->foo = 'bar';
+$taskManager->register($taskConfig);

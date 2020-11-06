@@ -1,0 +1,10 @@
+services:
+    # menu renderer
+    App\Menu\MyMenuRenderer:
+        tags:
+            - {name: umbrella.menu.renderer, method: renderMenu, alias: my_menu}
+
+    # breadcrumb renderer
+    App\Menu\MyBreadcrumbRenderer:
+        tags:
+            - {name: umbrella.breadcrumb.renderer, method: renderBreadcrumb, alias: my_menu}

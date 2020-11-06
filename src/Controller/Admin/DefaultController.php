@@ -15,11 +15,17 @@ class DefaultController extends BaseController
 {
     /**
      * @Route("/")
-     *
-     * @return Response
      */
     public function indexAction()
     {
-        return $this->redirectToRoute('umbrella_admin_user_index');
+        return $this->redirectToRoute('app_admin_default_about');
+    }
+
+    /**
+     * @Route("/about")
+     */
+    public function aboutAction()
+    {
+        return $this->render('default/about.html.twig');
     }
 }

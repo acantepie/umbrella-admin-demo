@@ -1,0 +1,13 @@
+class MyTaskHandler extends AbstractTaskHandler
+{
+
+    /**
+     * @inheritDoc
+     */
+    public function execute(BaseTaskConfig $config)
+    {
+        if ($config->foo == 'bar') {
+                // do something
+        }
+    }
+}
