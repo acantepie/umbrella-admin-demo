@@ -1,0 +1,12 @@
+/**
+ * @ORM\Entity()
+ */
+class DummyRuntimeEnv extends AbstractEnvironment
+{
+    /**
+     * @var bool
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    public $foo = true;
+
+}

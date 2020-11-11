@@ -31,17 +31,16 @@ umbrella_components:
                 tree_datatable:
                     route: app_admin_datatable_tree
 
-        tasks:
+        schedule:
             icon: uil-process
-            route: app_admin_task_index
-
-        filewriter:
-            icon: uil-file-plus-alt
-            children:
-                filewriter_simple:
-                    route: app_admin_filewriter_simple
-                filewriter_datatable:
-                    route: app_admin_filewriter_datatable
+            route: app_admin_schedule_index
+#        filewriter:
+#            icon: uil-file-plus-alt
+#            children:
+#                filewriter_simple:
+#                    route: app_admin_filewriter_simple
+#                filewriter_datatable:
+#                    route: app_admin_filewriter_datatable
 
         js_response:
             icon: uil-exchange
@@ -63,9 +62,9 @@ umbrella_components:
 
 admin:
     children:
-        admin_tasks:
+        admin_jobs:
             icon: uil-process
-            route: umbrella_admin_task_index
+            route: umbrella_admin_job_index
 
         users:
             icon: uil-user

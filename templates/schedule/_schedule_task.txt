@@ -1,0 +1,9 @@
+/** @var Scheduler $scheduler **/
+
+ $jobId = $scheduler
+        ->create()
+        ->setTask(MyTask::class, [
+            'say' => 'hello !',
+        ])
+        ->setDescription('My custom task ...')
+        ->register();

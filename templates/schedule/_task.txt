@@ -1,0 +1,16 @@
+class MyTask extends AbstractTask
+{
+
+    /**
+     * {@inheritdoc}
+     */
+    public function execute($env)
+    {
+        if (isset($env['say']) {
+            echo $env['say'];
+        }
+
+        ...
+
+    }
+}

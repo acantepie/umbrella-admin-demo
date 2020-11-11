@@ -5,13 +5,12 @@ namespace App\Task;
 use App\Entity\Fish;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use Umbrella\CoreBundle\Component\Task\Handler\AbstractTaskHandler;
-use Umbrella\CoreBundle\Entity\BaseTaskConfig;
+use Umbrella\CoreBundle\Component\Schedule\Task\AbstractTask;
 
 /**
- * Class NewFishTaskHandler
+ * Class NewFishTask
  */
-class NewFishTaskHandler extends AbstractTaskHandler
+class NewFishTask extends AbstractTask
 {
     /**
      * @var EntityManagerInterface
@@ -38,9 +37,9 @@ class NewFishTaskHandler extends AbstractTaskHandler
     /**
      * {@inheritdoc}
      */
-    public function execute(BaseTaskConfig $config)
+    public function execute($env)
     {
-        $response = $this->client->request('GET', 'https://fishbase.ropensci.org/species/' . $config->speciesId);
+        $response = $this->client->request('GET', 'https://fishbase.ropensci.org/species/' . $env['species_id']);
         $data = json_decode($response->getContent(), true);
         $fishData = $data['data'][0];
 

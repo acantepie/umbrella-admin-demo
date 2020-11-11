@@ -18,7 +18,7 @@ menu:
   api_datatable: Source (Api - fishbase)
   tree_datatable: Tree
 
-  tasks: Taches
+  schedule: Schedule
 
   filewriter: File Writer
   filewriter_simple: Simple
@@ -33,7 +33,7 @@ menu:
   menu: Menu
 
   admin: Administration
-  admin_tasks: Taches
+  admin_jobs: Jobs
   users: Utilisateurs
   groups: Groupes
 

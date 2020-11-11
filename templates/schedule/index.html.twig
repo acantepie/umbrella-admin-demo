@@ -1,0 +1,76 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+
+
+    {{ nav_config({'active_strategy': 'first'}, 'pills') }}
+    {{ nav_start() }}
+    {{ nav_item({'label' : 'Exemple', 'url' : '#exemple'}) }}
+    {{ nav_item({'label' : 'How to', 'url': '#how-to'}) }}
+    {{ nav_end() }}
+
+    <div class="tab-content">
+
+        {% set jobId = app.request.query.get('job_id') %}
+        {% if jobId %}
+            <div class="alert alert-success">
+                <i class="mdi mdi-check mr-1"></i> Votre job a été enregistré avec l'identifiant <b>{{ jobId }}</b>.<br>
+                Vous pouvez :<br>
+                <ul>
+                    <li>Lancer l'execution des jobs en attente avec la commande <code>php bin/console schedule:run</code></li>
+                    <li>Voir l'avancement de vos jobs avec la commande <code>php bin/console schedule:list [--done] [--watch]</code>
+                        ou dans <a href="{{ path('umbrella_admin_job_index') }}" class="text-primary">l'interface admin</a></li>
+                </ul>
+            </div>
+        {% endif %}
+
+
+        <div class="tab-pane active" id="exemple">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Programme 1 - Ajouter un nouveau poisson en base si il trouve une correspondance avec le <b>code espece</b> dans FishBase.<br></h4>
+                    <form method="post">
+
+                        <p>
+                            Une fois le job terminé, si votre code éspece existe votre poisson sera visible <a href="{{ path('app_admin_datatable_simple') }}" class="text-primary">ici</a>
+                        </p>
+                        {{ form_rest(new_fish_form) }}
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="mdi mdi-check mr-1"></i> Enregistrer
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Programme 2 - Lister les fichiers du projet avec une command shell</h4>
+                    <a href="{{ path('app_admin_schedule_index', {'job_ls': true}) }}" class="btn btn-primary">
+                        <i class="mdi mdi-check mr-1"></i> Enregistrer
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="how-to">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Programmer une commande shell</h4>
+
+                    <pre class="border-dark border p-2">{{ source('schedule/_schedule_shell.txt') }}</pre>
+
+                    <h4 class="card-title">Programmer une tache</h4>
+                    <pre class="border-dark border p-2">{{ source('schedule/_schedule_task.txt') }}</pre>
+                    <pre class="border-dark border p-2">{{ source('schedule/_task.txt') }}</pre>
+
+                    <h4 class="card-title">Utiliser un environnement d'éxecution custom</h4>
+                    <pre class="border-dark border p-2">{{ source('schedule/_schedule_custom_env.txt') }}</pre>
+                    <pre class="border-dark border p-2">{{ source('schedule/_custom_env.txt') }}</pre>
+                    <pre class="border-dark border p-2">{{ source('schedule/_task_custom_env.txt') }}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
