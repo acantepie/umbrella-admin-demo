@@ -5,7 +5,9 @@ namespace App\Task;
 use App\Entity\Fish;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Umbrella\CoreBundle\Component\Schedule\Context\AbstractTaskContext;
 use Umbrella\CoreBundle\Component\Schedule\Task\AbstractTask;
+use Umbrella\CoreBundle\Entity\ArrayTaskContext;
 
 /**
  * Class NewFishTask
@@ -35,11 +37,11 @@ class NewFishTask extends AbstractTask
     }
 
     /**
-     * {@inheritdoc}
+     * @var ArrayTaskContext $context
      */
-    public function execute($env)
+    public function execute(AbstractTaskContext $context)
     {
-        $response = $this->client->request('GET', 'https://fishbase.ropensci.org/species/' . $env['species_id']);
+        $response = $this->client->request('GET', 'https://fishbase.ropensci.org/species/' . $context['species_id']);
         $data = json_decode($response->getContent(), true);
         $fishData = $data['data'][0];
 

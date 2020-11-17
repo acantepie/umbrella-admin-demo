@@ -1,7 +1,7 @@
-/** @var Scheduler $scheduler **/
+/** @var ScheduleHelper $scheduleHelper **/
 
-$id = $scheduler
-    ->create()
+$id = $scheduleHelper
+    ->schedule()
     ->setDescription('Lister les fichiers du projet')
     ->setShellCommand(['ls', '-l'])
     ->register();

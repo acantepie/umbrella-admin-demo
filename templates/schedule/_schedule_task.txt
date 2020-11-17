@@ -1,9 +1,10 @@
-/** @var Scheduler $scheduler **/
+/** @var ScheduleHelper $scheduleHelper **/
 
- $jobId = $scheduler
-        ->create()
-        ->setTask(MyTask::class, [
-            'say' => 'hello !',
-        ])
-        ->setDescription('My custom task ...')
-        ->register();
+$id = $scheduleHelper
+    ->schedule()
+    ->setTask(MyTask::class)
+    ->setContext([
+        'say' => 'hello !'
+    ])
+    ->setDescription('My custom task ...')
+    ->register();

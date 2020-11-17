@@ -1,7 +1,7 @@
 /**
  * @ORM\Entity()
  */
-class DummyRuntimeEnv extends AbstractEnvironment
+class DummyContext extends AbstractTaskContext
 {
     /**
      * @var bool

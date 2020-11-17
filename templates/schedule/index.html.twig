@@ -28,7 +28,7 @@
         <div class="tab-pane active" id="exemple">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Programme 1 - Ajouter un nouveau poisson en base si il trouve une correspondance avec le <b>code espece</b> dans FishBase.<br></h4>
+                    <h4 class="card-title">Exemple - Ajouter un nouveau poisson en base si il trouve une correspondance avec le <b>code espece</b> dans FishBase.<br></h4>
                     <form method="post">
 
                         <p>
@@ -37,7 +37,7 @@
                         {{ form_rest(new_fish_form) }}
 
                         <button type="submit" class="btn btn-primary">
-                            <i class="mdi mdi-check mr-1"></i> Enregistrer
+                            <i class="mdi mdi-check mr-1"></i> Programmer
                         </button>
                     </form>
                 </div>
@@ -45,9 +45,9 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Programme 2 - Lister les fichiers du projet avec une command shell</h4>
-                    <a href="{{ path('app_admin_schedule_index', {'job_ls': true}) }}" class="btn btn-primary">
-                        <i class="mdi mdi-check mr-1"></i> Enregistrer
+                    <h4 class="card-title">Exemple - Exporter tous les poissons en base</h4>
+                    <a href="{{ path('app_admin_schedule_index', {'export_fish': true}) }}" class="btn btn-primary">
+                        <i class="mdi mdi-check mr-1"></i> Export
                     </a>
                 </div>
             </div>
@@ -64,10 +64,10 @@
                     <pre class="border-dark border p-2">{{ source('schedule/_schedule_task.txt') }}</pre>
                     <pre class="border-dark border p-2">{{ source('schedule/_task.txt') }}</pre>
 
-                    <h4 class="card-title">Utiliser un environnement d'éxecution custom</h4>
-                    <pre class="border-dark border p-2">{{ source('schedule/_schedule_custom_env.txt') }}</pre>
-                    <pre class="border-dark border p-2">{{ source('schedule/_custom_env.txt') }}</pre>
-                    <pre class="border-dark border p-2">{{ source('schedule/_task_custom_env.txt') }}</pre>
+                    <h4 class="card-title">Créer un contexte d'éxecution</h4>
+                    <pre class="border-dark border p-2">{{ source('schedule/_schedule_custom_context.txt') }}</pre>
+                    <pre class="border-dark border p-2">{{ source('schedule/_custom_context.txt') }}</pre>
+                    <pre class="border-dark border p-2">{{ source('schedule/_task_custom_context.txt') }}</pre>
                 </div>
             </div>
         </div>

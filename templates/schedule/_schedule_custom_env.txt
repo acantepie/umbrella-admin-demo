@@ -1,8 +1,0 @@
-$env = new DummyRuntimeEnv();
-$env->foo = true;
-
-$scheduler
-    ->create()
-    ->setDescription('Dummy task ...')
-    ->setTask(DummyTask::class, $env)
-    ->register();

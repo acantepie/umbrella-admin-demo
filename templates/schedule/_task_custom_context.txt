@@ -1,0 +1,12 @@
+class DummyTask extends AbstractTask
+{
+    /**
+     * @param DummyContext $context
+     */
+    public function execute(AbstractTaskContext $context)
+    {
+        if ($context->foo) {
+            // ...
+        }
+    }
+}
