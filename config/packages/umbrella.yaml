@@ -1,0 +1,20 @@
+umbrella_core:
+  webpack:
+    dev_server_enable: "%env(bool:WEBPACK_DEV_SERVER_ENABLE)%"
+  ckeditor:
+    configs:
+      custom:
+        toolbar:
+          - { name: links, items: [ 'Link', 'Unlink' ] }
+        uiColor: '#FEFEFE'
+
+umbrella_admin:
+  menu:
+    file: "../config/menu/admin_sidebar.yml"
+  theme:
+    name: "Umbrella"
+  assets:
+    script_entry: /build/admin.js
+    stylesheet_entry: /build/admin.css
+  filewriter:
+    notification_enable: true

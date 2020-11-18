@@ -1,0 +1,12 @@
+/**
+ * @ORM\Entity()
+ */
+class DummyContext extends AbstractTaskContext
+{
+    /**
+     * @var bool
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    public $foo = true;
+
+}

@@ -1,0 +1,129 @@
+menu:
+  umbrella2: Umbrella 2.0
+  about: A propos
+
+  ui: UI
+  theme: Thème
+  icon: Icones
+  icon_md: Material Design
+  icon_unicon: Unicons
+  tabs: Tabs
+
+
+  umbrella_components: Composants
+
+  datatables: Datatables
+  simple_datatable: Simple
+  multiple_datatable: Multiple
+  api_datatable: Source (Api - fishbase)
+  tree_datatable: Tree
+
+  schedule: Schedule
+
+  filewriter: File Writer
+  filewriter_simple: Simple
+  filewriter_datatable: Datatable
+
+  js_response: JsResponse
+  js_response_handler: JsResponseHandler
+
+  forms: Forms
+  toast: Toast
+
+  menu: Menu
+
+  admin: Administration
+  admin_jobs: Jobs
+  users: Utilisateurs
+  groups: Groupes
+
+breadcrumb:
+  form_base: Base
+  form_date: Date
+  form_ckeditor: Ckeditor
+  form_select2: Select2
+  form_collection: Collection
+  exemple: Exemple
+  howto: How to
+
+action:
+  add_fish: Ajouter un poisson
+  edit_fish: Modifier un poisson
+
+  export_selected: Exporter la sélection
+  export_selected_sync: Export - Synchrone
+  export_selected_async: Export - Asynchrone
+
+  export_searched: Exporter la recherche
+  export_searched_sync: Export - Synchrone
+  export_searched_async: Export - Asynchrone
+
+  add_fishcategory: Ajouter une catégorie
+  edit_fishcategory: Modifier une catégorie
+
+table:
+  name: Nom
+  description: Description
+  edible: Comestible
+  habitats: Habitats
+  picture: Image
+  species: Espece
+  genus: Genre
+  subfamily: Sous-famille
+  comments: Commentaire
+  speciesId: Code espece
+
+form:
+  label:
+    name: Nom
+    edible: Comestible
+    habitat: Habitat
+    habitats: Habitats
+    speciesId: Code espece (FishBase)
+
+    amount: Montant
+    color: Couleur
+    text: Texte
+    url: Url
+    file: Fichier
+    pdf: Fichier PDF
+
+    date: Date
+    past: Date passée
+    future: Date future
+    dateTime: Date + Horaires
+
+    species: Espece
+    manySpecies: Especes
+    tags: Tags
+
+    items: Items
+    strings: Chaines de caractères
+    files: Fichiers
+
+    text1: Texte 1
+    text2: Texte 2
+
+    loader: Loader
+    allowToastClose: Fermeture manuelle
+    hideAfter: Masqué aprés (ms)
+    type: Type
+    position: Position
+    label: Libellé
+    description: Description
+
+    shuffle: Mélanger le menu
+
+
+  placeholder:
+    habitat: habitat
+
+
+fish:
+  habitat:
+    sea: Mer, Océen
+    river: Rivière
+    lake: Lac, Etangs
+
+message:
+  signin_to_bo: "Site de démonstration pour <b>Umbrella v2.0</b>.<br><br>Identifiant : <b>umbrella</b><br> Mot de passe : <b>umbrella</b>"

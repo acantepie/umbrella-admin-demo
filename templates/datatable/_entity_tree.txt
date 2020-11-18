@@ -1,0 +1,44 @@
+/**
+ * @Gedmo\Tree(type="nested")
+ * @ORM\Entity()
+ */
+class TreeEntity implements TreeNodeInterface
+{
+    use TreeNodeTrait;
+
+    /**
+     * @var TreeEntity
+     *
+     * @Gedmo\TreeRoot
+     * @ORM\ManyToOne(targetEntity="TreeEntity")
+     * @ORM\JoinColumn(referencedColumnName="id", onDelete="CASCADE")
+     */
+    public $root;
+
+    /**
+     * @var TreeEntity
+     *
+     * @Gedmo\TreeParent
+     * @ORM\ManyToOne(targetEntity="TreeEntity", inversedBy="children")
+     * @ORM\JoinColumn(referencedColumnName="id", onDelete="CASCADE")
+     */
+    public $parent;
+
+    /**
+     * @var TreeEntity[]|ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="TreeEntity", mappedBy="parent", cascade={"ALL"})
+     * @ORM\OrderBy({"lft": "ASC"})
+     */
+    public $children;
+
+
+    /**
+     * TreeEntity constructor.
+     */
+    public function __construct()
+    {
+        $this->children = new ArrayCollection();
+    }
+
+}

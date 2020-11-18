@@ -1,0 +1,74 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Link</h4>
+            <ul class="list-group">
+
+                <li class="list-group-item">
+                    <a data-xhr="{{ path('app_admin_ajaxhandler_toast') }}" href="#">
+                        Server side toast action
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a data-xhr="{{ path('app_admin_ajaxhandler_toast') }}" href="#" data-confirm="Continuer ?">
+                        Confirm > Server side toast action
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a data-xhr="{{ path('app_admin_ajaxhandler_sleep') }}" href="#" data-spinner="{{ 'common.loading' | trans }}">
+                        Spinner > Server side toast action
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a data-xhr="{{ path('app_admin_ajaxhandler_error') }}" href="#">
+                        Server error
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a data-xhr="{{ path('app_admin_ajaxhandler_unauthorized') }}" href="#">
+                        Unauthorized
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a data-xhr="{{ path('app_admin_ajaxhandler_sleep', {sleep: 1}) }}" href="#" data-xhr-id="xhr-sleep">
+                        Prevent multiple ajax request
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a data-xhr="{{ path('app_admin_ajaxhandler_custom') }}" href="#" data-handler="custom">
+                        Custom ajax handler (see console.log)
+                    </a>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Form</h4>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <form data-xhr="{{ path('app_admin_ajaxhandler_toast') }}">
+                        <button type="submit" class="btn btn-primary">Server side toast action</button>
+                    </form>
+                </li>
+                <li class="list-group-item">
+                    <form data-xhr="{{ path('app_admin_ajaxhandler_toast') }}" data-confirm="Continuer ?">
+                        <button type="submit" class="btn btn-primary">Confirm > Server side toast action</button>
+                    </form>
+                </li>
+                <li class="list-group-item">
+                    <form data-xhr="{{ path('app_admin_ajaxhandler_sleep') }}" href="#" data-spinner="{{ 'common.loading' | trans }}">
+                        <button type="submit" class="btn btn-primary">Spinner > Server side toast action</button>
+                    </form>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+{% endblock %}

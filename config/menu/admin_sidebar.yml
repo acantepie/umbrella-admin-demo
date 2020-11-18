@@ -1,0 +1,68 @@
+umbrella2:
+    children:
+        about:
+            icon: mdi mdi-lifebuoy
+            route: app_admin_default_about
+
+ui:
+    children:
+        icon:
+            icon: uil-streering
+            children:
+                icon_md:
+                    route: app_admin_icon_md
+                icon_unicon:
+                    route: app_admin_icon_unicon
+        tabs:
+            icon: uil-layers-alt
+            route: app_admin_tabs_index
+
+umbrella_components:
+    children:
+        datatables:
+            icon: uil-table
+            children:
+                simple_datatable:
+                    route: app_admin_datatable_simple
+                multiple_datatable:
+                    route: app_admin_datatable_multiple
+                api_datatable:
+                    route: app_admin_datatable_api
+                tree_datatable:
+                    route: app_admin_datatable_tree
+
+        schedule:
+            icon: uil-process
+            route: app_admin_schedule_index
+
+        js_response:
+            icon: uil-exchange
+            children:
+                js_response_handler:
+                    route: app_admin_ajaxhandler_index
+
+        forms:
+            icon: uil-document-layout-center
+            route: app_admin_form_base
+
+        toast:
+            icon: uil-chat
+            route: app_admin_toast_index
+
+        menu:
+            icon: uil-bars
+            route: app_admin_menu_howto
+
+admin:
+    children:
+        admin_jobs:
+            icon: uil-process
+            route: umbrella_admin_job_index
+
+        users:
+            icon: uil-user
+            route: umbrella_admin_user_index
+
+        groups:
+            icon: uil-users-alt
+            route: umbrella_admin_usergroup_index

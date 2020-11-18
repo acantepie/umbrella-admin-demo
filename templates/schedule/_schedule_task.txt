@@ -1,0 +1,10 @@
+/** @var ScheduleHelper $scheduleHelper **/
+
+$id = $scheduleHelper
+    ->schedule()
+    ->setTask(MyTask::class)
+    ->setContext([
+        'say' => 'hello !'
+    ])
+    ->setDescription('My custom task ...')
+    ->register();

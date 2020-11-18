@@ -1,0 +1,18 @@
+framework:
+    ide: 'phpstorm://open?url=file://%%f&line=%%l'
+    secret: '%env(APP_SECRET)%'
+    http_method_override: true
+
+    session:
+        handler_id: null
+        cookie_secure: auto
+        cookie_samesite: lax
+        save_path:   "%kernel.project_dir%/var/sessions/%kernel.environment%"
+
+    php_errors:
+        log: true
+
+    assets:
+        json_manifest_path: '../public/build/manifest.prod.json'
+
+

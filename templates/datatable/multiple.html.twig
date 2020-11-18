@@ -1,0 +1,21 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h4>Poisson comestible</h4>
+        </div>
+        <div class="card-body">
+            {{ render_table(edible_table) }}
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Poisson non comestible</h4>
+        </div>
+        <div class="card-body">
+            {{ render_table(notedible_table) }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+class MyMenuFactory
+{
+    /**
+     * @param MenuFactory $factory
+     * @return Menu
+     */
+    public function createMenu(MenuFactory $factory)
+    {
+        $menu = $factory->createMenu();
+
+        $menu->getRoot()->addChild('foo', [
+            'label' => 'bar,
+            'route' => 'app_admin_bar_index
+        ]);
+
+        return $menu;
+    }
+}

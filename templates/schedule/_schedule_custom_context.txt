@@ -1,0 +1,11 @@
+/** @var ScheduleHelper $scheduleHelper **/
+
+$context = new DummyContext();
+$context->foo = false;
+
+$id = $scheduleHelper
+    ->schedule()
+    ->setDescription('Dummy task ...')
+    ->setTask(DummyTask::class)
+    ->setContext($context)
+    ->register();

@@ -1,0 +1,24 @@
+class MyTask extends AbstractTask
+{
+    /**
+     * @var EntityManagerInterface
+     */
+    private $em;
+
+    ...
+
+    /**
+     * @var ArrayTaskContext $context
+     */
+    public function execute(AbstractTaskContext $context)
+    {
+        if (isset($context['say']) {
+            echo $context['say'];
+        }
+
+        ...
+
+        $context['output'] = 'foo';
+        $this->em->flush();
+    }
+}

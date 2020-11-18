@@ -1,0 +1,12 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h4>Exporter des poissons</h4>
+        </div>
+        <div class="card-body">
+            {{ render_table(table) }}
+        </div>
+    </div>
+{% endblock %}
