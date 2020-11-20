@@ -32,7 +32,7 @@ acl:
 	sudo setfacl -R -m u:$(HTTP_USER):rwX -m u:$(whoami):rwX var public
 
 php-cs-fix:
-	vendor/bin/php-cs-fixer fix
+	php-cs-fixer fix
 
 ## --- Node & Webpack ----------------------
 webpack-build-dev: ## Build webpack package on dev env
