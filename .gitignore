@@ -25,7 +25,9 @@
 
 ###> webpack ###
 /node_modules/*
-#/public/build/dev
+/public/build/dev
+/public/build/*.hot-update.js
+/public/build/*.hot-update.json
 yarn-error.log
 ###< webpack ###
 

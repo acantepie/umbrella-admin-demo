@@ -1,6 +1,6 @@
 umbrella_core:
   webpack:
-    dev_server_enable: "%env(bool:WEBPACK_DEV_SERVER_ENABLE)%"
+    dev_server_enable: "%env(bool:WEBPACK_SERVE)%"
   ckeditor:
     configs:
       custom:

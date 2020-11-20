@@ -12,7 +12,3 @@ framework:
     php_errors:
         log: true
 
-    assets:
-        json_manifest_path: '../public/build/manifest.prod.json'
-
-

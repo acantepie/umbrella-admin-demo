@@ -2,22 +2,17 @@
 
 SHELL := '/bin/bash'
 CONSOLE=bin/console
-WEBPACK=node_modules/.bin/webpack
-WEBPACK_DEV_SERVER=node_modules/.bin/webpack-dev-server
 HTTP_USER=$$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)
 
 help: ## Outputs this help screen
 	@grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}{printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
 
 ## --- Install & Update --------------------
-install-dev: composer-install node-install db-create db-update ## install project on local env
-
-update-dev: project-update composer-update node-install db-update ## update project on local env
-
-update: project-update composer-update db-update ## update project on server
+install: git-update composer-install node-install db-create db-update
+update: git-update composer-install db-update
 
 ## --- Symfony -----------------------------
-cc: ## cache delete, warmup & assets install
+cc: ## cache clear & assets install
 	php $(CONSOLE) c:c
 	php $(CONSOLE) assets:install --symlink
 
@@ -31,39 +26,33 @@ acl:
 	sudo setfacl -dR -m u:$(HTTP_USER):rwX -m u:$(whoami):rwX var public
 	sudo setfacl -R -m u:$(HTTP_USER):rwX -m u:$(whoami):rwX var public
 
-php-cs-fix:
-	php-cs-fixer fix
-
 ## --- Node & Webpack ----------------------
-webpack-build-dev: ## Build webpack package on dev env
-	export NODE_ENV="development" && $(WEBPACK) --config webpack.config.js
-
-webpack-build: ## delete build & Webpack build
-	rm -Rf public/build
-	export NODE_ENV="production" && $(WEBPACK) --config webpack.config.js
-
-watch: ## DRun Webpack with watch
-	export NODE_ENV="development" && $(WEBPACK) --config webpack.config.js --progress --colors --watch
-
-hotreload: ## Run Webpack with hot reload using Webpack dev server
-	export NODE_ENV="development" && $(WEBPACK_DEV_SERVER) --config webpack.config.js
-
 node-install: ## yarn install node_modules
 	yarn install
 
-node-update: ## yarn update node_modules
-	yarn upgrade
+watch: ## DRun Webpack with watch
+	yarn wb-watch
+
+serve: ## Run Webpack with hot reload using Webpack dev server
+	yarn wb-serve
+
+wb-build: ## Build webpack package on dev env
+	rm -Rf public/build/dev
+	yarn wb-build
+
+wb-build-prod: ## delete build & Webpack build
+	rm -Rf public/build/prod
+	yarn wb-build-prod
 
 ## --- Database ----------------------------
-db-create: ##drop database if exists, and create database
-	php $(CONSOLE) doctrine:database:drop --force --if-exists
+db-create: ##  create database
 	php $(CONSOLE) doctrine:database:create --if-not-exists
 
 db-update: ## update database
 	php $(CONSOLE) doctrine:schema:update --force --dump-sql --complete
 
 ## --- Project -----------------------------
-project-update: ## update project from git
+git-update: ## update project from git
 	git pull
 
 vendor-fix: ## fix vendor
