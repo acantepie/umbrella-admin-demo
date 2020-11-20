@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Form\Schedule;
-
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -14,10 +12,8 @@ use Symfony\Component\Validator\Constraints\Positive;
  */
 class NewFishType extends AbstractType
 {
-
     /**
-     * @inheritDoc
-     *
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -28,5 +24,4 @@ class NewFishType extends AbstractType
             ]
         ]);
     }
-
 }

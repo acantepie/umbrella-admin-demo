@@ -37,7 +37,7 @@ class NewFishTask extends AbstractTask
     }
 
     /**
-     * @var ArrayTaskContext $context
+     * @var ArrayTaskContext
      */
     public function execute(AbstractTaskContext $context)
     {

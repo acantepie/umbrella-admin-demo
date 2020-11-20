@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Task;
-
 
 use App\Entity\Fish;
 use Doctrine\ORM\EntityManagerInterface;
@@ -24,6 +22,7 @@ class ExportFishTask extends AbstractTask
 
     /**
      * ExportFishTask constructor.
+     *
      * @param EntityManagerInterface $em
      */
     public function __construct(EntityManagerInterface $em)
@@ -32,7 +31,7 @@ class ExportFishTask extends AbstractTask
     }
 
     /**
-     * @var ArrayTaskContext $context
+     * @var ArrayTaskContext
      */
     public function execute(AbstractTaskContext $context)
     {
@@ -56,5 +55,4 @@ class ExportFishTask extends AbstractTask
 
         $this->em->flush();
     }
-
 }

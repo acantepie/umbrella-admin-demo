@@ -38,7 +38,7 @@ class ScheduleController extends BaseController
                 ->register();
 
             return $this->redirectToRoute('app_admin_schedule_index', [
-                'job_id' => $id
+                'job_id' => $id,
             ]);
         }
 
@@ -59,12 +59,12 @@ class ScheduleController extends BaseController
                 'fishes.csv'
             );
             $response->headers->set('Content-Disposition', $disposition);
+
             return $response;
         }
 
         return $this->render('schedule/index.html.twig', [
-            'new_fish_form' => $newFishForm->createView()
+            'new_fish_form' => $newFishForm->createView(),
         ]);
     }
-
 }
