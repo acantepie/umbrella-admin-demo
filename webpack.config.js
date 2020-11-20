@@ -44,7 +44,6 @@ module.exports = (env, argv) => {
         CONFIG.output.manifest = 'prod/manifest.json';
     }
 
-
     return {
         mode: argv.mode,
         performance: {
@@ -116,7 +115,6 @@ module.exports = (env, argv) => {
             host: SERVE_HOST,
             port: SERVE_PORT,
             headers: {'Access-Control-Allow-Origin': '*'},
-            writeToDisk: true,
             stats: {
                 colors: true
             }
@@ -153,7 +151,7 @@ module.exports = (env, argv) => {
                 {
                     test: /\.(scss|css)$/,
                     use: [
-                        MiniCssExtractPlugin.loader,
+                        argv.mode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
                         {
                             loader: "css-loader",
                             options: {
@@ -189,5 +187,5 @@ module.exports = (env, argv) => {
                 }
             ]
         }
-    }
+    };
 };
