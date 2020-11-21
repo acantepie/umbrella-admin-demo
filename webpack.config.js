@@ -1,5 +1,6 @@
 const path = require('path');
 const Encore = require('@symfony/webpack-encore');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
@@ -72,5 +73,11 @@ Encore
         config.useBuiltIns = 'usage';
         config.corejs = 3;
     });
+
+if (Encore.isDevServer()) {
+    Encore.addPlugin(new WriteFilePlugin({
+        test: /ckeditor4/,
+    }), 100)
+}
 
 module.exports = Encore.getWebpackConfig();

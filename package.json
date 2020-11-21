@@ -30,11 +30,12 @@
         "@symfony/webpack-encore": "^0.31.0",
         "babel-plugin-transform-class-properties": "^6.24.1",
         "core-js": "^3.0.0",
+        "node-sass": "^4.0.0",
         "npm": "^6.14.9",
         "regenerator-runtime": "^0.13.2",
         "sass-loader": "^9.0.1",
-        "node-sass": "^4.0.0",
-        "webpack-notifier": "^1.6.0"
+        "webpack-notifier": "^1.6.0",
+        "write-file-webpack-plugin": "^4.5.1"
     },
     "scripts": {
         "dev-server": "encore dev-server  --port 9000 --disable-host-check",
