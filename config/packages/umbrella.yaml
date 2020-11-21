@@ -1,6 +1,4 @@
 umbrella_core:
-  webpack:
-    dev_server_enable: "%env(bool:WEBPACK_SERVE)%"
   ckeditor:
     configs:
       custom:
@@ -14,7 +12,7 @@ umbrella_admin:
   theme:
     name: "Umbrella"
   assets:
-    script_entry: /build/admin.js
-    stylesheet_entry: /build/admin.css
+    script_entry: admin
+    stylesheet_entry: admin
   filewriter:
     notification_enable: true

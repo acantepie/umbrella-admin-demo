@@ -32,9 +32,10 @@
         "symfony/twig-pack": "*",
         "symfony/validator": "5.0.*",
         "symfony/web-link": "5.0.*",
+        "symfony/webpack-encore-bundle": "^1.8",
         "symfony/yaml": "5.0.*",
-        "umbrella2/corebundle": "dev-master",
-        "umbrella2/adminbundle": "dev-master"
+        "umbrella2/adminbundle": "dev-master",
+        "umbrella2/corebundle": "dev-master"
     },
     "require-dev": {
         "umbrella2/makerbundle": "dev-master",

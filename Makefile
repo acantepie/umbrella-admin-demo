@@ -31,18 +31,16 @@ node-install: ## yarn install node_modules
 	yarn install
 
 watch: ## DRun Webpack with watch
-	yarn wb-watch
+	yarn watch
 
-serve: ## Run Webpack with hot reload using Webpack dev server
-	yarn wb-serve
+dev-server: ## Run Webpack with hot reload using Webpack dev server
+	yarn dev-server
 
 wb-build: ## Build webpack package on dev env
-	rm -Rf public/build/dev
-	yarn wb-build
+	yarn dev
 
 wb-build-prod: ## delete build & Webpack build
-	rm -Rf public/build/prod
-	yarn wb-build-prod
+	yarn build
 
 ## --- Database ----------------------------
 db-create: ##  create database
