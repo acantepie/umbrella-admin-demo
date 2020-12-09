@@ -23,8 +23,8 @@ class Fish
     const HABITAT_RIVER = 'river';
 
     use IdTrait;
-    use TimestampTrait;
     use SearchTrait;
+    use TimestampTrait;
 
     /**
      * @var string

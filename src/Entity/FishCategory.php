@@ -23,9 +23,9 @@ use Umbrella\CoreBundle\Model\TreeNodeTrait;
  */
 class FishCategory implements TreeNodeInterface
 {
+    use SearchTrait;
     use TimestampTrait;
     use TreeNodeTrait;
-    use SearchTrait;
 
     /**
      * @var FishCategory
