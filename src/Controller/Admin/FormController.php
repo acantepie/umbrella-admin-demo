@@ -13,11 +13,13 @@ use App\Entity\FormExample\BaseExample;
 use App\Entity\FormExample\CkeditorExample;
 use App\Entity\FormExample\CollectionExample;
 use App\Entity\FormExample\DateExample;
+use App\Entity\FormExample\FileExample;
 use App\Entity\FormExample\Select2Example;
 use App\Form\FormExample\BaseExampleType;
 use App\Form\FormExample\CkEditorExampleType;
 use App\Form\FormExample\CollectionExampleType;
 use App\Form\FormExample\DateExampleType;
+use App\Form\FormExample\FileExampleType;
 use App\Form\FormExample\Select2ExampleType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,6 +55,33 @@ class FormController extends BaseController
         }
 
         return $this->render('form/base.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/file")
+     */
+    public function fileAction(Request $request)
+    {
+        $this->getMenu()->setCurrent(':forms');
+        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_file']);
+
+        /** @var FileExample $entity */
+        $entity = $this->loadOne(FileExample::class);
+
+        $form = $this->createForm(FileExampleType::class, $entity);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->persistAndFlush($entity);
+
+            $this->toastSuccess('message.entity_updated');
+
+            return $this->redirectToRoute('app_admin_form_file');
+        }
+
+        return $this->render('form/file.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -154,7 +183,6 @@ class FormController extends BaseController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->persistAndFlush($entity);
-
             $this->toastSuccess('message.entity_updated');
 
             return $this->redirectToRoute('app_admin_form_collection');

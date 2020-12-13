@@ -11,8 +11,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\Form\CustomCheckboxType;
 use Umbrella\CoreBundle\Form\CustomRangeType;
-use Umbrella\CoreBundle\Form\UmbrellaFileType;
-use Umbrella\CoreBundle\Validator\Constraints\UmbrellaFileConstraint;
 
 /**
  * Class BaseExampleType
@@ -50,19 +48,6 @@ class BaseExampleType extends AbstractType
             'input_suffix_text' => '.com',
             'help' => 'Input avec suffix & prefix (formExtension)',
             'required' => false,
-        ]);
-
-        $builder->add('file', UmbrellaFileType::class, [
-            'required' => false,
-            'help' => 'UmbrellaFileType',
-        ]);
-
-        $builder->add('pdf', UmbrellaFileType::class, [
-            'required' => false,
-            'constraints' => new UmbrellaFileConstraint([
-                'mimeTypes' => 'application/pdf',
-            ]),
-            'help' => 'UmbrellaFileType (with constraints on mimeTypes using UmbrellaFileConstraint)',
         ]);
     }
 

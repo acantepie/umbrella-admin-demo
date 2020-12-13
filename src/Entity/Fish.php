@@ -3,8 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Umbrella\CoreBundle\Annotation\Searchable;
-use Umbrella\CoreBundle\Annotation\SearchableField;
+use Umbrella\CoreBundle\Component\Search\Annotation\Searchable;
+use Umbrella\CoreBundle\Component\Search\Annotation\SearchableField;
 use Umbrella\CoreBundle\Model\IdTrait;
 use Umbrella\CoreBundle\Model\SearchTrait;
 use Umbrella\CoreBundle\Model\TimestampTrait;

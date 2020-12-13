@@ -39,6 +39,7 @@ menu:
 
 breadcrumb:
   form_base: Base
+  form_file: Fichier
   form_date: Date
   form_ckeditor: Ckeditor
   form_select2: Select2

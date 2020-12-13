@@ -9,6 +9,7 @@ use App\Entity\FormExample\CkeditorExample;
 use App\Entity\FormExample\CollectionExample;
 use App\Entity\FormExample\CollectionItemExample;
 use App\Entity\FormExample\DateExample;
+use App\Entity\FormExample\FileExample;
 use App\Entity\FormExample\Select2Example;
 use App\Entity\User;
 use App\Entity\UserGroup;
@@ -177,6 +178,9 @@ class AppFixtures extends Fixture
     private function loadFormExample(ObjectManager $manager)
     {
         $e = new BaseExample();
+        $manager->persist($e);
+
+        $e = new FileExample();
         $manager->persist($e);
 
         $e = new DateExample();

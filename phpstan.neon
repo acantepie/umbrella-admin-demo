@@ -1,0 +1,15 @@
+includes:
+    - %rootDir%-doctrine/extension.neon
+    - %rootDir%-doctrine/rules.neon
+    - %rootDir%-symfony/extension.neon
+    - %rootDir%-symfony/rules.neon
+
+parameters:
+    level: max
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    paths:
+#        - src
+        - vendor/umbrella2/corebundle
+    symfony:
+        container_xml_path: var/cache/dev/App_KernelDevDebugContainer.xml

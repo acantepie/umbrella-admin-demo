@@ -11,7 +11,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\AdminBundle\Entity\BaseUserGroup;
-use Umbrella\CoreBundle\Annotation\Searchable;
+use Umbrella\CoreBundle\Component\Search\Annotation\Searchable;
 
 /**
  * Class UserGroup
