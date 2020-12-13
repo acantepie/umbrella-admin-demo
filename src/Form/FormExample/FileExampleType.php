@@ -20,7 +20,7 @@ class FileExampleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('file', UmbrellaFileType::class, [
-            'required' => false
+            'required' => true,
         ]);
 
         $builder->add('pdf', UmbrellaFileType::class, [
