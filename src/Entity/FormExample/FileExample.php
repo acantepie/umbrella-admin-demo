@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Entity\FormExample;
 
 use Doctrine\ORM\Mapping as ORM;
