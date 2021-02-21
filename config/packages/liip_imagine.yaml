@@ -1,0 +1,12 @@
+liip_imagine:
+    driver: "gd"
+    loaders:
+        default:
+            flysystem:
+                filesystem_service: default.storage
+
+    filter_sets:
+        user_avatar:
+            quality: 90
+            filters:
+                thumbnail: { size: [45, 45], mode: outbound }

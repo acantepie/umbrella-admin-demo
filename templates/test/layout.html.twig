@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    {% block title %}
+        <title>Umbrella 2 App</title>
+    {% endblock %}
+
+    {% block stylesheets %}
+        {% include "test/_stylesheets.html.twig" %}
+    {% endblock %}
+</head>
+
+{% include "@UmbrellaCore/_toastr.html.twig" %}
+
+{% block body %}
+    <body>
+        {% block content %}
+        {% endblock %}
+    </body>
+{% endblock %}
+
+{% block javascripts %}
+    {% include "test/_scripts.html.twig" %}
+{% endblock %}
+</html>
+
+
+
+
+
+

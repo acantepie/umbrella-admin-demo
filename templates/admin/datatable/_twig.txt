@@ -1,0 +1,5 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+     {{ render_table(table) }}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% use "@UmbrellaAdmin/Menu/sidebar_block.html.twig" %}
+
+<div class="custom-menu bg-dark" style="width: 300px;">
+
+    <div class="logo text-center">
+        <span class="logo-lg logo-title">
+            <i class="uil uil-bars"></i> Custom menu
+        </span>
+    </div>
+
+    <div class="h-100" id="left-side-menu-container" data-simplebar>
+        <ul class="metismenu side-nav" data-mount="Sidebar">
+            {{ block('menu_widget') }}
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+</div>

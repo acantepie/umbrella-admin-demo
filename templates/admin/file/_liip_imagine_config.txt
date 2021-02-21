@@ -1,0 +1,5 @@
+liip_imagine:
+    loaders:
+        default:
+            flysystem:
+                filesystem_service: default.storage

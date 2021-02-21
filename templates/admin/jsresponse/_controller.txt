@@ -1,0 +1,25 @@
+/**
+ * @Route("/foo/bar")
+ */
+public function barAction(Request $request)
+{
+    // Affichera un toast
+    return new JsonResponse([
+        ['action' => 'toast', 'params' => ['text' => 'Hello world !', 'icon' => 'success']]
+    ]);
+
+    // Affichera un toast en utilisant jsResponseBuilder
+    return $this->jsResponseBuilder()
+        ->toastSuccess('Hello world !')
+        ->getResponse();
+
+    // Appeler la méthode getResponse() n'est pas obligatoire
+    return $this->jsResponseBuilder()
+        ->toastSuccess('Hello world !');
+
+    // Plusieurs actions peuvent être executées les unes à la suite des autres
+    return $this->jsResponseBuilder()
+        ->toastSuccess('Hello world !') // afficher un  toast
+        ->update('.foo', '<h1>Hello world !</h1>') // mettre un jour une partie du DOM HTML
+        ->openModalView('@UmbrellaCore/Modal/default.html.twig', []); // ouvrir une modal
+}

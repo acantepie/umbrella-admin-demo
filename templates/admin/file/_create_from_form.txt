@@ -1,0 +1,17 @@
+use Umbrella\CoreBundle\Form\UmbrellaFileType;
+use Umbrella\CoreBundle\Component\UmbrellaFile\Validator\Constraints\UmbrellaImageConstraint;
+
+class FileExampleType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder->add('file', UmbrellaFileType::class, [
+            'required' => true,
+            'allow_delete' => false,
+            'constraints' => [
+                new NotNull(),
+                new UmbrellaImageConstraint()
+            ]
+        ]);
+    }
+}

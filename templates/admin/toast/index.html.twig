@@ -1,0 +1,22 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+
+
+    <form enctype="multipart/form-data" method="POST" data-mount="Form" data-xhr="{{ app.request.uri }}">
+
+        <div class="d-flex mb-3">
+            <span class="ml-auto"></span>
+            <button type="submit" class="btn btn-primary">
+                <i class="mdi mdi-check"></i> Afficher un toast
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                {{ form_errors(form) }}
+                {{ form_rest(form) }}
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,4 @@
+services:
+    App\Menu\MyMenu:
+        tags:
+            - {name: umbrella.menu.factory, method: createMenu, alias: my_menu}

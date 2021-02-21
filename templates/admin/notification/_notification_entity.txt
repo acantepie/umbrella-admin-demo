@@ -1,0 +1,15 @@
+namespace App\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+use Umbrella\AdminBundle\Entity\BaseNotification;
+
+/**
+ * Class App\Entity\Notification.
+ * @ORM\Entity
+ */
+class Notification extends BaseNotification
+{
+
+    ...
+}

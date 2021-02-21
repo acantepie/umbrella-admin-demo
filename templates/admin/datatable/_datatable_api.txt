@@ -1,0 +1,40 @@
+class ApiTableType extends DataTableType
+{
+    /**
+     * @var HttpClientInterface
+     */
+    private $client;
+
+    /**
+     * ApiTableType constructor.
+     *
+     * @param HttpClientInterface $client
+     */
+    public function __construct(HttpClientInterface $client)
+    {
+        $this->client = $client;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function buildTable(DataTableBuilder $builder, array $options = [])
+    {
+        $builder->add('name', PropertyColumnType::class, [
+            'property_path' => '[name]',
+        ]);
+        $builder->add(...);
+
+        $builder->useAdapter(function (DataTableRequest $request) {
+            $data = $this->client->request(...);
+            ...
+
+            return new DataTableResult($data['data'], $data['count']);
+        });
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefault('id_path', '[id]');
+    }
+}

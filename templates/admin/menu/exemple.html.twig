@@ -1,0 +1,29 @@
+{% extends "admin/menu/layout.html.twig" %}
+
+{% block tab_content %}
+    <div class="card">
+        <div class="card-body">
+            <p><code>config/services.yml</code></p>
+            <pre class="border-dark border p-2">
+services:
+    App\Menu\CustomMenu:
+        tags:
+            - {name: umbrella.menu.factory, method: createMenu, alias: custom_menu}
+            - {name: umbrella.menu.renderer, method: renderMenu, alias: custom_menu}
+            - {name: umbrella.breadcrumb.renderer, method: renderBreadcrumb, alias: custom_menu}
+            </pre>
+
+            <h5>Breadcrumb</h5>
+
+            <div class="border-dark border p-2">
+                {{ breadcrumb_render('custom_menu', {class: 'mb-0'}) }}
+            </div>
+
+            <h5>Menu</h5>
+
+            <div class="border-dark border p-2">
+                {{ menu_render('custom_menu') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

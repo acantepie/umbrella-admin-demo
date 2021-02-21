@@ -1,0 +1,36 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Les makers</h4>
+            <p>
+                Un maker est une commande symfony vous permettant de générer du code. Par exemple le MakeTable génerera une entité, un repo, une DataTable, un formulaire, ... Il vous suffira ensuite de compléter ses classes.
+            </p>
+
+            <h4 class="card-title">CRUD table</h4>
+            <code>php bin/console umbrella:make:table [entity_name] [--force] [--update-schema]</code>
+
+            <ul>
+                <li><b>--force / -f</b> : Si un fichier généré existe, il sera écrasé.</li>
+                <li><b>--update-schema / -u</b> : Mise à jour automatique du schéma de base de données une fois les fichiers générés.</li>
+            </ul>
+
+            <h4 class="card-title">CRUD tree</h4>
+            <code>php bin/console umbrella:make:tree [entity_name] [--force] [--update-schema]</code>
+
+            <ul>
+                <li><b>--force / -f</b> : Si un fichier généré existe, il sera écrasé.</li>
+                <li><b>--update-schema / -u</b> : Mise à jour automatique du schéma de base de données une fois les fichiers générés.</li>
+            </ul>
+
+            <h4 class="card-title">Setup Notifications</h4>
+            <code>php bin/console umbrella:make:notification[--force] [--update-schema]</code>
+
+            <ul>
+                <li><b>--force / -f</b> : Si un fichier généré existe, il sera écrasé.</li>
+                <li><b>--update-schema / -u</b> : Mise à jour automatique du schéma de base de données une fois les fichiers générés.</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

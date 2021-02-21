@@ -1,0 +1,27 @@
+{% extends "admin/menu/layout.html.twig" %}
+
+{% block tab_content %}
+    <div class="card">
+        <div class="card-body">
+
+            <p>Chaque menu est identifié par un alias, cet alias sera utilisé pour récupérer le menu via différentes fonctions.</p>
+            <p>
+                Par exemple la méthode <code>getMenu($name)</code> ou <code>getBreadcrumb($name)</code> dans un controller prend en paramètre un alias de menu, il en est de même pour les fonctions twig.<br>
+                Si aucun alias n'est précisé, alors la fonction utilisera automatiquement l'alias par défault définit dans la config <code>umbrella_core.menu.default_alias</code><br>
+                Par défaut cet alias est <b>admin_sidebar</b>, ce qui correspond au menu définit dans <code>Umbrella/AdminBundle/Menu/AdminSidebar</code>
+            </p>
+
+            <h4 class="card-title">Créer un menu</h4>
+
+            <pre class="border-dark border p-2">{{  source('admin/menu/_menu_config.txt') }}</pre>
+            <pre class="border-dark border p-2">{{ source('admin/menu/_menu.txt') }}</pre>
+
+            <h4 class="card-title">Afficher votre menu</h4>
+            <pre class="border-dark border p-2">{{ source('admin/menu/_twig.txt') }}</pre>
+
+            <h4 class="card-title">Personnaliser le rendu</h4>
+            <pre class="border-dark border p-2">{{ source('admin/menu/_menu_renderer_config.txt') }}</pre>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+umbrella_core:
+  ckeditor:
+    configs:
+      custom:
+        toolbar:
+          - { name: links, items: [ 'Link', 'Unlink' ] }
+        uiColor: '#FEFEFE'
+  file:
+    flystorage: default.storage
+    mappings:
+      default.mapping:
+        uri: /download/{storageName}/{name}
+      admin.mapping:
+        uri: /admin/file/{storageName}
+
+umbrella_admin:
+  menu:
+    file: "../config/menu/admin_sidebar.yml"
+  theme:
+    name: "Umbrella demo"
+  assets:
+    script_entry: admin
+    stylesheet_entry: admin
+  notification:
+    provider: App\Notification\NotificationProvider
+    poll_interval: 10
+

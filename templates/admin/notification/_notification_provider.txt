@@ -1,0 +1,13 @@
+namespace App\Notification;
+
+use Umbrella\AdminBundle\Notification\Provider\NotificationProviderInterface;
+
+class NotificationProvider implements NotificationProviderInterface
+{
+    public function findByUser($user): iterable
+    {
+         // build your query to load entities from doctrine here.
+         $notifications = [ ... ];
+         return $notifications;
+    }
+}

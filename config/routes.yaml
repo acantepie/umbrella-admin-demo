@@ -1,0 +1,23 @@
+umbrella_file_:
+  resource: "@UmbrellaCoreBundle/Component/UmbrellaFile/UmbrellaFileController.php"
+  type: annotation
+  prefix: /download
+
+umbrella_admin_:
+  resource: "@UmbrellaAdminBundle/Resources/config/routing.yml"
+  prefix: /admin
+
+app_:
+  resource: "../src/Controller/"
+  type: annotation
+  prefix: /
+
+admin_:
+  resource: "../src/Controller/Admin/"
+  type: annotation
+  prefix: /admin
+
+test_:
+  resource: "../src/Controller/Test/"
+  type: annotation
+  prefix: /test

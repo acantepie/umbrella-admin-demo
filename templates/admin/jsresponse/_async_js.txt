@@ -1,0 +1,13 @@
+import AjaxUtils from 'umbrella_core/utils/AjaxUtils';
+
+// do request
+AjaxUtils.request({
+    'method' : 'get',
+    'url' : 'umbrella.dev/foo/bar'
+});
+
+// do GET request
+AjaxUtils.get({
+    'url' : 'umbrella.dev/foo/bar',
+    'data' : {},
+});

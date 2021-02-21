@@ -1,0 +1,18 @@
+monolog:
+  handlers:
+    symfony:
+      type: stream
+      path: "%kernel.logs_dir%/symfony.log"
+      channels: ["!app", "!php"]
+    app:
+      type: stream
+      path: "%kernel.logs_dir%/app.log"
+      channels: ["app"]
+      formatter: monolog.formatter.main
+
+
+services:
+  monolog.formatter.main:
+    class: Monolog\Formatter\LineFormatter
+    arguments:
+      - "[%%datetime%%] <%%level_name%%>: %%message%%\n"

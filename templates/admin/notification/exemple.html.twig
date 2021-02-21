@@ -1,0 +1,17 @@
+{% extends "admin/notification/layout.html.twig" %}
+
+{% block tab_content %}
+    <div class="card">
+        <div class="card-body">
+            <form enctype="multipart/form-data" method="POST" data-mount="Form">
+                {{ form_errors(form) }}
+                {{ form_rest(form) }}
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="mdi mdi-send"></i> {{ 'action.send' | trans }}
+                </button>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

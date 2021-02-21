@@ -1,0 +1,11 @@
+umbrella_admin:
+  notification:
+
+    # Votre service provider
+    provider: App\Notification\NotificationProvider
+
+    # [facultatif] Votre service renderer
+    renderer: App\Notification\NotificationRenderer
+
+    # [facultatif] La fréquence de rafraichissement du widget notification en secondes (mettre 0 ou false pour ne pas rafraichir)
+    poll_interval: 10

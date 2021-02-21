@@ -1,0 +1,16 @@
+class MyMenu
+{
+    public function createMenu(MenuBuilder $builder) : Menu
+    {
+        $builder
+            ->root()
+            ->add('foo')
+                ->add('bar')
+                    ->setLabel('bar label')
+                    ->end()
+                ->add('baz')
+         ...
+
+        return $builder->getMenu();
+    }
+}

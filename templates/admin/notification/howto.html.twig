@@ -1,0 +1,43 @@
+{% extends "admin/notification/layout.html.twig" %}
+
+{% block tab_content %}
+    <div class="card">
+        <div class="card-body">
+
+            <h4 class="card-title">L'entité Notification</h4>
+            <p>
+                Créer l'entité <b>Notification</b>. Cette entité doit hériter de <code>Umbrella\AdminBundle\Entity\BaseNotification</code>.<br>
+                Vous pouvez y ajouter tous les attributs nécéssaires pour le contenu de vos notifications et le filtrage des destinataires.
+            </p>
+            <pre class="border-dark border p-2">{{ source('admin/notification/_notification_entity.txt') }}</pre>
+
+
+            <h4 class="card-title">Le provider</h4>
+            <p>
+                Le provider est un service qui doit retourner la liste des notifications en fonction du $user passé en paramètre.<br>
+                Ce service doit implémenter l'interface <code>Umbrella\AdminBundle\Notification\Provider\NotificationProviderInterface</code> et définir la fonction <code>public function findByUser($user): iterable</code>.
+            </p>
+            <pre class="border-dark border p-2">{{ source('admin/notification/_notification_provider.txt') }}</pre>
+
+
+            <h4 class="card-title">Le renderer</h4>
+            <p>
+                Le renderer définit la façon dont vos notifications vont être affichés sur le client.<br>
+                Si aucun renderer n'est définit dans votre projet, le renderer de Umbrella sera utilisé : <code>Umbrella\AdminBundle\Notification\Renderer\NotificationRenderer</code>
+                Vous pouvez définir votre renderer afin de modifier la façon dont les notifications seront affichés en implémentant la classe <code>Umbrella\AdminBundle\Notification\Renderer\NotificationRendererInterface</code>
+            </p>
+
+            <p class="alert alert-info">
+                Il est possible d'utiliser la commande <b>php bin/console umbrella:make:notification</b> afin de générer le provider ainsi que les entités automatiquement.
+            </p>
+
+            <h4 class="card-title">Configuration</h4>
+            <p>
+                Vous devez ajouter les lignes suivantes dans le fichier <code>config/packages/umbrella.yaml</code> pour activer le composant.
+            </p>
+            <pre class="border-dark border p-2">{{ source('admin/notification/_notification_config.txt') }}</pre>
+
+
+        </div>
+    </div>
+{% endblock %}
