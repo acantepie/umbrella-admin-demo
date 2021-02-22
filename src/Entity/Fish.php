@@ -18,13 +18,12 @@ use Umbrella\CoreBundle\Model\TimestampTrait;
  */
 class Fish
 {
-    const HABITAT_SEA = 'sea';
-    const HABITAT_LAKE = 'lake';
-    const HABITAT_RIVER = 'river';
-
     use IdTrait;
     use SearchTrait;
     use TimestampTrait;
+    const HABITAT_SEA = 'sea';
+    const HABITAT_LAKE = 'lake';
+    const HABITAT_RIVER = 'river';
 
     /**
      * @var string

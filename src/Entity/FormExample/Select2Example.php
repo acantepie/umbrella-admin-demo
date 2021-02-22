@@ -14,6 +14,7 @@ use Umbrella\CoreBundle\Model\IdTrait;
  */
 class Select2Example
 {
+    use IdTrait;
     const SPECIES = [
         'Gardon',
         'Saumon',
@@ -27,8 +28,6 @@ class Select2Example
         'Anguille' => 'Poisson long et visqueux',
         'Lamproie' => 'Poisson de vase, ayant une anatomie proche des poissons préhistoriques',
     ];
-
-    use IdTrait;
 
     /**
      * @ORM\Column(type="string", nullable=true)
