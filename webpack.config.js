@@ -15,7 +15,6 @@ Encore
     })
 
     .addEntry('admin', './assets/admin/Admin.js')
-    .addEntry('test', './assets/test/Test.js')
     .addEntry('ckeditor', './vendor/umbrella2/corebundle/Resources/assets/vendor/ckeditor/ckeditor.js')
 
     .enableSassLoader()

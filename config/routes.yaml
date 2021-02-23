@@ -16,8 +16,3 @@ admin_:
   resource: "../src/Controller/Admin/"
   type: annotation
   prefix: /admin
-
-test_:
-  resource: "../src/Controller/Test/"
-  type: annotation
-  prefix: /test
