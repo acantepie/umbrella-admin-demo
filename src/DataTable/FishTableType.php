@@ -153,7 +153,7 @@ class FishTableType extends DataTableType
         $resolver->setDefaults([
             'edible' => null, // null : return all | true => return only edible fish | false => return only not edible fish
             'disabled' => false, // <=> not editable
-            'exportable' => false,
+            'exportable' => false
         ]);
     }
 }

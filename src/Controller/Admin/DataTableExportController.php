@@ -42,10 +42,7 @@ class DataTableExportController extends BaseController
      */
     public function selectedAction(Request $request)
     {
-        $table = $this->createTable(FishTableType::class, [
-            'disabled' => true,
-            'exportable' => true,
-        ]);
+        $table = $this->createTable(FishTableType::class);
 
         /** @var EntityAdapter $adapter */
         $adapter = $table->getAdapter();
@@ -65,8 +62,7 @@ class DataTableExportController extends BaseController
     public function filteredAction(Request $request)
     {
         $table = $this->createTable(FishTableType::class, [
-            'disabled' => true,
-            'exportable' => true,
+            'paging' => false
         ]);
 
         /** @var EntityAdapter $adapter */

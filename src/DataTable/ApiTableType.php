@@ -86,7 +86,9 @@ class ApiTableType extends DataTableType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault('id_path', '[SpecCode]');
-        $resolver->setDefault('orderable', false);
+        $resolver->setDefaults([
+            'id_path' => '[SpecCode]',
+            'orderable' => false
+        ]);
     }
 }
