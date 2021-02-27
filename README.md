@@ -1,21 +1,19 @@
-Umbrella Demo Application
+Umbrella Admin Demo 
 ========================
 
-Demo
+This is a demo application to show the main features of [UmbrellaAdminBundle][1].
+
+Check online demo [here][2] 
+
+Screenshot
 ------------
-Demo application is available [here][1]
-
-![Umbrella DataTable](/screenshots/datatable.png)
-
-![Umbrella DataTable - tree variant](/screenshots/treetable.png)
-
-![Umbrella Form](/screenshots/form.png)
+![Screenshot of the Umbrella Admin Demo app](screenshot.png)
 
 Requirements
 ------------
 
   * PHP 7.4 or higher;
-  * and the [usual Symfony application requirements][2].
+  * and the [usual Symfony application requirements][3].
 
 How to install
 ------------
@@ -45,9 +43,10 @@ yarn copy-ckeditor
 ```
 
 Run `php -S localhost:8000 -t public/`
-to use the built-in PHP web server or [configure a web server][3] like Nginx or
+to use the built-in PHP web server or [configure a web server][4] like Nginx or
 Apache to run the application.
 
-[1]: https://umbrella-corp.dev
-[2]: https://symfony.com/doc/current/reference/requirements.html
-[3]: https://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
+[1]: https://github.com/acantepie/umbrella-admin
+[2]: https://umbrella-corp.dev
+[3]: https://symfony.com/doc/current/reference/requirements.html
+[4]: https://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html

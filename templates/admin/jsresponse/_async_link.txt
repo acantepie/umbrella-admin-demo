@@ -1,3 +1,0 @@
-<a data-xhr="umbrella.dev/foo/bar" href="#">
-    My link
-</a>

@@ -2,20 +2,9 @@
 
 namespace App\Controller\Admin;
 
-use App\AppHelper;
 use App\Entity\Fish;
-use App\Entity\FormExample\BaseExample;
-use App\Entity\FormExample\CkeditorExample;
-use App\Entity\FormExample\CollectionExample;
-use App\Entity\FormExample\DateExample;
-use App\Entity\FormExample\FileExample;
-use App\Entity\FormExample\Select2Example;
-use App\Form\FormExample\BaseExampleType;
-use App\Form\FormExample\CkEditorExampleType;
-use App\Form\FormExample\CollectionExampleType;
-use App\Form\FormExample\DateExampleType;
-use App\Form\FormExample\FileExampleType;
-use App\Form\FormExample\Select2ExampleType;
+use App\Entity\FormFields;
+use App\Form\FormFieldsType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,27 +17,14 @@ use Umbrella\CoreBundle\Controller\BaseController;
  */
 class FormController extends BaseController
 {
-    private AppHelper $helper;
-
     /**
-     * FormController constructor.
+     * @Route("")
      */
-    public function __construct(AppHelper $helper)
+    public function indexAction(Request $request)
     {
-        $this->helper = $helper;
-    }
+        $entity = $this->em()->createQuery(sprintf('SELECT e FROM %s e', FormFields::class))->getOneOrNullResult();
 
-    /**
-     * @Route("/base")
-     */
-    public function baseAction(Request $request)
-    {
-        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_base']);
-
-        /** @var BaseExample $entity */
-        $entity = $this->helper->loadOne(BaseExample::class);
-
-        $form = $this->createForm(BaseExampleType::class, $entity);
+        $form = $this->createForm(FormFieldsType::class, $entity);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -56,144 +32,10 @@ class FormController extends BaseController
 
             $this->toastSuccess('message.entity_updated');
 
-            return $this->redirectToRoute('app_admin_form_base');
+            return $this->redirectToRoute('app_admin_form_index');
         }
 
-        return $this->render('admin/form/base.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/file")
-     */
-    public function fileAction(Request $request)
-    {
-        $this->getMenu()->setCurrent(':forms');
-        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_file']);
-
-        /** @var FileExample $entity */
-        $entity = $this->helper->loadOne(FileExample::class);
-
-        $form = $this->createForm(FileExampleType::class, $entity);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->persistAndFlush($entity);
-
-            $this->toastSuccess('message.entity_updated');
-
-            return $this->redirectToRoute('app_admin_form_file');
-        }
-
-        return $this->render('admin/form/file.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/date")
-     */
-    public function dateAction(Request $request)
-    {
-        $this->getMenu()->setCurrent(':forms');
-        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_date']);
-
-        /** @var DateExample $entity */
-        $entity = $this->helper->loadOne(DateExample::class);
-
-        $form = $this->createForm(DateExampleType::class, $entity);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->persistAndFlush($entity);
-
-            $this->toastSuccess('message.entity_updated');
-
-            return $this->redirectToRoute('app_admin_form_date');
-        }
-
-        return $this->render('admin/form/date.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/ckeditor")
-     */
-    public function ckeditorAction(Request $request)
-    {
-        $this->getMenu()->setCurrent(':forms');
-        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_ckeditor']);
-
-        /** @var DateExample $entity */
-        $entity = $this->helper->loadOne(CkeditorExample::class);
-
-        $form = $this->createForm(CkEditorExampleType::class, $entity);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->persistAndFlush($entity);
-
-            $this->toastSuccess('message.entity_updated');
-
-            return $this->redirectToRoute('app_admin_form_ckeditor');
-        }
-
-        return $this->render('admin/form/ckeditor.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/select2")
-     */
-    public function select2Action(Request $request)
-    {
-        $this->getMenu()->setCurrent(':forms');
-        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_select2']);
-
-        /** @var Select2Example $entity */
-        $entity = $this->helper->loadOne(Select2Example::class);
-
-        $form = $this->createForm(Select2ExampleType::class, $entity);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->persistAndFlush($entity);
-
-            $this->toastSuccess('message.entity_updated');
-
-            return $this->redirectToRoute('app_admin_form_select2');
-        }
-
-        return $this->render('admin/form/select2.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/collection")
-     */
-    public function collectionAction(Request $request)
-    {
-        $this->getMenu()->setCurrent(':forms');
-        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.form_collection']);
-
-        /** @var Select2Example $entity */
-        $entity = $this->helper->loadOne(CollectionExample::class);
-
-        $form = $this->createForm(CollectionExampleType::class, $entity);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->persistAndFlush($entity);
-            $this->toastSuccess('message.entity_updated');
-
-            return $this->redirectToRoute('app_admin_form_collection');
-        }
-
-        return $this->render('admin/form/collection.html.twig', [
+        return $this->render('admin/form/index.html.twig', [
             'form' => $form->createView(),
         ]);
     }

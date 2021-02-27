@@ -4,11 +4,6 @@
 
     <div class="card">
         <div class="card-body">
-
-            <p class="alert alert-info">
-                Configuration générée avec la commande <b>config:dump-reference &lt;bundle_name&gt;</b>
-            </p>
-
             {% for config in configs %}
                 <h4 class="card-title">{{ config.name }}</h4>
                 <pre class="border-dark border p-2">{{ config.dump }}</pre>

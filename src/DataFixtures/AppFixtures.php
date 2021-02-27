@@ -4,14 +4,8 @@ namespace App\DataFixtures;
 
 use App\Entity\Fish;
 use App\Entity\FishCategory;
-use App\Entity\FormExample\BaseExample;
-use App\Entity\FormExample\CkeditorExample;
-use App\Entity\FormExample\CollectionExample;
-use App\Entity\FormExample\CollectionItemExample;
-use App\Entity\FormExample\DateExample;
-use App\Entity\FormExample\FileExample;
-use App\Entity\FormExample\Select2Example;
-use App\Entity\ManyFile;
+use App\Entity\FormFields;
+use App\Entity\FormFieldsItem;
 use App\Entity\Notification;
 use App\Entity\User;
 use App\Entity\UserGroup;
@@ -19,13 +13,11 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Umbrella\AdminBundle\Notification\NotificationManager;
 use Umbrella\CoreBundle\Entity\UmbrellaFile;
 
 class AppFixtures extends Fixture
 {
     private UserPasswordEncoderInterface $userPasswordEncoder;
-    private NotificationManager $notificationManager;
     private RouterInterface $router;
 
     /**
@@ -36,10 +28,9 @@ class AppFixtures extends Fixture
     /**
      * AppFixtures constructor.
      */
-    public function __construct(UserPasswordEncoderInterface $userPasswordEncoder, NotificationManager $notificationManager, RouterInterface $router)
+    public function __construct(UserPasswordEncoderInterface $userPasswordEncoder, RouterInterface $router)
     {
         $this->userPasswordEncoder = $userPasswordEncoder;
-        $this->notificationManager = $notificationManager;
         $this->router = $router;
     }
 
@@ -48,17 +39,16 @@ class AppFixtures extends Fixture
         $this->loadUser($manager);
         $this->loadFish($manager);
         $this->loadFishCategory($manager);
-        $this->loadFormExample($manager);
+        $this->loadFormFields($manager);
         $this->loadNotifications($manager);
-        $this->loadManyFile($manager);
     }
 
     private function loadUser(ObjectManager $manager)
     {
         $u = new User();
-        $u->firstname = 'Adrien';
-        $u->lastname = 'Cantepie';
-        $u->email = 'adrien.cantepie@gmail.com';
+        $u->firstname = 'John';
+        $u->lastname = 'Doe';
+        $u->email = 'john.doe@mail.com';
         $u->plainPassword = $u->email;
         $u->password = $this->userPasswordEncoder->encodePassword($u, $u->plainPassword);
 
@@ -102,6 +92,8 @@ class AppFixtures extends Fixture
         $e->edible = true;
         $e->habitats = [Fish::HABITAT_LAKE, Fish::HABITAT_RIVER, Fish::HABITAT_SEA];
         $e->color = '#424242';
+
+        $this->fishes[] = $e;
         $manager->persist($e);
 
         $e = new Fish();
@@ -110,6 +102,8 @@ class AppFixtures extends Fixture
         $e->edible = true;
         $e->habitats = [Fish::HABITAT_LAKE, Fish::HABITAT_RIVER];
         $e->color = '#8d6e63';
+
+        $this->fishes[] = $e;
         $manager->persist($e);
 
         $e = new Fish();
@@ -118,6 +112,8 @@ class AppFixtures extends Fixture
         $e->edible = false;
         $e->habitats = [Fish::HABITAT_LAKE, Fish::HABITAT_RIVER];
         $e->color = '#b0bec5';
+
+        $this->fishes[] = $e;
         $manager->persist($e);
 
         $manager->flush();
@@ -174,43 +170,40 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadFormExample(ObjectManager $manager)
+    private function loadFormFields(ObjectManager $manager)
     {
-        $e = new BaseExample();
-        $manager->persist($e);
+        $e = new FormFields();
 
-        $e = new FileExample();
-        $manager->persist($e);
+        $fishes = $this->fishes;
+        shuffle($fishes);
 
-        $e = new DateExample();
-        $manager->persist($e);
+        // Date
+        $e->date = new \DateTime();
 
-        $e = new CkeditorExample();
-        $manager->persist($e);
+        // select 2
+        $e->fishEntities->add($fishes[0]);
+        $e->fishEntities->add($fishes[1]);
+        $e->asyncFishEntities->add($fishes[2]);
+        $e->tags = ['Umbrella', 'Admin'];
 
-        $e = new Select2Example();
-        $e->requiredManyFishSpecies = ['Saumon', 'Lamproie'];
-        foreach ($this->fishes as $fish) {
-            $e->fishes->add($fish);
-        }
-        $e->tags = [Fish::HABITAT_LAKE, Fish::HABITAT_RIVER];
-        $manager->persist($e);
+        // File
+        $e->file = UmbrellaFile::createFromPath(__DIR__ . '/files/avatar.png');
 
-        $e = new CollectionExample();
-        $manager->persist($e);
+        // Ckeditor
+        $e->htmlText = '<p><strong>Hello world !</strong></p>';
 
-        $i = new CollectionItemExample();
+        // Collection
+        $i = new FormFieldsItem();
         $i->label = 'Gardon';
         $i->description = 'Poisson d\'eau douce trés commun';
-        $i->parent = $e;
-        $manager->persist($i);
+        $e->addItem($i);
 
-        $i = new CollectionItemExample();
+        $i = new FormFieldsItem();
         $i->label = 'Anguille';
         $i->description = 'Poisson long et visqueux';
-        $i->parent = $e;
-        $manager->persist($i);
+        $e->addItem($i);
 
+        $manager->persist($e);
         $manager->flush();
     }
 
@@ -223,16 +216,8 @@ class AppFixtures extends Fixture
         $notification->createdAt = new \DateTime('02/07/2021');
         $notification->sendToAll = true;
         $notification->url = $this->router->generate('app_admin_notification_howto');
-        $this->notificationManager->send($notification);
-    }
 
-    private function loadManyFile(ObjectManager $manager)
-    {
-        $e = new ManyFile();
-        $e->wallpaperFile = UmbrellaFile::createFromPath(__DIR__ . '/files/wallpaper.jpg');
-        $e->billFile = UmbrellaFile::createFromPath(__DIR__ . '/files/bill.png', 'admin.mapping');
-
-        $manager->persist($e);
+        $manager->persist($notification);
         $manager->flush();
     }
 }

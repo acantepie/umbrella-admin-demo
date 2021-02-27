@@ -1,5 +1,0 @@
-[
-    {'action' : 'action_1', 'params' : {'foo' : 42, 'bar' : 'hello !'}},
-    {'action' : 'action_2', 'params' : {'baz' : true}},
-    ...
-]

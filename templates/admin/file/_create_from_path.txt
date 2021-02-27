@@ -1,1 +1,0 @@
-UmbrellaFile::createFromPath(__DIR__ . '/files/wallpaper.jpg');

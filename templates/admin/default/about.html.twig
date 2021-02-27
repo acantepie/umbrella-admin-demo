@@ -2,38 +2,73 @@
 
 {% block content %}
     <div class="card">
-        <div class="card-header d-flex align-items-center">
-            <h5 class="mr-2">Framework Umbrella v2.0</h5>
+        <div class="card-header">
+            <h4>A propos du framwork</h4>
         </div>
         <div class="card-body">
-            <p class="alert alert-info">
-                <i class="mdi mdi-information mr-1"></i> La base de données du back-office est réinitialisée toutes les nuits
+            <p>
+                <strong>Umbrella</strong> est un framwork de création de back-office devéloppé en Symfony 5.2.
             </p>
-            <p>Framework de création de back-office basée sur Symfony flex 5.</p>
-            <p>Gitlab : <a href="https://github.com/acantepie/umbrella-demo" class="text-primary">https://github.com/acantepie/umbrella-demo</a></p>
         </div>
     </div>
 
     <div class="card">
-        <div class="card-header d-flex align-items-center">
-            <h5 class="mr-2">Theme hyper - Admin & Dashboard Template </h5>
-            <img src="{{ asset('build/images/hyper-logo-dark.png') }}" alt="" width="100">
+        <div class="card-header">
+            <h4><a href="https://github.com/acantepie/umbrella-core" class="text-primary">umbrella-core</a> bundle</h4>
         </div>
         <div class="card-body">
+            <p>
+                Contient tous les composants utilisés par l'admin, ils peuvent être utilisés sur le back-office mais aussi sur le front-office :
+            </p>
 
             <ul>
-                <li>
-                    Générée à partir de la version bootstrap v4.5.2 -
-                    <a href="https://getbootstrap.com/docs/4.1/getting-started/introduction/" class="text-primary">Bootstrap documentation</a>
+                <li class="pb-2">
+                    <strong>Datatable</strong> : Composant de création de table basée sur <a href="https://datatables.net/" class="text-primary">DataTable.js</a>.<br>
+                    Utilise le même principe que les formType symfony pour la construction et supporte de nombreuses fonctionnalités (async loading, tree, custom adapter, Form filter, ...).
                 </li>
-                <li>
-                    Variante utilisée dans Umbrella/AdminBundle : light mode / sass
+                <li class="pb-2">
+                    <strong>Menu</strong> : Composant de création de menu inspirée de <a href="https://github.com/KnpLabs/KnpMenuBundle" class="text-primary">KnpMenuBundle</a>.
                 </li>
-                <li>
-                    <a href="https://coderthemes.com/hyper/saas/index.html" class="text-primary">Démo sass</a>
+                <li class="pb-2">
+                    <strong>Form</strong> : De nombreux formType sont disponibles (select2, datepicker, collection, upload, ckeditor,  ...).
                 </li>
-                <li>
-                    <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/" class="text-primary">Thème page</a>
+                <li class="pb-2">
+                    <strong>jsResponse</strong> : Implémente un format d'échange entre le serveur et le client en ajax permettant au controlleur de demander au client d'executer une liste d'action.
+                </li>
+                <li class="pb-2">
+                    <strong>Upload</strong> : Composant de gestion des fichiers inspiré de <a href="https://github.com/dustin10/VichUploaderBundle" class="text-primary">VichUploaderBundle</a>.<br>
+                    A la différence de VichUploader, tous les fichiers sont représentés par l'entité <strong>UmbrellaFile</strong> et utilise uniquement l'api <a href="https://github.com/thephpleague/flysystem" class="text-primary">flysystem.</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4><a href="https://github.com/acantepie/umbrella-admin" class="text-primary">umbrella-admin</a> bundle</h4>
+        </div>
+        <div class="card-body">
+            <p>
+                Basé sur le thème Admin Hyper, il intègre la plupart des composants du Core afin de fournir un ensemble d'outils pour le back-office.
+            </p>
+
+            <p class="alert-info alert">
+                A la différence de <strong>EasyAdmin</strong> ou <strong>Sonata</strong>, le framwork est orienté composant et n'utilise pas de couche d'abstraction pour les CRUD, ce qui le rend trés simple à utiliser.
+            </p>
+
+            <p>
+                Service fourni par le umbrella-admin :
+            </p>
+
+            <ul>
+                <li class="pb-2">
+                    <strong>Sidebar</strong> : Utilise le composant Menu et la lib js <a href="https://github.com/onokumus/metismenu">meitsmenu</a>.
+                </li>
+                <li class="pb-2">
+                    <strong>Gestion des utilisateurs</strong> : Inspiré de <a href="https://github.com/FriendsOfSymfony/FOSUserBundle" class="text-primary">FOSUserBundle</a>, son fonctionnement est identique (Utilise le nouveau système de sécurité symfony 5.2).
+                </li>
+                <li class="pb-2">
+                    <strong>Maker</strong> : Inspiré du <a href="https://symfony.com/doc/current/bundles/SymfonyMakerBundle/index.html" class="text-primary">MakerBundle symfony</a>, permet de générer des CRUDS utilisant le composant <strong>DataTable</strong> du core.
                 </li>
             </ul>
         </div>

@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Notification;
-use App\Form\Notification\NotificationType;
+use App\Form\NotificationType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\AdminBundle\Notification\NotificationManager;

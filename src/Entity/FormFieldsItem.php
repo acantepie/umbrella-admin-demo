@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Entity\FormExample;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\CoreBundle\Model\IdTrait;
 use Umbrella\CoreBundle\Model\OrderTrait;
 
 /**
- * Class CollectionItemExample
+ * Class FormFieldsItem
  *
  * @ORM\Entity
- * @ORM\Table("form_collection_item")
  */
-class CollectionItemExample
+class FormFieldsItem
 {
     use IdTrait;
     use OrderTrait;
@@ -25,12 +24,12 @@ class CollectionItemExample
     public $id;
 
     /**
-     * @var CollectionExample
+     * @var FormFields
      *
-     * @ORM\ManyToOne(targetEntity="CollectionExample", inversedBy="items")
-     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="FormFields", inversedBy="items")
+     * @ORM\JoinColumn(name="form_fields_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    public $parent;
+    public $formFields;
 
     /**
      * @var string

@@ -1,3 +1,0 @@
-<form data-xhr="umbrella.dev/foo/bar" method="post">
-    <button type="submit">Submit !</button>
-</form>

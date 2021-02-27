@@ -1,56 +1,28 @@
-umbrella2:
+umbrella:
     children:
         about:
             icon: mdi mdi-lifebuoy
             route: app_admin_default_about
 
-theme:
-    children:
-        icon:
-            icon: uil-streering
-            children:
-                icon_md:
-                    route: app_admin_icon_md
-                icon_unicon:
-                    route: app_admin_icon_unicon
-
-symfony_components:
-    children:
-        messenger:
-            icon: uil-process
-            route: app_admin_message_index
-
-umbrella_components:
-    children:
-        datatables:
+        datatable:
             icon: uil-table
             children:
-                simple_datatable:
-                    route: app_admin_datatable_simple
-                multiple_datatable:
-                    route: app_admin_datatable_multiple
-                api_datatable:
-                    route: app_admin_datatable_api
-                tree_datatable:
-                    route: app_admin_datatable_tree
-                export_datatable:
-                    route: app_admin_datatableexport_index
-
-        js_response:
-            icon: uil-exchange
-            route: app_admin_jsresponse_index
-
-        forms:
-            icon: uil-document-layout-center
-            route: app_admin_form_base
-
-        toast:
-            icon: uil-chat
-            route: app_admin_toast_index
+                table:
+                    route: app_admin_datatable_table
+                table_2:
+                    route: app_admin_datatable_table2
+                table_api:
+                    route: app_admin_datatable_tableapi
+                table_tree:
+                    route: app_admin_datatable_tabletree
 
         menu:
             icon: uil-bars
             route: app_admin_menu_howto
+
+        forms:
+            icon: uil-document-layout-center
+            route: app_admin_form_index
 
         notification:
             icon: uil-bell
@@ -60,16 +32,12 @@ umbrella_components:
             icon: uil-layers-alt
             route: app_admin_tabs_index
 
-        file:
-            icon: uil-file-upload-alt
-            route: app_admin_file_index
-
-other:
+advanced:
     children:
-        umbrella_maker:
+        maker:
             icon: mdi mdi-console-line
             route: app_admin_maker_index
-        umbrella_config:
+        config_reference:
             icon: mdi mdi-cogs
             route: app_admin_umbrellaconfig_index
 admin:

@@ -1,49 +1,30 @@
 menu:
-  umbrella2: Umbrella 2.0
+  umbrella: Umbrella
   about: A propos
 
-  theme: Thème
-  icon: Icones
-  icon_md: Material Design
-  icon_unicon: Unicons
+  datatable: Datatables
+  table: Table
+  table_2: Table (multiple)
+  table_api: Api adapter
+  table_tree: Tree
 
-  symfony_components: Composants Symfony
-  messenger: Messenger
-
-  umbrella_components: Composants Umbrella
-  datatables: Datatables
-  simple_datatable: Simple
-  multiple_datatable: Multiple
-  api_datatable: Source (Api - fishbase)
-  export_datatable: Export des données
-
-  tree_datatable: Tree
-  js_response: JsResponse
-  forms: Forms
-  toast: Toast
-  notification: Notifications
-  tabs: Tabs
-  file: Fichiers
   menu: Menu
 
-  other: Autres
-  umbrella_maker: Umbrella Maker
-  umbrella_config: Umbrella config
+  forms: Forms
 
-  test: Test
-  select2: Select2
+  notification: Notifications
+
+  tabs: Tabs
+
+  advanced: Avancé
+  maker: Maker
+  config_reference: Configuration reference
 
   admin: Administration
   users: Utilisateurs
   groups: Groupes
 
 breadcrumb:
-  form_base: Base
-  form_file: Fichier
-  form_date: Date
-  form_ckeditor: Ckeditor
-  form_select2: Select2
-  form_collection: Collection
   exemple: Exemple
   howto: How to
 
@@ -83,35 +64,22 @@ form:
     color: Couleur
     text: Texte
     url: Url
-    file: Fichier
-    image: Image
-    pdf: Fichier PDF
 
     date: Date
-    past: Date passée
-    future: Date future
     dateTime: Date + Horaires
 
-    species: Espece
-    manySpecies: Especes
+    fish: Poisson
+    fishEntities: Poissons
+    asyncFishEntities: Poissons
     tags: Tags
+
+    file: Fichier
+    pdf: Fichier PDF
+
+    htmlText: Texte HTML
 
     items: Items
     strings: Chaines de caractères
-    files: Fichiers
-
-    text1: Texte 1
-    text2: Texte 2
-
-    loader: Loader
-    allowToastClose: Fermeture manuelle
-    hideAfter: Masqué aprés (ms)
-    type: Type
-    position: Position
-    label: Libellé
-    description: Description
-
-    shuffle: Mélanger le menu
 
     recipients: Destinataires
 

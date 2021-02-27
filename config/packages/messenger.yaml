@@ -1,9 +1,0 @@
-framework:
-    messenger:
-        transports:
-            async: '%env(MESSENGER_TRANSPORT_DSN)%'
-            sync: 'sync://'
-
-        routing:
-            'App\Message\NewFishMessage': async
-            'App\Message\ExportFishMessage': sync

@@ -51,24 +51,22 @@ class FishTableType extends DataTableType
             'multiple' => false,
         ]);
 
-        if (!$options['disabled']) {
-            $builder->addAction('add', AddActionType::class, [
-                'route' => 'app_admin_fishcrud_edit',
-                'xhr' => true,
-            ]);
-        }
+        $builder->addAction('add', AddActionType::class, [
+            'route' => 'app_admin_datatable_fishedit',
+            'xhr' => true,
+        ]);
 
         if ($options['exportable']) {
             $builder->addAction('export', DropdownActionType::class, [
                 'icon' => 'mdi mdi-file-download-outline',
                 'item_builder' => function (ActionListBuilder $builder) {
                     $builder->add('export_filtered', DropdownItemActionType::class, [
-                        'route' => 'app_admin_datatableexport_filtered',
+                        'route' => 'app_admin_datatable_dumpfiltered',
                         'extra_data' => Action::DATA_DATATABLE_FILTER,
                     ]);
 
                     $builder->add('export_selected', DropdownItemActionType::class, [
-                        'route' => 'app_admin_datatableexport_selected',
+                        'route' => 'app_admin_datatable_dumpselected',
                         'extra_data' => Action::DATA_DATATABLE_SELECTION,
                     ]);
                 },
@@ -115,14 +113,12 @@ class FishTableType extends DataTableType
             },
         ]);
 
-        if (!$options['disabled']) {
-            $builder->add('actions', LinkListColumnType::class, [
-                'link_builder' => function (UmbrellaLinkList $linkList, Fish $entity) {
-                    $linkList->addXhrEdit('app_admin_fishcrud_edit', ['id' => $entity->id]);
-                    $linkList->addXhrDelete('app_admin_fishcrud_delete', ['id' => $entity->id]);
-                },
-            ]);
-        }
+        $builder->add('actions', LinkListColumnType::class, [
+            'link_builder' => function (UmbrellaLinkList $linkList, Fish $entity) {
+                $linkList->addXhrEdit('app_admin_datatable_fishedit', ['id' => $entity->id]);
+                $linkList->addXhrDelete('app_admin_datatable_fishdelete', ['id' => $entity->id]);
+            },
+        ]);
 
         $builder->useAdapter(EntityAdapter::class, [
             'class' => Fish::class,
@@ -152,7 +148,6 @@ class FishTableType extends DataTableType
     {
         $resolver->setDefaults([
             'edible' => null, // null : return all | true => return only edible fish | false => return only not edible fish
-            'disabled' => false, // <=> not editable
             'exportable' => false
         ]);
     }

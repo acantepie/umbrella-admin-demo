@@ -23,7 +23,7 @@ class FishCategoryTableType extends DataTableType
     public function buildToolbar(ToolbarBuilder $builder, array $options = [])
     {
         $builder->addAction('add', AddActionType::class, [
-            'route' => 'app_admin_fishcategorycrud_edit',
+            'route' => 'app_admin_datatable_categoryedit',
             'xhr' => true,
         ]);
     }
@@ -37,8 +37,8 @@ class FishCategoryTableType extends DataTableType
         $builder->add('description', PropertyColumnType::class);
         $builder->add('action', LinkListColumnType::class, [
             'link_builder' => function (UmbrellaLinkList $linkList, FishCategory $entity) {
-                $linkList->addXhrEdit('app_admin_fishcategorycrud_edit', ['id' => $entity->id]);
-                $linkList->addXhrDelete('app_admin_fishcategorycrud_delete', ['id' => $entity->id]);
+                $linkList->addXhrEdit('app_admin_datatable_categoryedit', ['id' => $entity->id]);
+                $linkList->addXhrDelete('app_admin_datatable_categorydelete', ['id' => $entity->id]);
             },
         ]);
 
