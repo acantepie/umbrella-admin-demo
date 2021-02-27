@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\AdminBundle\Notification\NotificationManager;
 use Umbrella\CoreBundle\Controller\BaseController;
+use function Symfony\Component\Translation\t;
 
 /**
  * Class TabsController
@@ -46,7 +47,7 @@ class NotificationController extends BaseController
             }
             $manager->send($notification);
 
-            $this->toastSuccess('message.notification_sent');
+            $this->toastSuccess(t('message.notification_sent'));
 
             return $this->redirectToRoute('app_admin_notification_exemple');
         }

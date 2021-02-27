@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
+use function Symfony\Component\Translation\t;
 
 /**
  * Class FormController
@@ -30,7 +31,7 @@ class FormController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->persistAndFlush($entity);
 
-            $this->toastSuccess('message.entity_updated');
+            $this->toastSuccess(t('message.entity_updated'));
 
             return $this->redirectToRoute('app_admin_form_index');
         }

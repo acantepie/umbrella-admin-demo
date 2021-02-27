@@ -47,6 +47,6 @@ class MyController extends BaseController
         ...
         return $this->jsResponseBuilder()
             ->reloadTable()
-            ->toastSuccess('message.entity_deleted');
+            ->toastSuccess(t('message.entity_deleted'));
     }
 }

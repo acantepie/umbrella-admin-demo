@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Component\DataTable\Adapter\EntityAdapter;
 use Umbrella\CoreBundle\Controller\BaseController;
+use function Symfony\Component\Translation\t;
 
 /**
  * @Route("/datatable")
@@ -122,7 +123,7 @@ class DatatableController extends BaseController
             return $this->jsResponseBuilder()
                 ->closeModal()
                 ->reloadTable()
-                ->toastSuccess('message.entity_updated');
+                ->toastSuccess(t('message.entity_updated'));
         }
 
         return $this->jsResponseBuilder()
@@ -142,7 +143,7 @@ class DatatableController extends BaseController
 
         return $this->jsResponseBuilder()
             ->reloadTable()
-            ->toastSuccess('message.entity_deleted');
+            ->toastSuccess(t('message.entity_deleted'));
     }
 
     // CRUD category
@@ -167,7 +168,7 @@ class DatatableController extends BaseController
 
             return $this->jsResponseBuilder()
                 ->closeModal()
-                ->toastSuccess('message.entity_updated')
+                ->toastSuccess(t('message.entity_updated'))
                 ->reloadTable();
         }
 
@@ -188,7 +189,7 @@ class DatatableController extends BaseController
 
         return $this->jsResponseBuilder()
             ->reloadTable()
-            ->toastSuccess('message.entity_deleted');
+            ->toastSuccess(t('message.entity_deleted'));
     }
 
     // Dump
