@@ -52,7 +52,7 @@ class AppFixtures extends Fixture
         $u->plainPassword = $u->email;
         $u->password = $this->userPasswordEncoder->encodePassword($u, $u->plainPassword);
 
-        $u->avatar = UmbrellaFile::createFromPath(__DIR__ . '/files/avatar.png');
+        $u->avatar = UmbrellaFile::createFromPath(__DIR__ . '/files/me.png');
 
         $g = new UserGroup();
         $g->title = 'Administrateur';
@@ -187,7 +187,7 @@ class AppFixtures extends Fixture
         $e->tags = ['Umbrella', 'Admin'];
 
         // File
-        $e->file = UmbrellaFile::createFromPath(__DIR__ . '/files/avatar.png');
+        $e->file = UmbrellaFile::createFromPath(__DIR__ . '/files/me.png');
 
         // Ckeditor
         $e->htmlText = '<p><strong>Hello world !</strong></p>';

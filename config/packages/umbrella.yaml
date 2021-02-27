@@ -1,9 +1,6 @@
 umbrella_core:
   file:
     flystorage: default.storage
-    mappings:
-      default.mapping:
-        uri: /download/{name}/{storageName}
 
 umbrella_admin:
   menu:
