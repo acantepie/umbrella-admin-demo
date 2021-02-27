@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}" class="h-100">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <title>Framework Umbrella | Admin framework based on symfony 5</title>
+        <meta content="Intuitive framwork to create a beautiful backends for your application." name="description" />
+        <meta content="Adrien Cantepie" name="author" />
+
+        {{ encore_entry_link_tags('front') }}
+    </head>
+
+    <body class="h-100">
+
+        <section class="pb-5">
+            <div class="container">
+                <div class="row py-4">
+                    <div class="col-lg-12">
+                        <div class="text-center">
+
+                            <h1 class="mt-0">
+                                <i class="mdi mdi-umbrella mr-1"></i> <span class="text-primary">Umbrella</span> Framework
+                            </h1>
+
+                            <h3>
+                                Framework to create administration backends.
+                            </h3>
+
+                            <a href="{{ path('app_admin_default_index') }}" class="btn btn-lg btn-primary my-4">
+                                Try yourself <i class="mdi mdi-arrow-right ml-1"></i>
+                            </a>
+
+                            <h4 class="text-muted mt-2">
+                                Framwork bundles and demo website are available on <a href="https://github.com/acantepie/umbrella-demo" class="text-primary">github</a>.
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="text-center p-3">
+                            <div class="avatar-sm m-auto">
+                                <span class="avatar-title bg-primary-lighten rounded-circle">
+                                    <i class="mdi mdi-layers-outline text-primary font-24"></i>
+                                </span>
+                            </div>
+                            <h4 class="mt-3">Based on Admin theme Hyper</h4>
+                            <p class="text-muted mt-2 mb-0">
+                                Use sass and boostrap 4, packaged with webpack - More info <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/" class="text-primary">here</a>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="text-center p-3">
+                            <div class="avatar-sm m-auto">
+                                <span class="avatar-title bg-primary-lighten rounded-circle">
+                                    <i class="mdi mdi-symfony text-primary font-24"></i>
+                                </span>
+                            </div>
+                            <h4 class="mt-3">Symfony 5.2 / php 7.4</h4>
+                            <p class="text-muted mt-2 mb-0">
+                                Developed with Symfony framwork.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="text-center p-3">
+                            <div class="avatar-sm m-auto">
+                                <span class="avatar-title bg-primary-lighten rounded-circle">
+                                    <i class="mdi mdi-table text-primary font-24"></i>
+                                </span>
+                            </div>
+                            <h4 class="mt-3">DataTable / TreeTable</h4>
+                            <p class="text-muted mt-2 mb-0">
+                                Based on <a href="https://datatables.net/" class="text-primary">DataTable.js</a> using same logic as Symfony forms (Type, OptionsResolver, Builder, ...)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="text-center p-3">
+                            <div class="avatar-sm m-auto">
+                                <span class="avatar-title bg-primary-lighten rounded-circle">
+                                    <i class="mdi mdi-menu text-primary font-24"></i>
+                                </span>
+                            </div>
+                            <h4 class="mt-3">Menu</h4>
+                            <p class="text-muted mt-2 mb-0">
+                                Inspired by de <a href="https://github.com/KnpLabs/KnpMenuBundle" class="text-primary">KnpMenuBundle</a>. Build it like Symfony config definitions (TreeBuilder), supports security features.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="text-center p-3">
+                            <div class="avatar-sm m-auto">
+                                <span class="avatar-title bg-primary-lighten rounded-circle">
+                                    <i class="mdi mdi-form-select text-primary font-24"></i>
+                                </span>
+                            </div>
+                            <h4 class="mt-3">Add many FormTypes</h4>
+                            <p class="text-muted mt-2 mb-0">
+                                Select2Type, Entity2Type, AsyncEntity2Type, TagType, CollectionType and more ...
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="text-center p-3">
+                            <div class="avatar-sm m-auto">
+                                <span class="avatar-title bg-primary-lighten rounded-circle">
+                                    <i class="mdi mdi-dots-horizontal text-primary font-24"></i>
+                                </span>
+                            </div>
+                            <h4 class="mt-3">And more ...</h4>
+                            <p class="text-muted mt-2 mb-0">
+                                Handle upload using flysytem, Notifications, Manage user, <b>Maker</b> commands...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer class="bg-dark py-3">
+            <div class="container">
+                <p class="text-white-50 text-center mb-0">
+                    <i class="mdi mdi-umbrella"></i> Umbrella corporation - Free to use.</p>
+            </div>
+        </footer>
+    </body>
+
+    {{ encore_entry_script_tags('front') }}
+</html>

@@ -17,6 +17,6 @@ class DefaultController extends BaseController
      */
     public function indexAction()
     {
-        return $this->redirectToRoute('app_admin_default_index');
+        return $this->render('landing.html.twig');
     }
 }

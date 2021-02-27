@@ -14,6 +14,7 @@ Encore
         umbrella_admin: path.join(__dirname, '/vendor/umbrella2/adminbundle/Resources/assets/')
     })
 
+    .addEntry('front', './assets/front/Front.js')
     .addEntry('admin', './assets/admin/Admin.js')
     .addEntry('ckeditor', './vendor/umbrella2/corebundle/Resources/assets/vendor/ckeditor/ckeditor.js')
 
