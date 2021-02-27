@@ -1,5 +1,5 @@
 umbrella_file_:
-  resource: "@UmbrellaCoreBundle/Component/UmbrellaFile/UmbrellaFileController.php"
+  resource: "@UmbrellaCoreBundle/src/Component/UmbrellaFile/UmbrellaFileController.php"
   type: annotation
   prefix: /download
 
