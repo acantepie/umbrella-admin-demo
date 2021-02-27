@@ -2,7 +2,7 @@
     "license": "UNLICENSED",
     "private": true,
     "dependencies": {
-        "@iconscout/unicons": "^3.0.3",
+        "@iconscout/unicons": "^3.0.6",
         "@mdi/font": "^5.8.55",
         "bootstrap": "^4.5.3",
         "bootstrap-datepicker": "^1.9.0",
@@ -27,18 +27,14 @@
         "simplebar": "^5.3.0"
     },
     "devDependencies": {
-        "@symfony/webpack-encore": "^0.31.0",
+        "@symfony/webpack-encore": "^1.1.1",
         "babel-plugin-transform-class-properties": "^6.24.1",
-        "core-js": "^3.0.0",
-        "node-sass": "^4.0.0",
-        "npm": "^6.14.9",
-        "regenerator-runtime": "^0.13.2",
-        "sass-loader": "^9.0.1",
-        "webpack-notifier": "^1.6.0",
-        "write-file-webpack-plugin": "^4.5.1"
+        "file-loader": "^6.0.0",
+        "sass": "^1.32.8",
+        "sass-loader": "^11.0.0"
     },
     "scripts": {
-        "dev-server": "encore dev-server  --port 9000 --disable-host-check --host=0.0.0.0",
+        "dev-server": "encore dev-server  --port 9000 --host=0.0.0.0",
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress",
