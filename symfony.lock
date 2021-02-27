@@ -175,9 +175,6 @@
     "php-http/promise": {
         "version": "1.1.0"
     },
-    "php-webdriver/webdriver": {
-        "version": "1.9.0"
-    },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
     },
@@ -532,6 +529,9 @@
     },
     "symfony/proxy-manager-bridge": {
         "version": "v5.2.1"
+    },
+    "symfony/rate-limiter": {
+        "version": "v5.2.3"
     },
     "symfony/redis-messenger": {
         "version": "v5.2.3"

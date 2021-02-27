@@ -6,7 +6,6 @@
         "@mdi/font": "^5.8.55",
         "bootstrap": "^4.5.3",
         "bootstrap-datepicker": "^1.9.0",
-        "bootstrap-tagsinput": "^0.7.1",
         "ckeditor4": "^4.15.1",
         "datatables.net": "^1.10.22",
         "datatables.net-bs4": "^1.10.22",
