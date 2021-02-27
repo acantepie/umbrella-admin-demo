@@ -8293,12 +8293,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/acantepie/umbrella-admin.git",
-                "reference": "27e68d10e906605e641f5c331896c24e92be9b5a"
+                "reference": "8e9b82eefca5a371fe77787573b4623f9d5b32c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acantepie/umbrella-admin/zipball/27e68d10e906605e641f5c331896c24e92be9b5a",
-                "reference": "27e68d10e906605e641f5c331896c24e92be9b5a",
+                "url": "https://api.github.com/repos/acantepie/umbrella-admin/zipball/8e9b82eefca5a371fe77787573b4623f9d5b32c3",
+                "reference": "8e9b82eefca5a371fe77787573b4623f9d5b32c3",
                 "shasum": ""
             },
             "require": {
@@ -8307,7 +8307,7 @@
             "type": "symfony-bundle",
             "autoload": {
                 "psr-4": {
-                    "Umbrella\\AdminBundle\\": ""
+                    "Umbrella\\AdminBundle\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -8320,8 +8320,14 @@
                     "email": "adrien.cantepie@gmail.com"
                 }
             ],
-            "description": "Umbrella framework - adminbundle",
-            "time": "2021-02-27T17:13:32+00:00"
+            "description": "Umbrella Admin Symfony bundle.",
+            "homepage": "https://github.com/acantepie/umbrella-admin",
+            "keywords": [
+                "admin",
+                "backend",
+                "umbrella"
+            ],
+            "time": "2021-02-27T18:36:25+00:00"
         },
         {
             "name": "umbrella2/corebundle",
@@ -8329,12 +8335,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/acantepie/umbrella-core.git",
-                "reference": "3653df555c2f9633372191796d02da02453a979b"
+                "reference": "a8ca48d1fd5f413b5f924aa872038b9a4d917c63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acantepie/umbrella-core/zipball/3653df555c2f9633372191796d02da02453a979b",
-                "reference": "3653df555c2f9633372191796d02da02453a979b",
+                "url": "https://api.github.com/repos/acantepie/umbrella-core/zipball/a8ca48d1fd5f413b5f924aa872038b9a4d917c63",
+                "reference": "a8ca48d1fd5f413b5f924aa872038b9a4d917c63",
                 "shasum": ""
             },
             "require": {
@@ -8360,11 +8366,10 @@
             "description": "Umbrella Core Symfony bundle.",
             "homepage": "https://github.com/acantepie/umbrella-core",
             "keywords": [
-                "admin",
-                "backend",
+                "core",
                 "umbrella"
             ],
-            "time": "2021-02-27T17:35:24+00:00"
+            "time": "2021-02-27T18:32:41+00:00"
         },
         {
             "name": "webmozart/assert",

@@ -10,13 +10,13 @@ Encore
     .setPublicPath('/build')
 
     .addAliases({
-        umbrella_core: path.join(__dirname, '/vendor/umbrella2/corebundle/Resources/assets/'),
-        umbrella_admin: path.join(__dirname, '/vendor/umbrella2/adminbundle/Resources/assets/')
+        umbrella_core: path.join(__dirname, '/vendor/umbrella2/corebundle/assets/'),
+        umbrella_admin: path.join(__dirname, '/vendor/umbrella2/adminbundle/assets/')
     })
 
     .addEntry('front', './assets/front/Front.js')
     .addEntry('admin', './assets/admin/Admin.js')
-    .addEntry('ckeditor', './vendor/umbrella2/corebundle/Resources/assets/vendor/ckeditor/ckeditor.js')
+    .addEntry('ckeditor', './vendor/umbrella2/corebundle/assets/vendor/ckeditor/ckeditor.js')
 
     .enableSassLoader()
 
@@ -35,7 +35,7 @@ Encore
             to: 'images/[path][name].[ext]'
         },
         {
-            from: './vendor/umbrella2/corebundle/Resources/assets/images',
+            from: './vendor/umbrella2/corebundle/assets/images',
             to: 'images/[path][name].[ext]'
         }
     ])
