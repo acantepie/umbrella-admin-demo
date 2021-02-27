@@ -53,6 +53,7 @@ table:
 
 form:
   label:
+    description: Description
     icon: Icône
     name: Nom
     edible: Comestible
