@@ -34,3 +34,4 @@ yarn-error.log
 ###< Tools / Other ###
 
 bin/deploy
+public/robots.txt
