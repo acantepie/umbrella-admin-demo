@@ -34,4 +34,4 @@ yarn-error.log
 ###< Tools / Other ###
 
 bin/deploy
-phpstan
+./phpstan
