@@ -7,7 +7,10 @@ use App\Form\HabitatType;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Umbrella\CoreBundle\Component\DataTable\Action\ActionType;
 use Umbrella\CoreBundle\Component\DataTable\Action\AddActionType;
+use Umbrella\CoreBundle\Component\DataTable\Action\DropdownActionType;
+use Umbrella\CoreBundle\Component\DataTable\Action\DropdownItemActionType;
 use Umbrella\CoreBundle\Component\DataTable\Adapter\EntityAdapter;
 use Umbrella\CoreBundle\Component\DataTable\Column\BooleanColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Column\CheckBoxColumnType;
@@ -42,6 +45,7 @@ class FishTableType extends DataTableType
     public function buildToolbar(ToolbarBuilder $builder, array $options = [])
     {
         $builder->addFilter('search', SearchType::class);
+
         $builder->addFilter('habitat', HabitatType::class, [
             'placeholder' => 'form.placeholder.habitat',
             'multiple' => false,
@@ -52,23 +56,21 @@ class FishTableType extends DataTableType
             'xhr' => true,
         ]);
 
-        /*        if ($options['exportable']) {
-                    $builder->addAction('export', DropdownActionType::class, [
-                        'icon' => 'mdi mdi-file-download-outline',
-                        'item_builder' => function (ActionListBuilder $builder) {
-                            $builder->add('export_filtered', DropdownItemActionType::class, [
-                                'route' => 'app_admin_datatable_dumpfiltered',
-                                'extra_data' => Action::DATA_DATATABLE_FILTER,
-                            ]);
+        if ($options['exportable']) {
+            $builder->addAction('export', DropdownActionType::class, [
+                'icon' => 'mdi mdi-file-download-outline'
+            ]);
 
-                            $builder->add('export_selected', DropdownItemActionType::class, [
-                                'route' => 'app_admin_datatable_dumpselected',
-                                'extra_data' => Action::DATA_DATATABLE_SELECTION,
-                            ]);
-                        },
-                    ]);
-                }
-        */
+            $builder->addChildAction('export', 'export_filtered', DropdownItemActionType::class, [
+                'route' => 'app_admin_datatable_dumpfiltered',
+                'extra_data' => ActionType::DATA_DATATABLE_FILTER
+            ]);
+
+            $builder->addChildAction('export', 'export_selected', DropdownItemActionType::class, [
+                'route' => 'app_admin_datatable_dumpselected',
+                'extra_data' => ActionType::DATA_DATATABLE_SELECTION,
+            ]);
+        }
     }
 
     /**

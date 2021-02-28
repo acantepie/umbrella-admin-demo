@@ -173,7 +173,9 @@ class DatatableController extends BaseController
         $changeSet = ChangeSet::createFromRequest($request);
         $changeSet->apply($this->em(), Fish::class, 'sequence');
 
-        return $this->jsResponseBuilder();
+        return $this
+            ->jsResponseBuilder()
+            ->reloadTable();
     }
 
     // CRUD category
