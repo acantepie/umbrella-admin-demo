@@ -5,6 +5,7 @@ menu:
   datatable: Datatables
   table: Table
   table_2: Table (multiple)
+  table_3: Table (draggable)
   table_api: Api adapter
   table_tree: Tree
 

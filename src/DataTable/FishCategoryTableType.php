@@ -4,12 +4,12 @@ namespace App\DataTable;
 
 use App\Entity\FishCategory;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\Component\Action\Type\AddActionType;
-use Umbrella\CoreBundle\Component\Column\Type\LinkListColumnType;
-use Umbrella\CoreBundle\Component\Column\Type\PropertyColumnType;
+use Umbrella\CoreBundle\Component\DataTable\Action\AddActionType;
+use Umbrella\CoreBundle\Component\DataTable\Column\LinkListColumnType;
+use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
 use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
-use Umbrella\CoreBundle\Component\DataTable\Type\DataTableType;
-use Umbrella\CoreBundle\Component\Toolbar\ToolbarBuilder;
+use Umbrella\CoreBundle\Component\DataTable\DataTableType;
+use Umbrella\CoreBundle\Component\DataTable\ToolbarBuilder;
 use Umbrella\CoreBundle\Component\UmbrellaLink\UmbrellaLinkList;
 
 /**

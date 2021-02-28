@@ -7,19 +7,15 @@ use App\Form\HabitatType;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Umbrella\CoreBundle\Component\Action\Action;
-use Umbrella\CoreBundle\Component\Action\ActionListBuilder;
-use Umbrella\CoreBundle\Component\Action\Type\AddActionType;
-use Umbrella\CoreBundle\Component\Action\Type\DropdownActionType;
-use Umbrella\CoreBundle\Component\Action\Type\DropdownItemActionType;
-use Umbrella\CoreBundle\Component\Column\Type\BooleanColumnType;
-use Umbrella\CoreBundle\Component\Column\Type\CheckBoxColumnType;
-use Umbrella\CoreBundle\Component\Column\Type\LinkListColumnType;
-use Umbrella\CoreBundle\Component\Column\Type\PropertyColumnType;
+use Umbrella\CoreBundle\Component\DataTable\Action\AddActionType;
 use Umbrella\CoreBundle\Component\DataTable\Adapter\EntityAdapter;
+use Umbrella\CoreBundle\Component\DataTable\Column\BooleanColumnType;
+use Umbrella\CoreBundle\Component\DataTable\Column\CheckBoxColumnType;
+use Umbrella\CoreBundle\Component\DataTable\Column\LinkListColumnType;
+use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
 use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
-use Umbrella\CoreBundle\Component\DataTable\Type\DataTableType;
-use Umbrella\CoreBundle\Component\Toolbar\ToolbarBuilder;
+use Umbrella\CoreBundle\Component\DataTable\DataTableType;
+use Umbrella\CoreBundle\Component\DataTable\ToolbarBuilder;
 use Umbrella\CoreBundle\Component\UmbrellaLink\UmbrellaLinkList;
 use Umbrella\CoreBundle\Form\SearchType;
 use Umbrella\CoreBundle\Utils\HtmlUtils;
@@ -56,22 +52,23 @@ class FishTableType extends DataTableType
             'xhr' => true,
         ]);
 
-        if ($options['exportable']) {
-            $builder->addAction('export', DropdownActionType::class, [
-                'icon' => 'mdi mdi-file-download-outline',
-                'item_builder' => function (ActionListBuilder $builder) {
-                    $builder->add('export_filtered', DropdownItemActionType::class, [
-                        'route' => 'app_admin_datatable_dumpfiltered',
-                        'extra_data' => Action::DATA_DATATABLE_FILTER,
-                    ]);
+        /*        if ($options['exportable']) {
+                    $builder->addAction('export', DropdownActionType::class, [
+                        'icon' => 'mdi mdi-file-download-outline',
+                        'item_builder' => function (ActionListBuilder $builder) {
+                            $builder->add('export_filtered', DropdownItemActionType::class, [
+                                'route' => 'app_admin_datatable_dumpfiltered',
+                                'extra_data' => Action::DATA_DATATABLE_FILTER,
+                            ]);
 
-                    $builder->add('export_selected', DropdownItemActionType::class, [
-                        'route' => 'app_admin_datatable_dumpselected',
-                        'extra_data' => Action::DATA_DATATABLE_SELECTION,
+                            $builder->add('export_selected', DropdownItemActionType::class, [
+                                'route' => 'app_admin_datatable_dumpselected',
+                                'extra_data' => Action::DATA_DATATABLE_SELECTION,
+                            ]);
+                        },
                     ]);
-                },
-            ]);
-        }
+                }
+        */
     }
 
     /**

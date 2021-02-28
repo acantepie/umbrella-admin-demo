@@ -11,6 +11,8 @@ umbrella:
                     route: app_admin_datatable_table
                 table_2:
                     route: app_admin_datatable_table2
+                table_3:
+                    route: app_admin_datatable_table3
                 table_api:
                     route: app_admin_datatable_tableapi
                 table_tree:

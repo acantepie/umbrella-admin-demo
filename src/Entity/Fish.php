@@ -21,9 +21,16 @@ class Fish
     use IdTrait;
     use SearchTrait;
     use TimestampTrait;
+
     const HABITAT_SEA = 'sea';
     const HABITAT_LAKE = 'lake';
     const HABITAT_RIVER = 'river';
+
+    /**
+     * @var int
+     * @ORM\Column(type="smallint", nullable=false)
+     */
+    public $sequence = 1;
 
     /**
      * @var string

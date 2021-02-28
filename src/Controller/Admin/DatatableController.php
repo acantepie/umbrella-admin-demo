@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\DataTable\ApiTableType;
+use App\DataTable\DraggableFishTable;
 use App\DataTable\FishCategoryTableType;
 use App\DataTable\FishTableType;
 use App\Entity\Fish;
@@ -14,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use function Symfony\Component\Translation\t;
 use Umbrella\CoreBundle\Component\DataTable\Adapter\EntityAdapter;
+use Umbrella\CoreBundle\Component\DataTable\DTO\ChangeSet;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
@@ -35,7 +37,7 @@ class DatatableController extends BaseController
             return $table->getCallbackResponse();
         }
 
-        return $this->render('admin/datatable/simple.html.twig', [
+        return $this->render('@UmbrellaAdmin/DataTable/index.html.twig', [
             'table' => $table,
         ]);
     }
@@ -68,6 +70,23 @@ class DatatableController extends BaseController
     }
 
     /**
+     * @Route("/table-3")
+     */
+    public function table3Action(Request $request)
+    {
+        $table = $this->createTable(DraggableFishTable::class);
+        $table->handleRequest($request);
+
+        if ($table->isCallback()) {
+            return $table->getCallbackResponse();
+        }
+
+        return $this->render('@UmbrellaAdmin/DataTable/index.html.twig', [
+            'table' => $table,
+        ]);
+    }
+
+    /**
      * @Route("/table-api")
      */
     public function tableApiAction(Request $request)
@@ -79,7 +98,7 @@ class DatatableController extends BaseController
             return $table->getCallbackResponse();
         }
 
-        return $this->render('admin/datatable/api.html.twig', [
+        return $this->render('@UmbrellaAdmin/DataTable/index.html.twig', [
             'table' => $table,
         ]);
     }
@@ -96,7 +115,7 @@ class DatatableController extends BaseController
             return $table->getCallbackResponse();
         }
 
-        return $this->render('admin/datatable/tree.html.twig', [
+        return $this->render('@UmbrellaAdmin/DataTable/index.html.twig', [
             'table' => $table,
         ]);
     }
@@ -144,6 +163,17 @@ class DatatableController extends BaseController
         return $this->jsResponseBuilder()
             ->reloadTable()
             ->toastSuccess(t('message.entity_deleted'));
+    }
+
+    /**
+     * @Route(path="/fish/update-sequence")
+     */
+    public function updateSequenceAction(Request $request)
+    {
+        $changeSet = ChangeSet::createFromRequest($request);
+        $changeSet->apply($this->em(), Fish::class, 'sequence');
+
+        return $this->jsResponseBuilder();
     }
 
     // CRUD category

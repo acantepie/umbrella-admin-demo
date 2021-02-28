@@ -67,6 +67,7 @@ class AppFixtures extends Fixture
     private function loadFish(ObjectManager $manager)
     {
         $e = new Fish();
+        $e->sequence = 1;
         $e->name = 'Saumon';
         $e->description = 'Poisson migrateur dont la chaire est appréciée';
         $e->edible = true;
@@ -77,6 +78,7 @@ class AppFixtures extends Fixture
         $this->fishes[] = $e;
 
         $e = new Fish();
+        $e->sequence = 2;
         $e->name = 'Poisson rouge';
         $e->description = 'Poisson de compagnie';
         $e->edible = false;
@@ -87,6 +89,7 @@ class AppFixtures extends Fixture
         $this->fishes[] = $e;
 
         $e = new Fish();
+        $e->sequence = 3;
         $e->name = 'Anguille';
         $e->description = 'Poisson long et visqueux';
         $e->edible = true;
@@ -97,6 +100,7 @@ class AppFixtures extends Fixture
         $manager->persist($e);
 
         $e = new Fish();
+        $e->sequence = 4;
         $e->name = 'Lamproie';
         $e->description = 'Poisson de vase, ayant une anatomie proche des poissons préhistoriques';
         $e->edible = true;
@@ -107,6 +111,7 @@ class AppFixtures extends Fixture
         $manager->persist($e);
 
         $e = new Fish();
+        $e->sequence = 5;
         $e->name = 'Gardon';
         $e->description = 'Poisson d\'eau douce trés commun';
         $e->edible = false;

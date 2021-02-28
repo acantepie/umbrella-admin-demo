@@ -5,13 +5,13 @@ namespace App\DataTable;
 use Symfony\Component\HttpClient\Exception\TransportException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use Umbrella\CoreBundle\Component\Column\Type\ColumnType;
-use Umbrella\CoreBundle\Component\Column\Type\PropertyColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Adapter\AdapterException;
+use Umbrella\CoreBundle\Component\DataTable\Column\ColumnType;
+use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
 use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
-use Umbrella\CoreBundle\Component\DataTable\Model\DataTableRequest;
-use Umbrella\CoreBundle\Component\DataTable\Model\DataTableResult;
-use Umbrella\CoreBundle\Component\DataTable\Type\DataTableType;
+use Umbrella\CoreBundle\Component\DataTable\DataTableType;
+use Umbrella\CoreBundle\Component\DataTable\DTO\DataTableRequest;
+use Umbrella\CoreBundle\Component\DataTable\DTO\DataTableResult;
 
 /**
  * Class ApiTableType
@@ -52,7 +52,7 @@ class ApiTableType extends DataTableType
             },
         ]);
         $builder->add('species', PropertyColumnType::class, [
-            'property_path' => '[Species]',
+            'property_path' => '[Species]'
         ]);
         $builder->add('genus', PropertyColumnType::class, [
             'property_path' => '[Genus]',
