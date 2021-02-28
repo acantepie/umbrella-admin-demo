@@ -6,9 +6,9 @@ use App\Entity\Notification;
 use App\Form\NotificationType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use function Symfony\Component\Translation\t;
 use Umbrella\AdminBundle\Notification\NotificationManager;
 use Umbrella\CoreBundle\Controller\BaseController;
-use function Symfony\Component\Translation\t;
 
 /**
  * Class TabsController

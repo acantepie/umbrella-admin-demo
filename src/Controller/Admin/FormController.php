@@ -8,8 +8,8 @@ use App\Form\FormFieldsType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Umbrella\CoreBundle\Controller\BaseController;
 use function Symfony\Component\Translation\t;
+use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
  * Class FormController

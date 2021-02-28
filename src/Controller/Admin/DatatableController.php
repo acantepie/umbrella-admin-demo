@@ -12,9 +12,9 @@ use App\Form\FishType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use function Symfony\Component\Translation\t;
 use Umbrella\CoreBundle\Component\DataTable\Adapter\EntityAdapter;
 use Umbrella\CoreBundle\Controller\BaseController;
-use function Symfony\Component\Translation\t;
 
 /**
  * @Route("/datatable")
