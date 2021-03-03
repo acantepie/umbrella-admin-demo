@@ -8293,12 +8293,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/acantepie/umbrella-admin.git",
-                "reference": "8e9b82eefca5a371fe77787573b4623f9d5b32c3"
+                "reference": "c9f5d59c983dbe0a4d556487cb2b66aedd4248c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acantepie/umbrella-admin/zipball/8e9b82eefca5a371fe77787573b4623f9d5b32c3",
-                "reference": "8e9b82eefca5a371fe77787573b4623f9d5b32c3",
+                "url": "https://api.github.com/repos/acantepie/umbrella-admin/zipball/c9f5d59c983dbe0a4d556487cb2b66aedd4248c9",
+                "reference": "c9f5d59c983dbe0a4d556487cb2b66aedd4248c9",
                 "shasum": ""
             },
             "require": {
@@ -8327,7 +8327,7 @@
                 "backend",
                 "umbrella"
             ],
-            "time": "2021-02-27T18:36:25+00:00"
+            "time": "2021-02-28T21:02:59+00:00"
         },
         {
             "name": "umbrella2/corebundle",
@@ -8335,12 +8335,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/acantepie/umbrella-core.git",
-                "reference": "a8ca48d1fd5f413b5f924aa872038b9a4d917c63"
+                "reference": "0b5bef88283cd72252ce604a34dc06d1b29c2b1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/acantepie/umbrella-core/zipball/a8ca48d1fd5f413b5f924aa872038b9a4d917c63",
-                "reference": "a8ca48d1fd5f413b5f924aa872038b9a4d917c63",
+                "url": "https://api.github.com/repos/acantepie/umbrella-core/zipball/0b5bef88283cd72252ce604a34dc06d1b29c2b1a",
+                "reference": "0b5bef88283cd72252ce604a34dc06d1b29c2b1a",
                 "shasum": ""
             },
             "require": {
@@ -8369,7 +8369,7 @@
                 "core",
                 "umbrella"
             ],
-            "time": "2021-02-27T18:32:41+00:00"
+            "time": "2021-02-28T21:08:13+00:00"
         },
         {
             "name": "webmozart/assert",

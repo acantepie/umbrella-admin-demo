@@ -46,6 +46,10 @@ Encore
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = 3;
+    })
+
+    .configureDevServerOptions(options => {
+        options.firewall = false;
     });
 
 const config = Encore.getWebpackConfig();
