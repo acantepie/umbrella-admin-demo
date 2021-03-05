@@ -1,4 +1,5 @@
 {
+    "description": "Umbrella Admin demo app",
     "name": "umbrella2/umbrella-demo",
     "type": "project",
     "license": "MIT",
@@ -29,7 +30,6 @@
         "symfony/security-bundle": "5.2.*",
         "symfony/serializer-pack": "*",
         "symfony/string": "5.2.*",
-        "symfony/swiftmailer-bundle": "^3.4",
         "symfony/translation": "5.2.*",
         "symfony/twig-pack": "*",
         "symfony/validator": "5.2.*",

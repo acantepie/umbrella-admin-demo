@@ -84,8 +84,9 @@ class FormFieldsType extends AbstractType
             'required' => false
         ]);
 
-        $builder->add('dateTime', DateTimepickerType::class, [
-            'required' => false
+        $builder->add('dateTime', DatepickerType::class, [
+            'required' => false,
+            'enable_time' => true
         ]);
     }
 

@@ -3,7 +3,7 @@ monolog:
     symfony:
       type: stream
       path: "%kernel.logs_dir%/symfony.log"
-      channels: ["!app", "!php"]
+      channels: ["!app", "!php", "!event"]
     app:
       type: stream
       path: "%kernel.logs_dir%/app.log"

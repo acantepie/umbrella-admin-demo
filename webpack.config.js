@@ -16,7 +16,7 @@ Encore
 
     .addEntry('front', './assets/front/Front.js')
     .addEntry('admin', './assets/admin/Admin.js')
-    .addEntry('ckeditor', './vendor/umbrella2/corebundle/assets/vendor/ckeditor/ckeditor.js')
+    .addEntry('ckeditor', './vendor/umbrella2/corebundle/assets/ckeditor/ckeditor.js')
 
     .enableSassLoader()
 
@@ -46,10 +46,6 @@ Encore
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = 3;
-    })
-
-    .configureDevServerOptions(options => {
-        options.firewall = false;
     });
 
 const config = Encore.getWebpackConfig();
