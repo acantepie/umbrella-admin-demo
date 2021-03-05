@@ -3,11 +3,11 @@
 {% block content %}
     <div class="card">
         <div class="card-header">
-            <h4>A propos du framwork</h4>
+            <h4>About framwork</h4>
         </div>
         <div class="card-body">
             <p>
-                <strong>Umbrella</strong> est un framwork de création de back-office devéloppé en Symfony 5.2.
+                <strong>Umbrella</strong> provide many components to create administration backends. Framework was developed on Symfony 5.2.
             </p>
         </div>
     </div>
@@ -18,26 +18,23 @@
         </div>
         <div class="card-body">
             <p>
-                Contient tous les composants utilisés par l'admin, ils peuvent être utilisés sur le back-office mais aussi sur le front-office :
+                Define all major components, they can be used on back-office but also on front-office :
             </p>
 
             <ul>
                 <li class="pb-2">
-                    <strong>Datatable</strong> : Composant de création de table basée sur <a href="https://datatables.net/" class="text-primary">DataTable.js</a>.<br>
-                    Utilise le même principe que les formType symfony pour la construction et supporte de nombreuses fonctionnalités (async loading, tree, custom adapter, Form filter, ...).
+                    <strong>Datatable</strong> : Datable creation component based on <a href="https://datatables.net/" class="text-primary">DataTable.js</a>.<br>
+                    Uses the same principle as Symfony FormT(Factory, Builder, Type) and supports a lot of features (Async loading, Tree view, Custom adapter, Form filter, ...)
                 </li>
                 <li class="pb-2">
-                    <strong>Menu</strong> : Composant de création de menu inspirée de <a href="https://github.com/KnpLabs/KnpMenuBundle" class="text-primary">KnpMenuBundle</a>.
+                    <strong>Menu</strong> : Menu creation component inspired by <a href="https://github.com/KnpLabs/KnpMenuBundle" class="text-primary">KnpMenuBundle</a>.
                 </li>
                 <li class="pb-2">
-                    <strong>Form</strong> : De nombreux formType sont disponibles (select2, datepicker, collection, upload, ckeditor,  ...).
+                    <strong>Form</strong> : Add advanced FormType; Entity/Choice2Type (based on select2, supports async loading and templating), Date(Time)Picker, Collection, Upload, Ckeditor, ...
                 </li>
                 <li class="pb-2">
-                    <strong>jsResponse</strong> : Implémente un format d'échange entre le serveur et le client en ajax permettant au controlleur de demander au client d'executer une liste d'action.
-                </li>
-                <li class="pb-2">
-                    <strong>Upload</strong> : Composant de gestion des fichiers inspiré de <a href="https://github.com/dustin10/VichUploaderBundle" class="text-primary">VichUploaderBundle</a>.<br>
-                    A la différence de VichUploader, tous les fichiers sont représentés par l'entité <strong>UmbrellaFile</strong> et utilise uniquement l'api <a href="https://github.com/thephpleague/flysystem" class="text-primary">flysystem.</a>
+                    <strong>Upload</strong> : Upload manager component inspired by <a href="https://github.com/dustin10/VichUploaderBundle" class="text-primary">VichUploaderBundle</a>.<br>
+                    Unlike VichUploader, all files are stored in dedicated entity <strong>UmbrellaFile</strong> and use <a href="https://github.com/thephpleague/flysystem" class="text-primary">flysystem.</a>
                 </li>
             </ul>
         </div>
@@ -49,26 +46,26 @@
         </div>
         <div class="card-body">
             <p>
-                Basé sur le thème Admin Hyper, il intègre la plupart des composants du Core afin de fournir un ensemble d'outils pour le back-office.
+                Based on Hyper Admin Theme, this bundle reuses most of Core Component in order to provide a set of tools for the back-office.
             </p>
 
             <p class="alert-info alert">
-                A la différence de <strong>EasyAdmin</strong> ou <strong>Sonata</strong>, le framwork est orienté composant et n'utilise pas de couche d'abstraction pour les CRUD, ce qui le rend trés simple à utiliser.
+                Unlike <strong>EasyAdmin</strong> or <strong>Sonata</strong>, this framework is component oriented and doesn't use an abstraction layer for CRUD, that makes it very easy to understand.
             </p>
 
             <p>
-                Service fourni par le umbrella-admin :
+                Service provided by umbrella-admin :
             </p>
 
             <ul>
                 <li class="pb-2">
-                    <strong>Sidebar</strong> : Utilise le composant Menu et la lib js <a href="https://github.com/onokumus/metismenu" class="text-primary">metismenu</a>.
+                    <strong>Sidebar</strong> : Reuse Menu component with javascript library <a href="https://github.com/onokumus/metismenu" class="text-primary">metismenu</a>.
                 </li>
                 <li class="pb-2">
-                    <strong>Gestion des utilisateurs</strong> : Inspiré de <a href="https://github.com/FriendsOfSymfony/FOSUserBundle" class="text-primary">FOSUserBundle</a>, son fonctionnement est identique (Utilise le nouveau système de sécurité symfony 5.2).
+                    <strong>User Management</strong> : Inspired by <a href="https://github.com/FriendsOfSymfony/FOSUserBundle" class="text-primary">FOSUserBundle</a>, it works the same way but use new Symfony 5.2 authenticator.
                 </li>
                 <li class="pb-2">
-                    <strong>Maker</strong> : Inspiré du <a href="https://symfony.com/doc/current/bundles/SymfonyMakerBundle/index.html" class="text-primary">MakerBundle symfony</a>, permet de générer des CRUDS utilisant le composant <strong>DataTable</strong> du core.
+                    <strong>Maker</strong> : Inspired by <a href="https://symfony.com/doc/current/bundles/SymfonyMakerBundle/index.html" class="text-primary">MakerBundle symfony</a>, helps you to create controller, form with DataTable view.
                 </li>
             </ul>
         </div>

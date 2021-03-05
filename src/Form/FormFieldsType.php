@@ -19,7 +19,6 @@ use Umbrella\CoreBundle\Form\CkeditorType;
 use Umbrella\CoreBundle\Form\CustomCheckboxType;
 use Umbrella\CoreBundle\Form\CustomRangeType;
 use Umbrella\CoreBundle\Form\DatepickerType;
-use Umbrella\CoreBundle\Form\DateTimepickerType;
 use Umbrella\CoreBundle\Form\Entity2Type;
 use Umbrella\CoreBundle\Form\TagType;
 use Umbrella\CoreBundle\Form\UmbrellaCollectionType;
@@ -51,16 +50,12 @@ class FormFieldsType extends AbstractType
     {
         $builder->add('active', CustomCheckboxType::class, [
             'required' => false,
-            'help' => 'CustomCheckboxType (bootstrap type)',
         ]);
         $builder->add('amount', CustomRangeType::class, [
-            'help' => 'CustomRangeType (html5 type)',
         ]);
         $builder->add('color', ColorType::class, [
-            'help' => 'ColorType (html5 type)',
         ]);
         $builder->add('text', TextareaType::class, [
-            'help' => 'TextareaType',
             'required' => false,
             'attr' => [
                 'rows' => 5,
@@ -73,7 +68,7 @@ class FormFieldsType extends AbstractType
                 . '<a class="dropdown-item" href="#">HTTPS</a>'
                 . '</div>',
             'input_suffix_text' => '.com',
-            'help' => 'Input avec suffix & prefix (formExtension)',
+            'help' => 'form.help.suffix_prefix_umbrella_extension',
             'required' => false,
         ]);
     }
@@ -102,8 +97,7 @@ class FormFieldsType extends AbstractType
             'choices_as_values' => true,
             'choice_prefix' => null,
             'required' => false,
-            'help' => 'Select2 - choices list',
-            'placeholder' => 'Espece',
+            'help' => 'form.help.choice_list',
         ]);
 
         $builder->add('fishEntities', Entity2Type::class, [
@@ -112,7 +106,7 @@ class FormFieldsType extends AbstractType
             'choice_prefix' => null,
             'multiple' => true,
             'required' => false,
-            'help' => 'Select2 - entity list',
+            'help' => 'form.help.entity_list',
             'expose' => function ($choice) {
                 return [
                     'description' => $choice->description,
@@ -124,7 +118,7 @@ class FormFieldsType extends AbstractType
             'class' => Fish::class,
             'multiple' => true,
             'required' => false,
-            'help' => 'Select2 - async loading',
+            'help' => 'form.help.async_list',
             'route' => 'app_admin_form_fishapi',
             'template_html' => '<span>[[text]]</span><br><span class="text-muted">[[description]]</span>',
         ]);
@@ -166,18 +160,13 @@ class FormFieldsType extends AbstractType
         $builder->add('items', UmbrellaCollectionType::class, [
             'entry_type' => FormFieldsItemType::class,
             'sortable' => true,
-            'max_length' => 5,
-            'constraints' => [
-                new Count([
-                    'min' => 1,
-                    'max' => 5,
-                ]),
-            ],
+            'help' => 'form.help.sortable_compound_collection'
         ]);
 
         $builder->add('strings', UmbrellaCollectionType::class, [
             'entry_type' => TextType::class,
-            'required' => false
+            'required' => false,
+            'help' => 'form.help.simple_collection'
         ]);
     }
 }

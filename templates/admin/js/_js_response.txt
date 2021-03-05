@@ -1,0 +1,17 @@
+[
+    {
+        'action' : 'toast',
+        'params' : {
+            position: "top-right",
+            icon: "success",
+            ...
+        }
+    },
+    {
+        'action' : 'redirect',
+        'params' : {
+            url : "umbrella-demo.dev/foo/bar"
+        }
+    },
+    ...
+]

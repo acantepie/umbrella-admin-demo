@@ -1,0 +1,15 @@
+import AjaxUtils from 'umbrella_core/utils/AjaxUtils';
+
+AjaxUtils.request({
+    'method' : 'get',
+    'url' : 'umbrella.dev/foo/bar',
+    'confirm' : '...',
+    'xhr-id' : 'my-id',
+    'spinner' : true,
+    'data' : { ...},
+    ...
+    // Vous pouvez utiliser toutes les options de $.ajax
+});
+
+AjaxUtils.get({...});
+AjaxUtils.post({...});

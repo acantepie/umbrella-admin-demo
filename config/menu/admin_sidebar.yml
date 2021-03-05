@@ -26,6 +26,11 @@ umbrella:
             icon: uil-document-layout-center
             route: app_admin_form_index
 
+
+        js_response:
+            icon: uil-exchange
+            route: app_admin_js_index
+
         notification:
             icon: uil-bell
             route: app_admin_notification_howto
@@ -36,9 +41,6 @@ umbrella:
 
 advanced:
     children:
-        maker:
-            icon: mdi mdi-console-line
-            route: app_admin_maker_index
         config_reference:
             icon: mdi mdi-cogs
             route: app_admin_umbrellaconfig_index

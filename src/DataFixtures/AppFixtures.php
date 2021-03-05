@@ -208,6 +208,8 @@ class AppFixtures extends Fixture
         $i->description = 'Poisson long et visqueux';
         $e->addItem($i);
 
+        $e->strings = ['Tanche', 'Truite', 'Saumon'];
+
         $manager->persist($e);
         $manager->flush();
     }

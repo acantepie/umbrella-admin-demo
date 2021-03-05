@@ -1,0 +1,162 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Principe</h4>
+            <p>
+                Le client ( votre navigateur web ) envoie une requète <b>Ajax</b> au serveur.<br>
+                Le serveur doit retourner une réponse Json au bon format.
+            </p>
+
+            <a href="#response-format" data-toggle="collapse" class="text-primary">
+                <i class="mdi mdi-eye mr-1"></i> Voir format
+            </a>
+            <pre class="border-dark border p-2 collapse" id="response-format">{{ source('admin/js/_js_response.txt') | e('html') }}</pre>
+            <br>
+            <p>
+                Le client résoudra alors chaque action dans l'ordre, et executera du code js en fonction du type d'action :
+            </p>
+            <ul>
+                <li>action : toast &rightarrow; <code>$.toast.success(...)</code></li>
+                <li>action : redirect &rightarrow; <code>window.location.href=...</code></li>
+            </ul>
+
+            <p class="alert alert-info">
+                La manière la plus simple de retourner  une réponse au bon format est d'utiliser le service <b>JsResponseBuilder</b> dans votre Controller symfony.
+            </p>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>L'attribut <span class="text-primary">data-xhr</span></h4>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Cet attribut va surcharger le comportement par défaut d'un <b>lien</b> ou d'un <b>formulaire</b> et enverra une requète <b>Ajax</b>
+                        au serveur au <b>clic</b> ou à la <b>soumission</b> de celui-ci. La réponse doit être au bon format.
+                    </p>
+                    <pre class="border-dark border p-2 " >{{ source('admin/js/_async_link.txt') | e('html') }}</pre>
+
+                    <div class="mb-2">
+                        {% for action, label in actions %}
+                            <a href data-xhr="{{ path('app_admin_js_xhr', {'action' : action}) }}" class="btn btn-primary mr-2">
+                                {{ label }}
+                            </a>
+                        {% endfor %}
+                    </div>
+
+                    <div id="update-me"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>L'attribut <span class="text-primary">data-spinner</span></h4>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Affiche un loader en attendant que le serveur réponde.
+                    </p>
+                    <pre class="border-dark border p-2">{{ '<a data-xhr="..." data-spinner="true" href>My link</a>' | e }}</pre>
+
+                    <div class="mb-2">
+                        <a href data-xhr="{{ path('app_admin_js_sleepxhr') }}" data-spinner="true" class="btn btn-primary mr-2">
+                            Click-me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>L'attribut <span class="text-primary">data-confirm</span></h4>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Affiche une modal de confirmation, avant d'effectuer la requète Ajax.
+                    </p>
+                    <pre class="border-dark border p-2">{{ '<a data-xhr="..." data-confirm="Are you sure ?" href>My link</a>' | e }}</pre>
+
+                    <div class="mb-2">
+                        <a href data-xhr="{{ path('app_admin_js_sleepxhr', {sleep: 0}) }}" data-confirm="Are you sure ?" class="btn btn-primary mr-2">
+                            Click-me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header d-flex align-items-center">
+                    <h4>L'attribut <span class="text-primary">data-xhr-id</span></h4>
+                    <span class="badge badge-danger ml-auto">New</span>
+                </div>
+                <div class="card-body">
+                    <p>
+                        Aucun autre appel <b>Ajax</b> ne sera envoyé au serveur si vous avez une requète avec le même id en attente.
+                    </p>
+                    <pre class="border-dark border p-2">{{ '<a data-xhr="..." data-xhr-id="my-id" href>My link</a>' | e }}</pre>
+
+                    <div class="mb-2">
+                        <a href data-xhr="{{ path('app_admin_js_sleepxhr', {sleep: 2}) }}" data-xhr-id="my-id" class="btn btn-primary mr-2">
+                            Click-me
+                        </a>
+                        <a href data-xhr="{{ path('app_admin_js_sleepxhr', {sleep: 2}) }}" data-xhr-id="my-id" class="btn btn-primary mr-2">
+                            Or me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Api Js</h4>
+            <p>
+                Plutôt que d'utiliser des attributs data, vous pouvez directement lancer des appel Ajax en JavaScript.
+            </p>
+
+            <pre class="border-dark border p-2">{{ source('admin/js/_ajax_utils.txt') | e('html') }}</pre>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Pour aller plus loin...</h4>
+
+            <h5>Géstion des erreurs</h5>
+
+            <p>
+                Si le serveur retourne une réponse avec un statut différent de <b>200</b>, un toast avec un message sera affiché.<br>
+                Un méssage spécifique est affichée pour les erreurs <b>404 not found</b> et <b>401 Unauthorized</b>.
+            </p>
+
+
+            <h5>Gérer les actions en js - jsResponseHandler</h5>
+            <p>
+                Chaque type d'action et gérer par une classe qui hérite de <b>JsResponseAction</b>.
+                Voici le code nécéssaire pour résoudre les actions de type 'toast' en js:
+            </p>
+
+            <pre class="border-dark border p-2">{{ source('admin/js/_toast.txt') | e('html') }}</pre>
+
+            <p>
+                Il est donc facile de surcharger les actions existantes ou d'en ajouter de nouvelles.
+            </p>
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,109 @@
+menu:
+  umbrella: Umbrella
+  about: About
+
+  datatable: Datatables
+  table: Table
+  table_2: Table (multiple)
+  table_3: Table (draggable)
+  table_api: Api adapter
+  table_tree: Tree
+
+  menu: Menu
+
+  js_response: jsResponse
+  forms: Forms
+
+  notification: Notifications
+
+  tabs: Tabs
+
+  advanced: Advanced
+  maker: Maker
+  config_reference: Configuration Reference
+
+  admin: Administration
+  users: users
+  groups: Groups
+
+breadcrumb:
+  exemple: Example
+  howto: How to
+
+action:
+  add_fish: Add a fish
+  edit_fish: Edit a fish
+
+  export: Export
+  export_selected: The selection
+  export_filtered: The research
+
+  add_fishcategory: Add a category
+  edit_fishcategory: Edit a category
+
+table:
+  speciesId: Species id
+  name: Name
+  description: Description
+  edible: Edible
+  habitats: Habitats
+  picture: Picture
+  species: Species
+  genus: Genus
+  subfamily: Sub-family
+  comments: Comment
+
+form:
+  label:
+    label: Label
+    description: Description
+    icon: icon
+    name: Name
+    edible: Edible
+    habitat: Habitat
+    habitats: Habitats
+
+    amount: Amount
+    color: Color
+    text: Text
+    url: Url
+
+    date: Date
+    dateTime: DateTime
+
+    fish: Fish
+    fishEntities: Fishes
+    asyncFishEntities: Fishes
+    tags: Tags
+
+    file: File
+    pdf: PDF file
+
+    htmlText: HTML Text
+
+    items: Items
+    strings: Strings
+
+    recipients: Recipients
+
+  placeholder:
+    habitat: habitat
+
+  help:
+    suffix_prefix_umbrella_extension: With suffix and prefix Umbrella FormExtension
+    choice_list: Using Choice list
+    entity_list: Using Entity list
+    async_list: Using Entity list - Async loading
+    sortable_compound_collection: Sortable collection with compound FormType
+    simple_collection: Collection with simple FormType
+    recipients: Will be sent to all if no recipient specified.
+
+fish:
+  habitat:
+    sea: Sea, Ocean
+    river: River
+    lake: Lake, Ponds
+
+message:
+  signin_to_bo: "Demo website for de <b>Umbrella Admin</b>.<br><br>Username : <b>umbrella</b><br>Password : <b>umbrella</b>"
+  notification_sent: Notification sent.
