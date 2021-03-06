@@ -17,7 +17,7 @@
                     <pre class="border-dark border p-2">
 # config/services.yaml
 services:
-    App\Menu\CustomMenu:
+    App\Menu\MyMenu:
         tags:
             - {name: umbrella.menu.factory, method: MyMenu, alias: my_nice_menu}
             </pre>
@@ -43,7 +43,7 @@ services:
                     </p>
 
                     <p>
-                        The Admin menu factory read a YAML file to build it. See below example :
+                        The Admin menu factory read a YAML file to build it. See example below :
                     </p>
                     <pre class="border-dark border p-2">{{  admin_sidebar_yml }}</pre>
 
