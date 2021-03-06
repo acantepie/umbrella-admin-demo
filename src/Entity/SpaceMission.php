@@ -28,7 +28,7 @@ class SpaceMission
         self::MISSION_FAILURE, self::MISSION_PARTIAL_FAILURE, self::MISSION_PRELAUNCH_FAILURE, self::MISSION_SUCCESS
     ];
 
-    const STATUS_COLORS = [
+    public const STATUS_COLORS = [
         self::ROCKET_ACTIVE => 'primary',
         self::ROCKET_RETIRED => 'danger',
         self::MISSION_FAILURE => 'danger',
@@ -36,6 +36,13 @@ class SpaceMission
         self::MISSION_PRELAUNCH_FAILURE => 'warning',
         self::MISSION_SUCCESS => 'success',
     ];
+
+    public static function getIconStatus(string $status)
+    {
+        return isset(self::STATUS_COLORS[$status])
+            ? sprintf('<i class="mdi mdi-circle text-%s"></i> %s', self::STATUS_COLORS[$status], $status)
+            : $status;
+    }
 
     use IdTrait;
     use SearchTrait;
@@ -87,6 +94,13 @@ class SpaceMission
      * @ORM\Column(type="integer", nullable=true)
      */
     public $cost;
+
+    /**
+     * @var SpaceMissionClassification|null
+     * @ORM\ManyToOne(targetEntity="App\Entity\SpaceMissionClassification", inversedBy="missions")
+     * @ORM\JoinColumn(name="classification_id", referencedColumnName="id", onDelete="SET NULL")
+     */
+    public $classification;
 
     /**
      * @var string

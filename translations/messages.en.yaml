@@ -7,6 +7,7 @@ menu:
   custom_adapter: Custom adapter
   draggable: Draggable
   editable: Editable
+  tree: Tree
 
   menu: Menu
 
@@ -52,6 +53,7 @@ table:
   date_utc: Date
   success: Success
   details: Details
+  missions: Missions
 
 form:
   label:

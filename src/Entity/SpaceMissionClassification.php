@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -18,6 +17,10 @@ use Umbrella\CoreBundle\Model\NestedTreeEntityTrait;
  */
 class SpaceMissionClassification implements NestedTreeEntityInterface
 {
+    const ROOT = 'root';
+    const COMPANY = 'company';
+    const STATUS = 'status';
+
     use IdTrait;
     use NestedTreeEntityTrait;
 
@@ -54,11 +57,32 @@ class SpaceMissionClassification implements NestedTreeEntityInterface
     public $name;
 
     /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    public $type;
+
+    /**
+     * @var SpaceMission[]|ArrayCollection
+     * @ORM\OneToMany(targetEntity="App\Entity\SpaceMission", mappedBy="classification")
+     */
+    public $missions;
+
+    /**
      * SpaceMissionClassification constructor.
      */
-    public function __construct()
+    public function __construct(string $name = '', string $type = self::ROOT)
     {
+        $this->name = $name;
+        $this->type = $type;
         $this->children = new ArrayCollection();
+        $this->missions = new ArrayCollection();
+    }
+
+    public function addMission(SpaceMission $mission)
+    {
+        $mission->classification = $this;
+        $this->missions->add($mission);
     }
 
     /**

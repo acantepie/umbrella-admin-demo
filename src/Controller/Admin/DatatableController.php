@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\DataTable\LaunchTableType;
+use App\DataTable\SpaceMissionClassificationTableType;
 use App\DataTable\SpaceMissionEditableTableType;
 use App\DataTable\SpaceMissionTableType;
 use Symfony\Component\HttpFoundation\Request;
@@ -82,6 +83,23 @@ class DatatableController extends BaseController
         }
 
         return $this->render('admin/datatable/editable.html.twig', [
+            'table' => $table,
+        ]);
+    }
+
+    /**
+     * @Route("/tree")
+     */
+    public function treeAction(Request $request)
+    {
+        $table = $this->createTable(SpaceMissionClassificationTableType::class);
+        $table->handleRequest($request);
+
+        if ($table->isCallback()) {
+            return $table->getCallbackResponse();
+        }
+
+        return $this->render('admin/datatable/tree.html.twig', [
             'table' => $table,
         ]);
     }

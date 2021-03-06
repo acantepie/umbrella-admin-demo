@@ -6,9 +6,11 @@ use App\Entity\FormFields;
 use App\Entity\FormFieldsItem;
 use App\Entity\Notification;
 use App\Entity\SpaceMission;
+use App\Entity\SpaceMissionClassification;
 use App\Entity\User;
 use App\Entity\UserGroup;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -32,6 +34,7 @@ class AppFixtures extends Fixture
     {
         $this->loadUser($manager);
         $this->loadSpaceMission($manager);
+        $this->loadSpaceMissionClassification($manager);
         $this->loadFormFields($manager);
         $this->loadNotifications($manager);
     }
@@ -83,6 +86,36 @@ class AppFixtures extends Fixture
             $manager->persist($spaceMission);
         }
 
+        $manager->flush();
+    }
+
+    /**
+     * @param EntityManagerInterface $manager
+     */
+    private function loadSpaceMissionClassification(ObjectManager $manager)
+    {
+        $root = new SpaceMissionClassification();
+
+        $result = $manager->createQuery(sprintf('SELECT DISTINCT e.companyName FROM %s e', SpaceMission::class))->getArrayResult();
+        foreach ($result as $row) {
+            $company = new SpaceMissionClassification($row['companyName'], SpaceMissionClassification::COMPANY);
+            $root->addChild($company);
+
+            foreach (SpaceMission::MISSION_STATUSES as $status) {
+                $missions = $manager->getRepository(SpaceMission::class)->findBy(['companyName' => $company->name, 'missionStatus' => $status]);
+
+                if (count($missions) > 0) {
+                    $status = new SpaceMissionClassification($status, SpaceMissionClassification::STATUS);
+                    $company->addChild($status);
+
+                    foreach ($missions as $mission) {
+                        $status->addMission($mission);
+                    }
+                }
+            }
+        }
+
+        $manager->persist($root);
         $manager->flush();
     }
 

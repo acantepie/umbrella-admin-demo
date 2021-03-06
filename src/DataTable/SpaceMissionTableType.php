@@ -5,6 +5,7 @@ namespace App\DataTable;
 use App\DataTable\Column\LocationColumnType;
 use App\DataTable\Column\StatusColumnType;
 use App\Entity\SpaceMission;
+use App\Entity\SpaceMissionClassification;
 use App\Form\Base\MissionStatusChoiceType;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -79,7 +80,7 @@ class SpaceMissionTableType extends DataTableType
         $builder->useAdapter(EntityAdapter::class, [
             'class' => SpaceMission::class,
             'fetch_join_collection' => false,
-            'query' => function (QueryBuilder $qb, array $formData) {
+            'query' => function (QueryBuilder $qb, array $formData) use ($options) {
                 if (isset($formData['search'])) {
                     $qb->andWhere('LOWER(e.search) LIKE :search');
                     $qb->setParameter('search', '%' . strtolower($formData['search']) . '%');
@@ -99,6 +100,11 @@ class SpaceMissionTableType extends DataTableType
                     $qb->andWhere('e.date <= :to');
                     $qb->setParameter('to', $formData['to']);
                 }
+
+                if ($options['classification']) {
+                    $qb->andWhere('e.classification = :classification');
+                    $qb->setParameter('classification', $options['classification']);
+                }
             }
         ]);
     }
@@ -106,7 +112,12 @@ class SpaceMissionTableType extends DataTableType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'row_reorder' => false
+            'row_reorder' => false,
         ]);
+
+        $resolver
+            ->define('classification')
+            ->default(null)
+            ->allowedTypes('null', SpaceMissionClassification::class);
     }
 }

@@ -1,0 +1,11 @@
+{% extends "@UmbrellaCore/Modal/default.html.twig" %}
+
+{% block modal_class %}modal-xl{% endblock %}
+
+{% block modal_title %}
+    <h4 class="modal-title">{{ classification.parent }} / {{ classification }} </h4>
+{% endblock %}
+
+{% block modal_content %}
+    {{ render_table(table) }}
+{% endblock %}
