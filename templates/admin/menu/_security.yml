@@ -1,0 +1,11 @@
+admin:
+  children:
+    users:
+      security: "is_granted('ROLE_GODLIKE_ADMIN') or is_granted('ROLE_USER_MANAGER')"
+      icon: uil-user
+      route: umbrella_admin_user_index
+
+    groups:
+      security: "is_granted('ROLE_GODLIKE_ADMIN') or is_granted('ROLE_GROUP_MANAGER')"
+      icon: uil-users-alt
+      route: umbrella_admin_usergroup_index

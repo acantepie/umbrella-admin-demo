@@ -1,7 +1,10 @@
-{% extends "admin/notification/layout.html.twig" %}
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
 
-{% block tab_content %}
+{% block content %}
     <div class="card">
+        <div class="card-header">
+            <h4>Send a notification</h4>
+        </div>
         <div class="card-body">
             <form enctype="multipart/form-data" method="POST" data-mount="Form">
                 {{ form_errors(form) }}

@@ -1,0 +1,13 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+    <div class="card card-body">
+        <h4 class="card-title">Basic example</h4>
+        <p class="text-muted font-14">
+            Async loading. Data are paginate, filtered and ordered by server using <code>EntityAdapter</code>.<br>
+            Table is built / configured using <code>DataTableType</code> that define columns using <code>ColumnType</code> and toolbar using Symfony <code>FormType</code> and <code>ActionType</code>.<br>
+        </p>
+
+        {{ render_table(table) }}
+    </div>
+{% endblock %}

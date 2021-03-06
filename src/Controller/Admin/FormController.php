@@ -2,8 +2,8 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Fish;
 use App\Entity\FormFields;
+use App\Entity\SpaceMission;
 use App\Form\FormFieldsType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,15 +42,16 @@ class FormController extends BaseController
     }
 
     /**
-     * @Route("/fish-api")
+     * @Route("/api")
      */
-    public function fishApiAction(Request $request)
+    public function apiAction(Request $request)
     {
         $qb = $this->em()->createQueryBuilder();
         $qb->select('e');
-        $qb->from(Fish::class, 'e');
+        $qb->from(SpaceMission::class, 'e');
 
         $q = trim($request->query->get('q'));
+
         if (!empty($q)) {
             $qb->andWhere('LOWER(e.search) LIKE :search');
             $qb->setParameter('search', '%' . strtolower($q) . '%');
@@ -58,12 +59,11 @@ class FormController extends BaseController
 
         $serialized = [];
 
-        /** @var Fish $fish */
-        foreach ($qb->getQuery()->getResult() as $fish) {
+        foreach ($qb->getQuery()->getResult() as $mission) {
             $serialized[] = [
-                'id' => $fish->id,
-                'text' => $fish->name,
-                'description' => $fish->description,
+                'id' => $mission->id,
+                'text' => (string) $mission,
+                'detail' => $mission->detail,
             ];
         }
 

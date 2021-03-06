@@ -8,7 +8,7 @@ AjaxUtils.request({
     'spinner' : true,
     'data' : { ...},
     ...
-    // Vous pouvez utiliser toutes les options de $.ajax
+    // All $.ajax options are available
 });
 
 AjaxUtils.get({...});

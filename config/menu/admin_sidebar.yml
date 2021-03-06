@@ -7,33 +7,31 @@ umbrella:
         datatable:
             icon: uil-table
             children:
-                table:
-                    route: app_admin_datatable_table
-                table_2:
-                    route: app_admin_datatable_table2
-                table_3:
-                    route: app_admin_datatable_table3
-                table_api:
-                    route: app_admin_datatable_tableapi
-                table_tree:
-                    route: app_admin_datatable_tabletree
-
-        menu:
-            icon: uil-bars
-            route: app_admin_menu_howto
+                basic:
+                    route: app_admin_datatable_basic
+                custom_adapter:
+                    route: app_admin_datatable_customadapter
+                draggable:
+                    route: app_admin_datatable_draggable
+                editable:
+                    route: app_admin_datatable_editable
 
         forms:
             icon: uil-document-layout-center
             route: app_admin_form_index
 
-
         js_response:
             icon: uil-exchange
             route: app_admin_js_index
 
+        menu:
+            icon: uil-bars
+            route: app_admin_menu_index
+
+
         notification:
             icon: uil-bell
-            route: app_admin_notification_howto
+            route: app_admin_notification_index
 
         tabs:
             icon: uil-layers-alt

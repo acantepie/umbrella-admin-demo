@@ -1,16 +1,17 @@
 class MyMenu
 {
-    public function createMenu(MenuBuilder $builder) : Menu
+    public function createMenu(MenuBuilder $builder): Menu
     {
         $builder
             ->root()
-            ->add('foo')
-                ->add('bar')
-                    ->setLabel('bar label')
-                    ->end()
-                ->add('baz')
-         ...
+            ->add('menu')
+                ->add('home')
+                    ->setLabel('Home')
+                    ->setIcon('uil-home')
+                    ->end();
+        // Same logic as Symfony TreeBuilder
 
         return $builder->getMenu();
     }
+
 }

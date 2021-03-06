@@ -2,11 +2,10 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Fish;
-use App\Entity\FishCategory;
 use App\Entity\FormFields;
 use App\Entity\FormFieldsItem;
 use App\Entity\Notification;
+use App\Entity\SpaceMission;
 use App\Entity\User;
 use App\Entity\UserGroup;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -21,11 +20,6 @@ class AppFixtures extends Fixture
     private RouterInterface $router;
 
     /**
-     * @var Fish[]
-     */
-    private $fishes = [];
-
-    /**
      * AppFixtures constructor.
      */
     public function __construct(UserPasswordEncoderInterface $userPasswordEncoder, RouterInterface $router)
@@ -37,8 +31,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $this->loadUser($manager);
-        $this->loadFish($manager);
-        $this->loadFishCategory($manager);
+        $this->loadSpaceMission($manager);
         $this->loadFormFields($manager);
         $this->loadNotifications($manager);
     }
@@ -64,113 +57,31 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadFish(ObjectManager $manager)
+    private function loadSpaceMission(ObjectManager $manager)
     {
-        $e = new Fish();
-        $e->sequence = 1;
-        $e->name = 'Saumon';
-        $e->description = 'Poisson migrateur dont la chaire est appréciée';
-        $e->edible = true;
-        $e->color = '#f06292';
-        $e->habitats = [Fish::HABITAT_LAKE, Fish::HABITAT_RIVER, Fish::HABITAT_SEA];
-        $manager->persist($e);
+        $handle = fopen(__DIR__ . '/data/space_mission.csv', 'r');
 
-        $this->fishes[] = $e;
+        $c = 0;
+        while (false !== ($row = fgetcsv($handle, ','))) {
+            ++$c;
+            if (1 === $c) {
+                continue;
+            }
 
-        $e = new Fish();
-        $e->sequence = 2;
-        $e->name = 'Poisson rouge';
-        $e->description = 'Poisson de compagnie';
-        $e->edible = false;
-        $e->habitats = [Fish::HABITAT_LAKE];
-        $e->color = '#f44336';
-        $manager->persist($e);
+            $spaceMission = new SpaceMission();
+            $spaceMission->sequence = $c - 1;
+            $spaceMission->companyName = $row[2];
+            $spaceMission->location = $row[3];
+            $spaceMission->date = new \DateTime($row[4]);
+            $spaceMission->detail = $row[5];
+            $spaceMission->rocketStatus = str_replace('Status', '', $row[6]);
 
-        $this->fishes[] = $e;
+            $price = floatval($row[7]);
+            $spaceMission->cost = $price > 0 ? $price : null;
+            $spaceMission->missionStatus = str_replace(' ', ' ', $row[8]);
 
-        $e = new Fish();
-        $e->sequence = 3;
-        $e->name = 'Anguille';
-        $e->description = 'Poisson long et visqueux';
-        $e->edible = true;
-        $e->habitats = [Fish::HABITAT_LAKE, Fish::HABITAT_RIVER, Fish::HABITAT_SEA];
-        $e->color = '#424242';
-
-        $this->fishes[] = $e;
-        $manager->persist($e);
-
-        $e = new Fish();
-        $e->sequence = 4;
-        $e->name = 'Lamproie';
-        $e->description = 'Poisson de vase, ayant une anatomie proche des poissons préhistoriques';
-        $e->edible = true;
-        $e->habitats = [Fish::HABITAT_LAKE, Fish::HABITAT_RIVER];
-        $e->color = '#8d6e63';
-
-        $this->fishes[] = $e;
-        $manager->persist($e);
-
-        $e = new Fish();
-        $e->sequence = 5;
-        $e->name = 'Gardon';
-        $e->description = 'Poisson d\'eau douce trés commun';
-        $e->edible = false;
-        $e->habitats = [Fish::HABITAT_LAKE, Fish::HABITAT_RIVER];
-        $e->color = '#b0bec5';
-
-        $this->fishes[] = $e;
-        $manager->persist($e);
-
-        $manager->flush();
-    }
-
-    private function loadFishCategory(ObjectManager $manager)
-    {
-        $r = new FishCategory();
-        $r->name = 'Root';
-        $manager->persist($r);
-
-        $c1 = new FishCategory();
-        $c1->name = 'Petit';
-        $c1->description = 'Taille < 30cm';
-        $c1->parent = $r;
-        $manager->persist($c1);
-
-        $cc1 = new FishCategory();
-        $cc1->name = 'Eau chaude';
-        $cc1->description = 'Eau T° > 15°';
-        $cc1->parent = $c1;
-        $manager->persist($cc1);
-
-        $cc2 = new FishCategory();
-        $cc2->name = 'Eau froide';
-        $cc2->description = 'Eau T° < 15°';
-        $cc2->parent = $c1;
-        $manager->persist($cc2);
-
-        $ccc1 = new FishCategory();
-        $ccc1->name = 'Lac de montagne';
-        $ccc1->description = 'Lac d\'altitude';
-        $ccc1->parent = $cc2;
-        $manager->persist($ccc1);
-
-        $ccc2 = new FishCategory();
-        $ccc2->name = 'Océan Atlantique';
-        $ccc2->description = '';
-        $ccc2->parent = $cc2;
-        $manager->persist($ccc2);
-
-        $c2 = new FishCategory();
-        $c2->name = 'Moyen';
-        $c2->description = 'Taille comprise entre 30cm et 1m';
-        $c2->parent = $r;
-        $manager->persist($c2);
-
-        $c3 = new FishCategory();
-        $c3->name = 'Grand';
-        $c3->description = 'Taille > 1m';
-        $c3->parent = $r;
-        $manager->persist($c3);
+            $manager->persist($spaceMission);
+        }
 
         $manager->flush();
     }
@@ -179,17 +90,11 @@ class AppFixtures extends Fixture
     {
         $e = new FormFields();
 
-        $fishes = $this->fishes;
-        shuffle($fishes);
-
         // Date
         $e->date = new \DateTime();
 
         // select 2
-        $e->fishEntities->add($fishes[0]);
-        $e->fishEntities->add($fishes[1]);
-        $e->asyncFishEntities->add($fishes[2]);
-        $e->tags = ['Umbrella', 'Admin'];
+        $e->tags = ['symfony', 'admin', 'umbrella'];
 
         // File
         $e->file = UmbrellaFile::createFromPath(__DIR__ . '/files/me.png');
@@ -199,16 +104,16 @@ class AppFixtures extends Fixture
 
         // Collection
         $i = new FormFieldsItem();
-        $i->label = 'Gardon';
-        $i->description = 'Poisson d\'eau douce trés commun';
+        $i->label = 'NASA';
+        $i->description = 'National Aeronautics and Space Administration - independent agency of the U.S. federal government ';
         $e->addItem($i);
 
         $i = new FormFieldsItem();
-        $i->label = 'Anguille';
-        $i->description = 'Poisson long et visqueux';
+        $i->label = 'ESA';
+        $i->description = 'European Space Agency - intergovernmental organisation of 22 member states';
         $e->addItem($i);
 
-        $e->strings = ['Tanche', 'Truite', 'Saumon'];
+        $e->strings = ['symfony', 'admin', 'umbrella'];
 
         $manager->persist($e);
         $manager->flush();
@@ -222,7 +127,7 @@ class AppFixtures extends Fixture
         $notification->title = 'Notification are now available !';
         $notification->createdAt = new \DateTime('02/07/2021');
         $notification->sendToAll = true;
-        $notification->url = $this->router->generate('app_admin_notification_howto');
+        $notification->url = $this->router->generate('app_admin_notification_index');
 
         $manager->persist($notification);
         $manager->flush();

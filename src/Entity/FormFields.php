@@ -65,30 +65,25 @@ class FormFields
     // Select 2
 
     /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    public $fish;
-
-    /**
-     * @var Fish[]|ArrayCollection
-     * @ORM\ManyToMany(targetEntity="App\Entity\Fish")
-     * @ORM\JoinTable(name="form_fields_fish",
+     * @var SpaceMission[]|ArrayCollection
+     * @ORM\ManyToMany(targetEntity="App\Entity\SpaceMission")
+     * @ORM\JoinTable(name="form_fields_spacemission",
      *     joinColumns={@ORM\JoinColumn(name="form_fields_id", referencedColumnName="id", onDelete="CASCADE")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="fish_id", referencedColumnName="id", unique=true, onDelete="CASCADE")}
+     *     inverseJoinColumns={@ORM\JoinColumn(name="space_mission_id", referencedColumnName="id", unique=true, onDelete="CASCADE")}
      * )
      */
-    public $fishEntities;
+    public $missions;
 
     /**
-     * @var Fish[]|ArrayCollection
+     * @var SpaceMission[]|ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="App\Entity\Fish")
-     * @ORM\JoinTable(name="form_fields_fish_async",
+     * @ORM\ManyToMany(targetEntity="App\Entity\SpaceMission")
+     * @ORM\JoinTable(name="form_fields_spacemission_async",
      *     joinColumns={@ORM\JoinColumn(name="form_fields_id", referencedColumnName="id", onDelete="CASCADE")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="fish_id", referencedColumnName="id", unique=true, onDelete="CASCADE")}
+     *     inverseJoinColumns={@ORM\JoinColumn(name="space_mission_id", referencedColumnName="id", unique=true, onDelete="CASCADE")}
      * )
      */
-    public $asyncFishEntities;
+    public $asyncMissions;
 
     /**
      * @ORM\Column(type="simple_array", nullable=true)
@@ -137,8 +132,8 @@ class FormFields
 
     public function __construct()
     {
-        $this->fishEntities = new ArrayCollection();
-        $this->asyncFishEntities = new ArrayCollection();
+        $this->missions = new ArrayCollection();
+        $this->asyncMissions = new ArrayCollection();
         $this->items = new ArrayCollection();
     }
 

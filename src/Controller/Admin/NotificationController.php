@@ -6,35 +6,21 @@ use App\Entity\Notification;
 use App\Form\NotificationType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use function Symfony\Component\Translation\t;
 use Umbrella\AdminBundle\Notification\NotificationManager;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
- * Class TabsController
+ * Class NotificationController
  *
  * @Route("/notification")
  */
 class NotificationController extends BaseController
 {
     /**
-     * @Route("/how-to")
+     * @Route("")
      */
-    public function howToAction()
+    public function indexAction(NotificationManager $manager, Request $request)
     {
-        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.howto']);
-
-        return $this->render('admin/notification/howto.html.twig');
-    }
-
-    /**
-     * @Route("/exemple")
-     */
-    public function exempleAction(Request $request, NotificationManager $manager)
-    {
-        $this->getMenu()->setCurrent(':notification');
-        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.exemple']);
-
         $notification = new Notification();
         $notification->title = 'Hello world !';
         $notification->icon = 'mdi mdi-bell-outline';
@@ -47,12 +33,12 @@ class NotificationController extends BaseController
             }
             $manager->send($notification);
 
-            $this->toastSuccess(t('message.notification_sent'));
+            $this->toastSuccess('Click on bell to see me !', 'New notification');
 
-            return $this->redirectToRoute('app_admin_notification_exemple');
+            return $this->redirectToRoute('app_admin_notification_index');
         }
 
-        return $this->render('admin/notification/exemple.html.twig', [
+        return $this->render('admin/notification/index.html.twig', [
             'form' => $form->createView()
         ]);
     }

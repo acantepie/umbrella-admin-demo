@@ -2,20 +2,22 @@
 
 {% block content %}
     <div class="card">
+        <div class="card-header">
+            <h4>Principle</h4>
+        </div>
         <div class="card-body">
-            <h4 class="card-title">Principe</h4>
             <p>
-                Le client ( votre navigateur web ) envoie une requète <b>Ajax</b> au serveur.<br>
-                Le serveur doit retourner une réponse Json au bon format.
+                Client ( your web browser ) send an <b>Ajax</b> request to server.<br>
+                Then, server return an Json response respecting the good format.
             </p>
 
             <a href="#response-format" data-toggle="collapse" class="text-primary">
-                <i class="mdi mdi-eye mr-1"></i> Voir format
+                <i class="mdi mdi-eye mr-1"></i> See response format
             </a>
             <pre class="border-dark border p-2 collapse" id="response-format">{{ source('admin/js/_js_response.txt') | e('html') }}</pre>
             <br>
             <p>
-                Le client résoudra alors chaque action dans l'ordre, et executera du code js en fonction du type d'action :
+                So, Client resolves each actions one by one, calling the right js function depending of action type :
             </p>
             <ul>
                 <li>action : toast &rightarrow; <code>$.toast.success(...)</code></li>
@@ -23,7 +25,7 @@
             </ul>
 
             <p class="alert alert-info">
-                La manière la plus simple de retourner  une réponse au bon format est d'utiliser le service <b>JsResponseBuilder</b> dans votre Controller symfony.
+                Easiest way to return response in good format is to use the service <b>JsResponseBuilder</b> on Symfony controller.
             </p>
 
         </div>
@@ -33,12 +35,12 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>L'attribut <span class="text-primary">data-xhr</span></h4>
+                    <h4><span class="text-primary">data-xhr</span> attribute</h4>
                 </div>
                 <div class="card-body">
                     <p>
-                        Cet attribut va surcharger le comportement par défaut d'un <b>lien</b> ou d'un <b>formulaire</b> et enverra une requète <b>Ajax</b>
-                        au serveur au <b>clic</b> ou à la <b>soumission</b> de celui-ci. La réponse doit être au bon format.
+                        This attribute will override the default behaviour of <b>link</b> or <b>form</b> and send an <b>Ajax</b> request to server on
+                        <b>click</b> or on <b>submit</b>.<br>
                     </p>
                     <pre class="border-dark border p-2 " >{{ source('admin/js/_async_link.txt') | e('html') }}</pre>
 
@@ -58,11 +60,11 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>L'attribut <span class="text-primary">data-spinner</span></h4>
+                    <h4><span class="text-primary">data-spinner</span> attribute</h4>
                 </div>
                 <div class="card-body">
                     <p>
-                        Affiche un loader en attendant que le serveur réponde.
+                        Display a spinner until the server responds.
                     </p>
                     <pre class="border-dark border p-2">{{ '<a data-xhr="..." data-spinner="true" href>My link</a>' | e }}</pre>
 
@@ -78,11 +80,11 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>L'attribut <span class="text-primary">data-confirm</span></h4>
+                    <h4><span class="text-primary">data-confirm</span> attribute</h4>
                 </div>
                 <div class="card-body">
                     <p>
-                        Affiche une modal de confirmation, avant d'effectuer la requète Ajax.
+                        Display a confirm modal before call server.
                     </p>
                     <pre class="border-dark border p-2">{{ '<a data-xhr="..." data-confirm="Are you sure ?" href>My link</a>' | e }}</pre>
 
@@ -98,12 +100,12 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-header d-flex align-items-center">
-                    <h4>L'attribut <span class="text-primary">data-xhr-id</span></h4>
+                    <h4><span class="text-primary">data-xhr-id</span> attribute</h4>
                     <span class="badge badge-danger ml-auto">New</span>
                 </div>
                 <div class="card-body">
                     <p>
-                        Aucun autre appel <b>Ajax</b> ne sera envoyé au serveur si vous avez une requète avec le même id en attente.
+                        One ajax call can be performed at the same time if they have the same <b>xhr-id</b>.
                     </p>
                     <pre class="border-dark border p-2">{{ '<a data-xhr="..." data-xhr-id="my-id" href>My link</a>' | e }}</pre>
 
@@ -121,10 +123,12 @@
     </div>
 
     <div class="card">
+        <div class="card-header">
+            <h4>JavaScript API</h4>
+        </div>
         <div class="card-body">
-            <h4 class="card-title">Api Js</h4>
             <p>
-                Plutôt que d'utiliser des attributs data, vous pouvez directement lancer des appel Ajax en JavaScript.
+                Instead of use data- attribute, you can use Javascript methods.
             </p>
 
             <pre class="border-dark border p-2">{{ source('admin/js/_ajax_utils.txt') | e('html') }}</pre>
@@ -133,27 +137,28 @@
     </div>
 
     <div class="card">
+        <div class="card-header">
+            <h4>To go further...</h4>
+        </div>
         <div class="card-body">
-            <h4 class="card-title">Pour aller plus loin...</h4>
-
-            <h5>Géstion des erreurs</h5>
+            <h5>Error handling</h5>
 
             <p>
-                Si le serveur retourne une réponse avec un statut différent de <b>200</b>, un toast avec un message sera affiché.<br>
-                Un méssage spécifique est affichée pour les erreurs <b>404 not found</b> et <b>401 Unauthorized</b>.
+                If server return a response with an error HTTP status code, a toast will be displayed
+                A specific message will be displayed if HTTP status code is <b>404 not found</b> or <b>401 Unauthorized</b>.
             </p>
 
 
-            <h5>Gérer les actions en js - jsResponseHandler</h5>
+            <h5>Handle action on JavaScript - jsResponseHandler</h5>
             <p>
-                Chaque type d'action et gérer par une classe qui hérite de <b>JsResponseAction</b>.
-                Voici le code nécéssaire pour résoudre les actions de type 'toast' en js:
+                Each action type is handled by a class that extends <b>JsResponseAction</b>.
+                The following code handle action of type 'toast' :
             </p>
 
             <pre class="border-dark border p-2">{{ source('admin/js/_toast.txt') | e('html') }}</pre>
 
             <p>
-                Il est donc facile de surcharger les actions existantes ou d'en ajouter de nouvelles.
+                So, it's easy to override default action or add new action.
             </p>
 
         </div>

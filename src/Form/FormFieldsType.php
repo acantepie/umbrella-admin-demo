@@ -2,8 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\Fish;
 use App\Entity\FormFields;
+use App\Entity\SpaceMission;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -13,7 +14,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotNull;
 use Umbrella\CoreBundle\Component\UmbrellaFile\Validator\Constraints\UmbrellaFileConstraint;
 use Umbrella\CoreBundle\Form\AsyncEntity2Type;
-use Umbrella\CoreBundle\Form\Choice2Type;
 use Umbrella\CoreBundle\Form\CkeditorType;
 use Umbrella\CoreBundle\Form\CustomCheckboxType;
 use Umbrella\CoreBundle\Form\CustomRangeType;
@@ -86,40 +86,33 @@ class FormFieldsType extends AbstractType
 
     private function buildSelect(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('fish', Choice2Type::class, [
-            'choices' => [
-                'Gardon',
-                'Saumon',
-                'Anguille',
-                'Lamproie',
-            ],
-            'choices_as_values' => true,
-            'choice_prefix' => null,
-            'required' => false,
-            'help' => 'form.help.choice_list',
-        ]);
-
-        $builder->add('fishEntities', Entity2Type::class, [
-            'class' => Fish::class,
-            'template_html' => '<span>[[text]]</span><br><span class="text-muted">[[description]]</span>',
+        $builder->add('missions', Entity2Type::class, [
+            'class' => SpaceMission::class,
+            'query_builder' => function (EntityRepository $er) {
+                return $er
+                    ->createQueryBuilder('e')
+                    ->setMaxResults(100);
+            },
+            'template_html' => '<span>[[text]]</span><br><span class="text-muted">[[detail]]</span>',
             'choice_prefix' => null,
             'multiple' => true,
             'required' => false,
             'help' => 'form.help.entity_list',
             'expose' => function ($choice) {
                 return [
-                    'description' => $choice->description,
+                    'detail' => $choice->detail,
                 ];
             },
         ]);
 
-        $builder->add('asyncFishEntities', AsyncEntity2Type::class, [
-            'class' => Fish::class,
+        $builder->add('asyncMissions', AsyncEntity2Type::class, [
+            'label' => 'missions',
+            'class' => SpaceMission::class,
             'multiple' => true,
             'required' => false,
             'help' => 'form.help.async_list',
-            'route' => 'app_admin_form_fishapi',
-            'template_html' => '<span>[[text]]</span><br><span class="text-muted">[[description]]</span>',
+            'route' => 'app_admin_form_api',
+            'template_html' => '<span>[[text]]</span><br><span class="text-muted">[[detail]]</span>',
         ]);
 
         $builder->add('tags', TagType::class, [

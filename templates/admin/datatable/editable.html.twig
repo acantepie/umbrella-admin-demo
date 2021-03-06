@@ -1,0 +1,14 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+    <div class="card card-body">
+        <h4 class="card-title">Editable / Exportable example</h4>
+        <p class="text-muted font-14">
+            There is no limitation about how you edit your data in datatable.<br>
+            You just have to add <code>LinkColumnType</code> or <code>LinkListColumnType</code> on your <code>DataTableType</code> and define url depending on data in row (You can create your own column too or customize the render of your columns).<br>
+            If you want edit data with modal, you can use <code>JsResponse</code> to open modal, or refresh table data.
+        </p>
+
+        {{ render_table(table) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+    <div class="card card-body">
+        <h4 class="card-title">Draggable example</h4>
+        <p class="text-muted font-14">
+            Example of Datatable with <a href="https://datatables.net/extensions/rowreorder/" class="text-primary">RowReorder</a> extension.<br>
+            After each row reordering, an ajax query was performed, server save changes and refresh view (i.e. call <code>Datatable.draw()</code>).
+        </p>
+
+        {{ render_table(table) }}
+    </div>
+{% endblock %}

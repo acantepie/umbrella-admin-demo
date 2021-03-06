@@ -13,23 +13,12 @@ use Umbrella\CoreBundle\Controller\BaseController;
 class MenuController extends BaseController
 {
     /**
-     * @Route("/how-to")
+     * @Route("")
      */
-    public function howToAction()
+    public function indexAction()
     {
-        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.howto']);
-
-        return $this->render('admin/menu/howto.html.twig');
-    }
-
-    /**
-     * @Route("/exemple")
-     */
-    public function exempleAction()
-    {
-        $this->getMenu()->setCurrent(':menu');
-        $this->getBreadcrumb()->addItem(['label' => 'breadcrumb.exemple']);
-
-        return $this->render('admin/menu/exemple.html.twig');
+        return $this->render('admin/menu/index.html.twig', [
+            'admin_sidebar_yml' => file_get_contents(__DIR__ . '/../../../config/menu/admin_sidebar.yml')
+        ]);
     }
 }

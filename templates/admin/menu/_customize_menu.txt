@@ -1,0 +1,23 @@
+class MyMenu
+{
+    public function renderMenu(Menu $menu, array $parameters = []): string
+    {
+        return $this->twig->render('my_nice_template', [
+           'menu' => $menu,
+       ]);
+    }
+
+    public function renderBreadcrumb(Breadcrumb $breadcrumb, array $parameters = []): string
+    {
+        return $this->twig->render('my_nice_template', [
+           'breadcrumb' => $breadcrumb,
+       ]);
+    }
+}
+
+# config/services.yaml
+services:
+    App\Menu\CustomMenu:
+        tags:
+            - {name: umbrella.menu.renderer, method: renderMenu, alias: my_nice_menu}
+            - {name: umbrella.breadcrumb.renderer, method: renderBreadcrumb, alias: my_nice_menu}
