@@ -52,6 +52,7 @@ class LaunchTableType extends DataTableType
 
             try {
                 $response = $this->client->request('POST', 'https://api.spacexdata.com/v4/launches/query', [
+                    'timeout' => 3,
                     'json' => [
                         'options' => [
                             'offset' => $requestData['start'],

@@ -73,6 +73,8 @@ form:
     items: Items
     strings: Strings
     missions: Missions
+    label: Label
+    description: Description
 
     icon: Icon
     recipients: Destinataires

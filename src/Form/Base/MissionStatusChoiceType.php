@@ -12,6 +12,7 @@ class MissionStatusChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
+            'label' => 'Mission status',
             'choices' => SpaceMission::MISSION_STATUSES,
             'choices_as_values' => true,
             'translation_domain' => false,

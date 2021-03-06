@@ -2,27 +2,24 @@
 
 namespace App\Repository;
 
-use App\Entity\FishCategory;
+use App\Entity\SpaceMission;
 use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 /**
- * Class FishCategoryRepository
+ * Class SpaceMissionClassificationRepository
  */
-class FishCategoryRepository extends NestedTreeRepository
+class SpaceMissionClassificationRepository extends NestedTreeRepository
 {
     /**
-     * FishCategoryRepository constructor.
+     * SpaceMissionClassificationRepository constructor.
      */
     public function __construct(EntityManagerInterface $manager)
     {
-        parent::__construct($manager, $manager->getClassMetadata(FishCategory::class));
+        parent::__construct($manager, $manager->getClassMetadata(SpaceMission::class));
     }
 
-    /**
-     * @return FishCategory|null
-     */
-    public function findRoot(bool $create = false)
+    public function findRoot(bool $create = false) : SpaceMission
     {
         $root = $this->getRootNodesQueryBuilder()
             ->setMaxResults(1)
@@ -30,7 +27,7 @@ class FishCategoryRepository extends NestedTreeRepository
             ->getOneOrNullResult();
 
         if (null === $root && $create) {
-            $root = new FishCategory();
+            $root = new SpaceMission();
         }
 
         return $root;
