@@ -17,12 +17,11 @@ use Umbrella\CoreBundle\Model\NestedTreeEntityTrait;
  */
 class SpaceMissionClassification implements NestedTreeEntityInterface
 {
+    use IdTrait;
+    use NestedTreeEntityTrait;
     const ROOT = 'root';
     const COMPANY = 'company';
     const STATUS = 'status';
-
-    use IdTrait;
-    use NestedTreeEntityTrait;
 
     /**
      * @var SpaceMissionClassification

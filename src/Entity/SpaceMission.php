@@ -16,6 +16,8 @@ use Umbrella\CoreBundle\Model\SearchTrait;
  */
 class SpaceMission
 {
+    use IdTrait;
+    use SearchTrait;
     const ROCKET_ACTIVE = 'Active';
     const ROCKET_RETIRED = 'Retired';
 
@@ -43,9 +45,6 @@ class SpaceMission
             ? sprintf('<i class="mdi mdi-circle text-%s"></i> %s', self::STATUS_COLORS[$status], $status)
             : $status;
     }
-
-    use IdTrait;
-    use SearchTrait;
 
     /**
      * @var int
