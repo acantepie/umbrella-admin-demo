@@ -34,6 +34,10 @@ class LaunchTableType extends DataTableType
      */
     public function buildTable(DataTableBuilder $builder, array $options = [])
     {
+        $builder->setRowClass(function ($o) {
+            return $o->success ? '' : 'bg-danger text-white';
+        });
+
         $builder->add('date_utc', PropertyColumnType::class, [
             'renderer' => function ($o) {
                 return (new \DateTime($o->date_utc))->format('d M Y H:i');
@@ -56,7 +60,7 @@ class LaunchTableType extends DataTableType
                     'json' => [
                         'options' => [
                             'offset' => $requestData['start'],
-                            'limit' => $requestData['start'] + $requestData['length'],
+                            'limit' => $requestData['length'],
                         ]
                     ]
                 ]);
@@ -73,7 +77,8 @@ class LaunchTableType extends DataTableType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'orderable' => false
+            'orderable' => false,
+            'class' => 'table'
         ]);
     }
 }
