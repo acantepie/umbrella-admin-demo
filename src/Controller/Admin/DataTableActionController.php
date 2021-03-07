@@ -78,7 +78,7 @@ class DataTableActionController extends BaseController
      */
     public function deleteAction($id)
     {
-        $entity = $this->findOrNotFound(SpaceMissionTableType::class, $id);
+        $entity = $this->findOrNotFound(SpaceMission::class, $id);
         $this->removeAndFlush($entity);
 
         return $this->jsResponseBuilder()

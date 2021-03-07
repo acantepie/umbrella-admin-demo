@@ -5,13 +5,14 @@ namespace App\DataTable;
 use App\Entity\SpaceMission;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\Component\DataTable\Column\CheckBoxColumnType;
-use Umbrella\CoreBundle\Component\DataTable\Column\LinkListColumnType;
+use Umbrella\CoreBundle\Component\DataTable\Column\WidgetColumnType;
 use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\Component\DataTable\ToolbarBuilder;
-use Umbrella\CoreBundle\Component\UmbrellaLink\UmbrellaLinkList;
 use Umbrella\CoreBundle\Component\Widget\Type\AddLinkType;
 use Umbrella\CoreBundle\Component\Widget\Type\ButtonDropdownType;
 use Umbrella\CoreBundle\Component\Widget\Type\LinkType;
+use Umbrella\CoreBundle\Component\Widget\Type\RowDeleteLinkType;
+use Umbrella\CoreBundle\Component\Widget\Type\RowEditLinkType;
 use Umbrella\CoreBundle\Component\Widget\WidgetBuilder;
 
 /**
@@ -43,11 +44,18 @@ class SpaceMissionEditableTableType extends SpaceMissionTableType
 
         parent::buildTable($builder, $options);
 
-        $builder->add('actions', LinkListColumnType::class, [
-            'link_builder' => function (UmbrellaLinkList $linkList, SpaceMission $s) {
-                $linkList->addXhrEdit('app_admin_datatableaction_edit', ['id' => $s->id]);
-                $linkList->addXhrDelete('app_admin_datatableaction_delete', ['id' => $s->id]);
-            },
+        $builder->add('links', WidgetColumnType::class, [
+            'build' => function (WidgetBuilder $builder, SpaceMission $s) {
+                $builder->add('add', RowEditLinkType::class, [
+                    'route' => 'app_admin_datatableaction_edit',
+                    'route_params' => ['id' => $s->id]
+                ]);
+
+                $builder->add('delete', RowDeleteLinkType::class, [
+                    'route' => 'app_admin_datatableaction_delete',
+                    'route_params' => ['id' => $s->id]
+                ]);
+            }
         ]);
     }
 
