@@ -90,5 +90,5 @@ form:
     recipients: Will be sent to all if no recipient specified.
 
 message:
-  signin_to_bo: "Demo website for de <b>Umbrella Admin</b>.<br><br>Username : <b>umbrella</b><br>Password : <b>umbrella</b>"
+  signin_to_bo: "Demo website for de Umbrella Admin.<br>Hint : <b>umbrella</b> / <b>umbrella</b>"
   notification_sent: Notification sent.
