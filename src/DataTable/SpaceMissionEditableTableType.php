@@ -4,15 +4,15 @@ namespace App\DataTable;
 
 use App\Entity\SpaceMission;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\Component\DataTable\Action\ActionType;
-use Umbrella\CoreBundle\Component\DataTable\Action\AddActionType;
-use Umbrella\CoreBundle\Component\DataTable\Action\DropdownActionType;
-use Umbrella\CoreBundle\Component\DataTable\Action\DropdownItemActionType;
 use Umbrella\CoreBundle\Component\DataTable\Column\CheckBoxColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Column\LinkListColumnType;
 use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\Component\DataTable\ToolbarBuilder;
 use Umbrella\CoreBundle\Component\UmbrellaLink\UmbrellaLinkList;
+use Umbrella\CoreBundle\Component\Widget\Type\AddLinkType;
+use Umbrella\CoreBundle\Component\Widget\Type\ButtonDropdownType;
+use Umbrella\CoreBundle\Component\Widget\Type\LinkType;
+use Umbrella\CoreBundle\Component\Widget\WidgetBuilder;
 
 /**
  * Class SpaceMissionEditableTableType
@@ -23,23 +23,17 @@ class SpaceMissionEditableTableType extends SpaceMissionTableType
     {
         parent::buildToolbar($builder, $options);
 
-        $builder->addAction('add', AddActionType::class, [
+        $builder->addWidget('add', AddLinkType::class, [
             'route' => 'app_admin_datatableaction_edit',
             'xhr' => true
         ]);
 
-        $builder->addAction('export', DropdownActionType::class, [
-            'icon' => 'mdi mdi-file-download-outline'
-        ]);
-
-        $builder->addChildAction('export', 'export_filtered', DropdownItemActionType::class, [
-            'route' => 'app_admin_datatableaction_dumpfiltered',
-            'extra_data' => ActionType::DATA_DATATABLE_FILTER
-        ]);
-
-        $builder->addChildAction('export', 'export_selected', DropdownItemActionType::class, [
-            'route' => 'app_admin_datatableaction_dumpselected',
-            'extra_data' => ActionType::DATA_DATATABLE_SELECTION,
+        $builder->addWidget('export', ButtonDropdownType::class, [
+            'icon' => 'mdi mdi-file-download-outline',
+            'build' => function (WidgetBuilder $builder) {
+                $builder->add('export_filtered', LinkType::class);
+                $builder->add('export_selected', LinkType::class);
+            }
         ]);
     }
 
