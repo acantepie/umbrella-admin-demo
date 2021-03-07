@@ -32,8 +32,14 @@ class SpaceMissionEditableTableType extends SpaceMissionTableType
         $builder->addWidget('export', ButtonDropdownType::class, [
             'icon' => 'mdi mdi-file-download-outline',
             'build' => function (WidgetBuilder $builder) {
-                $builder->add('export_filtered', LinkType::class);
-                $builder->add('export_selected', LinkType::class);
+                $builder->add('export_filtered', LinkType::class, [
+                    'route' => 'app_admin_datatableaction_dumpfiltered',
+                    'attr' => ['data-dt' => self::DT_FILTER]
+                ]);
+                $builder->add('export_selected', LinkType::class, [
+                    'route' => 'app_admin_datatableaction_dumpselected',
+                    'attr' => ['data-dt' => self::DT_SELECTION]
+                ]);
             }
         ]);
     }
