@@ -34,7 +34,8 @@ class SpaceMissionClassificationTableType extends DataTableType
                 }
 
                 return $c->name;
-            }
+            },
+            'is_safe_html' => true
         ]);
 
         $countQuery = $this->em->createQuery(sprintf('SELECT COUNT(m) FROM %s m WHERE m.classification = :c', SpaceMission::class));
@@ -50,7 +51,8 @@ class SpaceMissionClassificationTableType extends DataTableType
                 }
 
                 return '';
-            }
+            },
+            'is_safe_html' => true
         ]);
 
         $builder->useNestedEntityAdapter(SpaceMissionClassification::class);
