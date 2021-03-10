@@ -7,12 +7,12 @@ use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
 
 class LocationColumnType extends PropertyColumnType
 {
-    public function render($entity, array $options)
+    public function render($rowData, array $options) : string
     {
-        $value = $this->accessor->getValue($entity, $options['property_path']);
+        $value = $this->accessor->getValue($rowData, $options['property_path']);
 
         $locationsParts = explode(',', $value);
-        $id = sprintf('location-%d', $entity->id);
+        $id = sprintf('location-%d', $rowData->id);
 
         return sprintf(
             '<a class="dropdown-toggle" data-toggle="collapse" href="#%s"><u>%s</u></a><div class="collapse" id="%s"><div class="card border-secondary border p-1 mb-0 my-1">%s</div></div>',
