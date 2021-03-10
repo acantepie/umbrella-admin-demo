@@ -57,7 +57,7 @@ class SpaceMissionTableType extends DataTableType
         }
 
         $builder->add('date', DateColumnType::class, [
-            'order' => $options['row_reorder'] ? true : 'DESC',
+            'order' => $options['row_reorder'] ? null : 'DESC',
             'format' => 'd M Y'
         ]);
         $builder->add('companyName', PropertyColumnType::class);
