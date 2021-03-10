@@ -8,7 +8,7 @@ use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
 
 class StatusColumnType extends PropertyColumnType
 {
-    public function renderProperty($value, array $options) : string
+    public function renderProperty($value, array $options): string
     {
         return SpaceMission::getIconStatus($value);
     }

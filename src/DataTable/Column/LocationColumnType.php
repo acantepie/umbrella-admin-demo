@@ -7,7 +7,7 @@ use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
 
 class LocationColumnType extends PropertyColumnType
 {
-    public function render($rowData, array $options) : string
+    public function render($rowData, array $options): string
     {
         $value = $this->accessor->getValue($rowData, $options['property_path']);
 
