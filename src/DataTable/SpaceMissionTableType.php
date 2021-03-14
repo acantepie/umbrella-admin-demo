@@ -141,7 +141,7 @@ class SpaceMissionTableType extends DataTableType
             'query' => function (QueryBuilder $qb, array $formData) use ($options) {
                 if (isset($formData['search'])) {
                     $qb->andWhere('LOWER(e.search) LIKE :search');
-                    $qb->setParameter('search', '%' . strtolower($formData['search']) . '%');
+                    $qb->setParameter('search', '%' . $formData['search'] . '%');
                 }
 
                 if (isset($formData['missionStatus'])) {
