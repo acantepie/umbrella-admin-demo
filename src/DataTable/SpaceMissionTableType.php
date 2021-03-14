@@ -5,7 +5,6 @@ namespace App\DataTable;
 use App\DataTable\Column\LocationColumnType;
 use App\DataTable\Column\StatusColumnType;
 use App\Entity\SpaceMission;
-use App\Entity\SpaceMissionClassification;
 use App\Form\Base\MissionStatusChoiceType;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -159,11 +158,6 @@ class SpaceMissionTableType extends DataTableType
                     $qb->setParameter('to', $formData['to']);
                 }
 
-                if ($options['classification']) {
-                    $qb->andWhere('e.classification = :classification');
-                    $qb->setParameter('classification', $options['classification']);
-                }
-
                 if ($options['mission_status']) {
                     $qb->andWhere('e.missionStatus = :_missionStatus');
                     $qb->setParameter('_missionStatus', $options['mission_status']);
@@ -194,11 +188,6 @@ class SpaceMissionTableType extends DataTableType
             ->allowedTypes('bool');
 
         // filter table depending of options
-        $resolver
-            ->define('classification')
-            ->default(null)
-            ->allowedTypes('null', SpaceMissionClassification::class);
-
         $resolver
             ->define('mission_status')
             ->default(null)

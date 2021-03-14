@@ -21,30 +21,6 @@ use Umbrella\CoreBundle\Controller\BaseController;
 class DataTableActionController extends BaseController
 {
     /**
-     * @Route(path="/classification/{id}/missions", requirements={"id": "\d+"})
-     */
-    public function missionsAction(Request $request, SpaceMissionClassification $classification)
-    {
-        $table = $this->createTable(SpaceMissionTableType::class, [
-            'classification' => $classification,
-            'load_url' => $request->getUri()
-        ]);
-        $table->handleRequest($request);
-
-        if ($table->isCallback()) {
-            return $table->getCallbackResponse();
-        }
-
-        return $this->jsResponseBuilder()
-            ->openModalView('admin/datatable/missions.html.twig', [
-                'table' => $table,
-                'classification' => $classification
-            ]);
-    }
-
-    // edit API
-
-    /**
      * @Route(path="/edit/{id}", requirements={"id": "\d+"})
      */
     public function editAction(Request $request, $id = null)
@@ -103,7 +79,6 @@ class DataTableActionController extends BaseController
             ->reloadTable();
     }
 
-
     // RowReorder API
 
     /**
@@ -118,7 +93,6 @@ class DataTableActionController extends BaseController
             ->jsResponseBuilder()
             ->reloadTable();
     }
-
 
     // Export API
 

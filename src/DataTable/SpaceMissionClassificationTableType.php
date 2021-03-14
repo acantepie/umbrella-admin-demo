@@ -15,7 +15,6 @@ use Umbrella\CoreBundle\Component\Widget\WidgetBuilder;
 
 class SpaceMissionClassificationTableType extends DataTableType
 {
-
     public function buildTable(DataTableBuilder $builder, array $options)
     {
         $builder->add('name', PropertyColumnType::class, [

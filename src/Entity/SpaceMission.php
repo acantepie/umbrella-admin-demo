@@ -95,13 +95,6 @@ class SpaceMission
     public $cost;
 
     /**
-     * @var SpaceMissionClassification|null
-     * @ORM\ManyToOne(targetEntity="App\Entity\SpaceMissionClassification", inversedBy="missions")
-     * @ORM\JoinColumn(name="classification_id", referencedColumnName="id", onDelete="SET NULL")
-     */
-    public $classification;
-
-    /**
      * @var string
      * @ORM\Column(type="string")
      */
