@@ -34,11 +34,11 @@ class SpaceMissionEditableTableType extends SpaceMissionTableType
             'build' => function (WidgetBuilder $builder) {
                 $builder->add('export_filtered', LinkType::class, [
                     'route' => 'app_admin_datatableaction_dumpfiltered',
-                    'attr' => ['data-dt' => self::DT_FILTER]
+                    'attr' => ['data-export' => self::EXPORT_FILTER]
                 ]);
                 $builder->add('export_selected', LinkType::class, [
                     'route' => 'app_admin_datatableaction_dumpselected',
-                    'attr' => ['data-dt' => self::DT_SELECTION]
+                    'attr' => ['data-export' => self::EXPORT_SELECTION]
                 ]);
             }
         ]);

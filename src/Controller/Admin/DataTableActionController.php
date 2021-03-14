@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\DataTable\SpaceMissionEditableTableType;
 use App\DataTable\SpaceMissionTableType;
 use App\Entity\SpaceMission;
 use App\Entity\SpaceMissionClassification;
@@ -108,7 +109,7 @@ class DataTableActionController extends BaseController
      */
     public function dumpSelectedAction(Request $request)
     {
-        $table = $this->createTable(SpaceMissionTableType::class);
+        $table = $this->createTable(SpaceMissionEditableTableType::class);
 
         /** @var EntityAdapter $adapter */
         $adapter = $table->getAdapter();
@@ -127,7 +128,7 @@ class DataTableActionController extends BaseController
      */
     public function dumpFilteredAction(Request $request)
     {
-        $table = $this->createTable(SpaceMissionTableType::class, [
+        $table = $this->createTable(SpaceMissionEditableTableType::class, [
             'paging' => false
         ]);
 
