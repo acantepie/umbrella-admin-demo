@@ -65,7 +65,7 @@ class AppFixtures extends Fixture
         $handle = fopen(__DIR__ . '/data/space_mission.csv', 'r');
 
         $c = 0;
-        while (false !== ($row = fgetcsv($handle, ','))) {
+        while (false !== ($row = fgetcsv($handle))) {
             ++$c;
             if (1 === $c) {
                 continue;

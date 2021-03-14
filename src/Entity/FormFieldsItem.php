@@ -44,4 +44,11 @@ class FormFieldsItem
      * @ORM\Column(type="text", nullable=false)
      */
     public $description;
+
+    /**
+     * @var \DateTimeInterface
+     *
+     * @ORM\Column(type="date", nullable=true)
+     */
+    public $date;
 }

@@ -112,7 +112,7 @@ class SpaceMissionTableType extends DataTableType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'row_reorder' => false,
+            'row_reorder' => false
         ]);
 
         $resolver
