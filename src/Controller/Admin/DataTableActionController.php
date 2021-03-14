@@ -12,7 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use function Symfony\Component\Translation\t;
 use Umbrella\CoreBundle\Component\DataTable\Adapter\EntityAdapter;
-use Umbrella\CoreBundle\Component\DataTable\DTO\ChangeSet;
+use Umbrella\CoreBundle\Component\DataTable\DTO\RowReorder;
+use Umbrella\CoreBundle\Component\JsResponse\JsResponse;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
@@ -86,12 +87,10 @@ class DataTableActionController extends BaseController
      */
     public function rowReorderAction(Request $request)
     {
-        $changeSet = ChangeSet::createFromRequest($request);
-        $changeSet->apply($this->em(), SpaceMission::class, 'sequence');
+        $rowMove = RowReorder::createFromRequest($request);
+        $rowMove->applyChanges($this->em(), SpaceMission::class, 'sequence');
 
-        return $this
-            ->jsResponseBuilder()
-            ->reloadTable();
+        return new JsResponse();
     }
 
     // Export API

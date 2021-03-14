@@ -9,8 +9,7 @@ use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Column\WidgetColumnType;
 use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\Component\DataTable\DataTableType;
-use Umbrella\CoreBundle\Component\Widget\Type\RowMoveDownLinkType;
-use Umbrella\CoreBundle\Component\Widget\Type\RowMoveUpLinkType;
+use Umbrella\CoreBundle\Component\Widget\Type\RowMoveLinkType;
 use Umbrella\CoreBundle\Component\Widget\WidgetBuilder;
 
 class SpaceMissionClassificationTableType extends DataTableType
@@ -30,19 +29,10 @@ class SpaceMissionClassificationTableType extends DataTableType
 
         $builder->add('links', WidgetColumnType::class, [
             'build' => function (WidgetBuilder $builder, SpaceMissionClassification $c) {
-                if (!$c->_isFirstChild()) {
-                    $builder->add('up', RowMoveUpLinkType::class, [
-                        'route' => 'app_admin_datatableaction_move',
-                        'route_params' => ['id' => $c->id, 'direction' => 'up'],
-                    ]);
-                }
-
-                if (!$c->_isLastChild()) {
-                    $builder->add('down', RowMoveDownLinkType::class, [
-                        'route' => 'app_admin_datatableaction_move',
-                        'route_params' => ['id' => $c->id, 'direction' => 'down'],
-                    ]);
-                }
+                $builder->add('up', RowMoveLinkType::class, [
+                    'route' => 'app_admin_datatableaction_move',
+                    'route_params' => ['id' => $c->id],
+                ]);
             }
         ]);
 

@@ -42,7 +42,7 @@ class SpaceMission
     public static function getIconStatus(string $status)
     {
         return isset(self::STATUS_COLORS[$status])
-            ? sprintf('<i class="mdi mdi-circle text-%s"></i> %s', self::STATUS_COLORS[$status], $status)
+            ? sprintf('<i class="mdi mdi-circle text-%s mr-1"></i> %s', self::STATUS_COLORS[$status], $status)
             : $status;
     }
 

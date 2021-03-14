@@ -7,11 +7,11 @@ use App\DataTable\Column\StatusColumnType;
 use App\Entity\SpaceMission;
 use App\Form\Base\MissionStatusChoiceType;
 use Doctrine\ORM\QueryBuilder;
+use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\Component\DataTable\Adapter\EntityAdapter;
 use Umbrella\CoreBundle\Component\DataTable\Column\CheckBoxColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Column\DateColumnType;
-use Umbrella\CoreBundle\Component\DataTable\Column\DragHandlerColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Column\WidgetColumnType;
 use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
@@ -82,23 +82,15 @@ class SpaceMissionTableType extends DataTableType
      */
     public function buildTable(DataTableBuilder $builder, array $options)
     {
-        // Drag Column (use with row reorder)
-        if ($options['row_reorder']) {
-            $builder->add('sequence', DragHandlerColumnType::class, [
-                'show_value' => true,
-                'order' => 'ASC',
-            ]);
-            $builder->setRowReorderUrl('app_admin_datatableaction_rowreorder');
-        }
-
         // Checkbox column (use to select data exported)
         if ($options['exportable']) {
             $builder->add('select', CheckBoxColumnType::class);
         }
 
         $builder->add('date', DateColumnType::class, [
-            'order' => $options['row_reorder'] ? null : 'DESC',
-            'format' => 'd M Y'
+            'order' => 'DESC',
+            'format' => 'd M Y',
+            'drag_handle' => $options['row_reorder'] // Use this column to drag if row_reorder is true
         ]);
         $builder->add('companyName', PropertyColumnType::class);
 
@@ -138,6 +130,10 @@ class SpaceMissionTableType extends DataTableType
             'class' => SpaceMission::class,
             'fetch_join_collection' => false,
             'query' => function (QueryBuilder $qb, array $formData) use ($options) {
+                if ($options['row_reorder']) {
+                    $qb->orderBy('e.sequence', 'ASC');
+                }
+
                 if (isset($formData['search'])) {
                     $qb->andWhere('LOWER(e.search) LIKE :search');
                     $qb->setParameter('search', '%' . $formData['search'] . '%');
@@ -164,12 +160,20 @@ class SpaceMissionTableType extends DataTableType
                 }
             }
         ]);
+
+        // Drag Column (use with row reorder)
+        if ($options['row_reorder']) {
+            $builder->setRowReorderUrl('app_admin_datatableaction_rowreorder');
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'row_reorder' => false
+            'row_reorder' => false,
+            'orderable' => function (Options $options) {
+                return !$options['row_reorder'];
+            },
         ]);
 
         $resolver
