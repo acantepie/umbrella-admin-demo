@@ -4,11 +4,12 @@ namespace App\Controller\Admin;
 
 use App\DataTable\LaunchTableType;
 use App\DataTable\SpaceMissionClassificationTableType;
-use App\DataTable\SpaceMissionEditableTableType;
 use App\DataTable\SpaceMissionTableType;
+use App\Entity\SpaceMission;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
+use Umbrella\CoreBundle\Utils\Utils;
 
 /**
  * @Route("/datatable")
@@ -75,7 +76,10 @@ class DatatableController extends BaseController
      */
     public function editableAction(Request $request)
     {
-        $table = $this->createTable(SpaceMissionEditableTableType::class);
+        $table = $this->createTable(SpaceMissionTableType::class, [
+            'exportable' => true,
+            'editable' => true,
+        ]);
         $table->handleRequest($request);
 
         if ($table->isCallback()) {
@@ -84,6 +88,67 @@ class DatatableController extends BaseController
 
         return $this->render('admin/datatable/editable.html.twig', [
             'table' => $table,
+        ]);
+    }
+
+    /**
+     * @Route("/multiple")
+     */
+    public function multipleAction(Request $request)
+    {
+        $tables = [];
+        foreach (SpaceMission::MISSION_STATUSES as $status) {
+            $table = $this->createTable(SpaceMissionTableType::class, [
+                'editable' => true,
+                'show_mission_status_filter' => false,
+                'mission_status' => $status,
+                'id' => 'space_mission_' . Utils::to_underscore($status),
+                'page_length' => 10
+            ]);
+            $table->handleRequest($request);
+
+            if ($table->isCallback()) {
+                return $table->getCallbackResponse();
+            }
+
+            $tables[$status] = $table;
+        }
+
+        return $this->render('admin/datatable/multiple.html.twig', [
+            'tables' => $tables,
+        ]);
+    }
+
+    /**
+     * @Route("/modal")
+     */
+    public function modalAction()
+    {
+        return $this->render('admin/datatable/modal.html.twig', [
+            'statuses' => SpaceMission::MISSION_STATUSES
+        ]);
+    }
+
+    /**
+     * @Route("/xhr-modal/{status}")
+     */
+    public function xhrModalAction(Request $request, string $status)
+    {
+        $table = $this->createTable(SpaceMissionTableType::class, [
+            'show_mission_status_filter' => false,
+            'mission_status' => $status,
+            'load_url' => $this->generateUrl('app_admin_datatable_xhrmodal', ['status' => $status]),
+            'page_length' => 10
+        ]);
+        $table->handleRequest($request);
+
+        if ($table->isCallback()) {
+            return $table->getCallbackResponse();
+        }
+
+        return $this->jsResponseBuilder()->openModalView('admin/datatable/_modal.html.twig', [
+            'status' => $status,
+            'table' => $table
         ]);
     }
 

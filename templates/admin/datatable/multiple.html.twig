@@ -1,21 +1,17 @@
 {% extends "@UmbrellaAdmin/layout.html.twig" %}
 
 {% block content %}
-    <div class="card">
-        <div class="card-header">
-            <h4>Edible fish</h4>
-        </div>
-        <div class="card-body">
-            {{ render_table(edible_table) }}
-        </div>
+    <div class="alert alert-info">
+        Try edit space mission ( <i class="mdi mdi-pencil"></i> icon ) and change his <b>mission status</b>.
     </div>
-
-    <div class="card">
-        <div class="card-header">
-            <h4>Not edible fish</h4>
-        </div>
-        <div class="card-body">
-            {{ render_table(notedible_table) }}
-        </div>
-    </div>
+    {% for mission_status, table in tables %}
+            <div class="card">
+                <a href class="card-header" data-toggle="collapse" data-target="#card-{{ table.id }}">
+                    <h4><i class="mdi mdi-chevron-right"></i> Space missions filtered by <span class="text-primary">{{ mission_status }}</span></h4>
+                </a>
+                <div id="card-{{ table.id }}" class="card-body collapse">
+                    {{ render_table(table) }}
+                </div>
+            </div>
+    {% endfor %}
 {% endblock %}

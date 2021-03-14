@@ -102,16 +102,8 @@ class AppFixtures extends Fixture
             $root->addChild($company);
 
             foreach (SpaceMission::MISSION_STATUSES as $status) {
-                $missions = $manager->getRepository(SpaceMission::class)->findBy(['companyName' => $company->name, 'missionStatus' => $status]);
-
-                if (count($missions) > 0) {
-                    $status = new SpaceMissionClassification($status, SpaceMissionClassification::STATUS);
-                    $company->addChild($status);
-
-                    foreach ($missions as $mission) {
-                        $status->addMission($mission);
-                    }
-                }
+                $status = new SpaceMissionClassification($status, SpaceMissionClassification::STATUS);
+                $company->addChild($status);
             }
         }
 

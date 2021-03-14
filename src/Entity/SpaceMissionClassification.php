@@ -62,12 +62,6 @@ class SpaceMissionClassification implements NestedTreeEntityInterface
     public $type;
 
     /**
-     * @var SpaceMission[]|ArrayCollection
-     * @ORM\OneToMany(targetEntity="App\Entity\SpaceMission", mappedBy="classification")
-     */
-    public $missions;
-
-    /**
      * SpaceMissionClassification constructor.
      */
     public function __construct(string $name = '', string $type = self::ROOT)
@@ -75,13 +69,6 @@ class SpaceMissionClassification implements NestedTreeEntityInterface
         $this->name = $name;
         $this->type = $type;
         $this->children = new ArrayCollection();
-        $this->missions = new ArrayCollection();
-    }
-
-    public function addMission(SpaceMission $mission)
-    {
-        $mission->classification = $this;
-        $this->missions->add($mission);
     }
 
     /**

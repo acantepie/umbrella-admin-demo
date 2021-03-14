@@ -2,11 +2,11 @@
 
 namespace App\Controller\Admin;
 
-use App\DataTable\SpaceMissionEditableTableType;
 use App\DataTable\SpaceMissionTableType;
 use App\Entity\SpaceMission;
 use App\Entity\SpaceMissionClassification;
 use App\Form\SpaceMissionType;
+use App\Repository\SpaceMissionClassificationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -87,6 +87,23 @@ class DataTableActionController extends BaseController
             ->toastSuccess(t('message.entity_deleted'));
     }
 
+    /**
+     * @Route("/move/{id}/{direction}", requirements={"id": "\d+"})
+     */
+    public function moveAction(SpaceMissionClassificationRepository $repository, $id, string $direction)
+    {
+        $entity = $this->findOrNotFound(SpaceMissionClassification::class, $id);
+        if ('up' === $direction) {
+            $repository->moveUp($entity);
+        } else {
+            $repository->moveDown($entity);
+        }
+
+        return $this->jsResponseBuilder()
+            ->reloadTable();
+    }
+
+
     // RowReorder API
 
     /**
@@ -102,6 +119,7 @@ class DataTableActionController extends BaseController
             ->reloadTable();
     }
 
+
     // Export API
 
     /**
@@ -109,7 +127,7 @@ class DataTableActionController extends BaseController
      */
     public function dumpSelectedAction(Request $request)
     {
-        $table = $this->createTable(SpaceMissionEditableTableType::class);
+        $table = $this->createTable(SpaceMissionTableType::class);
 
         /** @var EntityAdapter $adapter */
         $adapter = $table->getAdapter();
@@ -128,7 +146,7 @@ class DataTableActionController extends BaseController
      */
     public function dumpFilteredAction(Request $request)
     {
-        $table = $this->createTable(SpaceMissionEditableTableType::class, [
+        $table = $this->createTable(SpaceMissionTableType::class, [
             'paging' => false
         ]);
 

@@ -10,12 +10,20 @@ use App\Form\Base\MissionStatusChoiceType;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\Component\DataTable\Adapter\EntityAdapter;
+use Umbrella\CoreBundle\Component\DataTable\Column\CheckBoxColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Column\DateColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Column\DragHandlerColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
+use Umbrella\CoreBundle\Component\DataTable\Column\WidgetColumnType;
 use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\Component\DataTable\DataTableType;
 use Umbrella\CoreBundle\Component\DataTable\ToolbarBuilder;
+use Umbrella\CoreBundle\Component\Widget\Type\AddLinkType;
+use Umbrella\CoreBundle\Component\Widget\Type\ButtonDropdownType;
+use Umbrella\CoreBundle\Component\Widget\Type\LinkType;
+use Umbrella\CoreBundle\Component\Widget\Type\RowDeleteLinkType;
+use Umbrella\CoreBundle\Component\Widget\Type\RowEditLinkType;
+use Umbrella\CoreBundle\Component\Widget\WidgetBuilder;
 use Umbrella\CoreBundle\Form\DatepickerType;
 use Umbrella\CoreBundle\Form\SearchType;
 
@@ -37,10 +45,37 @@ class SpaceMissionTableType extends DataTableType
             'input_prefix_text' => 'To'
         ]);
 
-        $builder->addFilter('missionStatus', MissionStatusChoiceType::class, [
-            'required' => false,
-            'placeholder' => 'Mission status'
-        ]);
+        if ($options['show_mission_status_filter']) {
+            $builder->addFilter('missionStatus', MissionStatusChoiceType::class, [
+                'required' => false,
+                'placeholder' => 'Mission status'
+            ]);
+        }
+
+        // Add button (use to add data)
+        if ($options['editable']) {
+            $builder->addWidget('add', AddLinkType::class, [
+                'route' => 'app_admin_datatableaction_edit',
+                'xhr' => true
+            ]);
+        }
+
+        // Export button (use to export data)
+        if ($options['exportable']) {
+            $builder->addWidget('export', ButtonDropdownType::class, [
+                'icon' => 'mdi mdi-file-download-outline',
+                'build' => function (WidgetBuilder $builder) {
+                    $builder->add('export_filtered', LinkType::class, [
+                        'route' => 'app_admin_datatableaction_dumpfiltered',
+                        'attr' => ['data-export' => self::EXPORT_FILTER]
+                    ]);
+                    $builder->add('export_selected', LinkType::class, [
+                        'route' => 'app_admin_datatableaction_dumpselected',
+                        'attr' => ['data-export' => self::EXPORT_SELECTION]
+                    ]);
+                }
+            ]);
+        }
     }
 
     /**
@@ -48,12 +83,18 @@ class SpaceMissionTableType extends DataTableType
      */
     public function buildTable(DataTableBuilder $builder, array $options)
     {
+        // Drag Column (use with row reorder)
         if ($options['row_reorder']) {
             $builder->add('sequence', DragHandlerColumnType::class, [
                 'show_value' => true,
                 'order' => 'ASC',
             ]);
             $builder->setRowReorderUrl('app_admin_datatableaction_rowreorder');
+        }
+
+        // Checkbox column (use to select data exported)
+        if ($options['exportable']) {
+            $builder->add('select', CheckBoxColumnType::class);
         }
 
         $builder->add('date', DateColumnType::class, [
@@ -76,6 +117,23 @@ class SpaceMissionTableType extends DataTableType
         $builder->add('rocketStatus', StatusColumnType::class);
 
         $builder->add('missionStatus', StatusColumnType::class);
+
+        // Links / Actions column (use to edit data)
+        if ($options['editable']) {
+            $builder->add('links', WidgetColumnType::class, [
+                'build' => function (WidgetBuilder $builder, SpaceMission $s) {
+                    $builder->add('add', RowEditLinkType::class, [
+                        'route' => 'app_admin_datatableaction_edit',
+                        'route_params' => ['id' => $s->id]
+                    ]);
+
+                    $builder->add('delete', RowDeleteLinkType::class, [
+                        'route' => 'app_admin_datatableaction_delete',
+                        'route_params' => ['id' => $s->id]
+                    ]);
+                }
+            ]);
+        }
 
         $builder->useAdapter(EntityAdapter::class, [
             'class' => SpaceMission::class,
@@ -105,6 +163,11 @@ class SpaceMissionTableType extends DataTableType
                     $qb->andWhere('e.classification = :classification');
                     $qb->setParameter('classification', $options['classification']);
                 }
+
+                if ($options['mission_status']) {
+                    $qb->andWhere('e.missionStatus = :_missionStatus');
+                    $qb->setParameter('_missionStatus', $options['mission_status']);
+                }
             }
         ]);
     }
@@ -116,8 +179,35 @@ class SpaceMissionTableType extends DataTableType
         ]);
 
         $resolver
+            ->define('show_mission_status_filter')
+            ->default(true)
+            ->allowedTypes('bool');
+
+        $resolver
+            ->define('exportable')
+            ->default(false)
+            ->allowedTypes('bool');
+
+        $resolver
+            ->define('editable')
+            ->default(false)
+            ->allowedTypes('bool');
+
+        // filter table depending of options
+        $resolver
             ->define('classification')
             ->default(null)
             ->allowedTypes('null', SpaceMissionClassification::class);
+
+        $resolver
+            ->define('mission_status')
+            ->default(null)
+            ->allowedValues(
+                SpaceMission::MISSION_FAILURE,
+                SpaceMission::MISSION_PARTIAL_FAILURE,
+                SpaceMission::MISSION_PRELAUNCH_FAILURE,
+                SpaceMission::MISSION_SUCCESS,
+                null
+            );
     }
 }

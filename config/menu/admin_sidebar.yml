@@ -15,6 +15,10 @@ umbrella:
                     route: app_admin_datatable_draggable
                 editable:
                     route: app_admin_datatable_editable
+                multiple:
+                    route: app_admin_datatable_multiple
+                modal:
+                    route: app_admin_datatable_modal
                 tree:
                     route: app_admin_datatable_tree
 

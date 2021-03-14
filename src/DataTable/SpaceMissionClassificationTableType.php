@@ -4,26 +4,17 @@ namespace App\DataTable;
 
 use App\Entity\SpaceMission;
 use App\Entity\SpaceMissionClassification;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Routing\RouterInterface;
 use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
+use Umbrella\CoreBundle\Component\DataTable\Column\WidgetColumnType;
 use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\Component\DataTable\DataTableType;
+use Umbrella\CoreBundle\Component\Widget\Type\RowMoveDownLinkType;
+use Umbrella\CoreBundle\Component\Widget\Type\RowMoveUpLinkType;
+use Umbrella\CoreBundle\Component\Widget\WidgetBuilder;
 
 class SpaceMissionClassificationTableType extends DataTableType
 {
-    private EntityManagerInterface $em;
-    private RouterInterface $router;
-
-    /**
-     * SpaceMissionClassificationTableType constructor.
-     */
-    public function __construct(EntityManagerInterface $em, RouterInterface $router)
-    {
-        $this->em = $em;
-        $this->router = $router;
-    }
 
     public function buildTable(DataTableBuilder $builder, array $options)
     {
@@ -38,21 +29,22 @@ class SpaceMissionClassificationTableType extends DataTableType
             'is_safe_html' => true
         ]);
 
-        $countQuery = $this->em->createQuery(sprintf('SELECT COUNT(m) FROM %s m WHERE m.classification = :c', SpaceMission::class));
-
-        $builder->add('missions', PropertyColumnType::class, [
-            'renderer' => function (SpaceMissionClassification $c) use ($countQuery) {
-                if (SpaceMissionClassification::STATUS === $c->type) {
-                    return sprintf(
-                        '<a href data-xhr="%s" class="text-primary">%d missions</a>',
-                        $this->router->generate('app_admin_datatableaction_missions', ['id' => $c->id]),
-                        $countQuery->setParameter('c', $c)->getSingleScalarResult()
-                    );
+        $builder->add('links', WidgetColumnType::class, [
+            'build' => function (WidgetBuilder $builder, SpaceMissionClassification $c) {
+                if (!$c->_isFirstChild()) {
+                    $builder->add('up', RowMoveUpLinkType::class, [
+                        'route' => 'app_admin_datatableaction_move',
+                        'route_params' => ['id' => $c->id, 'direction' => 'up'],
+                    ]);
                 }
 
-                return '';
-            },
-            'is_safe_html' => true
+                if (!$c->_isLastChild()) {
+                    $builder->add('down', RowMoveDownLinkType::class, [
+                        'route' => 'app_admin_datatableaction_move',
+                        'route_params' => ['id' => $c->id, 'direction' => 'down'],
+                    ]);
+                }
+            }
         ]);
 
         $builder->useNestedEntityAdapter(SpaceMissionClassification::class);

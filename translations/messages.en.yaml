@@ -7,6 +7,8 @@ menu:
   custom_adapter: Custom adapter
   draggable: Draggable
   editable: Editable
+  multiple: Multiple
+  modal: Modal
   tree: Tree
 
   menu: Menu

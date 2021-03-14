@@ -1,0 +1,17 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+        <div class="card">
+            <div class="card-header">
+                <h4>DataTable on modal</h4>
+            </div>
+            <div class="card-body">
+                <p></p>
+                {% for status in statuses %}
+                    <a href data-xhr="{{ path('app_admin_datatable_xhrmodal', {'status' : status}) }}" class="btn btn-primary mr-2">
+                        Show missions by <u>{{ status }}</u>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock %}
