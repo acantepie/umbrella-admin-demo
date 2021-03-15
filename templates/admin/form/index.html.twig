@@ -3,7 +3,7 @@
 {% block content %}
     <form enctype="multipart/form-data" method="POST">
 
-        <div class="d-flex mb-3">
+        <div class="d-flex">
             <span class="ml-auto"></span>
             <button type="submit" class="btn btn-primary">
                 <i class="mdi mdi-check"></i> {{ 'action.save' | trans }}
@@ -12,55 +12,60 @@
 
         {{ form_errors(form) }}
 
-        <div class="card">
-            <div class="card-body">
-                <h4 class="header-title">Basic</h4>
-                {{ form_row(form.active) }}
-                {{ form_row(form.amount) }}
-                {{ form_row(form.color) }}
-                {{ form_row(form.text) }}
-                {{ form_row(form.url) }}
-            </div>
-        </div>
+        <div class="row">
 
-        <div class="card">
-            <div class="card-body">
-                <h4 class="header-title">Date</h4>
-                {{ form_row(form.date) }}
-                {{ form_row(form.dateTime) }}
+            <div class="mb-4 col-md-6">
+                <h5 class="m-0 pb-2">Basic</h5>
+                <div class="card card-body mb-0">
+                    {{ form_row(form.active) }}
+                    {{ form_row(form.amount) }}
+                    {{ form_row(form.color) }}
+                    {{ form_row(form.text) }}
+                    {{ form_row(form.url) }}
+                </div>
             </div>
-        </div>
 
-        <div class="card">
-            <div class="card-body">
-                <h4 class="header-title">Select 2</h4>
-                {{ form_row(form.missions) }}
-                {{ form_row(form.asyncMissions) }}
-                {{ form_row(form.tags) }}
+            <div class="mb-4 col-md-6">
+                <h5 class="m-0 pb-2">Select 2</h5>
+                <div class="card card-body mb-0">
+                    {{ form_row(form.missions) }}
+                    {{ form_row(form.asyncMissions) }}
+                    {{ form_row(form.tags) }}
+                </div>
             </div>
-        </div>
 
-        <div class="card">
-            <div class="card-body">
-                <h4 class="header-title">Fichier</h4>
-                {{ form_row(form.file) }}
-                {{ form_row(form.pdf) }}
+            <div class="mb-4 col-md-6">
+                <h5 class="m-0 pb-2">Date</h5>
+                <div class="card card-body mb-0">
+                    {{ form_row(form.date) }}
+                    {{ form_row(form.dateTime) }}
+                </div>
             </div>
-        </div>
 
-        <div class="card">
-            <div class="card-body">
-                <h4 class="header-title">Ckeditor</h4>
-                {{ form_row(form.htmlText) }}
+            <div class="mb-4 col-md-6">
+                <h5 class="m-0 pb-2"> Fichier</h5>
+                <div class="card card-body mb-0">
+                    {{ form_row(form.file) }}
+                    {{ form_row(form.pdf) }}
+                </div>
             </div>
-        </div>
 
-        <div class="card">
-            <div class="card-body">
-                <h4 class="header-title">Collection</h4>
-                {{ form_row(form.items) }}
-                {{ form_row(form.strings) }}
+            <div class="mb-4 col-md-6">
+                <h5 class="m-0 pb-2"> Ckeditor</h5>
+                <div class="card card-body mb-0">
+                    {{ form_widget(form.htmlText) }}
+                </div>
             </div>
+
+            <div class="mb-4 col-md-6">
+                <h5 class="m-0 pb-2"> Collection</h5>
+                <div class="card card-body mb-0">
+                    {{ form_widget(form.items) }}
+                    <div class="mb-4"></div>
+                    {{ form_widget(form.strings) }}
+                </div>
+            </div>
+            
         </div>
 
         {{ form_rest(form) }}
