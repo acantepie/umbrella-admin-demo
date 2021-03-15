@@ -98,12 +98,23 @@ class AppFixtures extends Fixture
 
         $result = $manager->createQuery(sprintf('SELECT DISTINCT e.companyName FROM %s e', SpaceMission::class))->getArrayResult();
         foreach ($result as $row) {
-            $company = new SpaceMissionClassification($row['companyName'], SpaceMissionClassification::COMPANY);
-            $root->addChild($company);
+            $cCompany = new SpaceMissionClassification($row['companyName'], SpaceMissionClassification::COMPANY);
+            $root->addChild($cCompany);
 
             foreach (SpaceMission::MISSION_STATUSES as $status) {
-                $status = new SpaceMissionClassification($status, SpaceMissionClassification::STATUS);
-                $company->addChild($status);
+                $missions = $manager->getRepository(SpaceMission::class)->findBy(
+                    ['companyName' => $cCompany->name, 'missionStatus' => $status], null, 3
+                );
+
+                if (count($missions) > 0) {
+                    $cStatus = new SpaceMissionClassification($status, SpaceMissionClassification::STATUS);
+                    $cCompany->addChild($cStatus);
+
+                    foreach ($missions as $mission) {
+                        $cMission = new SpaceMissionClassification($mission->detail, SpaceMissionClassification::MISSION);
+                        $cStatus->addChild($cMission);
+                    }
+                }
             }
         }
 

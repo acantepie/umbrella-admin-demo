@@ -29,9 +29,11 @@ class SpaceMissionClassificationTableType extends DataTableType
 
         $builder->add('links', WidgetColumnType::class, [
             'build' => function (WidgetBuilder $builder, SpaceMissionClassification $c) {
-                $builder->add('up', RowMoveLinkType::class, [
+                $builder->add('move', RowMoveLinkType::class, [
                     'route' => 'app_admin_datatableaction_move',
                     'route_params' => ['id' => $c->id],
+                    'disable_moveup' => $c->isFirstChild(),
+                    'disable_movedown' => $c->isLastChild()
                 ]);
             }
         ]);
