@@ -7,6 +7,7 @@ umbrella_admin:
     file: "../config/menu/admin_sidebar.yml"
   theme:
     name: "Admin"
+    icon: "mdi mdi-umbrella"
   assets:
     script_entry: admin
     stylesheet_entry: admin
