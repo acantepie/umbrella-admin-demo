@@ -51,7 +51,7 @@ FAQ
 
 How create my own project with umbrella framwork
 ------------
-Follow instruction given [here][5]
+Follow instructions given [here][5]
 
 
 [1]: https://github.com/acantepie/umbrella-admin
