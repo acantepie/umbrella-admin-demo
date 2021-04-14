@@ -18,7 +18,7 @@ class MenuController extends BaseController
     public function indexAction()
     {
         return $this->render('admin/menu/index.html.twig', [
-            'admin_sidebar_yml' => file_get_contents(__DIR__ . '/../../../config/menu/admin_sidebar.yml')
+            'admin_sidebar_yml' => file_get_contents(__DIR__ . '/../../../config/menu/admin_sidebar.yaml')
         ]);
     }
 }

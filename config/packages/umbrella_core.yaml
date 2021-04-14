@@ -1,0 +1,3 @@
+umbrella_core:
+  file:
+    flystorage: default.storage

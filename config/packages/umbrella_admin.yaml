@@ -1,11 +1,5 @@
-umbrella_core:
-  file:
-    flystorage: default.storage
-
 umbrella_admin:
   home_route: app_admin_default_index
-  menu:
-    file: "../config/menu/admin_sidebar.yml"
   theme:
     name: "Admin"
     icon: "mdi mdi-umbrella"
