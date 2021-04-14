@@ -11,15 +11,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use function Symfony\Component\Translation\t;
+use Umbrella\AdminBundle\Controller\AdminController;
 use Umbrella\CoreBundle\Component\DataTable\Adapter\EntityAdapter;
 use Umbrella\CoreBundle\Component\DataTable\DTO\RowReorder;
 use Umbrella\CoreBundle\Component\JsResponse\JsResponse;
-use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
  * @Route("/datatable")
  */
-class DataTableActionController extends BaseController
+class DataTableActionController extends AdminController
 {
     /**
      * @Route(path="/edit/{id}", requirements={"id": "\d+"})

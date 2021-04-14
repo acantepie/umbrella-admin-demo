@@ -3,14 +3,14 @@
 namespace App\Controller\Admin;
 
 use Symfony\Component\Routing\Annotation\Route;
-use Umbrella\CoreBundle\Controller\BaseController;
+use Umbrella\AdminBundle\Controller\AdminController;
 
 /**
  * Class MenuController
  *
  * @Route("/menu")
  */
-class MenuController extends BaseController
+class MenuController extends AdminController
 {
     /**
      * @Route("")

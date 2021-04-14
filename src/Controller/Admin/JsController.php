@@ -3,14 +3,14 @@
 namespace App\Controller\Admin;
 
 use Symfony\Component\Routing\Annotation\Route;
-use Umbrella\CoreBundle\Controller\BaseController;
+use Umbrella\AdminBundle\Controller\AdminController;
 
 /**
  * Class AjaxHandlerController
  *
  * @Route("/js")
  */
-class JsController extends BaseController
+class JsController extends AdminController
 {
     const ACTIONS = [
         'toast_success' => 'Success TOAST',
