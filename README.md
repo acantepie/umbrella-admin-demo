@@ -7,8 +7,8 @@ Umbrella framework contains two bundle (Adminbundle and CoreBundle) that provide
 About *umbrella-admin-demo* project
 ------------
 A demo application to showcase the main features of Umbrella framework.
- - [How install project](docs/new-project.md)
- - [demo website](https://github.com/acantepie/umbrella-admin).
+ - [How install demo app](docs/install-demo.md)
+ - [Online demo](https://umbrella-corp.dev/)
 
 How use framework
 ------------
