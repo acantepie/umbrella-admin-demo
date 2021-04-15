@@ -50,7 +50,7 @@ How use CkeditorType on Symfony form.
 ------------
 Install js library
 ```bash
-yarn add ckeditor
+yarn add ckeditor4
 ```
 
 Add entry on `webpack.config.js` :
