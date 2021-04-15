@@ -16,7 +16,7 @@ cd my_project/
 composer install
 ```
 
-Create your database :
+Create your database :<br>
 You can edit `DATABASE_URL` env var in the `.env`file to use your own credentials.
 
 ```bash
