@@ -16,10 +16,8 @@ cd my_project/
 composer install
 ```
 
-
-Configure your database :
-
-Edit `DATABASE_URL` env var in the `.env`file to use your own credentials.
+Create your database :
+You can edit `DATABASE_URL` env var in the `.env`file to use your own credentials.
 
 ```bash
 php bin/console doctrine:database:create
