@@ -44,7 +44,7 @@ Start web server :
 php -S localhost:8000 -t public/
 ```
 
-Go on url http://localhost:8000/admin and hint **umbrella** / **umbrella** to login and backoffice.
+Go on url http://localhost:8000/admin and hint **umbrella** / **umbrella** to login on backoffice.
 
 How use CkeditorType on Symfony form.
 ------------
