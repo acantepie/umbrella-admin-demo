@@ -15,7 +15,7 @@ composer create-project umbrella2/skeleton:dev-master my_project
 cd my_project/
 ```
 
-Configure your database :
+Configure your database :<br>
 Edit `DATABASE_URL` env var in the `.env`file to use your own database.
 ```bash
 # Sqlite
