@@ -3,5 +3,3 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     exception_controller: null
-    form_themes:
-        - '@UmbrellaCore/Form/layout.html.twig'
