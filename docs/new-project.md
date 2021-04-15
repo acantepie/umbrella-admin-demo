@@ -22,7 +22,7 @@ Edit `DATABASE_URL` env var in the `.env`file.
 DATABASE_URL="sqlite:///%kernel.project_dir%/var/database.sqlite"
 
 # mariadb/mysql
-DATABASE_URL=mysql://login:password@127.0.0.1:3306/database
+DATABASE_URL="mysql://login:password@127.0.0.1:3306/database"
 ```
 
 Create database and update schema :
