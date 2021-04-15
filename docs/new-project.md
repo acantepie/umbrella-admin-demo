@@ -16,9 +16,16 @@ cd my_project/
 ```
 
 Configure your database :
+Edit `DATABASE_URL` env var in the `.env`file to use your own database.
+```bash
+# Sqlite
+DATABASE_URL="sqlite:///%kernel.project_dir%/var/database.sqlite"
 
-Edit `DATABASE_URL` env var in the `.env`file to use your own credentials.
+# mariadb
+DATABASE_URL=mysql://login:password@127.0.0.1:3306/database
+```
 
+Create your database and update schema
 ```bash
 php bin/console doctrine:database:create
 php bin/console doctrine:schema:update --force
