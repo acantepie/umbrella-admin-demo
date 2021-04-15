@@ -46,7 +46,7 @@ php -S localhost:8000 -t public/
 
 Go on url http://localhost:8000/admin and hint **umbrella** / **umbrella** to login and backoffice.
 
-How use ckeditor
+How use CkeditorType on Symfony form.
 ------------
 Install js library
 ```bash
