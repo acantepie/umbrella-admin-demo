@@ -94,7 +94,6 @@ class FormFieldsType extends AbstractType
                     ->setMaxResults(100);
             },
             'template_html' => '<span>[[text]]</span><br><span class="text-muted">[[detail]]</span>',
-            'choice_prefix' => null,
             'multiple' => true,
             'required' => false,
             'help' => 'form.help.entity_list',
