@@ -16,7 +16,6 @@
         "flatpickr": "^4.6.9",
         "jquery": "^3.6.0",
         "jquery-treetable": "^3.2.0-1",
-        "js-cookie": "^2.2.1",
         "metismenu": "^3.0.6",
         "mustache": "^4.0.1",
         "popper.js": "^1.16.1",
