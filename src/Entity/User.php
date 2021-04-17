@@ -19,12 +19,6 @@ use Umbrella\CoreBundle\Entity\UmbrellaFile;
  */
 class User extends BaseUser
 {
-    /**
-     * @var UmbrellaFile
-     * @ORM\ManyToOne(targetEntity="Umbrella\CoreBundle\Entity\UmbrellaFile", cascade={"ALL"})
-     * @ORM\JoinColumn(name="avatar_id", referencedColumnName="id", onDelete="SET NULL")
-     */
-    public $avatar;
 
     /**
      * @var ArrayCollection
