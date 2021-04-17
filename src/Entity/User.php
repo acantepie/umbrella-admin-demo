@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Umbrella\AdminBundle\Entity\BaseUser;
 use Umbrella\CoreBundle\Component\Search\Annotation\Searchable;
-use Umbrella\CoreBundle\Entity\UmbrellaFile;
 
 /**
  * Class User
@@ -19,7 +18,6 @@ use Umbrella\CoreBundle\Entity\UmbrellaFile;
  */
 class User extends BaseUser
 {
-
     /**
      * @var ArrayCollection
      * @ORM\ManyToMany(targetEntity="UserGroup", inversedBy="users")
