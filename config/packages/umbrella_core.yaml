@@ -1,3 +1,7 @@
 umbrella_core:
   file:
-    flystorage: default.storage
+    default_config: default
+    configs:
+    - name: default
+      flystorage: default.storage
+      uri: /admin/download/{id}

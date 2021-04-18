@@ -48,8 +48,6 @@ class AppFixtures extends Fixture
         $u->plainPassword = $u->email;
         $u->password = $this->userPasswordEncoder->encodePassword($u, $u->plainPassword);
 
-        $u->avatar = UmbrellaFile::createFromPath(__DIR__ . '/files/me.png');
-
         $g = new UserGroup();
         $g->title = 'Administrateur';
         $g->roles = ['ROLE_ADMIN'];
@@ -79,7 +77,7 @@ class AppFixtures extends Fixture
             $spaceMission->detail = $row[5];
             $spaceMission->rocketStatus = str_replace('Status', '', $row[6]);
 
-            $price = floatval($row[7]);
+            $price = (int) $row[7];
             $spaceMission->cost = $price > 0 ? $price : null;
             $spaceMission->missionStatus = str_replace(' ', ' ', $row[8]);
 

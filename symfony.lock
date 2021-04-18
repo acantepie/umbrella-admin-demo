@@ -99,6 +99,9 @@
     "egulias/email-validator": {
         "version": "3.1.0"
     },
+    "ekino/phpstan-banned-code": {
+        "version": "v0.4.0"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
     },
@@ -150,6 +153,15 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.4.0"
+    },
+    "phpstan/phpstan": {
+        "version": "0.12.83"
+    },
+    "phpstan/phpstan-doctrine": {
+        "version": "0.12.33"
+    },
+    "phpstan/phpstan-symfony": {
+        "version": "0.12.25"
     },
     "psr/cache": {
         "version": "1.0.1"

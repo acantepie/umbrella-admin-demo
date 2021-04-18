@@ -89,7 +89,7 @@ class SpaceMission
     public $rocketStatus = self::ROCKET_ACTIVE;
 
     /**
-     * @var string
+     * @var ?int
      * @ORM\Column(type="integer", nullable=true)
      */
     public $cost;

@@ -24,7 +24,7 @@ class FormFieldsItem
     public $id;
 
     /**
-     * @var FormFields
+     * @var ?FormFields
      *
      * @ORM\ManyToOne(targetEntity="FormFields", inversedBy="items")
      * @ORM\JoinColumn(name="form_fields_id", referencedColumnName="id", onDelete="CASCADE")

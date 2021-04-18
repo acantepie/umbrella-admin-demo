@@ -39,6 +39,10 @@
         "umbrella2/corebundle": "dev-master"
     },
     "require-dev": {
+        "ekino/phpstan-banned-code": "^0.4.0",
+        "phpstan/phpstan": "^0.12.83",
+        "phpstan/phpstan-doctrine": "^0.12.33",
+        "phpstan/phpstan-symfony": "^0.12.25",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.21",
         "symfony/phpunit-bridge": "^5.2",

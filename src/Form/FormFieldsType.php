@@ -122,9 +122,8 @@ class FormFieldsType extends AbstractType
     public function buildFile(FormBuilderInterface $builder, array $options)
     {
         $builder->add('file', UmbrellaFileType::class, [
-            'required' => true,
-            'allow_delete' => false,
-            'constraints' => new NotNull()
+            'required' => false,
+            'allow_delete' => true
         ]);
 
         $builder->add('pdf', UmbrellaFileType::class, [
