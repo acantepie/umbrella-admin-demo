@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\Component\UmbrellaFile\Validator\Constraints\UmbrellaFileConstraint;
+use Umbrella\CoreBundle\Component\UmbrellaFile\Validator\Constraints\UmbrellaImageConstraint;
 use Umbrella\CoreBundle\Form\AsyncEntity2Type;
 use Umbrella\CoreBundle\Form\CkeditorType;
 use Umbrella\CoreBundle\Form\CustomCheckboxType;
@@ -120,9 +121,10 @@ class FormFieldsType extends AbstractType
 
     public function buildFile(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('file', UmbrellaFileType::class, [
+        $builder->add('image', UmbrellaFileType::class, [
             'required' => false,
-            'allow_delete' => true
+            'allow_delete' => true,
+            'constraints' => new UmbrellaImageConstraint()
         ]);
 
         $builder->add('pdf', UmbrellaFileType::class, [

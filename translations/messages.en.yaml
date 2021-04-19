@@ -71,8 +71,8 @@ form:
     url: Url
     dateTime: DateTime
     tags: Tags
-    file: File
-    pdf: PDF file
+    image: Image
+    pdf: PDF
     htmlText: HTML text
     items: Items
     strings: Strings

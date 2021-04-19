@@ -98,7 +98,7 @@ class FormFields
      * @ORM\ManyToOne(targetEntity="Umbrella\CoreBundle\Entity\UmbrellaFile", cascade={"ALL"})
      * @ORM\JoinColumn(name="file_id", referencedColumnName="id", onDelete="SET NULL")
      */
-    public $file;
+    public $image;
 
     /**
      * @var UmbrellaFile

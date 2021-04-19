@@ -46,7 +46,15 @@
             <div class="mb-4 col-md-6">
                 <h5 class="m-0 pb-2"> File</h5>
                 <div class="card card-body mb-0">
-                    {{ form_row(form.file) }}
+                    {{ form_row(form.image) }}
+                    {% if form.image.vars.value %}
+                        <div class="alert alert-info d-flex align-items-center">
+                            <a href="{{ form.image.vars.value | file_url }}" class="mr-2">
+                                <img src="{{ form.image.vars.value | image_url('thumbnail') }}" class="img-thumbnail">
+                            </a>
+                            <div>Umbrella file can be displayed with liip/imaginebundle :)</div>
+                        </div>
+                    {% endif %}
                     {{ form_row(form.pdf) }}
                 </div>
             </div>
