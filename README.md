@@ -1,17 +1,46 @@
-Umbrella Framework
-========================
-Umbrella framework contains two bundle (Adminbundle and CoreBundle) that provide a set of components and template to create administration backends.
+# Umbrella Admin DEMO
+
+Go [here](https://github.com/acantepie/umbrella) for documentation about **Umbrella framwork**.
 
 ![Screenshot of the Umbrella Admin Demo app](docs/assets/screenshot.png)
 
-About *umbrella-admin-demo* project
-------------
 A demo application to showcase the main features of Umbrella framework.
- - [How install demo app](docs/install-demo.md)
  - [Online demo](https://umbrella-corp.dev/)
 
-How use framework
-------------
-The easiest way is to create a new project from [umbrella2/skeleton](https://github.com/acantepie/umbrella-skeleton) <br>
-- [How create new project](docs/new-project.md)
+## Install umbrella-admin-demo
+
+### Requirements
+
+* PHP 7.4 or higher;
+* and the [usual Symfony application requirements](https://symfony.com/doc/current/reference/requirements.html).
+
+### Installation
+
+```bash
+git clone git@github.com:acantepie/umbrella-admin-demo.git my_project
+cd my_project/
+composer install
+```
+
+Create your database :<br>
+You can edit `DATABASE_URL` env var in the `.env`file to use your own credentials.
+
+```bash
+php bin/console doctrine:database:create
+php bin/console doctrine:schema:update --force
+php bin/console doctrine:fixtures:load
+```
+
+Build assets:
+```bash
+yarn install
+yarn build
+yarn copy-ckeditor
+```
+
+Run `php -S localhost:8000 -t public/`
+to use the built-in PHP web server or [configure a web server](https://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html) like Nginx or
+Apache to run the application.
+
+
 
