@@ -2,7 +2,7 @@
 
 Go [here](https://github.com/acantepie/umbrella) for documentation about **Umbrella framwork**.
 
-![Screenshot of the Umbrella Admin Demo app](docs/assets/screenshot.png)
+![Screenshot of the Umbrella Admin Demo app](screenshot.png)
 
 A demo application to showcase the main features of Umbrella framework.
  - [Online demo](https://umbrella-corp.dev/)
