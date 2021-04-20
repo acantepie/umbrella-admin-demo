@@ -131,7 +131,7 @@ class AppFixtures extends Fixture
         $e->tags = ['symfony', 'admin', 'umbrella'];
 
         // File
-        $e->file = UmbrellaFile::createFromPath(__DIR__ . '/files/me.png');
+        $e->image = UmbrellaFile::createFromPath(__DIR__ . '/files/me.png');
 
         // Ckeditor
         $e->htmlText = '<p><strong>Hello world !</strong></p>';

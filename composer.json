@@ -8,6 +8,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/doctrine-fixtures-bundle": "^3.3",
+        "knplabs/knp-time-bundle": "^1.16",
         "league/flysystem-bundle": "^2.0",
         "liip/imagine-bundle": "^2.6",
         "sensio/framework-extra-bundle": "^5.5",

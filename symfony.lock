@@ -111,6 +111,9 @@
     "imagine/imagine": {
         "version": "1.2.4"
     },
+    "knplabs/knp-time-bundle": {
+        "version": "v1.16.0"
+    },
     "laminas/laminas-code": {
         "version": "4.0.0"
     },
