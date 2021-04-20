@@ -27,7 +27,7 @@ class NotificationType extends AbstractType
             'class' => User::class,
             'multiple' => true,
             'label' => 'recipients',
-            'help' => 'form.help.recipients'
+            'help' => 'help.recipients'
         ]);
     }
 

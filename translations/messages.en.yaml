@@ -43,11 +43,11 @@ action:
   add_fishcategory: Add a category
   edit_fishcategory: Edit a category
 
-table:
+label:
   date: Date
   companyName: Company
-  location: Location
   detail: Detail
+  location: Location
   cost: Cost
   rocketStatus: Rocket status
   missionStatus: Mission status
@@ -57,39 +57,30 @@ table:
   details: Details
   missions: Missions
 
-form:
-  label:
-    date: Date
-    companyName: Company
-    detail: Detail
-    location: Location
-    missionStatus: Mission status
+  amount: Amount
+  color: Color
+  text: Text
+  url: Url
+  dateTime: DateTime
+  tags: Tags
+  image: Image
+  pdf: PDF
+  htmlText: HTML text
+  items: Items
+  strings: Strings
+  label: Label
+  description: Description
 
-    amount: Amount
-    color: Color
-    text: Text
-    url: Url
-    dateTime: DateTime
-    tags: Tags
-    image: Image
-    pdf: PDF
-    htmlText: HTML text
-    items: Items
-    strings: Strings
-    missions: Missions
-    label: Label
-    description: Description
+  icon: Icon
+  recipients: Destinataires
 
-    icon: Icon
-    recipients: Destinataires
-
-  help:
-    suffix_prefix_umbrella_extension: With suffix and prefix Umbrella FormExtension
-    entity_list: Using Entity list
-    async_list: Using Entity list - Async loading
-    sortable_compound_collection: Sortable collection with compound FormType
-    simple_collection: Collection with simple FormType
-    recipients: Will be sent to all if no recipient specified.
+help:
+  suffix_prefix_umbrella_extension: With suffix and prefix Umbrella FormExtension
+  entity_list: Using Entity list
+  async_list: Using Entity list - Async loading
+  sortable_compound_collection: Sortable collection with compound FormType
+  simple_collection: Collection with simple FormType
+  recipients: Will be sent to all if no recipient specified.
 
 message:
   signin_to_bo: "Demo website for de Umbrella Admin.<br>Hint : <b>umbrella</b> / <b>umbrella</b>"

@@ -67,7 +67,7 @@ class FormFieldsType extends AbstractType
                 . '<a class="dropdown-item" href="#">HTTPS</a>'
                 . '</div>',
             'input_suffix_text' => '.com',
-            'help' => 'form.help.suffix_prefix_umbrella_extension',
+            'help' => 'help.suffix_prefix_umbrella_extension',
             'required' => false,
         ]);
     }
@@ -96,7 +96,7 @@ class FormFieldsType extends AbstractType
             'template_html' => '<span>[[text]]</span><br><span class="text-muted">[[detail]]</span>',
             'multiple' => true,
             'required' => false,
-            'help' => 'form.help.entity_list',
+            'help' => 'help.entity_list',
             'expose' => function ($choice) {
                 return [
                     'detail' => $choice->detail,
@@ -109,7 +109,7 @@ class FormFieldsType extends AbstractType
             'class' => SpaceMission::class,
             'multiple' => true,
             'required' => false,
-            'help' => 'form.help.async_list',
+            'help' => 'help.async_list',
             'route' => 'app_admin_form_api',
             'template_html' => '<span>[[text]]</span><br><span class="text-muted">[[detail]]</span>',
         ]);
@@ -151,13 +151,13 @@ class FormFieldsType extends AbstractType
         $builder->add('items', UmbrellaCollectionType::class, [
             'entry_type' => FormFieldsItemType::class,
             'sortable' => true,
-            'help' => 'form.help.sortable_compound_collection'
+            'help' => 'help.sortable_compound_collection'
         ]);
 
         $builder->add('strings', UmbrellaCollectionType::class, [
             'entry_type' => TextType::class,
             'required' => false,
-            'help' => 'form.help.simple_collection'
+            'help' => 'help.simple_collection'
         ]);
     }
 }
