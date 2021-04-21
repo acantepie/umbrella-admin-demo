@@ -8,7 +8,6 @@ use App\Entity\Notification;
 use App\Entity\SpaceMission;
 use App\Entity\SpaceMissionClassification;
 use App\Entity\User;
-use App\Entity\UserGroup;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -48,12 +47,6 @@ class AppFixtures extends Fixture
         $u->plainPassword = $u->email;
         $u->password = $this->userPasswordEncoder->encodePassword($u, $u->plainPassword);
 
-        $g = new UserGroup();
-        $g->title = 'Administrateur';
-        $g->roles = ['ROLE_ADMIN'];
-        $u->addGroup($g);
-
-        $manager->persist($g);
         $manager->persist($u);
         $manager->flush();
     }

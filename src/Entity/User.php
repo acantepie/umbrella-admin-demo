@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Umbrella\AdminBundle\Entity\BaseUser;
@@ -19,9 +18,10 @@ use Umbrella\CoreBundle\Component\Search\Annotation\Searchable;
 class User extends BaseUser
 {
     /**
-     * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="UserGroup", inversedBy="users")
-     * @ORM\JoinTable(name="user_group_assoc")
+     * @inheritDoc
      */
-    public $groups;
+    public function getRoles()
+    {
+        return ['ROLE_ADMIN'];
+    }
 }
