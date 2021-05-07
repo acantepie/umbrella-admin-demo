@@ -29,7 +29,7 @@
     "toastr": "^2.1.4"
   },
   "scripts": {
-    "dev-server": "encore dev-server --port 9000 --host=0.0.0.0",
+    "dev-server": "encore dev-server --port 9000 --host=0.0.0.0 --no-firewall",
     "dev": "encore dev",
     "watch": "encore dev --watch",
     "build": "encore production --progress",
