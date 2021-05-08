@@ -5,7 +5,7 @@
     <form enctype="multipart/form-data" method="POST">
 
         <div class="d-flex">
-            <span class="ml-auto"></span>
+            <span class="ms-auto"></span>
             <button type="submit" class="btn btn-primary">
                 <i class="mdi mdi-check"></i> {{ 'action.save' | trans }}
             </button>
@@ -49,7 +49,7 @@
                     {{ form_row(form.image) }}
                     {% if form.image.vars.value %}
                         <div class="alert alert-info d-flex align-items-center">
-                            <a href="{{ form.image.vars.value | file_url }}" class="mr-2">
+                            <a href="{{ form.image.vars.value | file_url }}" class="me-2">
                                 <img src="{{ form.image.vars.value | image_url('thumbnail') }}" class="img-thumbnail">
                             </a>
                             <div>Umbrella file can be displayed with liip/imaginebundle :)</div>

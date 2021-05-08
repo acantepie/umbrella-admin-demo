@@ -35,7 +35,7 @@ class LaunchTableType extends DataTableType
     public function buildTable(DataTableBuilder $builder, array $options = [])
     {
         $builder->setRowClass(function ($o) {
-            return $o->success ? '' : 'bg-danger text-white';
+            return $o->success ? '' : 'table-danger';
         });
 
         $builder->add('date_utc', PropertyColumnType::class, [

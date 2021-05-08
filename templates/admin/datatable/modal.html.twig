@@ -5,7 +5,7 @@
             <div class="card-body">
                 <p>DataTables can be rendered on modal too.</p>
                 {% for status in statuses %}
-                    <a href data-xhr="{{ path('app_admin_datatable_xhrmodal', {'status' : status}) }}" class="btn btn-primary mr-2">
+                    <a href data-xhr="{{ path('app_admin_datatable_xhrmodal', {'status' : status}) }}" class="btn btn-primary me-2">
                         Show missions by <u>{{ status }}</u>
                     </a>
                 {% endfor %}

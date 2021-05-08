@@ -15,7 +15,7 @@ class LocationColumnType extends PropertyColumnType
         $id = sprintf('location-%d', $rowData->id);
 
         return sprintf(
-            '<a class="dropdown-toggle" data-toggle="collapse" href="#%s"><u>%s</u></a><div class="collapse" id="%s"><div class="card border-secondary border p-1 mb-0 my-1">%s</div></div>',
+            '<a class="dropdown-toggle" data-bs-toggle="collapse" href="#%s"><u>%s</u></a><div class="collapse" id="%s"><div class="card border-secondary border p-1 mb-0 my-1">%s</div></div>',
             $id, end($locationsParts), $id, $value
         );
     }
