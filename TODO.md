@@ -2,3 +2,4 @@
 
  - Modal / Tooltip / Popover
  - Form
+ - Select2 selected item
