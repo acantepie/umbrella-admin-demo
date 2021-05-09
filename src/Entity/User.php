@@ -18,7 +18,7 @@ use Umbrella\CoreBundle\Component\Search\Annotation\Searchable;
 class User extends BaseUser
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getRoles()
     {
