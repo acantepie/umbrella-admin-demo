@@ -45,7 +45,7 @@ class DataTableActionController extends AdminController
         }
 
         return $this->jsResponseBuilder()
-            ->modalView('@UmbrellaAdmin/edit_modal.html.twig', [
+            ->modal('@UmbrellaAdmin/edit_modal.html.twig', [
                 'form' => $form->createView(),
                 'entity' => $entity,
             ]);

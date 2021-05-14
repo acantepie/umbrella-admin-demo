@@ -44,10 +44,10 @@ class JsController extends AdminController
                 return $jsBuilder->alertError('Hi ^^', 'Server say');
 
             case 'update_html':
-                return $jsBuilder->update('#update-me', '<p class="alert alert-info">Hi  ^^</p>');
+                return $jsBuilder->updateHtml('#update-me', '<p class="alert alert-info">Hi  ^^</p>');
 
             case 'open_modal':
-                return $jsBuilder->modal(
+                return $jsBuilder->modalHtml(
                     '<div class="modal js-umbrella-modal fade show" tabindex="-1" role="dialog">'
                     . '<div class="modal-dialog modal-lg">'
                     . '<div class="modal-content">'
