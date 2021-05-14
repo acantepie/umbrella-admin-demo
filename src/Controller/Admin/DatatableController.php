@@ -146,7 +146,7 @@ class DatatableController extends AdminController
             return $table->getCallbackResponse();
         }
 
-        return $this->jsResponseBuilder()->openModalView('admin/datatable/_modal.html.twig', [
+        return $this->jsResponseBuilder()->modalView('admin/datatable/_modal.html.twig', [
             'status' => $status,
             'table' => $table
         ]);

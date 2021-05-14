@@ -41,11 +41,11 @@ class DataTableActionController extends AdminController
             return $this->jsResponseBuilder()
                 ->closeModal()
                 ->reloadTable()
-                ->toastSuccess(t('message.entity_updated'));
+                ->alertSuccess(t('message.entity_updated'));
         }
 
         return $this->jsResponseBuilder()
-            ->openModalView('@UmbrellaAdmin/edit_modal.html.twig', [
+            ->modalView('@UmbrellaAdmin/edit_modal.html.twig', [
                 'form' => $form->createView(),
                 'entity' => $entity,
             ]);
@@ -61,7 +61,7 @@ class DataTableActionController extends AdminController
 
         return $this->jsResponseBuilder()
             ->reloadTable()
-            ->toastSuccess(t('message.entity_deleted'));
+            ->alertSuccess(t('message.entity_deleted'));
     }
 
     /**

@@ -38,16 +38,16 @@ class JsController extends AdminController
 
         switch ($action) {
             case 'toast_success':
-                return $jsBuilder->toastSuccess('Hi ^^', 'Server say');
+                return $jsBuilder->alertSuccess('Hi ^^', 'Server say');
 
             case 'toast_error':
-                return $jsBuilder->toastError('Hi ^^', 'Server say');
+                return $jsBuilder->alertError('Hi ^^', 'Server say');
 
             case 'update_html':
                 return $jsBuilder->update('#update-me', '<p class="alert alert-info">Hi  ^^</p>');
 
             case 'open_modal':
-                return $jsBuilder->openModal(
+                return $jsBuilder->modal(
                     '<div class="modal js-umbrella-modal fade show" tabindex="-1" role="dialog">'
                     . '<div class="modal-dialog modal-lg">'
                     . '<div class="modal-content">'
@@ -63,7 +63,7 @@ class JsController extends AdminController
                 );
 
             default:
-                return $jsBuilder->toastError('This action is not implemented yet');
+                return $jsBuilder->alertError('This action is not implemented yet');
         }
     }
 
@@ -74,6 +74,6 @@ class JsController extends AdminController
     {
         sleep($sleep);
         return $this->jsResponseBuilder()
-            ->toastSuccess('Hi ^^', 'Server say');
+            ->alertSuccess('Hi ^^', 'Server say');
     }
 }
