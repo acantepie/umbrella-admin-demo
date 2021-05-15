@@ -61,6 +61,7 @@ class DataTableActionController extends AdminController
 
         return $this->jsResponseBuilder()
             ->reloadTable()
+            ->table(null, 'unselectRowId', $id)
             ->alertSuccess(t('message.entity_deleted'));
     }
 

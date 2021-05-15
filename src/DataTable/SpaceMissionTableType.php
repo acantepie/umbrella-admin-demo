@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\Component\DataTable\Adapter\EntityAdapter;
 use Umbrella\CoreBundle\Component\DataTable\Column\CheckBoxColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Column\DateColumnType;
+use Umbrella\CoreBundle\Component\DataTable\Column\DragHandleColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Column\WidgetColumnType;
 use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
@@ -66,11 +67,11 @@ class SpaceMissionTableType extends DataTableType
                 'build' => function (WidgetBuilder $builder) {
                     $builder->add('export_filtered', LinkType::class, [
                         'route' => 'app_admin_datatableaction_dumpfiltered',
-                        'attr' => ['data-export' => self::EXPORT_FILTER]
+                        'attr' => ['data-onclick' => self::SEND_FILTER]
                     ]);
                     $builder->add('export_selected', LinkType::class, [
                         'route' => 'app_admin_datatableaction_dumpselected',
-                        'attr' => ['data-export' => self::EXPORT_SELECTION]
+                        'attr' => ['data-onclick' => self::SEND_SELECTION]
                     ]);
                 }
             ]);
@@ -87,10 +88,13 @@ class SpaceMissionTableType extends DataTableType
             $builder->add('select', CheckBoxColumnType::class);
         }
 
+        if ($options['row_reorder']) {
+            $builder->add('drag', DragHandleColumnType::class);
+        }
+
         $builder->add('date', DateColumnType::class, [
             'order' => 'DESC',
-            'format' => 'd M Y',
-            'drag_handle' => $options['row_reorder'] // Use this column to drag if row_reorder is true
+            'format' => 'd M Y'
         ]);
         $builder->add('companyName', PropertyColumnType::class);
 

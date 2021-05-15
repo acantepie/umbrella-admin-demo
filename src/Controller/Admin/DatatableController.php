@@ -38,9 +38,7 @@ class DatatableController extends AdminController
      */
     public function customAdapterAction(Request $request)
     {
-        $table = $this->createTable(LaunchTableType::class, [
-            'length_change' => true,
-        ]);
+        $table = $this->createTable(LaunchTableType::class);
         $table->handleRequest($request);
 
         if ($table->isCallback()) {

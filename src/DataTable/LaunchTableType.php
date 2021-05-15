@@ -8,6 +8,7 @@ use function Symfony\Component\String\u;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Umbrella\CoreBundle\Component\DataTable\Adapter\AdapterException;
 use Umbrella\CoreBundle\Component\DataTable\Column\BooleanColumnType;
+use Umbrella\CoreBundle\Component\DataTable\Column\DetailsHandleColumnType;
 use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
 use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\Component\DataTable\DataTableType;
@@ -37,6 +38,23 @@ class LaunchTableType extends DataTableType
         $builder->setRowClass(function ($o) {
             return $o->success ? '' : 'table-danger';
         });
+
+        $builder->add('details_handle', DetailsHandleColumnType::class, [
+            'details_renderer' => function ($o) {
+                $h = '<dl class="row mb-0">';
+
+                $h .= '<dt class="col-2">Details</dt>';
+                $h .= sprintf('<dd class="col-10">%s</dd>', $o->details);
+
+                if ($o->failures) {
+                    $h .= '<dt class="col-2">Failure</dt>';
+                    $h .= sprintf('<dd class="col-10">%s</dd>', $o->failures[0]->reason);
+                }
+
+                $h .= '</dl>';
+                return $h;
+            }
+        ]);
 
         $builder->add('date_utc', PropertyColumnType::class, [
             'renderer' => function ($o) {
