@@ -19,8 +19,7 @@ use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\Component\DataTable\DataTableType;
 use Umbrella\CoreBundle\Component\DataTable\ToolbarBuilder;
 use Umbrella\CoreBundle\Component\Widget\Type\AddLinkType;
-use Umbrella\CoreBundle\Component\Widget\Type\ButtonDropdownType;
-use Umbrella\CoreBundle\Component\Widget\Type\LinkType;
+use Umbrella\CoreBundle\Component\Widget\Type\ButtonType;
 use Umbrella\CoreBundle\Component\Widget\Type\RowDeleteLinkType;
 use Umbrella\CoreBundle\Component\Widget\Type\RowEditLinkType;
 use Umbrella\CoreBundle\Component\Widget\WidgetBuilder;
@@ -56,24 +55,20 @@ class SpaceMissionTableType extends DataTableType
         if ($options['editable']) {
             $builder->addWidget('add', AddLinkType::class, [
                 'route' => 'app_admin_datatableaction_edit',
-                'xhr' => true
+                'xhr' => true,
+                'mode' => self::DEFAULT_MODE
             ]);
         }
 
         // Export button (use to export data)
         if ($options['exportable']) {
-            $builder->addWidget('export', ButtonDropdownType::class, [
-                'icon' => 'mdi mdi-file-download-outline',
-                'build' => function (WidgetBuilder $builder) {
-                    $builder->add('export_filtered', LinkType::class, [
-                        'route' => 'app_admin_datatableaction_dumpfiltered',
-                        'attr' => ['data-onclick' => self::SEND_FILTER]
-                    ]);
-                    $builder->add('export_selected', LinkType::class, [
-                        'route' => 'app_admin_datatableaction_dumpselected',
-                        'attr' => ['data-onclick' => self::SEND_SELECTION]
-                    ]);
-                }
+            $builder->addWidget('export', ButtonType::class, [
+                'text' => false,
+                'class' => 'btn-outline-primary',
+                'icon' => 'mdi mdi-download',
+                'route' => 'app_admin_datatableaction_export',
+                'mode' => [self::DEFAULT_MODE, self::SELECTION_MODE],
+                'tag' => self::TAG_SEND_DATA
             ]);
         }
     }
