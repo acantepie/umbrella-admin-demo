@@ -15,7 +15,7 @@ class MenuController extends AdminController
     /**
      * @Route("")
      */
-    public function indexAction()
+    public function index()
     {
         return $this->render('admin/menu/index.html.twig', [
             'admin_sidebar_yml' => file_get_contents(__DIR__ . '/../../../config/menu/admin_sidebar.yaml')

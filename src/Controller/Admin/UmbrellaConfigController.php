@@ -19,7 +19,7 @@ class UmbrellaConfigController extends AdminController
     /**
      * @Route("")
      */
-    public function indexAction(KernelInterface $kernel)
+    public function index(KernelInterface $kernel)
     {
         $configsName = ['UmbrellaAdminBundle', 'UmbrellaCoreBundle'];
 

@@ -19,7 +19,7 @@ class NotificationController extends AdminController
     /**
      * @Route("")
      */
-    public function indexAction(NotificationManager $manager, Request $request)
+    public function index(NotificationManager $manager, Request $request)
     {
         $notification = new Notification();
         $notification->title = 'Hello world !';

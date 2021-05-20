@@ -15,7 +15,7 @@ class DefaultController extends BaseController
     /**
      * @Route("")
      */
-    public function indexAction()
+    public function index()
     {
         return $this->render('landing.html.twig');
     }

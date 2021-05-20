@@ -22,7 +22,7 @@ class DataTableActionController extends AdminController
     /**
      * @Route(path="/edit/{id}", requirements={"id": "\d+"})
      */
-    public function editAction(Request $request, $id = null)
+    public function edit(Request $request, $id = null)
     {
         if (null === $id) {
             $entity = new SpaceMission();
@@ -52,7 +52,7 @@ class DataTableActionController extends AdminController
     /**
      * @Route(path="/del/{id}", requirements={"id": "\d+"})
      */
-    public function deleteAction($id)
+    public function delete($id)
     {
         $entity = $this->findOrNotFound(SpaceMission::class, $id);
         $this->removeAndFlush($entity);
@@ -66,7 +66,7 @@ class DataTableActionController extends AdminController
     /**
      * @Route("/move/{id}/{direction}", requirements={"id": "\d+"})
      */
-    public function moveAction(SpaceMissionClassificationRepository $repository, $id, string $direction)
+    public function move(SpaceMissionClassificationRepository $repository, $id, string $direction)
     {
         $entity = $this->findOrNotFound(SpaceMissionClassification::class, $id);
         if ('up' === $direction) {
@@ -84,7 +84,7 @@ class DataTableActionController extends AdminController
     /**
      * @Route("row-reorder")
      */
-    public function rowReorderAction(Request $request)
+    public function rowReorder(Request $request)
     {
         $rowMove = RowReorder::createFromRequest($request);
         $rowMove->applyChanges($this->em(), SpaceMission::class, 'sequence');
@@ -97,7 +97,7 @@ class DataTableActionController extends AdminController
     /**
      * @Route("export")
      */
-    public function exportAction(Request $request)
+    public function export(Request $request)
     {
         $mode = $request->query->get('mode');
 

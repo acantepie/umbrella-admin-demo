@@ -15,7 +15,7 @@ class DefaultController extends AdminController
     /**
      * @Route("/")
      */
-    public function indexAction()
+    public function index()
     {
         return $this->redirectToRoute('app_admin_default_about');
     }
@@ -23,7 +23,7 @@ class DefaultController extends AdminController
     /**
      * @Route("/about")
      */
-    public function aboutAction()
+    public function about()
     {
         return $this->render('admin/default/about.html.twig');
     }

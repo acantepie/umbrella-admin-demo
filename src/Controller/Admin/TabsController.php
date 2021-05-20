@@ -15,7 +15,7 @@ class TabsController extends AdminController
     /**
      * @Route("")
      */
-    public function indexAction()
+    public function index()
     {
         return $this->render('admin/tabs/index.html.twig');
     }

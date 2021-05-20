@@ -21,7 +21,7 @@ class FormController extends AdminController
     /**
      * @Route("")
      */
-    public function indexAction(Request $request)
+    public function index(Request $request)
     {
         $entity = $this->em()->createQuery(sprintf('SELECT e FROM %s e', FormFields::class))->getOneOrNullResult();
 
@@ -44,7 +44,7 @@ class FormController extends AdminController
     /**
      * @Route("/api")
      */
-    public function apiAction(Request $request)
+    public function api(Request $request)
     {
         $qb = $this->em()->createQueryBuilder();
         $qb->select('e');

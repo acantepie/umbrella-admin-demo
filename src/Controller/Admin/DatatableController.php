@@ -19,7 +19,7 @@ class DatatableController extends AdminController
     /**
      * @Route("/basic")
      */
-    public function basicAction(Request $request)
+    public function basic(Request $request)
     {
         $table = $this->createTable(SpaceMissionTableType::class);
         $table->handleRequest($request);
@@ -36,7 +36,7 @@ class DatatableController extends AdminController
     /**
      * @Route("/custom-adapter")
      */
-    public function customAdapterAction(Request $request)
+    public function customAdapter(Request $request)
     {
         $table = $this->createTable(LaunchTableType::class);
         $table->handleRequest($request);
@@ -53,7 +53,7 @@ class DatatableController extends AdminController
     /**
      * @Route("/draggable")
      */
-    public function draggableAction(Request $request)
+    public function draggable(Request $request)
     {
         $table = $this->createTable(SpaceMissionTableType::class, [
             'row_reorder' => true
@@ -72,7 +72,7 @@ class DatatableController extends AdminController
     /**
      * @Route("/editable")
      */
-    public function editableAction(Request $request)
+    public function editable(Request $request)
     {
         $table = $this->createTable(SpaceMissionTableType::class, [
             'exportable' => true,
@@ -92,7 +92,7 @@ class DatatableController extends AdminController
     /**
      * @Route("/multiple")
      */
-    public function multipleAction(Request $request)
+    public function multiple(Request $request)
     {
         $tables = [];
         foreach (SpaceMission::MISSION_STATUSES as $status) {
@@ -120,7 +120,7 @@ class DatatableController extends AdminController
     /**
      * @Route("/modal")
      */
-    public function modalAction()
+    public function modal()
     {
         return $this->render('admin/datatable/modal.html.twig', [
             'statuses' => SpaceMission::MISSION_STATUSES
@@ -130,7 +130,7 @@ class DatatableController extends AdminController
     /**
      * @Route("/xhr-modal/{status}")
      */
-    public function xhrModalAction(Request $request, string $status)
+    public function xhrModal(Request $request, string $status)
     {
         $table = $this->createTable(SpaceMissionTableType::class, [
             'show_mission_status_filter' => false,
@@ -153,7 +153,7 @@ class DatatableController extends AdminController
     /**
      * @Route("/tree")
      */
-    public function treeAction(Request $request)
+    public function tree(Request $request)
     {
         $table = $this->createTable(SpaceMissionClassificationTableType::class);
         $table->handleRequest($request);

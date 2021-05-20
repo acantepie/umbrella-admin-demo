@@ -123,13 +123,13 @@ class FormFieldsType extends AbstractType
     {
         $builder->add('image', UmbrellaFileType::class, [
             'required' => false,
+            'icon_browse' => '<i class="uil-picture me-1"></i>',
             'allow_delete' => true,
             'constraints' => new UmbrellaImageConstraint()
         ]);
 
         $builder->add('pdf', UmbrellaFileType::class, [
             'required' => false,
-            'label_browse' => '<i class="mdi mdi-folder"></i>',
             'constraints' => new UmbrellaFileConstraint([
                 'mimeTypes' => 'application/pdf',
             ])

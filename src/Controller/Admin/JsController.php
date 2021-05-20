@@ -22,7 +22,7 @@ class JsController extends AdminController
     /**
      * @Route("")
      */
-    public function indexAction()
+    public function index()
     {
         return $this->render('admin/js/index.html.twig', [
             'actions' => self::ACTIONS
@@ -32,7 +32,7 @@ class JsController extends AdminController
     /**
      * @Route("/xhr/{action}")
      */
-    public function xhrAction(string $action = 'toast_success')
+    public function xhr(string $action = 'toast_success')
     {
         $jsBuilder = $this->jsResponseBuilder();
 
@@ -70,7 +70,7 @@ class JsController extends AdminController
     /**
      * @Route("/xhr-sleep/{sleep}")
      */
-    public function sleepXhrAction(int $sleep = 1)
+    public function sleepXhr(int $sleep = 1)
     {
         sleep($sleep);
         return $this->jsResponseBuilder()
