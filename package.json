@@ -22,7 +22,6 @@
     "jquery": "^3.6.0",
     "jquery-treetable": "^3.2.0-1",
     "mustache": "^4.2.0",
-    "node-polyfill-webpack-plugin": "^1.1.2",
     "select2": "^4.0.13",
     "simplebar": "^5.3.3",
     "toastify-js": "^1.11.0"
