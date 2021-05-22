@@ -15,8 +15,8 @@ Encore
     })
 
 
-    .addEntry('front', './assets/front/Front.js')
-    .addEntry('admin', './assets/admin/Admin.js')
+    .addEntry('front', './assets/front/front.js')
+    .addEntry('admin', './assets/admin/admin.js')
     .addEntry('ckeditor', './vendor/umbrella2/corebundle/assets/ckeditor/ckeditor.js')
 
     .enableSassLoader()
@@ -25,10 +25,6 @@ Encore
     .enableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()
     //.enableBuildNotifications()
-
-    .configureBabel(function (babelConfig) {
-        babelConfig.plugins.push('transform-class-properties');
-    })
 
     .copyFiles([
         {

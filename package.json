@@ -1,9 +1,8 @@
 {
   "devDependencies": {
     "@symfony/webpack-encore": "^1.2.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
     "file-loader": "^6.0.0",
-    "sass": "^1.32.12",
+    "sass": "1.32.12",
     "sass-loader": "^11.0.1"
   },
   "dependencies": {
@@ -11,7 +10,7 @@
     "@mdi/font": "^5.9.55",
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.0",
-    "ckeditor4": "^4.16.0",
+    "ckeditor4": "^4.16.1",
     "datatables.net": "^1.10.24",
     "datatables.net-bs4": "^1.10.24",
     "datatables.net-fixedheader": "^3.1.8",
@@ -23,6 +22,7 @@
     "jquery": "^3.6.0",
     "jquery-treetable": "^3.2.0-1",
     "mustache": "^4.2.0",
+    "node-polyfill-webpack-plugin": "^1.1.2",
     "select2": "^4.0.13",
     "simplebar": "^5.3.3",
     "toastify-js": "^1.11.0"
