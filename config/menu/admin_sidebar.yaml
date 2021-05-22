@@ -43,8 +43,6 @@ umbrella:
             icon: uil-layers-alt
             route: app_admin_tabs_index
 
-advanced:
-    children:
         config_reference:
             icon: mdi mdi-cogs
             route: app_admin_umbrellaconfig_index

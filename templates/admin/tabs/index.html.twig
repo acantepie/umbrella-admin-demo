@@ -2,7 +2,8 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-sm-6">
+
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
                     <h5>Config : default</h5>
@@ -23,34 +24,7 @@
                     {% endverbatim %}
                 </div>
             </div>
-        </div>
 
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5>Config : bordered</h5>
-                </div>
-                <div class="card-body">
-                    {{ nav_config('bordered') }}
-                    {{ nav_start() }}
-                    {{ nav_item({'label' : 'Home', 'url': '#home'}) }}
-                    {{ nav_item({'label' : 'Profile', 'url': '#profile', 'active' : true}) }}
-                    {{ nav_end() }}
-
-                    {% verbatim %}
-                    <pre>
-{{ nav_config('bordered') }}
-{{ nav_start() }}
-{{ nav_item({'label' : 'Home', 'url': '#home'}) }}
-{{ nav_item({'label' : 'Profile', 'url': '#profile', 'active' : true}) }}
-{{ nav_end() }}
-                    </pre>
-                    {% endverbatim %}
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-6">
             <div class="card">
                 <div class="card-header">
                     <h5>Config : pills</h5>
@@ -73,60 +47,7 @@
                     {% endverbatim %}
                 </div>
             </div>
-        </div>
 
-
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5>Config : pills / active strategy : first</h5>
-                </div>
-                <div class="card-body">
-                    {{ nav_config('pills', {'active_strategy': 'first'}) }}
-                    {{ nav_start() }}
-                    {{ nav_item({'label' : 'Home', 'url': '#home'}) }}
-                    {{ nav_item({'label' : 'Profile', 'url': '#profile'}) }}
-                    {{ nav_end() }}
-
-                    {% verbatim %}
-                    <pre>
-{{ nav_config('pills', {'active_strategy': 'first'}) }}
-{{ nav_start() }}
-{{ nav_item({'label' : 'Home', 'url': '#home'}) }}
-{{ nav_item({'label' : 'Profile', 'url': '#profile'}) }}
-{{ nav_end() }}
-                    </pre>
-                    {% endverbatim %}
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5>Config : pills / active strategy : manual</h5>
-                </div>
-                <div class="card-body">
-                    {{ nav_config('pills', {'active_strategy': null}) }}
-                    {{ nav_start() }}
-                    {{ nav_item({'label' : 'Home', 'url': '#home'}) }}
-                    {{ nav_item({'label' : 'Profile', 'url': '#profile', 'active': true}) }}
-                    {{ nav_end() }}
-
-                    {% verbatim %}
-                    <pre>
-{{ nav_config('pills', {'active_strategy': null}) }}
-{{ nav_start() }}
-{{ nav_item({'label' : 'Home', 'url': '#home'}) }}
-{{ nav_item({'label' : 'Profile', 'url': '#profile', 'active': true}) }}
-{{ nav_end() }}
-                    </pre>
-                    {% endverbatim %}
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-6">
             <div class="card">
                 <div class="card-header">
                     <h5>Config : pills / active strategy : current_route</h5>
@@ -151,9 +72,7 @@
                     {% endverbatim %}
                 </div>
             </div>
-        </div>
 
-        <div class="col-sm-6">
             <div class="card">
                 <div class="card-header">
                     <h5>Config : advanced (see code)</h5>
@@ -189,6 +108,77 @@
 {{ nav_item({'label' : 'Home', 'url': '#home', 'icon': 'mdi mdi-home me-1', 'attr_link':  {'class': 'nav-link font-weight-bold'}}) }}
 {{ nav_item({'label': 'Tabs', 'route': 'app_admin_tabs_index'}) }}
 {{ nav_item({'label' : 'Profile', 'url': '#profile'}) }}
+{{ nav_end() }}
+                    </pre>
+                    {% endverbatim %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Config : bordered</h5>
+                </div>
+                <div class="card-body">
+                    {{ nav_config('bordered') }}
+                    {{ nav_start() }}
+                    {{ nav_item({'label' : 'Home', 'url': '#home'}) }}
+                    {{ nav_item({'label' : 'Profile', 'url': '#profile', 'active' : true}) }}
+                    {{ nav_end() }}
+
+                    {% verbatim %}
+                    <pre>
+{{ nav_config('bordered') }}
+{{ nav_start() }}
+{{ nav_item({'label' : 'Home', 'url': '#home'}) }}
+{{ nav_item({'label' : 'Profile', 'url': '#profile', 'active' : true}) }}
+{{ nav_end() }}
+                    </pre>
+                    {% endverbatim %}
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h5>Config : pills / active strategy : first</h5>
+                </div>
+                <div class="card-body">
+                    {{ nav_config('pills', {'active_strategy': 'first'}) }}
+                    {{ nav_start() }}
+                    {{ nav_item({'label' : 'Home', 'url': '#home'}) }}
+                    {{ nav_item({'label' : 'Profile', 'url': '#profile'}) }}
+                    {{ nav_end() }}
+
+                    {% verbatim %}
+                    <pre>
+{{ nav_config('pills', {'active_strategy': 'first'}) }}
+{{ nav_start() }}
+{{ nav_item({'label' : 'Home', 'url': '#home'}) }}
+{{ nav_item({'label' : 'Profile', 'url': '#profile'}) }}
+{{ nav_end() }}
+                    </pre>
+                    {% endverbatim %}
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h5>Config : pills / active strategy : manual</h5>
+                </div>
+                <div class="card-body">
+                    {{ nav_config('pills', {'active_strategy': null}) }}
+                    {{ nav_start() }}
+                    {{ nav_item({'label' : 'Home', 'url': '#home'}) }}
+                    {{ nav_item({'label' : 'Profile', 'url': '#profile', 'active': true}) }}
+                    {{ nav_end() }}
+
+                    {% verbatim %}
+                    <pre>
+{{ nav_config('pills', {'active_strategy': null}) }}
+{{ nav_start() }}
+{{ nav_item({'label' : 'Home', 'url': '#home'}) }}
+{{ nav_item({'label' : 'Profile', 'url': '#profile', 'active': true}) }}
 {{ nav_end() }}
                     </pre>
                     {% endverbatim %}
