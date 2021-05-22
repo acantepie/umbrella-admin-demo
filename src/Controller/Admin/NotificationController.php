@@ -33,7 +33,7 @@ class NotificationController extends AdminController
             }
             $manager->send($notification);
 
-            $this->alertSuccess('Click on bell to see me !', 'New notification');
+            $this->toastSuccess('Click on bell to see me !', 'New notification');
 
             return $this->redirectToRoute('app_admin_notification_index');
         }

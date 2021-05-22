@@ -4684,6 +4684,10 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
+toastify-js@^1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/toastify-js/-/toastify-js-1.11.0.tgz#00d5a592a59789c8f0856f74935c31f282b77c66"
+
 toidentifier@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"

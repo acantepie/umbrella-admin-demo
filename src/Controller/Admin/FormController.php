@@ -31,7 +31,7 @@ class FormController extends AdminController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->persistAndFlush($entity);
 
-            $this->alertSuccess(t('message.entity_updated'));
+            $this->toastSuccess(t('message.entity_updated'));
 
             return $this->redirectToRoute('app_admin_form_index');
         }

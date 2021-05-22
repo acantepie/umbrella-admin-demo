@@ -38,10 +38,10 @@ class JsController extends AdminController
 
         switch ($action) {
             case 'toast_success':
-                return $jsBuilder->alertSuccess('Hi ^^', 'Server say');
+                return $jsBuilder->toastSuccess('Hi ^^', 'Server say');
 
             case 'toast_error':
-                return $jsBuilder->alertError('Hi ^^', 'Server say');
+                return $jsBuilder->toastError('Hi ^^', 'Server say');
 
             case 'update_html':
                 return $jsBuilder->updateHtml('#update-me', '<p class="alert alert-info">Hi  ^^</p>');
@@ -63,7 +63,7 @@ class JsController extends AdminController
                 );
 
             default:
-                return $jsBuilder->alertError('This action is not implemented yet');
+                return $jsBuilder->toastError('This action is not implemented yet');
         }
     }
 
@@ -74,6 +74,6 @@ class JsController extends AdminController
     {
         sleep($sleep);
         return $this->jsResponseBuilder()
-            ->alertSuccess('Hi ^^', 'Server say');
+            ->toastSuccess('Hi ^^', 'Server say');
     }
 }

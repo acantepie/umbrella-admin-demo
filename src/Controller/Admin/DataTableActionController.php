@@ -39,7 +39,7 @@ class DataTableActionController extends AdminController
             return $this->jsResponseBuilder()
                 ->closeModal()
                 ->reloadTable()
-                ->alertSuccess(t('message.entity_updated'));
+                ->toastSuccess(t('message.entity_updated'));
         }
 
         return $this->jsResponseBuilder()
@@ -60,7 +60,7 @@ class DataTableActionController extends AdminController
         return $this->jsResponseBuilder()
             ->reloadTable()
             ->table(null, 'unselectRowId', $id)
-            ->alertSuccess(t('message.entity_deleted'));
+            ->toastSuccess(t('message.entity_deleted'));
     }
 
     /**
