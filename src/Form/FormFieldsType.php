@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,7 +17,6 @@ use Umbrella\CoreBundle\Component\UmbrellaFile\Validator\Constraints\UmbrellaFil
 use Umbrella\CoreBundle\Component\UmbrellaFile\Validator\Constraints\UmbrellaImageConstraint;
 use Umbrella\CoreBundle\Form\AsyncEntity2Type;
 use Umbrella\CoreBundle\Form\CkeditorType;
-use Umbrella\CoreBundle\Form\CustomRangeType;
 use Umbrella\CoreBundle\Form\DatepickerType;
 use Umbrella\CoreBundle\Form\Entity2Type;
 use Umbrella\CoreBundle\Form\TagType;
@@ -50,7 +50,7 @@ class FormFieldsType extends AbstractType
         $builder->add('active', CheckboxType::class, [
             'required' => false,
         ]);
-        $builder->add('amount', CustomRangeType::class, [
+        $builder->add('amount', RangeType::class, [
         ]);
         $builder->add('color', ColorType::class, [
         ]);
