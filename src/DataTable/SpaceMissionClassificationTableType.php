@@ -5,12 +5,12 @@ namespace App\DataTable;
 use App\Entity\SpaceMission;
 use App\Entity\SpaceMissionClassification;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
-use Umbrella\CoreBundle\Component\DataTable\Column\WidgetColumnType;
-use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
-use Umbrella\CoreBundle\Component\DataTable\DataTableType;
-use Umbrella\CoreBundle\Component\Widget\Type\RowMoveLinkType;
-use Umbrella\CoreBundle\Component\Widget\WidgetBuilder;
+use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
+use Umbrella\CoreBundle\DataTable\Column\WidgetColumnType;
+use Umbrella\CoreBundle\DataTable\DataTableBuilder;
+use Umbrella\CoreBundle\DataTable\DataTableType;
+use Umbrella\CoreBundle\Widget\Type\RowMoveLinkType;
+use Umbrella\CoreBundle\Widget\WidgetBuilder;
 
 class SpaceMissionClassificationTableType extends DataTableType
 {

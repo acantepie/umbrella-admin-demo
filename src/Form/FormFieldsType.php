@@ -13,15 +13,15 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\Component\UmbrellaFile\Validator\Constraints\UmbrellaFileConstraint;
-use Umbrella\CoreBundle\Component\UmbrellaFile\Validator\Constraints\UmbrellaImageConstraint;
-use Umbrella\CoreBundle\Form\AsyncEntity2Type;
+use Umbrella\CoreBundle\Form\AutocompleteType;
 use Umbrella\CoreBundle\Form\CkeditorType;
 use Umbrella\CoreBundle\Form\DatepickerType;
 use Umbrella\CoreBundle\Form\Entity2Type;
 use Umbrella\CoreBundle\Form\TagType;
 use Umbrella\CoreBundle\Form\UmbrellaCollectionType;
 use Umbrella\CoreBundle\Form\UmbrellaFileType;
+use Umbrella\CoreBundle\UmbrellaFile\Validator\Constraints\UmbrellaFileConstraint;
+use Umbrella\CoreBundle\UmbrellaFile\Validator\Constraints\UmbrellaImageConstraint;
 
 /**
  * Class FormFieldsType
@@ -93,25 +93,25 @@ class FormFieldsType extends AbstractType
                     ->createQueryBuilder('e')
                     ->setMaxResults(100);
             },
-            'template_html' => '<span>[[text]]</span><br><span class="text-muted">[[detail]]</span>',
+            'template' => '<span>[[text]]</span><br><span class="text-muted">[[detail]]</span>',
             'multiple' => true,
             'required' => false,
             'help' => 'help.entity_list',
-            'expose' => function ($choice) {
+            'choice_attr' => function ($choice) {
                 return [
-                    'detail' => $choice->detail,
+                    'data-detail' => $choice->detail,
                 ];
             },
         ]);
 
-        $builder->add('asyncMissions', AsyncEntity2Type::class, [
+        $builder->add('asyncMissions', AutocompleteType::class, [
             'label' => 'missions',
             'class' => SpaceMission::class,
             'multiple' => true,
             'required' => false,
             'help' => 'help.async_list',
             'route' => 'app_admin_form_api',
-            'template_html' => '<span>[[text]]</span><br><span class="text-muted">[[detail]]</span>',
+            'template' => '<span>[[text]]</span><br><span class="text-muted">[[detail]]</span>',
         ]);
 
         $builder->add('tags', TagType::class, [

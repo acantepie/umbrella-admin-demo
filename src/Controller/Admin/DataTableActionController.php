@@ -11,8 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use function Symfony\Component\Translation\t;
 use Umbrella\AdminBundle\Controller\AdminController;
-use Umbrella\CoreBundle\Component\DataTable\DTO\RowReorder;
-use Umbrella\CoreBundle\Component\JsResponse\JsResponse;
+use Umbrella\CoreBundle\DataTable\DTO\RowReorder;
+use Umbrella\CoreBundle\JsResponse\JsResponse;
 
 /**
  * @Route("/datatable")

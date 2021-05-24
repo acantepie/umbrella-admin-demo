@@ -3,10 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Umbrella\CoreBundle\Component\Search\Annotation\Searchable;
-use Umbrella\CoreBundle\Component\Search\Annotation\SearchableField;
 use Umbrella\CoreBundle\Model\IdTrait;
 use Umbrella\CoreBundle\Model\SearchTrait;
+use Umbrella\CoreBundle\Search\Annotation\Searchable;
+use Umbrella\CoreBundle\Search\Annotation\SearchableField;
 
 /**
  * Class SpaceMission

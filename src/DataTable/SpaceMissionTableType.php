@@ -9,22 +9,22 @@ use App\Form\Base\MissionStatusChoiceType;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\Component\DataTable\Adapter\EntityAdapter;
-use Umbrella\CoreBundle\Component\DataTable\Column\CheckBoxColumnType;
-use Umbrella\CoreBundle\Component\DataTable\Column\DateColumnType;
-use Umbrella\CoreBundle\Component\DataTable\Column\DragHandleColumnType;
-use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
-use Umbrella\CoreBundle\Component\DataTable\Column\WidgetColumnType;
-use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
-use Umbrella\CoreBundle\Component\DataTable\DataTableType;
-use Umbrella\CoreBundle\Component\DataTable\ToolbarBuilder;
-use Umbrella\CoreBundle\Component\Widget\Type\AddLinkType;
-use Umbrella\CoreBundle\Component\Widget\Type\ButtonType;
-use Umbrella\CoreBundle\Component\Widget\Type\RowDeleteLinkType;
-use Umbrella\CoreBundle\Component\Widget\Type\RowEditLinkType;
-use Umbrella\CoreBundle\Component\Widget\WidgetBuilder;
+use Umbrella\CoreBundle\DataTable\Adapter\EntityAdapter;
+use Umbrella\CoreBundle\DataTable\Column\CheckBoxColumnType;
+use Umbrella\CoreBundle\DataTable\Column\DateColumnType;
+use Umbrella\CoreBundle\DataTable\Column\DragHandleColumnType;
+use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
+use Umbrella\CoreBundle\DataTable\Column\WidgetColumnType;
+use Umbrella\CoreBundle\DataTable\DataTableBuilder;
+use Umbrella\CoreBundle\DataTable\DataTableType;
+use Umbrella\CoreBundle\DataTable\ToolbarBuilder;
 use Umbrella\CoreBundle\Form\DatepickerType;
 use Umbrella\CoreBundle\Form\SearchType;
+use Umbrella\CoreBundle\Widget\Type\AddLinkType;
+use Umbrella\CoreBundle\Widget\Type\ButtonType;
+use Umbrella\CoreBundle\Widget\Type\RowDeleteLinkType;
+use Umbrella\CoreBundle\Widget\Type\RowEditLinkType;
+use Umbrella\CoreBundle\Widget\WidgetBuilder;
 
 /**
  * Class SpaceMissionTableType

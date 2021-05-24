@@ -4,7 +4,7 @@ namespace App\DataTable\Column;
 
 use App\Entity\SpaceMission;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
+use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
 
 class StatusColumnType extends PropertyColumnType
 {

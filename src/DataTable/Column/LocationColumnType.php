@@ -2,7 +2,7 @@
 
 namespace App\DataTable\Column;
 
-use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
+use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
 
 class LocationColumnType extends PropertyColumnType
 {

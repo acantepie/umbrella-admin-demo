@@ -16,12 +16,12 @@ class MissionStatusChoiceType extends AbstractType
             'choices' => SpaceMission::MISSION_STATUSES,
             'choices_as_values' => true,
             'translation_domain' => false,
-            'expose' => function ($choice) {
+            'choice_attr' => function ($choice) {
                 return [
-                    'color' => SpaceMission::STATUS_COLORS[$choice],
+                    'data-color' => SpaceMission::STATUS_COLORS[$choice],
                 ];
             },
-            'template_html' => '<i class="mdi mdi-circle text-[[ color ]]"></i> [[ text ]]',
+            'template' => '<i class="mdi mdi-circle text-[[ color ]]"></i> [[ text ]]',
         ]);
     }
 

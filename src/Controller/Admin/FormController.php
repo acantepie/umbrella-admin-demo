@@ -50,23 +50,22 @@ class FormController extends AdminController
         $qb->select('e');
         $qb->from(SpaceMission::class, 'e');
 
-        $q = trim($request->query->get('q'));
+        $q = trim($request->query->get('query'));
 
         if (!empty($q)) {
             $qb->andWhere('LOWER(e.search) LIKE :search');
             $qb->setParameter('search', '%' . strtolower($q) . '%');
         }
 
-        $serialized = [];
-
-        foreach ($qb->getQuery()->getResult() as $mission) {
-            $serialized[] = [
+        $results = [];
+        foreach ($qb->getQuery()->toIterable() as $mission) {
+            $results[] = [
                 'id' => $mission->id,
                 'text' => (string) $mission,
                 'detail' => $mission->detail,
             ];
         }
 
-        return new JsonResponse($serialized);
+        return new JsonResponse(['results' => $results]);
     }
 }

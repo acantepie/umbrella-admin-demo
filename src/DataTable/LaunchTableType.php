@@ -6,14 +6,14 @@ use Symfony\Component\HttpClient\Exception\TransportException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use function Symfony\Component\String\u;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use Umbrella\CoreBundle\Component\DataTable\Adapter\AdapterException;
-use Umbrella\CoreBundle\Component\DataTable\Column\BooleanColumnType;
-use Umbrella\CoreBundle\Component\DataTable\Column\DetailsHandleColumnType;
-use Umbrella\CoreBundle\Component\DataTable\Column\PropertyColumnType;
-use Umbrella\CoreBundle\Component\DataTable\DataTableBuilder;
-use Umbrella\CoreBundle\Component\DataTable\DataTableType;
-use Umbrella\CoreBundle\Component\DataTable\DTO\DataTableRequest;
-use Umbrella\CoreBundle\Component\DataTable\DTO\DataTableResult;
+use Umbrella\CoreBundle\DataTable\Adapter\AdapterException;
+use Umbrella\CoreBundle\DataTable\Column\BooleanColumnType;
+use Umbrella\CoreBundle\DataTable\Column\DetailsHandleColumnType;
+use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
+use Umbrella\CoreBundle\DataTable\DataTableBuilder;
+use Umbrella\CoreBundle\DataTable\DataTableType;
+use Umbrella\CoreBundle\DataTable\DTO\DataTableRequest;
+use Umbrella\CoreBundle\DataTable\DTO\DataTableResult;
 
 /**
  * Class LaunchTableType
