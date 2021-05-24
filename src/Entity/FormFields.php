@@ -85,11 +85,6 @@ class FormFields
      */
     public $asyncMissions;
 
-    /**
-     * @ORM\Column(type="simple_array", nullable=true)
-     */
-    public $tags = [];
-
     // File
 
     /**

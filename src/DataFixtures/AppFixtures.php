@@ -120,9 +120,6 @@ class AppFixtures extends Fixture
         // Date
         $e->date = new \DateTime();
 
-        // select 2
-        $e->tags = ['symfony', 'admin', 'umbrella'];
-
         // File
         $e->image = UmbrellaFile::createFromPath(__DIR__ . '/files/me.png');
 

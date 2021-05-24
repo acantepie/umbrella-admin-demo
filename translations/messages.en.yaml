@@ -76,8 +76,8 @@ label:
 
 help:
   suffix_prefix_umbrella_extension: With suffix and prefix Umbrella FormExtension
-  entity_list: Using Entity list
-  async_list: Using Entity list - Async loading
+  entity_list: Entity2Type - select2.js
+  async_list: AutocompleteType - select2.js - async loading
   sortable_compound_collection: Sortable collection with compound FormType
   simple_collection: Collection with simple FormType
   recipients: Will be sent to all if no recipient specified.

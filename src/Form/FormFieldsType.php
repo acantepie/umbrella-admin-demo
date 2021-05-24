@@ -17,7 +17,6 @@ use Umbrella\CoreBundle\Form\AutocompleteType;
 use Umbrella\CoreBundle\Form\CkeditorType;
 use Umbrella\CoreBundle\Form\DatepickerType;
 use Umbrella\CoreBundle\Form\Entity2Type;
-use Umbrella\CoreBundle\Form\TagType;
 use Umbrella\CoreBundle\Form\UmbrellaCollectionType;
 use Umbrella\CoreBundle\Form\UmbrellaFileType;
 use Umbrella\CoreBundle\UmbrellaFile\Validator\Constraints\UmbrellaFileConstraint;
@@ -112,10 +111,6 @@ class FormFieldsType extends AbstractType
             'help' => 'help.async_list',
             'route' => 'app_admin_form_api',
             'template' => '<span>[[text]]</span><br><span class="text-muted">[[detail]]</span>',
-        ]);
-
-        $builder->add('tags', TagType::class, [
-            'required' => false
         ]);
     }
 
