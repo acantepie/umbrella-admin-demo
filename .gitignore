@@ -30,6 +30,7 @@ yarn-error.log
 ###< Tools / Other ###
 
 bin/deploy
+bin/link_vendor
 composer.lock
 
 ###> liip/imagine-bundle ###
