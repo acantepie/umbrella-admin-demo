@@ -3,7 +3,6 @@
     "name": "umbrella2/umbrella-demo",
     "type": "project",
     "license": "MIT",
-    "minimum-stability": "beta",
     "require": {
         "php": ">=7.4",
         "ext-ctype": "*",
