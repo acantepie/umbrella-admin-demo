@@ -1,6 +1,6 @@
 # Umbrella Admin DEMO
 
-Go [here](https://github.com/acantepie/umbrella) for documentation about **Umbrella framwork**.
+Go [here](https://github.com/acantepie/umbrella) for documentation about **Umbrella framework**.
 
 ![Screenshot of the Umbrella Admin Demo app](screenshot.png)
 
