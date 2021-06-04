@@ -11,21 +11,21 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Umbrella\CoreBundle\Entity\UmbrellaFile;
 
 class AppFixtures extends Fixture
 {
-    private UserPasswordEncoderInterface $userPasswordEncoder;
+    private UserPasswordHasherInterface $userPasswordHasher;
     private RouterInterface $router;
 
     /**
      * AppFixtures constructor.
      */
-    public function __construct(UserPasswordEncoderInterface $userPasswordEncoder, RouterInterface $router)
+    public function __construct(UserPasswordHasherInterface $userPasswordHasher, RouterInterface $router)
     {
-        $this->userPasswordEncoder = $userPasswordEncoder;
+        $this->userPasswordHasher = $userPasswordHasher;
         $this->router = $router;
     }
 
@@ -45,7 +45,7 @@ class AppFixtures extends Fixture
         $u->lastname = 'Doe';
         $u->email = 'john.doe@mail.com';
         $u->plainPassword = $u->email;
-        $u->password = $this->userPasswordEncoder->encodePassword($u, $u->plainPassword);
+        $u->password = $this->userPasswordHasher->hashPassword($u, $u->plainPassword);
 
         $manager->persist($u);
         $manager->flush();
