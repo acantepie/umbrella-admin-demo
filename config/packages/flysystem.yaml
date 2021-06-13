@@ -1,6 +1,0 @@
-flysystem:
-    storages:
-        default.storage:
-            adapter: 'local'
-            options:
-                directory: '%kernel.project_dir%/var/storage'

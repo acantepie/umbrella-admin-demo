@@ -13,7 +13,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\RouterInterface;
-use Umbrella\CoreBundle\Entity\UmbrellaFile;
 
 class AppFixtures extends Fixture
 {
@@ -119,9 +118,6 @@ class AppFixtures extends Fixture
 
         // Date
         $e->date = new \DateTime();
-
-        // File
-        $e->image = UmbrellaFile::createFromPath(__DIR__ . '/files/me.png');
 
         // Ckeditor
         $e->htmlText = '<p><strong>Hello world !</strong></p>';

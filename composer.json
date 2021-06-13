@@ -9,8 +9,6 @@
         "ext-iconv": "*",
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "knplabs/knp-time-bundle": "^1.16",
-        "league/flysystem-bundle": "^2.0",
-        "liip/imagine-bundle": "^2.6",
         "sensio/framework-extra-bundle": "^5.5",
         "stof/doctrine-extensions-bundle": "^1.4",
         "symfony/asset": "5.3.*",
@@ -39,7 +37,8 @@
         "symfony/webpack-encore-bundle": "^1.8",
         "symfony/yaml": "5.3.*",
         "umbrella2/adminbundle": "dev-master",
-        "umbrella2/corebundle": "dev-master"
+        "umbrella2/corebundle": "dev-master",
+        "vich/uploader-bundle": "^1.18"
     },
     "require-dev": {
         "ekino/phpstan-banned-code": "^0.4.0",

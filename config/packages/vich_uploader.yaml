@@ -1,0 +1,9 @@
+vich_uploader:
+    db_driver: orm
+    mappings:
+        public_file:
+            uri_prefix: /uploads
+            upload_destination: '%kernel.project_dir%/public/uploads'
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true

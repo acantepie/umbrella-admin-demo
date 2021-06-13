@@ -4,17 +4,21 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Umbrella\CoreBundle\Entity\UmbrellaFile;
+use Symfony\Component\HttpFoundation\File\File;
 use Umbrella\CoreBundle\Model\IdTrait;
+use Umbrella\CoreBundle\Model\TimestampTrait;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Class BaseExample
  *
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class FormFields
 {
     use IdTrait;
+    use TimestampTrait;
 
     // Basic
 
@@ -88,19 +92,26 @@ class FormFields
     // File
 
     /**
-     * @var UmbrellaFile
+     * @Vich\UploadableField(mapping="public_file", fileNameProperty="imageName")
      *
-     * @ORM\ManyToOne(targetEntity="Umbrella\CoreBundle\Entity\UmbrellaFile", cascade={"ALL"})
-     * @ORM\JoinColumn(name="file_id", referencedColumnName="id", onDelete="SET NULL")
+     * @var File|null
      */
     public $image;
 
     /**
-     * @var UmbrellaFile
-     * @ORM\ManyToOne(targetEntity="Umbrella\CoreBundle\Entity\UmbrellaFile", cascade={"ALL"})
-     * @ORM\JoinColumn(name="pdf_id", referencedColumnName="id", onDelete="SET NULL")
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string|null
      */
-    public $pdf;
+    public $imageName;
+
+    public function setImage(?File $image = null): void
+    {
+        $this->image = $image;
+        if (null !== $image) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
 
     // Ckeditor
 

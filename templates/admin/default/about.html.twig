@@ -7,7 +7,10 @@
         </div>
         <div class="card-body">
             <p>
-                <strong>Umbrella</strong> provide many components to create administration backends. Framework was developed on Symfony 5.
+                <strong>Umbrella</strong> provide many components to easily create administration backends.<br>
+                All vendor was developed on Symfony 5.<br>
+
+                Unlike <strong>EasyAdmin</strong> or <strong>Sonata</strong>, this framework is component oriented and doesn't use an abstraction layer for CRUD, that makes it very easy to understand.
             </p>
         </div>
     </div>
@@ -18,7 +21,7 @@
         </div>
         <div class="card-body">
             <p>
-                Define all major components, they can be used on back-office but also on front-office :
+                Contains all UI components, they can be used on back-office but also on front-office :
             </p>
 
             <ul>
@@ -27,14 +30,10 @@
                     Uses the same principle as Symfony FormT(Factory, Builder, Type) and supports a lot of features (Async loading, Tree view, Custom adapter, Form filter, ...)
                 </li>
                 <li class="pb-2">
-                    <strong>Menu</strong> : Menu creation component inspired by <a href="https://github.com/KnpLabs/KnpMenuBundle" class="text-primary">KnpMenuBundle</a>.
+                    <strong>Menu / Breadcrumb</strong> : Menu / breadcrumb creation component inspired by <a href="https://github.com/KnpLabs/KnpMenuBundle" class="text-primary">KnpMenuBundle</a>.
                 </li>
                 <li class="pb-2">
-                    <strong>Form</strong> : Add advanced FormType; Entity/Choice2Type (based on select2, supports async loading and templating), Date(Time)Picker, Collection, Upload, Ckeditor, ...
-                </li>
-                <li class="pb-2">
-                    <strong>Upload</strong> : Upload manager component inspired by <a href="https://github.com/dustin10/VichUploaderBundle" class="text-primary">VichUploaderBundle</a>.<br>
-                    Unlike VichUploader, all files are stored in dedicated entity <strong>UmbrellaFile</strong> and use <a href="https://github.com/thephpleague/flysystem" class="text-primary">flysystem.</a>
+                    <strong>Form</strong> : Add some useful FormType and theme - Choice2Type / Entity2Type (select2), AutoCompleteType (select2 with async loading), DatePicker / DateTimepicker,  Collection, Ckeditor, ...
                 </li>
             </ul>
         </div>
@@ -46,26 +45,24 @@
         </div>
         <div class="card-body">
             <p>
-                Based on Hyper Admin Theme, this bundle reuses most of Core Component in order to provide a set of tools for the back-office.
-            </p>
-
-            <p class="alert-info alert">
-                Unlike <strong>EasyAdmin</strong> or <strong>Sonata</strong>, this framework is component oriented and doesn't use an abstraction layer for CRUD, that makes it very easy to understand.
-            </p>
-
-            <p>
-                Service provided by umbrella-admin :
+                Contains all tools needed to create backends :
             </p>
 
             <ul>
                 <li class="pb-2">
-                    <strong>Sidebar</strong> : Reuse Menu component</a>.
+                    <strong>Admin theme and template</strong>.
                 </li>
                 <li class="pb-2">
-                    <strong>User Management</strong> : Inspired by <a href="https://github.com/FriendsOfSymfony/FOSUserBundle" class="text-primary">FOSUserBundle</a>, it works the same way but use new Symfony 5 authenticator.
+                    <strong>Sidebar</strong> : Reuse Core Menu component - build menu from a yaml file.
+                </li>
+                <li class="pb-2">
+                    <strong>User management</strong> : Admin view to edit admin user, Profile view to edit your own account and security system to login and recover password.
                 </li>
                 <li class="pb-2">
                     <strong>Maker</strong> : Inspired by <a href="https://symfony.com/doc/current/bundles/SymfonyMakerBundle/index.html" class="text-primary">MakerBundle symfony</a>, helps you to create controller, form with DataTable view.
+                </li>
+                <li class="pb-2">
+                    <strong>Notification manager</strong> : Lightweight notification system.
                 </li>
             </ul>
         </div>

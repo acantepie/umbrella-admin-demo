@@ -32,11 +32,6 @@ yarn-error.log
 bin/deploy
 bin/link_vendor
 composer.lock
-
-###> liip/imagine-bundle ###
-/public/media/cache/
-###< liip/imagine-bundle ###
-
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache

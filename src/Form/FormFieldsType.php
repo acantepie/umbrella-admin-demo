@@ -13,14 +13,13 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 use Umbrella\CoreBundle\Form\AutocompleteType;
 use Umbrella\CoreBundle\Form\CkeditorType;
 use Umbrella\CoreBundle\Form\DatepickerType;
 use Umbrella\CoreBundle\Form\Entity2Type;
 use Umbrella\CoreBundle\Form\UmbrellaCollectionType;
-use Umbrella\CoreBundle\Form\UmbrellaFileType;
-use Umbrella\CoreBundle\UmbrellaFile\Validator\Constraints\UmbrellaFileConstraint;
-use Umbrella\CoreBundle\UmbrellaFile\Validator\Constraints\UmbrellaImageConstraint;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 /**
  * Class FormFieldsType
@@ -116,18 +115,9 @@ class FormFieldsType extends AbstractType
 
     public function buildFile(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('image', UmbrellaFileType::class, [
+        $builder->add('image', VichFileType::class, [
             'required' => false,
-            'icon_browse' => '<i class="uil-picture me-1"></i>',
-            'allow_delete' => true,
-            'constraints' => new UmbrellaImageConstraint()
-        ]);
-
-        $builder->add('pdf', UmbrellaFileType::class, [
-            'required' => false,
-            'constraints' => new UmbrellaFileConstraint([
-                'mimeTypes' => 'application/pdf',
-            ])
+            'constraints' => new Image()
         ]);
     }
 
