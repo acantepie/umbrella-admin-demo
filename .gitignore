@@ -29,6 +29,11 @@ yarn-error.log
 .php_cs.cache
 ###< Tools / Other ###
 
+###> Vich Uploader ###
+/public/uploads/*
+!/public/uploads/.gitkeep
+###< Vich Uploader ###
+
 bin/deploy
 bin/link_vendor
 composer.lock
