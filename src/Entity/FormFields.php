@@ -13,6 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * Class BaseExample
  *
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  * @Vich\Uploadable
  */
 class FormFields
