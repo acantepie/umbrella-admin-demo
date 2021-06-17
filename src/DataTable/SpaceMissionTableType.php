@@ -114,12 +114,14 @@ class SpaceMissionTableType extends DataTableType
                 'build' => function (WidgetBuilder $builder, SpaceMission $s) {
                     $builder->add('add', RowEditLinkType::class, [
                         'route' => 'app_admin_datatableaction_edit',
-                        'route_params' => ['id' => $s->id]
+                        'route_params' => ['id' => $s->id],
+                        'xhr' => true
                     ]);
 
                     $builder->add('delete', RowDeleteLinkType::class, [
                         'route' => 'app_admin_datatableaction_delete',
-                        'route_params' => ['id' => $s->id]
+                        'route_params' => ['id' => $s->id],
+                        'xhr' => true
                     ]);
                 }
             ]);
