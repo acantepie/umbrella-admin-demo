@@ -120,8 +120,7 @@ class SpaceMissionTableType extends DataTableType
 
                     $builder->add('delete', RowDeleteLinkType::class, [
                         'route' => 'app_admin_datatableaction_delete',
-                        'route_params' => ['id' => $s->id],
-                        'xhr' => true
+                        'route_params' => ['id' => $s->id]
                     ]);
                 }
             ]);
