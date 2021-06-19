@@ -32,7 +32,7 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
                     <h4><span class="text-primary">data-xhr</span> attribute</h4>
@@ -44,9 +44,9 @@
                     </p>
                     <pre class="border-dark border p-2 " >{{ source('admin/js/_async_link.txt') | e('html') }}</pre>
 
-                    <div class="mb-2">
+                    <div>
                         {% for action, label in actions %}
-                            <a href data-xhr="{{ path('app_admin_js_xhr', {'action' : action}) }}" class="btn btn-primary me-2">
+                            <a href data-xhr="{{ path('app_admin_js_xhr', {'action' : action}) }}" class="btn btn-primary me-2 mb-2">
                                 {{ label }}
                             </a>
                         {% endfor %}
@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
                     <h4><span class="text-primary">data-spinner</span> attribute</h4>
@@ -68,8 +68,8 @@
                     </p>
                     <pre class="border-dark border p-2">{{ '<a data-xhr="..." data-spinner="true" href>My link</a>' | e }}</pre>
 
-                    <div class="mb-2">
-                        <a href data-xhr="{{ path('app_admin_js_sleepxhr') }}" data-spinner="true" class="btn btn-primary me-2">
+                    <div>
+                        <a href data-xhr="{{ path('app_admin_js_sleepxhr') }}" data-spinner="true" class="btn btn-primary me-2 mb-2">
                             Click-me
                         </a>
                     </div>
@@ -77,7 +77,7 @@
             </div>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
                     <h4><span class="text-primary">data-confirm</span> attribute</h4>
@@ -88,8 +88,8 @@
                     </p>
                     <pre class="border-dark border p-2">{{ '<a data-xhr="..." data-confirm="Are you sure ?" href>My link</a>' | e }}</pre>
 
-                    <div class="mb-2">
-                        <a href data-xhr="{{ path('app_admin_js_sleepxhr', {sleep: 0}) }}" data-confirm="Are you sure ?" class="btn btn-primary me-2">
+                    <div>
+                        <a href data-xhr="{{ path('app_admin_js_sleepxhr', {sleep: 0}) }}" data-confirm="Are you sure ?" class="btn btn-primary me-2 mb-2">
                             Click-me
                         </a>
                     </div>
@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header d-flex align-items-center">
                     <h4><span class="text-primary">data-xhr-id</span> attribute</h4>
@@ -109,11 +109,11 @@
                     </p>
                     <pre class="border-dark border p-2">{{ '<a data-xhr="..." data-xhr-id="my-id" href>My link</a>' | e }}</pre>
 
-                    <div class="mb-2">
-                        <a href data-xhr="{{ path('app_admin_js_sleepxhr', {sleep: 2}) }}" data-xhr-id="my-id" class="btn btn-primary me-2">
+                    <div>
+                        <a href data-xhr="{{ path('app_admin_js_sleepxhr', {sleep: 2}) }}" data-xhr-id="my-id" class="btn btn-primary me-2 mb-2">
                             Click-me
                         </a>
-                        <a href data-xhr="{{ path('app_admin_js_sleepxhr', {sleep: 2}) }}" data-xhr-id="my-id" class="btn btn-primary me-2">
+                        <a href data-xhr="{{ path('app_admin_js_sleepxhr', {sleep: 2}) }}" data-xhr-id="my-id" class="btn btn-primary me-2 mb-2">
                             Or me
                         </a>
                     </div>
