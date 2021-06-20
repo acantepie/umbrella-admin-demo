@@ -103,21 +103,27 @@ class DataTableActionController extends AdminController
 
         if ('selection' === $mode) {
             $table = $this->createTable(SpaceMissionTableType::class);
+
             $missions = $table
                 ->getAdapter()
-                ->getQueryBuilder($table->createRequest(), $table->getAdapterOptions())
+                ->getQueryBuilder($table->getState(), $table->getAdapterOptions())
                 ->andWhere('e.id IN (:ids)')
                 ->setParameter('ids', $request->query->get('ids'))
                 ->getQuery()
                 ->getResult();
         } else {
-            $table = $this->createTable(SpaceMissionTableType::class, [
-                'paging' => false
-            ]);
+            $table = $this->createTable(SpaceMissionTableType::class);
+
+            $parameters = $request->query->all();
+            unset($parameters['length']);
+
+            $state = $table
+                ->handleParamaters($parameters)
+                ->getState();
 
             $missions = $table
                 ->getAdapter()
-                ->getQueryBuilder($table->createRequest($request), $table->getAdapterOptions())
+                ->getQueryBuilder($state, $table->getAdapterOptions())
                 ->getQuery()
                 ->getResult();
         }

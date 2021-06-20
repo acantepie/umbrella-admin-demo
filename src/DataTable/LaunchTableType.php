@@ -12,8 +12,8 @@ use Umbrella\CoreBundle\DataTable\Column\DetailsHandleColumnType;
 use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
 use Umbrella\CoreBundle\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\DataTable\DataTableType;
-use Umbrella\CoreBundle\DataTable\DTO\DataTableRequest;
 use Umbrella\CoreBundle\DataTable\DTO\DataTableResult;
+use Umbrella\CoreBundle\DataTable\DTO\DataTableState;
 
 /**
  * Class LaunchTableType
@@ -69,16 +69,14 @@ class LaunchTableType extends DataTableType
             }
         ]);
 
-        $builder->useAdapter(function (DataTableRequest $request) {
-            $requestData = $request->getData();
-
+        $builder->useAdapter(function (DataTableState $state) {
             try {
                 $response = $this->client->request('POST', 'https://api.spacexdata.com/v4/launches/query', [
                     'timeout' => 3,
                     'json' => [
                         'options' => [
-                            'offset' => $requestData['start'],
-                            'limit' => $requestData['length'],
+                            'offset' => $state->getStart(),
+                            'limit' => $state->getLength(),
                         ]
                     ]
                 ]);
