@@ -17,7 +17,7 @@ class SpaceMissionClassificationTableType extends DataTableType
     public function buildTable(DataTableBuilder $builder, array $options)
     {
         $builder->add('name', PropertyColumnType::class, [
-            'renderer' => function (SpaceMissionClassification $c) {
+            'render' => function (SpaceMissionClassification $c) {
                 if (SpaceMissionClassification::STATUS === $c->type) {
                     return SpaceMission::getIconStatus($c->name);
                 }

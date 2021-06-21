@@ -57,14 +57,14 @@ class LaunchTableType extends DataTableType
         ]);
 
         $builder->add('date_utc', PropertyColumnType::class, [
-            'renderer' => function ($o) {
+            'render' => function ($o) {
                 return (new \DateTime($o->date_utc))->format('d M Y H:i');
             }
         ]);
         $builder->add('name', PropertyColumnType::class);
         $builder->add('success', BooleanColumnType::class);
         $builder->add('details', PropertyColumnType::class, [
-            'renderer' => function ($o) {
+            'render' => function ($o) {
                 return u($o->details)->truncate(100, '...');
             }
         ]);
