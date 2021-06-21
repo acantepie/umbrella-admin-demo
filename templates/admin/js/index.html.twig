@@ -20,7 +20,7 @@
                 So, Client resolves each actions one by one, calling the right js function depending of action type :
             </p>
             <ul>
-                <li>action : toast &rightarrow; <code>$.toast.success(...)</code></li>
+                <li>action : toast &rightarrow; <code>Toastify({text: 'Lorem ipsum'}).showToast()</code></li>
                 <li>action : redirect &rightarrow; <code>window.location.href=...</code></li>
             </ul>
 
@@ -151,7 +151,7 @@
 
             <h5>Handle action on JavaScript - jsResponseHandler</h5>
             <p>
-                Each action type is handled by a class that extends <b>JsResponseAction</b>.
+                Each action type is handled by a class that extends <b>JsResponseAction</b> or a function.
                 The following code handle action of type 'toast' :
             </p>
 

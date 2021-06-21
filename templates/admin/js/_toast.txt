@@ -1,15 +1,4 @@
-# App.js
-const umbrellaApp = new UmbrellaApp();
-
-import ShowToast from "ShowToast";
-umbrellaApp.jsResponseHandler.registerAction('toast', new ShowToast());
-
-
-# JsResponseAction.js
-import JsResponseAction from "umbrella_core/jsresponse/JsResponseAction";
-
-export default class ShowToast extends JsResponseAction {
-    eval(params) {
-        $.toast(params);
-    }
-}
+/* globals umbrella */
+umbrella.jsResponseHandler.registerAction('toast', (params) => {
+    umbrella.Toast.show(params['type'], params['text'], params['title'], params['options']);
+});

@@ -2,15 +2,14 @@
     {
         'action' : 'toast',
         'params' : {
-            position: "top-right",
-            icon: "success",
+            text: "Lorem ipsum ...",
             ...
         }
     },
     {
         'action' : 'redirect',
         'params' : {
-            url : "umbrella-demo.dev/foo/bar"
+            value : "umbrella-demo.dev/foo/bar"
         }
     },
     ...
