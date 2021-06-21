@@ -17,7 +17,6 @@ use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
 use Umbrella\CoreBundle\DataTable\Column\WidgetColumnType;
 use Umbrella\CoreBundle\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\DataTable\DataTableType;
-use Umbrella\CoreBundle\DataTable\ToolbarBuilder;
 use Umbrella\CoreBundle\Form\DatepickerType;
 use Umbrella\CoreBundle\Form\SearchType;
 use Umbrella\CoreBundle\Widget\Type\AddLinkType;
@@ -34,7 +33,7 @@ class SpaceMissionTableType extends DataTableType
     /**
      * {@inheritdoc}
      */
-    public function buildToolbar(ToolbarBuilder $builder, array $options)
+    public function buildTable(DataTableBuilder $builder, array $options)
     {
         $builder->addFilter('search', SearchType::class);
         $builder->addFilter('from', DatepickerType::class, [
@@ -71,13 +70,7 @@ class SpaceMissionTableType extends DataTableType
                 'tag' => self::TAG_SEND_DATA
             ]);
         }
-    }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function buildTable(DataTableBuilder $builder, array $options)
-    {
         // Checkbox column (use to select data exported)
         if ($options['exportable']) {
             $builder->add('select', CheckBoxColumnType::class);
