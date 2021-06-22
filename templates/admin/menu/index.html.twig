@@ -14,13 +14,7 @@
 
 
                     <h5>Give him a name, and tag it</h5>
-                    <hl-code class="language-yaml">
-# config/services.yaml
-services:
-    App\Menu\MyMenu:
-        tags:
-            - {name: umbrella.menu.factory, method: MyMenu, alias: my_nice_menu}
-            </hl-code>
+                    <hl-code class="language-yaml">{{  source('admin/menu/_menu_config.txt') }}</hl-code>
 
                     <h5>That's all ! You can now render it on twig</h5>
                     <hl-code class="language-twig">{{  source('admin/menu/_twig.txt') }}</hl-code>

@@ -15,6 +15,9 @@ highlightJs.registerLanguage('xml', xml);
 import php from 'highlight.js/lib/languages/php';
 highlightJs.registerLanguage('php', php);
 
+import twig from 'highlight.js/lib/languages/twig';
+highlightJs.registerLanguage('twig', twig);
+
 export default class HighlightCode extends HTMLElement {
 
     constructor() {
