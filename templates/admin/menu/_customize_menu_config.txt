@@ -1,0 +1,6 @@
+# config/services.yaml
+services:
+    App\Menu\MyMenu:
+        tags:
+            - {name: umbrella.menu.renderer, method: renderMenu, alias: my_nice_menu}
+            - {name: umbrella.breadcrumb.renderer, method: renderBreadcrumb, alias: my_nice_menu}

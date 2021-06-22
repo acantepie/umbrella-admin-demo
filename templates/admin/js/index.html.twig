@@ -14,7 +14,7 @@
             <a href="#response-format" data-bs-toggle="collapse" class="text-primary">
                 <i class="mdi mdi-eye me-1"></i> See response format
             </a>
-            <pre class="border-dark border p-2 collapse" id="response-format">{{ source('admin/js/_js_response.txt') | e('html') }}</pre>
+            <hl-code class="language-json collapse" id="response-format">{{ source('admin/js/_js_response.txt') | e('html') }}</hl-code>
             <br>
             <p>
                 So, Client resolves each actions one by one, calling the right js function depending of action type :
@@ -42,7 +42,7 @@
                         This attribute will override the default behaviour of <b>link</b> or <b>form</b> and send an <b>Ajax</b> request to server on
                         <b>click</b> or on <b>submit</b>.<br>
                     </p>
-                    <pre class="border-dark border p-2 " >{{ source('admin/js/_async_link.txt') | e('html') }}</pre>
+                    <hl-code class="language-xml">{{ source('admin/js/_async_link.txt') | e('html') }}</hl-code>
 
                     <div>
                         {% for action, label in actions %}
@@ -66,7 +66,7 @@
                     <p>
                         Display a spinner until the server responds.
                     </p>
-                    <pre class="border-dark border p-2">{{ '<a data-xhr="..." data-spinner="true" href>My link</a>' | e }}</pre>
+                    <hl-code class="language-xml">{{ '<a data-xhr="..." data-spinner="true" href>My link</a>' | e }}</hl-code>
 
                     <div>
                         <a href data-xhr="{{ path('app_admin_js_sleepxhr') }}" data-spinner="true" class="btn btn-primary me-2 mb-2">
@@ -86,7 +86,7 @@
                     <p>
                         Display a confirm modal before call server.
                     </p>
-                    <pre class="border-dark border p-2">{{ '<a data-xhr="..." data-confirm="Are you sure ?" href>My link</a>' | e }}</pre>
+                    <hl-code class="language-xml">{{ '<a data-xhr="..." data-confirm="Are you sure ?" href>My link</a>' | e }}</hl-code>
 
                     <div>
                         <a href data-xhr="{{ path('app_admin_js_sleepxhr', {sleep: 0}) }}" data-confirm="Are you sure ?" class="btn btn-primary me-2 mb-2">
@@ -107,7 +107,7 @@
                     <p>
                         One ajax call can be performed at the same time if they have the same <b>xhr-id</b>.
                     </p>
-                    <pre class="border-dark border p-2">{{ '<a data-xhr="..." data-xhr-id="my-id" href>My link</a>' | e }}</pre>
+                    <hl-code class="language-xml">{{ '<a data-xhr="..." data-xhr-id="my-id" href>My link</a>' | e }}</hl-code>
 
                     <div>
                         <a href data-xhr="{{ path('app_admin_js_sleepxhr', {sleep: 2}) }}" data-xhr-id="my-id" class="btn btn-primary me-2 mb-2">
@@ -131,7 +131,7 @@
                 Instead of use data- attribute, you can use Javascript methods.
             </p>
 
-            <pre class="border-dark border p-2">{{ source('admin/js/_ajax_utils.txt') | e('html') }}</pre>
+            <hl-code class="language-js">{{ source('admin/js/_ajax_utils.txt') | e('html') }}</hl-code>
 
         </div>
     </div>
@@ -155,7 +155,7 @@
                 The following code handle action of type 'toast' :
             </p>
 
-            <pre class="border-dark border p-2">{{ source('admin/js/_toast.txt') | e('html') }}</pre>
+            <hl-code class="language-js">{{ source('admin/js/_toast.txt') | e('html') }}</hl-code>
 
             <p>
                 So, it's easy to override default action or add new action.

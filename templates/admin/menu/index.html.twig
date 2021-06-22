@@ -10,24 +10,24 @@
                 <div class="card-body">
 
                     <h5>First build, it</h5>
-                    <pre class="border-dark border p-2">{{  source('admin/menu/_menu.txt') }}</pre>
+                    <hl-code class="language-php">{{  source('admin/menu/_menu.txt') }}</hl-code>
 
 
                     <h5>Give him a name, and tag it</h5>
-                    <pre class="border-dark border p-2">
+                    <hl-code class="language-yaml">
 # config/services.yaml
 services:
     App\Menu\MyMenu:
         tags:
             - {name: umbrella.menu.factory, method: MyMenu, alias: my_nice_menu}
-            </pre>
+            </hl-code>
 
                     <h5>That's all ! You can now render it on twig</h5>
-                    <pre class="border-dark border p-2">{{  source('admin/menu/_twig.txt') }}</pre>
+                    <hl-code class="language-twig">{{  source('admin/menu/_twig.txt') }}</hl-code>
 
                     <h5>Customize menu / breadcrumb rendering</h5>
-                    <pre class="border-dark border p-2">{{  source('admin/menu/_customize_menu.txt') }}</pre>
-
+                    <hl-code class="language-php">{{  source('admin/menu/_customize_menu.txt') }}</hl-code>
+                    <hl-code class="language-yaml">{{  source('admin/menu/_customize_menu_config.txt') }}</hl-code>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@ services:
                     <p>
                         The Admin menu factory read a YAML file to build it. See example below :
                     </p>
-                    <pre class="border-dark border p-2">{{  admin_sidebar_yml }}</pre>
+                    <hl-code class="language-yaml">{{  admin_sidebar_yml }}</hl-code>
 
 
                 </div>
@@ -62,7 +62,7 @@ services:
                         Menu use a matcher to find the current menu item. This matcher tests the route and query parameters of current Request and mark MenuItem as current if match.<br>
                         You can provide your own matching rules on Controller with following code :
                     </p>
-                    <pre class="border-dark border p-2">{{  source('admin/menu/_match.txt') }}</pre>
+                    <hl-code class="language-php">{{  source('admin/menu/_match.txt') }}</hl-code>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@ services:
                     <p>
                         Menu can hide some entries depending on security rules, see example below :
                     </p>
-                    <pre class="border-dark border p-2">{{  source('admin/menu/_security.yml') }}</pre>
+                    <hl-code class="language-yaml">{{  source('admin/menu/_security.yml') }}</hl-code>
                     <p>
                         An user without any of this roles will not see the top level entry <b>admin</b>.
                     </p>

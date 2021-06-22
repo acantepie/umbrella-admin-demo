@@ -1,0 +1,16 @@
+@import "~highlight.js/scss/atom-one-light";
+
+hl-code {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+  color: $dark;
+  white-space: pre;
+  margin-bottom: 1rem;
+
+  &.scroll {
+    max-height: 420px;
+  }
+
+  border: 1px solid rgba($gray-600, 0.2);
+}
