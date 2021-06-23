@@ -18,7 +18,7 @@
   version "7.14.5"
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.14.5.tgz#8ef4c18e58e801c5c95d3c1c0f2874a2680fadea"
 
-"@babel/core@^7.7.0":
+"@babel/core@^7.14.6", "@babel/core@^7.7.0":
   version "7.14.6"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.14.6.tgz#e0814ec1a950032ff16c13a2721de39a8416fcab"
   dependencies:
@@ -38,9 +38,9 @@
     semver "^6.3.0"
     source-map "^0.5.0"
 
-"@babel/eslint-parser@^7.14.5":
-  version "7.14.5"
-  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.14.5.tgz#441c04e2fe9825ea628c2b4e5524d40129cbbccd"
+"@babel/eslint-parser@^7.14.7":
+  version "7.14.7"
+  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.14.7.tgz#91be59a4f7dd60d02a3ef772d156976465596bda"
   dependencies:
     eslint-scope "^5.1.1"
     eslint-visitor-keys "^2.1.0"
@@ -2342,7 +2342,7 @@ eslint-visitor-keys@^2.0.0, eslint-visitor-keys@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-2.1.0.tgz#f65328259305927392c938ed44eb0a5c9b2bd303"
 
-eslint@^7.28.0:
+eslint@^7.29.0:
   version "7.29.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-7.29.0.tgz#ee2a7648f2e729485e4d0bd6383ec1deabc8b3c0"
   dependencies:

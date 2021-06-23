@@ -19,11 +19,11 @@ class SpaceMissionClassification implements NestedTreeEntityInterface
 {
     use IdTrait;
     use NestedTreeEntityTrait;
-    const ROOT = 'root';
+    public const ROOT = 'root';
 
-    const COMPANY = 'company';
-    const STATUS = 'status';
-    const MISSION = 'mission';
+    public const COMPANY = 'company';
+    public const STATUS = 'status';
+    public const MISSION = 'mission';
 
     /**
      * @var SpaceMissionClassification

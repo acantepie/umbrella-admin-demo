@@ -18,15 +18,15 @@ class SpaceMission
 {
     use IdTrait;
     use SearchTrait;
-    const ROCKET_ACTIVE = 'Active';
-    const ROCKET_RETIRED = 'Retired';
+    public const ROCKET_ACTIVE = 'Active';
+    public const ROCKET_RETIRED = 'Retired';
 
-    const MISSION_FAILURE = 'Failure';
-    const MISSION_PARTIAL_FAILURE = 'Partial Failure';
-    const MISSION_PRELAUNCH_FAILURE = 'Prelaunch Failure';
-    const MISSION_SUCCESS = 'Success';
+    public const MISSION_FAILURE = 'Failure';
+    public const MISSION_PARTIAL_FAILURE = 'Partial Failure';
+    public const MISSION_PRELAUNCH_FAILURE = 'Prelaunch Failure';
+    public const MISSION_SUCCESS = 'Success';
 
-    const MISSION_STATUSES = [
+    public const MISSION_STATUSES = [
         self::MISSION_FAILURE, self::MISSION_PARTIAL_FAILURE, self::MISSION_PRELAUNCH_FAILURE, self::MISSION_SUCCESS
     ];
 

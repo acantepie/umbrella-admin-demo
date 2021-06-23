@@ -1,3 +1,10 @@
+###> Tools / Other ###
+/.idea/*
+*.DS_Store
+bin/deploy
+bin/link_vendor
+composer.lock
+
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -7,13 +14,11 @@
 /var/*
 !/var/.gitkeep
 /vendor/
-###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
 .phpunit
 .phpunit.result.cache
 /phpunit.xml
-###< symfony/phpunit-bridge ###
 
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
@@ -21,23 +26,15 @@
 /public/ckeditor4/
 npm-debug.log
 yarn-error.log
-###< symfony/webpack-encore-bundle ###
-
-###> Tools / Other ###
-/.idea/*
-*.DS_Store
-.php_cs.cache
-###< Tools / Other ###
 
 ###> Vich Uploader ###
 /public/uploads/*
 !/public/uploads/.gitkeep
-###< Vich Uploader ###
 
-bin/deploy
-bin/link_vendor
-composer.lock
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache
-###< phpunit/phpunit ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache

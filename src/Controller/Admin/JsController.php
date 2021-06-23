@@ -12,7 +12,7 @@ use Umbrella\AdminBundle\Controller\AdminController;
  */
 class JsController extends AdminController
 {
-    const ACTIONS = [
+    public const ACTIONS = [
         'toast_success' => 'Success TOAST',
         'toast_error' => 'Error TOAST',
         'update_html' => 'Update DOM html',

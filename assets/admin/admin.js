@@ -6,7 +6,7 @@ umbrella.jsResponseHandler.registerAction('toast', (params) => {
     umbrella.Toast.show(params['type'], params['text'], params['title'], params['options']);
 });
 
-import HighlightCode from "./HighlightCode";
+import HighlightCode from './HighlightCode';
 customElements.define('hl-code', HighlightCode);
 
 
