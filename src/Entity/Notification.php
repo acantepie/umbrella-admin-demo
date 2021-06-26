@@ -14,9 +14,9 @@ use Umbrella\AdminBundle\Entity\BaseNotification;
 class Notification extends BaseNotification
 {
     /**
-     * @var ArrayCollection|User[]
+     * @var ArrayCollection|AdminUser[]
      *
-     * @ORM\ManyToMany(targetEntity="App\Entity\User")
+     * @ORM\ManyToMany(targetEntity="AdminUser")
      * @ORM\JoinTable(name="notification_users",
      *     joinColumns={@ORM\JoinColumn(name="notification_id", referencedColumnName="id", onDelete="CASCADE")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")}

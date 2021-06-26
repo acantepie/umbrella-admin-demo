@@ -2,12 +2,12 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\AdminUser;
 use App\Entity\FormFields;
 use App\Entity\FormFieldsItem;
 use App\Entity\Notification;
 use App\Entity\SpaceMission;
 use App\Entity\SpaceMissionClassification;
-use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -39,7 +39,7 @@ class AppFixtures extends Fixture
 
     private function loadUser(ObjectManager $manager)
     {
-        $u = new User();
+        $u = new AdminUser();
         $u->firstname = 'John';
         $u->lastname = 'Doe';
         $u->email = 'john.doe@mail.com';

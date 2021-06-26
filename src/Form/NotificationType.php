@@ -2,8 +2,8 @@
 
 namespace App\Form;
 
+use App\Entity\AdminUser;
 use App\Entity\Notification;
-use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,7 +24,7 @@ class NotificationType extends AbstractType
         ]);
         $builder->add('users', Entity2Type::class, [
             'required' => false,
-            'class' => User::class,
+            'class' => AdminUser::class,
             'multiple' => true,
             'label' => 'recipients',
             'help' => 'help.recipients'
