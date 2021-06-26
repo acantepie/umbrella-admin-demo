@@ -9,4 +9,6 @@ umbrella_admin:
   notification:
     provider: App\Notification\NotificationProvider
     poll_interval: 10
+  user:
+    class: App\Entity\AdminUser
 

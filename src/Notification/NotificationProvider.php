@@ -5,7 +5,6 @@ namespace App\Notification;
 use App\Entity\AdminUser;
 use App\Entity\Notification;
 use Doctrine\ORM\EntityManagerInterface;
-use Umbrella\AdminBundle\Notification\NotificationException;
 use Umbrella\AdminBundle\Notification\Provider\NotificationProviderInterface;
 
 class NotificationProvider implements NotificationProviderInterface
@@ -22,10 +21,6 @@ class NotificationProvider implements NotificationProviderInterface
 
     public function findByUser($user): iterable
     {
-        if (null === $user) {
-            throw new NotificationException('Notification can be provided only to authenticated user.');
-        }
-
         $qb = $this->em->createQueryBuilder();
         $qb->select('e');
         $qb->from(Notification::class, 'e');
