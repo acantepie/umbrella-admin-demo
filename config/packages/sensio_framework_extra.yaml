@@ -1,5 +1,0 @@
-sensio_framework_extra:
-    security:
-        annotations: true
-    router:
-        annotations: false
