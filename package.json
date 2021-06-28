@@ -9,24 +9,11 @@
     "sass-loader": "^11.0.1"
   },
   "dependencies": {
-    "@iconscout/unicons": "^3.0.6",
     "@mdi/font": "^5.9.55",
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.0",
     "ckeditor4": "^4.16.1",
-    "datatables.net": "^1.10.24",
-    "datatables.net-bs4": "^1.10.24",
-    "datatables.net-rowreorder": "^1.2.7",
-    "datatables.net-rowreorder-bs4": "^1.2.7",
-    "dragula": "^3.7.3",
-    "flatpickr": "^4.6.9",
-    "highlight.js": "^11.0.1",
-    "jquery": "^3.6.0",
-    "jquery-treetable": "^3.2.0-1",
-    "mustache": "^4.2.0",
-    "select2": "^4.0.13",
-    "simplebar": "^5.3.3",
-    "toastify-js": "^1.11.0"
+    "highlight.js": "^11.0.1"
   },
   "scripts": {
     "dev-server": "encore dev-server --port 9000 --host=0.0.0.0 --no-firewall",

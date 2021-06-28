@@ -3,9 +3,6 @@ umbrella_admin:
   menu:
     options:
       logo_route: app_admin_default_index
-  assets:
-    script_entry: admin
-    stylesheet_entry: admin
   notification:
     provider: App\Notification\NotificationProvider
     poll_interval: 10

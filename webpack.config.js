@@ -14,28 +14,15 @@ Encore
         umbrella_admin: path.join(__dirname, '/vendor/umbrella2/adminbundle/assets/')
     })
 
-
     .addEntry('front', './assets/front/front.js')
     .addEntry('admin', './assets/admin/admin.js')
-    .addEntry('ckeditor', './vendor/umbrella2/corebundle/assets/ckeditor/ckeditor.js')
+    .addEntry('admin_ckeditor', './assets/admin/ckeditor.js')
 
     .enableSassLoader()
 
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()
-    //.enableBuildNotifications()
-
-    .copyFiles([
-        {
-            from: './assets/images',
-            to: 'images/[path][name].[ext]'
-        },
-        {
-            from: './vendor/umbrella2/corebundle/assets/images',
-            to: 'images/[path][name].[ext]'
-        }
-    ])
 
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
@@ -43,8 +30,7 @@ Encore
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = 3;
-    });
+    })
+;
 
-const config = Encore.getWebpackConfig();
-
-module.exports = config;
+module.exports = Encore.getWebpackConfig();

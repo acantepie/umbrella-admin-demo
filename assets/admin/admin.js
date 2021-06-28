@@ -1,15 +1,4 @@
-import './admin.scss';
-import 'umbrella_admin/Admin';
+import './admin.scss'
 
-
-umbrella.jsResponseHandler.registerAction('toast', (params) => {
-    umbrella.Toast.show(params['type'], params['text'], params['title'], params['options']);
-});
-
-import HighlightCode from './HighlightCode';
-customElements.define('hl-code', HighlightCode);
-
-
-
-
-
+// import HighlightCode from './HighlightCode';
+// customElements.define('hl-code', HighlightCode);
