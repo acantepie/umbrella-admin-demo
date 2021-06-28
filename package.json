@@ -1,12 +1,10 @@
 {
   "devDependencies": {
-    "@babel/core": "^7.14.6",
     "@babel/eslint-parser": "^7.14.7",
-    "@symfony/webpack-encore": "^1.2.0",
+    "@symfony/webpack-encore": "^1.0.0",
     "eslint": "^7.29.0",
-    "file-loader": "^6.0.0",
-    "sass": "1.32.12",
-    "sass-loader": "^11.0.1"
+    "sass": "^1.35.1",
+    "sass-loader": "^12.0.0"
   },
   "dependencies": {
     "@mdi/font": "^5.9.55",
@@ -16,7 +14,7 @@
     "highlight.js": "^11.0.1"
   },
   "scripts": {
-    "dev-server": "encore dev-server --port 9000 --host=0.0.0.0 --no-firewall",
+    "dev-server": "encore dev-server",
     "dev": "encore dev",
     "watch": "encore dev --watch",
     "build": "encore production --progress",

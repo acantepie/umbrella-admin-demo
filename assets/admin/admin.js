@@ -1,4 +1,4 @@
 import './admin.scss'
 
-// import HighlightCode from './HighlightCode';
-// customElements.define('hl-code', HighlightCode);
+import HighlightCode from './HighlightCode';
+customElements.define('hl-code', HighlightCode);
