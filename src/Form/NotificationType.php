@@ -26,8 +26,8 @@ class NotificationType extends AbstractType
             'required' => false,
             'class' => AdminUser::class,
             'multiple' => true,
-            'label' => 'recipients',
-            'help' => 'help.recipients'
+            'label' => 'Recipients',
+            'help' => 'Will be sent to all if no recipient specified.'
         ]);
     }
 

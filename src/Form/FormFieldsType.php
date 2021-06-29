@@ -65,7 +65,7 @@ class FormFieldsType extends AbstractType
                 . '<a class="dropdown-item" href="#">HTTPS</a>'
                 . '</div>',
             'input_suffix_text' => '.com',
-            'help' => 'help.suffix_prefix_umbrella_extension',
+            'help' => 'With suffix and prefix Umbrella FormExtension',
             'required' => false,
         ]);
     }
@@ -94,7 +94,7 @@ class FormFieldsType extends AbstractType
             'template' => '<span>[[text]]</span><br><span class="text-muted">[[detail]]</span>',
             'multiple' => true,
             'required' => false,
-            'help' => 'help.entity_list',
+            'help' => 'Entity2Type - select2.js',
             'choice_attr' => function ($choice) {
                 return [
                     'data-detail' => $choice->detail,
@@ -103,11 +103,11 @@ class FormFieldsType extends AbstractType
         ]);
 
         $builder->add('asyncMissions', AutocompleteType::class, [
-            'label' => 'missions',
+            'label' => 'Missions',
             'class' => SpaceMission::class,
             'multiple' => true,
             'required' => false,
-            'help' => 'help.async_list',
+            'help' => 'AutocompleteType - select2.js - async loading',
             'route' => 'app_admin_form_api',
             'template' => '<span>[[text]]</span><br><span class="text-muted">[[detail]]</span>',
         ]);
@@ -136,13 +136,13 @@ class FormFieldsType extends AbstractType
         $builder->add('items', UmbrellaCollectionType::class, [
             'entry_type' => FormFieldsItemType::class,
             'sortable' => true,
-            'help' => 'help.sortable_compound_collection'
+            'help' => 'Sortable collection with compound FormType'
         ]);
 
         $builder->add('strings', UmbrellaCollectionType::class, [
             'entry_type' => TextType::class,
             'required' => false,
-            'help' => 'help.simple_collection'
+            'help' => 'Collection with simple FormType'
         ]);
     }
 }
