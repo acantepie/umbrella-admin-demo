@@ -8,13 +8,13 @@ use App\DataTable\SpaceMissionTableType;
 use App\Entity\SpaceMission;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Umbrella\AdminBundle\Controller\AdminController;
+use Umbrella\CoreBundle\Controller\BaseController;
 use Umbrella\CoreBundle\Utils\Utils;
 
 /**
  * @Route("/datatable")
  */
-class DatatableController extends AdminController
+class DatatableController extends BaseController
 {
     /**
      * @Route("/basic")

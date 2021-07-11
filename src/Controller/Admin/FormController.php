@@ -9,14 +9,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use function Symfony\Component\Translation\t;
-use Umbrella\AdminBundle\Controller\AdminController;
+use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
  * Class FormController
  *
  * @Route("/form")
  */
-class FormController extends AdminController
+class FormController extends BaseController
 {
     /**
      * @Route("")

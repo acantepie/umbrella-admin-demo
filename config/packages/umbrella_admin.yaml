@@ -1,8 +1,6 @@
 umbrella_admin:
   app_name: "Admin"
-  menu:
-    options:
-      logo_route: app_admin_default_index
+  menu: App\Menu\AdminMenu
   notification:
     provider: App\Notification\NotificationProvider
     poll_interval: 10

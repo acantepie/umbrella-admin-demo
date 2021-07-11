@@ -7,14 +7,14 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Umbrella\AdminBundle\Controller\AdminController;
+use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
  * Class UmbrellaConfigController
  *
  * @Route("/umbrella-config")
  */
-class UmbrellaConfigController extends AdminController
+class UmbrellaConfigController extends BaseController
 {
     /**
      * @Route("")

@@ -6,15 +6,15 @@ use App\Entity\Notification;
 use App\Form\NotificationType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Umbrella\AdminBundle\Controller\AdminController;
 use Umbrella\AdminBundle\Notification\NotificationManager;
+use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
  * Class NotificationController
  *
  * @Route("/notification")
  */
-class NotificationController extends AdminController
+class NotificationController extends BaseController
 {
     /**
      * @Route("")
