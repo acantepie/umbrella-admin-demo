@@ -1,5 +1,0 @@
-# config/services.yaml
-services:
-    App\Menu\MyMenu:
-        tags:
-            - {name: umbrella.menu.factory, method: MyMenu, alias: my_nice_menu}

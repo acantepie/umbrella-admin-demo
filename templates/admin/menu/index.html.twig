@@ -5,23 +5,15 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>How create your own <span class="text-primary">menu</span></h4>
+                    <h4>How create a menu</h4>
                 </div>
                 <div class="card-body">
 
                     <h5>First build, it</h5>
                     <hl-code class="language-php">{{  source('admin/menu/_menu.txt') }}</hl-code>
 
-
-                    <h5>Give him a name, and tag it</h5>
-                    <hl-code class="language-yaml">{{  source('admin/menu/_menu_config.txt') }}</hl-code>
-
                     <h5>That's all ! You can now render it on twig</h5>
                     <hl-code class="language-twig">{{  source('admin/menu/_twig.txt') }}</hl-code>
-
-                    <h5>Customize menu / breadcrumb rendering</h5>
-                    <hl-code class="language-php">{{  source('admin/menu/_customize_menu.txt') }}</hl-code>
-                    <hl-code class="language-yaml">{{  source('admin/menu/_customize_menu_config.txt') }}</hl-code>
                 </div>
             </div>
         </div>
@@ -29,51 +21,19 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>Umbrella Admin <span class="text-primary">menu</span></h4>
+                    <h4>Use your own menu on Admin</h4>
                 </div>
                 <div class="card-body">
                     <p>
-                        The default Admin menu use this Component. His name is <b>admin_sidebar</b> and you can change it on bundle configuration.
+                        The default menu used on Admin is <code>Umbrella\AdminBundle\Menu\BaseAdminMenu</code>
                     </p>
 
                     <p>
-                        The Admin menu factory read a YAML file to build it. See example below :
+                        To use your own, you have to specify FQCN menu on config :
                     </p>
-                    <hl-code class="language-yaml">{{  admin_sidebar_yml }}</hl-code>
+                    <hl-code class="language-yaml">{{  source('admin/menu/_admin_config.txt') }}</hl-code>
 
 
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Menu matcher</h4>
-                </div>
-                <div class="card-body">
-                    <p>
-                        Menu use a matcher to find the current menu item. This matcher tests the route and query parameters of current Request and mark MenuItem as current if match.<br>
-                        You can provide your own matching rules on Controller with following code :
-                    </p>
-                    <hl-code class="language-php">{{  source('admin/menu/_match.txt') }}</hl-code>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Security</h4>
-                </div>
-                <div class="card-body">
-                    <p>
-                        Menu can hide some entries depending on security rules, see example below :
-                    </p>
-                    <hl-code class="language-yaml">{{  source('admin/menu/_security.yml') }}</hl-code>
-                    <p>
-                        An user without any of this roles will not see the top level entry <b>admin</b>.
-                    </p>
                 </div>
             </div>
         </div>

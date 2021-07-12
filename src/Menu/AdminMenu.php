@@ -13,55 +13,55 @@ class AdminMenu extends BaseAdminMenu
         $u = $r->add('umbrella');
 
         $u->add('about')
-            ->setIcon('mdi mdi-lifebuoy')
-            ->setRoute('app_admin_default_about');
+            ->icon('mdi mdi-lifebuoy')
+            ->route('app_admin_default_about');
 
         $u->add('datatable')
-            ->setIcon('uil-table')
+            ->icon('uil-table')
             ->add('basic')
-                ->setRoute('app_admin_datatable_basic')
+                ->route('app_admin_datatable_basic')
                 ->end()
             ->add('custom_adapter')
-                ->setRoute('app_admin_datatable_customadapter')
+                ->route('app_admin_datatable_customadapter')
                 ->end()
             ->add('draggable')
-                ->setRoute('app_admin_datatable_draggable')
+                ->route('app_admin_datatable_draggable')
                 ->end()
             ->add('editable')
-                ->setRoute('app_admin_datatable_editable')
+                ->route('app_admin_datatable_editable')
                 ->end()
             ->add('multiple')
-                ->setRoute('app_admin_datatable_multiple')
+                ->route('app_admin_datatable_multiple')
                 ->end()
             ->add('modal')
-                ->setRoute('app_admin_datatable_modal')
+                ->route('app_admin_datatable_modal')
                 ->end()
             ->add('tree')
-                ->setRoute('app_admin_datatable_tree')
+                ->route('app_admin_datatable_tree')
                 ->end();
 
         $u->add('form')
-            ->setIcon('uil-document-layout-center')
-            ->setRoute('app_admin_form_index');
+            ->icon('uil-document-layout-center')
+            ->route('app_admin_form_index');
         $u->add('js_response')
-            ->setIcon('uil-exchange')
-            ->setRoute('app_admin_js_index');
+            ->icon('uil-exchange')
+            ->route('app_admin_js_index');
         $u->add('menu')
-            ->setIcon('uil-bars')
-            ->setRoute('app_admin_menu_index');
+            ->icon('uil-bars')
+            ->route('app_admin_menu_index');
         $u->add('notification')
-            ->setIcon('uil-bell')
-            ->setRoute('app_admin_notification_index');
+            ->icon('uil-bell')
+            ->route('app_admin_notification_index');
         $u->add('tabs')
-            ->setIcon('uil-layers-alt')
-            ->setRoute('app_admin_tabs_index');
+            ->icon('uil-layers-alt')
+            ->route('app_admin_tabs_index');
         $u->add('config_reference')
-            ->setIcon('mdi mdi-cogs')
-            ->setRoute('app_admin_umbrellaconfig_index');
+            ->icon('mdi mdi-cogs')
+            ->route('app_admin_umbrellaconfig_index');
 
         $r->add('admin')
             ->add('users')
-                ->setIcon('uil-user')
-                ->setRoute('umbrella_admin_user_index');
+                ->icon('uil-user')
+                ->route('umbrella_admin_user_index');
     }
 }

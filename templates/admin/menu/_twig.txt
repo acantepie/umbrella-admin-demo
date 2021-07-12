@@ -1,2 +1,2 @@
-{{ menu_render('my_nice_menu') }}
-{{ breadcrumb_render('my_nice_menu') }}
+{{ menu_render('App\Menu\MyMenu') }}
+{{ breadcrumb_render('App\Menu\MyMenu') }}

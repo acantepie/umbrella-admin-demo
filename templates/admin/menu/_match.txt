@@ -1,8 +1,0 @@
-$this->getMenu('admin_sidebar')
-    ->setMatchRule(Menu::BY_PATH, ':menu');
-
-$this->getMenu('admin_sidebar')
-    ->setMatchRule(Menu::BY_FULL_PATH, 'umbrella:menu');
-
-$this->getMenu('admin_sidebar')
-    ->setMatchRule(Menu::BY_ROUTE, 'app_admin_menu_index');

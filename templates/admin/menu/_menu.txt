@@ -1,17 +1,34 @@
-class MyMenu
-{
-    public function createMenu(MenuBuilder $builder): Menu
-    {
-        $builder
-            ->root()
-            ->add('menu')
-                ->add('home')
-                    ->setLabel('Home')
-                    ->setIcon('uil-home')
-                    ->end();
-        // Same logic as Symfony TreeBuilder
+// namespace App\Menu
 
-        return $builder->getMenu();
+class MyMenu extends MenuType
+{
+    /**
+     * {@inheritDoc}
+     */
+    public function buildMenu(MenuBuilder $builder)
+    {
+       $root = $builder->root();
+       $root->add('app')
+            ->add('welcome')
+                ->show(/* Your custom condition */)
+                ->icon('uil-apps')
+                ->route('app_welcome')
+                ->matchRoute('app_welcome2'); /* Item will be active if this route is matched */
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function renderMenu(Menu $menu, array $options = []): string
+    {
+        // render menu using twig template for example
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function renderBreadcrumb(array $breadcrumb, array $options = []): string
+    {
+        // render breadcrumb using twig template for example
+    }
 }
