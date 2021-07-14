@@ -1,10 +1,22 @@
 {% extends "@UmbrellaAdmin/layout.html.twig" %}
 
 {% block content %}
-    {{ umbrella_form_theme(form) }}
+    {{ umbrella_form_theme(form, layout) }}
     <form enctype="multipart/form-data" method="POST">
 
-        <div class="d-flex mb-3">
+        <div class="d-flex mb-3 align-items-center">
+            <div>
+                <span class="me-1">Thème bootsrap : </span>
+                {% if 'horizontal' == layout %}
+                    <strong>Horizontal</strong>
+                    <i class="mdi mdi-slash-forward"></i>
+                    <a href="{{ path('app_admin_form_index', {layout: 'default'}) }}">Par défaut</a>
+                {% else %}
+                    <a href="{{ path('app_admin_form_index') }}">Horizontal</a>
+                    <i class="mdi mdi-slash-forward"></i>
+                    <strong>Par défaut</strong>
+                {% endif %}
+            </div>
             <button type="submit" class="btn btn-primary ms-auto">
                 <i class="mdi mdi-check"></i> {{ 'Save' | trans }}
             </button>

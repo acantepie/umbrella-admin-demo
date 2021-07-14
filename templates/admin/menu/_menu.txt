@@ -19,7 +19,7 @@ class MyMenu extends MenuType
     /**
      * {@inheritDoc}
      */
-    public function renderMenu(Menu $menu, array $options = []): string
+    public function renderMenu(Menu $menu, array $options): string
     {
         // render menu using twig template for example
     }
@@ -27,7 +27,7 @@ class MyMenu extends MenuType
     /**
      * {@inheritDoc}
      */
-    public function renderBreadcrumb(array $breadcrumb, array $options = []): string
+    public function renderBreadcrumb(array $breadcrumb, array $options): string
     {
         // render breadcrumb using twig template for example
     }

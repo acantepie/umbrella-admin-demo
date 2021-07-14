@@ -19,9 +19,9 @@ use Umbrella\CoreBundle\Controller\BaseController;
 class FormController extends BaseController
 {
     /**
-     * @Route("")
+     * @Route("/{layout}", defaults={"layout": "horizontal"})
      */
-    public function index(Request $request)
+    public function index(Request $request, string $layout)
     {
         $entity = $this->em()->createQuery(sprintf('SELECT e FROM %s e', FormFields::class))->getOneOrNullResult();
 
@@ -38,6 +38,7 @@ class FormController extends BaseController
 
         return $this->render('admin/form/index.html.twig', [
             'form' => $form->createView(),
+            'layout' => $layout
         ]);
     }
 
