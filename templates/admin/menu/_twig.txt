@@ -1,2 +1,1 @@
 {{ menu_render('App\Menu\MyMenu') }}
-{{ breadcrumb_render('App\Menu\MyMenu') }}
