@@ -17,14 +17,13 @@ class SpaceMissionClassificationTableType extends DataTableType
     public function buildTable(DataTableBuilder $builder, array $options)
     {
         $builder->add('name', PropertyColumnType::class, [
-            'render' => function (SpaceMissionClassification $c) {
+            'render_htmlt' => function (SpaceMissionClassification $c) {
                 if (SpaceMissionClassification::STATUS === $c->type) {
                     return SpaceMission::getIconStatus($c->name);
                 }
 
                 return $c->name;
-            },
-            'is_safe_html' => true
+            }
         ]);
 
         $builder->add('links', WidgetColumnType::class, [

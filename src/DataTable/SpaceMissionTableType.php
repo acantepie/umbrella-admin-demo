@@ -91,8 +91,7 @@ class SpaceMissionTableType extends DataTableType
         $builder->add('detail', PropertyColumnType::class);
 
         $builder->add('cost', PropertyColumnType::class, [
-            'is_safe_html' => true,
-            'render' => function (SpaceMission $s) {
+            'render_html' => function (SpaceMission $s) {
                 return null === $s->cost ? '' : sprintf('<span class="badge bg-primary">%.2f m</span>', $s->cost);
             }
         ]);
