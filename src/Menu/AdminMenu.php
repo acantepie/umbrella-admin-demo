@@ -2,11 +2,25 @@
 
 namespace App\Menu;
 
+use Symfony\Component\Security\Core\Security;
+use Twig\Environment;
 use Umbrella\AdminBundle\Menu\BaseAdminMenu;
+use Umbrella\AdminBundle\UmbrellaAdminConfiguration;
 use Umbrella\CoreBundle\Menu\Builder\MenuBuilder;
 
 class AdminMenu extends BaseAdminMenu
 {
+    private Security $security;
+
+    /**
+     * AdminMenu constructor.
+     */
+    public function __construct(Security $security, Environment $twig, UmbrellaAdminConfiguration $configuration)
+    {
+        $this->security = $security;
+        parent::__construct($twig, $configuration);
+    }
+
     public function buildMenu(MenuBuilder $builder)
     {
         $r = $builder->root();
@@ -58,6 +72,23 @@ class AdminMenu extends BaseAdminMenu
         $u->add('config_reference')
             ->icon('mdi mdi-cogs')
             ->route('app_admin_umbrellaconfig_index');
+
+        $r->add('pages')
+            ->add('login')
+                ->icon('mdi mdi-login')
+                ->route('umbrella_admin_login')
+                ->end()
+            ->add('reset password')
+                ->icon('mdi mdi-lock-reset')
+                ->route('umbrella_admin_security_passwordrequest')
+                ->end();
+
+        if ($this->security->getUser()) {
+            $r->get('pages')
+                ->add('my profile')
+                    ->icon('uil-user')
+                    ->route('umbrella_admin_profile_index');
+        }
 
         $r->add('admin')
             ->add('users')

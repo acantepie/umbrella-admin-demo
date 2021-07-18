@@ -2,7 +2,6 @@
 
 namespace App\Notification;
 
-use App\Entity\AdminUser;
 use App\Entity\Notification;
 use Doctrine\ORM\EntityManagerInterface;
 use Umbrella\AdminBundle\Notification\Provider\NotificationProviderInterface;
@@ -28,11 +27,6 @@ class NotificationProvider implements NotificationProviderInterface
 
         $orX = $qb->expr()->orX();
         $orX->add('e.sendToAll =  TRUE');
-
-        if ($user instanceof AdminUser) {
-            $orX->add('user = :user');
-            $qb->setParameter('user', $user);
-        }
 
         $qb->andWhere($orX);
         $qb->orderBy('e.createdAt', 'DESC');
