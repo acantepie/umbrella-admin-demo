@@ -94,7 +94,7 @@ class LaunchTableType extends DataTableType
     {
         $resolver->setDefaults([
             'orderable' => false,
-            'class' => 'table'
+            'class' => 'table dt-responsive w-100'
         ]);
     }
 }
