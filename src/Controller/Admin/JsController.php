@@ -34,7 +34,7 @@ class JsController extends BaseController
      */
     public function xhr(string $action = 'toast_success')
     {
-        $jsBuilder = $this->jsResponseBuilder();
+        $jsBuilder = $this->js();
 
         switch ($action) {
             case 'toast_success':
@@ -73,7 +73,7 @@ class JsController extends BaseController
     public function sleepXhr(int $sleep = 1)
     {
         sleep($sleep);
-        return $this->jsResponseBuilder()
+        return $this->js()
             ->toastSuccess('Hi ^^', 'Server say');
     }
 }

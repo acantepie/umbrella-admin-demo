@@ -36,13 +36,13 @@ class DataTableActionController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->persistAndFlush($entity);
 
-            return $this->jsResponseBuilder()
+            return $this->js()
                 ->closeModal()
                 ->reloadTable()
                 ->toastSuccess(t('Item updated'));
         }
 
-        return $this->jsResponseBuilder()
+        return $this->js()
             ->modal('@UmbrellaAdmin/edit_modal.html.twig', [
                 'form' => $form->createView(),
                 'entity' => $entity,
@@ -57,7 +57,7 @@ class DataTableActionController extends BaseController
         $entity = $this->findOrNotFound(SpaceMission::class, $id);
         $this->removeAndFlush($entity);
 
-        return $this->jsResponseBuilder()
+        return $this->js()
             ->reloadTable()
             ->callTable(null, 'unselectRowId', $id)
             ->toastSuccess(t('Item deleted'));
@@ -75,7 +75,7 @@ class DataTableActionController extends BaseController
             $repository->moveDown($entity);
         }
 
-        return $this->jsResponseBuilder()
+        return $this->js()
             ->reloadTable();
     }
 
@@ -145,7 +145,7 @@ class DataTableActionController extends BaseController
         $content = \stream_get_contents($fp);
         fclose($fp);
 
-        return $this->jsResponseBuilder()
+        return $this->js()
             ->download($content, 'export.csv');
     }
 }

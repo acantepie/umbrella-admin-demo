@@ -144,7 +144,7 @@ class DatatableController extends BaseController
             return $table->getCallbackResponse();
         }
 
-        return $this->jsResponseBuilder()->modal('admin/datatable/_modal.html.twig', [
+        return $this->js()->modal('admin/datatable/_modal.html.twig', [
             'status' => $status,
             'table' => $table
         ]);
