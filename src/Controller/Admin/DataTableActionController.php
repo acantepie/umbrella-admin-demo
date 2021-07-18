@@ -99,31 +99,23 @@ class DataTableActionController extends BaseController
      */
     public function export(Request $request)
     {
+        $table = $this->createTable(SpaceMissionTableType::class);
         $mode = $request->query->get('mode');
 
         if ('selection' === $mode) {
-            $table = $this->createTable(SpaceMissionTableType::class);
-
             $missions = $table
-                ->getAdapter()
-                ->getQueryBuilder($table->getState(), $table->getAdapterOptions())
+                ->getAdapterQueryBuilder()
                 ->andWhere('e.id IN (:ids)')
                 ->setParameter('ids', $request->query->get('ids'))
                 ->getQuery()
                 ->getResult();
         } else {
-            $table = $this->createTable(SpaceMissionTableType::class);
-
             $parameters = $request->query->all();
-            unset($parameters['length']);
-
-            $state = $table
-                ->handleParamaters($parameters)
-                ->getState();
+            unset($parameters['length']); // disable pagination
 
             $missions = $table
-                ->getAdapter()
-                ->getQueryBuilder($state, $table->getAdapterOptions())
+                ->handleParamaters($parameters)
+                ->getAdapterQueryBuilder()
                 ->getQuery()
                 ->getResult();
         }
