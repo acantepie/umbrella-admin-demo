@@ -92,6 +92,7 @@ class AdminMenu extends BaseAdminMenu
 
         $r->add('admin')
             ->add('users')
+                ->badge('crud')
                 ->icon('uil-user')
                 ->route('umbrella_admin_user_index');
     }
