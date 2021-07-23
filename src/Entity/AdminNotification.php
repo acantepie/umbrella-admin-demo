@@ -23,7 +23,7 @@ class AdminNotification extends BaseNotification
     public $users;
 
     /**
-     * Notification constructor.
+     * AdminNotification constructor.
      */
     public function __construct()
     {
