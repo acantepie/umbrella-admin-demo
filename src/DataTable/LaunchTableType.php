@@ -40,7 +40,11 @@ class LaunchTableType extends DataTableType
         });
 
         $builder->add('details_handle', DetailsHandleColumnType::class, [
-            'details_renderer' => function ($o) {
+            'render_details' => function ($o) {
+                if (!$o->details && !$o->failures) {
+                    return '';
+                }
+
                 $h = '<dl class="row mb-0">';
 
                 $h .= '<dt class="col-2">Details</dt>';
