@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
+use App\Repository\AdminNotificationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\AdminBundle\Entity\BaseNotification;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=AdminNotificationRepository::class)
  */
 class AdminNotification extends BaseNotification
 {
@@ -22,9 +23,6 @@ class AdminNotification extends BaseNotification
      */
     public $users;
 
-    /**
-     * AdminNotification constructor.
-     */
     public function __construct()
     {
         $this->users = new ArrayCollection();
