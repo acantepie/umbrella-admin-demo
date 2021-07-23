@@ -1,21 +1,63 @@
 {% extends "@UmbrellaAdmin/layout.html.twig" %}
 
 {% block content %}
-    {{ umbrella_form_theme(form) }}
-    <div class="card">
-        <div class="card-header">
-            <h4>Send a notification</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>How to</h4>
+                </div>
+                <div class="card-body">
+                    <p>Generate entity and provider :</p>
+                    <hl-code class="language-none">php bin/console make:notification</hl-code>
+
+                    <p>Customize generated code as you want, then enable notification on config:</p>
+                    <hl-code class="language-yaml">{{ source('admin/notification/_config.txt') }}</hl-code>
+
+                    <p>Finally, create your notification :</p>
+                    <hl-code class="language-php">{{ source('admin/notification/_create_notification.txt') }}</hl-code>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <form enctype="multipart/form-data" method="POST">
-                {{ form_errors(form) }}
-                {{ form_rest(form) }}
 
-                <button type="submit" class="btn btn-primary">
-                    <i class="mdi mdi-send"></i> {{ 'Send' | trans }}
-                </button>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Example 1 : Create a notification with form</h4>
+                </div>
+                <div class="card-body">
+                    <form enctype="multipart/form-data" method="POST" data-mount="Form">
+                        {{ umbrella_form_theme(new_notification_form) }}
+                        {{ form_rest(new_notification_form) }}
 
-            </form>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="mdi mdi-send"></i> Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h4>Example 2 : Start a counter using <b>messenger bundle</b> and notify progress</h4>
+                </div>
+                <div class="card-body">
+                    <form enctype="multipart/form-data" method="POST" data-mount="Form">
+
+                        <div class="alert alert-info">
+                            Messenger is a Symfony component. See <a href="https://symfony.com/doc/current/messenger.html" target="_blank">Messenger: Sync & Queued Message Handling</a>
+                        </div>
+                        {{ umbrella_form_theme(counter_form) }}
+                        {{ form_rest(counter_form) }}
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="mdi mdi-send"></i> Send
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
+
+
 {% endblock %}

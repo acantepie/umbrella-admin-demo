@@ -6,8 +6,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
- * Class MenuController
- *
  * @Route("/menu")
  */
 class MenuController extends BaseController

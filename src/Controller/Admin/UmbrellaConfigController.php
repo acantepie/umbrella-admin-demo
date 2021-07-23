@@ -10,8 +10,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
- * Class UmbrellaConfigController
- *
  * @Route("/umbrella-config")
  */
 class UmbrellaConfigController extends BaseController

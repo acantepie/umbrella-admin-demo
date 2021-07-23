@@ -7,28 +7,20 @@ use Doctrine\ORM\Mapping as ORM;
 use Umbrella\AdminBundle\Entity\BaseNotification;
 
 /**
- * Class App\Entity\Notification.
- *
  * @ORM\Entity
  */
-class Notification extends BaseNotification
+class AdminNotification extends BaseNotification
 {
     /**
      * @var ArrayCollection|AdminUser[]
      *
      * @ORM\ManyToMany(targetEntity="AdminUser")
-     * @ORM\JoinTable(name="notification_users",
-     *     joinColumns={@ORM\JoinColumn(name="notification_id", referencedColumnName="id", onDelete="CASCADE")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")}
+     * @ORM\JoinTable(
+     *     joinColumns={@ORM\JoinColumn(onDelete="CASCADE")},
+     *     inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")}
      * )
      */
     public $users;
-
-    /**
-     * @var bool
-     * @ORM\Column(type="boolean", nullable=false)
-     */
-    public $sendToAll = false;
 
     /**
      * Notification constructor.

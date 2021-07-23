@@ -2,11 +2,11 @@
 
 namespace App\Notification;
 
-use App\Entity\Notification;
+use App\Entity\AdminNotification;
 use Doctrine\ORM\EntityManagerInterface;
-use Umbrella\AdminBundle\Notification\Provider\NotificationProviderInterface;
+use Umbrella\AdminBundle\Notification\BaseNotificationProvider;
 
-class NotificationProvider implements NotificationProviderInterface
+class AdminNotificationProvider extends BaseNotificationProvider
 {
     private EntityManagerInterface $em;
 
@@ -22,18 +22,15 @@ class NotificationProvider implements NotificationProviderInterface
     {
         $qb = $this->em->createQueryBuilder();
         $qb->select('e');
-        $qb->from(Notification::class, 'e');
-        $qb->leftJoin('e.users', 'user');
-
-        $orX = $qb->expr()->orX();
-        $orX->add('e.sendToAll =  TRUE');
-
-        $qb->andWhere($orX);
+        $qb->from(AdminNotification::class, 'e');
         $qb->orderBy('e.createdAt', 'DESC');
-
-        $qb->leftJoin('e.users', 'users');
-
         $qb->setMaxResults(10);
+
+        if (null !== $user) {
+            $qb->innerJoin('e.users', 'users');
+            $qb->andWhere('users = :users');
+            $qb->setParameter('users', $user);
+        }
 
         return $qb->getQuery()->getResult();
     }

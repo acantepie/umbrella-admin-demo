@@ -22,6 +22,7 @@
         "symfony/intl": "5.3.*",
         "symfony/lock": "5.3.*",
         "symfony/mailer": "5.3.*",
+        "symfony/messenger": "5.3.*",
         "symfony/monolog-bundle": "^3.1",
         "symfony/orm-pack": "*",
         "symfony/process": "5.3.*",

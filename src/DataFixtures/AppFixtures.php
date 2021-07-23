@@ -2,10 +2,10 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\AdminNotification;
 use App\Entity\AdminUser;
 use App\Entity\FormFields;
 use App\Entity\FormFieldsItem;
-use App\Entity\Notification;
 use App\Entity\SpaceMission;
 use App\Entity\SpaceMissionClassification;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -141,12 +141,11 @@ class AppFixtures extends Fixture
 
     private function loadNotifications(ObjectManager $manager)
     {
-        $notification = new Notification();
+        $notification = new AdminNotification();
         $notification->bgIcon = 'bg-danger';
         $notification->icon = 'mdi mdi-umbrella';
         $notification->title = 'Notification are now available !';
         $notification->createdAt = new \DateTime('02/07/2021');
-        $notification->sendToAll = true;
         $notification->url = $this->router->generate('app_admin_notification_index');
 
         $manager->persist($notification);

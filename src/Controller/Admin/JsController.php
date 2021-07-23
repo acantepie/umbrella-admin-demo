@@ -6,8 +6,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
- * Class AjaxHandlerController
- *
  * @Route("/js")
  */
 class JsController extends BaseController

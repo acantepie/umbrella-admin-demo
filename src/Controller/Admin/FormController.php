@@ -12,8 +12,6 @@ use function Symfony\Component\Translation\t;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
- * Class FormController
- *
  * @Route("/form")
  */
 class FormController extends BaseController

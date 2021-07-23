@@ -2,44 +2,50 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Notification;
-use App\Form\NotificationType;
+use App\Entity\AdminNotification;
+use App\Form\AdminNotificationType;
+use App\Form\CounterType;
+use App\Message\CounterMessage;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Umbrella\AdminBundle\Notification\NotificationManager;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
- * Class NotificationController
- *
  * @Route("/notification")
  */
 class NotificationController extends BaseController
 {
     /**
-     * @Route("")
+     * @Route("/")
      */
-    public function index(NotificationManager $manager, Request $request)
+    public function index(Request $request)
     {
-        $notification = new Notification();
-        $notification->title = 'Hello world !';
-        $notification->icon = 'mdi mdi-bell-outline';
-        $form = $this->createForm(NotificationType::class, $notification);
-        $form->handleRequest($request);
+        $notification = new AdminNotification();
+        $notification->title = 'Hello !';
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            if (0 === count($notification->users)) {
-                $notification->sendToAll = true;
-            }
-            $manager->send($notification);
+        $f1 = $this->createForm(AdminNotificationType::class, $notification);
+        $f1->handleRequest($request);
+        if ($f1->isSubmitted() && $f1->isValid()) {
+            $this->persistAndFlush($notification);
+            $this->toastSuccess('Notification sent');
 
-            $this->toastSuccess('Click on bell to see me !', 'New notification');
+            return $this->redirectToRoute('app_admin_notification_index');
+        }
+
+        $counter = new CounterMessage();
+
+        $f2 = $this->createForm(CounterType::class, $counter);
+        $f2->handleRequest($request);
+        if ($f2->isSubmitted() && $f2->isValid()) {
+            $this->dispatchMessage($counter);
+            $this->toastSuccess('Counter started');
 
             return $this->redirectToRoute('app_admin_notification_index');
         }
 
         return $this->render('admin/notification/index.html.twig', [
-            'form' => $form->createView()
+            'new_notification_form' => $f1->createView(),
+            'counter_form' => $f2->createView()
         ]);
     }
 }
