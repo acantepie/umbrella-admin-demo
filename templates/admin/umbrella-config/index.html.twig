@@ -3,12 +3,20 @@
 {% block content %}
 
     <div class="card">
+        <div class="card-header">
+            <h4>UmbrellaCoreBundle</h4>
+        </div>
         <div class="card-body">
-            {% for config in configs %}
-                <h4 class="card-title">{{ config.name }}</h4>
-                <hl-code class="language-yaml">{{ config.dump }}</hl-code>
-            {% endfor %}
+            <hl-code class="language-yaml">{{ umbrella_core_config }}</hl-code>
+        </div>
+    </div>
 
+    <div class="card">
+        <div class="card-header">
+            <h4>UmbrellaAdminBundle</h4>
+        </div>
+        <div class="card-body">
+            <hl-code class="language-yaml">{{ umbrella_admin_config }}</hl-code>
         </div>
     </div>
 {% endblock %}

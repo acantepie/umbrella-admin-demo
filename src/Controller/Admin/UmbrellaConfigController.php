@@ -21,18 +21,9 @@ class UmbrellaConfigController extends BaseController
      */
     public function index(KernelInterface $kernel)
     {
-        $configsName = ['UmbrellaAdminBundle', 'UmbrellaCoreBundle'];
-
-        $configs = [];
-        foreach ($configsName as $configName) {
-            $configs[] = [
-                'name' => $configName,
-                'dump' => $this->dumpConfig($kernel, $configName)
-            ];
-        }
-
         return $this->render('admin/umbrella-config/index.html.twig', [
-            'configs' => $configs
+            'umbrella_core_config' => $this->dumpConfig($kernel, 'UmbrellaCoreBundle'),
+            'umbrella_admin_config' => $this->dumpConfig($kernel, 'UmbrellaAdminBundle')
         ]);
     }
 
