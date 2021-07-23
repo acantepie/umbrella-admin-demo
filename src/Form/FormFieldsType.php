@@ -124,10 +124,10 @@ class FormFieldsType extends AbstractType
     public function buildCkeditor(FormBuilderInterface $builder, array $options)
     {
         $builder->add('htmlText', CkeditorType::class, [
-            'config_name' => 'full',
+            // 'config' => 'full' | 'minimal'
             'config' => [
                 'uiColor' => '#EEF2F7',
-            ]
+            ],
         ]);
     }
 
