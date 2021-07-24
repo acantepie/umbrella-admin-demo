@@ -12,9 +12,6 @@ class AdminNotificationProvider extends BaseNotificationProvider
     private EntityManagerInterface $em;
     private Security $security;
 
-    /**
-     * AdminNotificationProvider constructor.
-     */
     public function __construct(EntityManagerInterface $em, Security $security)
     {
         $this->em = $em;
@@ -30,7 +27,6 @@ class AdminNotificationProvider extends BaseNotificationProvider
         $qb->setMaxResults(10);
 
         $user = $this->security->getUser();
-
         if (null !== $user) {
             $qb->innerJoin('e.users', 'users');
             $qb->andWhere('users = :user');
