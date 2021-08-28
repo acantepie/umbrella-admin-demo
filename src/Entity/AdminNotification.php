@@ -21,7 +21,7 @@ class AdminNotification extends BaseNotification
      *     inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")}
      * )
      */
-    public $users;
+    public ArrayCollection $users;
 
     public function __construct()
     {

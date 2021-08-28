@@ -10,8 +10,6 @@ use Umbrella\CoreBundle\Model\TimestampTrait;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * Class BaseExample
- *
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  * @Vich\Uploadable
@@ -24,48 +22,41 @@ class FormFields
     // Basic
 
     /**
-     * @var bool
      * @ORM\Column(type="boolean", options={"default": true})
      */
-    public $active = true;
+    public bool $active = true;
 
     /**
-     * @var string
      * @ORM\Column(type="string", nullable=true)
      */
-    public $color;
+    public ?string $color = null;
 
     /**
-     * @var int
      * @ORM\Column(type="smallint", nullable=false, options={"default": 0})
      */
-    public $amount = 0;
+    public int $amount = 0;
 
     /**
-     * @var string
      * @ORM\Column(type="text", nullable=true)
      */
-    public $url;
+    public ?string $url = null;
 
     /**
-     * @var string
      * @ORM\Column(type="text", nullable=true)
      */
-    public $text;
+    public ?string $text = null;
 
     // Date
 
     /**
-     * @var \DateTime
      * @ORM\Column(type="date", nullable=true)
      */
-    public $date;
+    public ?\DateTimeInterface $date = null;
 
     /**
-     * @var \DateTime
      * @ORM\Column(type="datetime", nullable=true)
      */
-    public $dateTime;
+    public ?\DateTimeInterface $dateTime = null;
 
     // Select 2
 

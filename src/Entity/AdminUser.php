@@ -8,8 +8,6 @@ use Umbrella\AdminBundle\Entity\BaseAdminUser;
 use Umbrella\CoreBundle\Search\Annotation\Searchable;
 
 /**
- * Class User
- *
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  * @Searchable

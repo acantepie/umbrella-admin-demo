@@ -7,8 +7,6 @@ use Umbrella\CoreBundle\Model\IdTrait;
 use Umbrella\CoreBundle\Model\OrderTrait;
 
 /**
- * Class FormFieldsItem
- *
  * @ORM\Entity
  */
 class FormFieldsItem
@@ -17,38 +15,23 @@ class FormFieldsItem
     use OrderTrait;
 
     /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    public $id;
-
-    /**
-     * @var ?FormFields
-     *
      * @ORM\ManyToOne(targetEntity="FormFields", inversedBy="items")
      * @ORM\JoinColumn(name="form_fields_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    public $formFields;
+    public ?FormFields $formFields = null;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", nullable=false)
      */
-    public $label;
+    public ?string $label = null;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="text", nullable=false)
      */
-    public $description;
+    public ?string $description = null;
 
     /**
-     * @var \DateTimeInterface
-     *
      * @ORM\Column(type="date", nullable=true)
      */
-    public $date;
+    public ?\DateTimeInterface $date = null;
 }

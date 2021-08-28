@@ -9,8 +9,6 @@ use Umbrella\CoreBundle\Search\Annotation\Searchable;
 use Umbrella\CoreBundle\Search\Annotation\SearchableField;
 
 /**
- * Class SpaceMission
- *
  * @ORM\Entity
  * @Searchable
  */
@@ -39,7 +37,7 @@ class SpaceMission
         self::MISSION_SUCCESS => 'success',
     ];
 
-    public static function getIconStatus(string $status)
+    public static function getIconStatus(string $status): string
     {
         return isset(self::STATUS_COLORS[$status])
             ? sprintf('<i class="mdi mdi-circle text-%s me-1"></i> %s', self::STATUS_COLORS[$status], $status)
@@ -47,58 +45,47 @@ class SpaceMission
     }
 
     /**
-     * @var int
      * @ORM\Column(type="smallint", options={"default": 0})
      */
-    public $sequence = 0;
+    public int $sequence = 0;
 
     /**
-     * @var string
      * @ORM\Column(type="string")
-     *
      * @SearchableField
      */
-    public $companyName;
+    public ?string $companyName = null;
 
     /**
-     * @var string
      * @ORM\Column(type="string")
-     *
      * @SearchableField
      */
-    public $location;
+    public ?string $location = null;
 
     /**
-     * @var \DateTimeInterface
      * @ORM\Column(type="date")
      */
-    public $date;
+    public ?\DateTimeInterface $date = null;
 
     /**
-     * @var string
      * @ORM\Column(type="string")
-     *
      * @SearchableField
      */
-    public $detail;
+    public ?string $detail = null;
 
     /**
-     * @var string
      * @ORM\Column(type="string")
      */
-    public $rocketStatus = self::ROCKET_ACTIVE;
+    public string $rocketStatus = self::ROCKET_ACTIVE;
 
     /**
-     * @var ?int
      * @ORM\Column(type="integer", nullable=true)
      */
-    public $cost;
+    public ?int $cost = null;
 
     /**
-     * @var string
      * @ORM\Column(type="string")
      */
-    public $missionStatus = self::MISSION_SUCCESS;
+    public string $missionStatus = self::MISSION_SUCCESS;
 
     public function __toString()
     {

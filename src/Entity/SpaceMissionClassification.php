@@ -10,8 +10,6 @@ use Umbrella\CoreBundle\Model\NestedTreeEntityInterface;
 use Umbrella\CoreBundle\Model\NestedTreeEntityTrait;
 
 /**
- * Class SpaceMissionClassification
- *
  * @Gedmo\Tree(type="nested")
  * @ORM\Entity(repositoryClass="App\Repository\SpaceMissionClassificationRepository")
  */
@@ -26,22 +24,18 @@ class SpaceMissionClassification implements NestedTreeEntityInterface
     public const MISSION = 'mission';
 
     /**
-     * @var SpaceMissionClassification
-     *
      * @Gedmo\TreeRoot
      * @ORM\ManyToOne(targetEntity="SpaceMissionClassification")
      * @ORM\JoinColumn(referencedColumnName="id", onDelete="CASCADE")
      */
-    public $root;
+    public ?SpaceMissionClassification $root = null;
 
     /**
-     * @var SpaceMissionClassification
-     *
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="SpaceMissionClassification", inversedBy="children")
      * @ORM\JoinColumn(referencedColumnName="id", onDelete="CASCADE")
      */
-    public $parent;
+    public ?SpaceMissionClassification $parent = null;
 
     /**
      * @var SpaceMissionClassification[]|ArrayCollection
@@ -49,19 +43,17 @@ class SpaceMissionClassification implements NestedTreeEntityInterface
      * @ORM\OneToMany(targetEntity="SpaceMissionClassification", mappedBy="parent", cascade={"ALL"})
      * @ORM\OrderBy({"left": "ASC"})
      */
-    public $children;
+    public ArrayCollection $children;
 
     /**
-     * @var string
      * @ORM\Column(type="string")
      */
-    public $name;
+    public string $name;
 
     /**
-     * @var string
      * @ORM\Column(type="string")
      */
-    public $type;
+    public string $type;
 
     /**
      * SpaceMissionClassification constructor.
