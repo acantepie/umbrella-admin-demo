@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\SpaceMissionRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\CoreBundle\Model\IdTrait;
 use Umbrella\CoreBundle\Model\SearchTrait;
@@ -9,7 +10,7 @@ use Umbrella\CoreBundle\Search\Annotation\Searchable;
 use Umbrella\CoreBundle\Search\Annotation\SearchableField;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=SpaceMissionRepository::class)
  * @Searchable
  */
 class SpaceMission
@@ -89,6 +90,6 @@ class SpaceMission
 
     public function __toString()
     {
-        return (string) $this->companyName;
+        return (string) $this->detail;
     }
 }

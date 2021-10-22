@@ -1,0 +1,4 @@
+# app/config/packages/umbrella.yaml
+umbrella_core:
+  ckeditor:
+    default_config: custom

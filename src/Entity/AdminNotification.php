@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AdminNotificationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\AdminBundle\Entity\BaseNotification;
 
@@ -21,7 +22,7 @@ class AdminNotification extends BaseNotification
      *     inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")}
      * )
      */
-    public ArrayCollection $users;
+    public Collection $users;
 
     public function __construct()
     {

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Umbrella\CoreBundle\Model\IdTrait;
@@ -43,7 +44,7 @@ class SpaceMissionClassification implements NestedTreeEntityInterface
      * @ORM\OneToMany(targetEntity="SpaceMissionClassification", mappedBy="parent", cascade={"ALL"})
      * @ORM\OrderBy({"left": "ASC"})
      */
-    public ArrayCollection $children;
+    public Collection $children;
 
     /**
      * @ORM\Column(type="string")

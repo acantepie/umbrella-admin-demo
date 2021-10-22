@@ -114,7 +114,7 @@ class DataTableActionController extends BaseController
             unset($parameters['length']); // disable pagination
 
             $missions = $table
-                ->handleParamaters($parameters)
+                ->handleParameters($parameters)
                 ->getAdapterQueryBuilder()
                 ->getQuery()
                 ->getResult();

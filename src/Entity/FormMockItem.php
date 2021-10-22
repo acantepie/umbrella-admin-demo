@@ -9,16 +9,16 @@ use Umbrella\CoreBundle\Model\OrderTrait;
 /**
  * @ORM\Entity
  */
-class FormFieldsItem
+class FormMockItem
 {
     use IdTrait;
     use OrderTrait;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FormFields", inversedBy="items")
+     * @ORM\ManyToOne(targetEntity="FormMock", inversedBy="items")
      * @ORM\JoinColumn(name="form_fields_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    public ?FormFields $formFields = null;
+    public ?FormMock $formFields = null;
 
     /**
      * @ORM\Column(type="string", nullable=false)
@@ -29,9 +29,4 @@ class FormFieldsItem
      * @ORM\Column(type="text", nullable=false)
      */
     public ?string $description = null;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    public ?\DateTimeInterface $date = null;
 }

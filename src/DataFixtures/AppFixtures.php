@@ -4,8 +4,8 @@ namespace App\DataFixtures;
 
 use App\Entity\AdminNotification;
 use App\Entity\AdminUser;
-use App\Entity\FormFields;
-use App\Entity\FormFieldsItem;
+use App\Entity\FormMock;
+use App\Entity\FormMockItem;
 use App\Entity\SpaceMission;
 use App\Entity\SpaceMissionClassification;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -18,6 +18,11 @@ class AppFixtures extends Fixture
 {
     private UserPasswordHasherInterface $userPasswordHasher;
     private RouterInterface $router;
+
+    /**
+     * @var SpaceMission[]
+     */
+    private array $missions = [];
 
     /**
      * AppFixtures constructor.
@@ -33,7 +38,7 @@ class AppFixtures extends Fixture
         $this->loadUser($manager);
         $this->loadSpaceMission($manager);
         $this->loadSpaceMissionClassification($manager);
-        $this->loadFormFields($manager);
+        $this->loadFormMock($manager);
         $this->loadNotifications($manager);
     }
 
@@ -74,6 +79,10 @@ class AppFixtures extends Fixture
             $spaceMission->missionStatus = str_replace(' ', ' ', $row[8]);
 
             $manager->persist($spaceMission);
+
+            if (count($this->missions) < 50) {
+                $this->missions[] = $spaceMission;
+            }
         }
 
         $manager->flush();
@@ -112,28 +121,34 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadFormFields(ObjectManager $manager)
+    private function loadFormMock(ObjectManager $manager)
     {
-        $e = new FormFields();
+        $e = new FormMock();
 
         // Date
         $e->date = new \DateTime();
 
-        // Ckeditor
-        $e->htmlText = '<p><strong>Hello world !</strong></p>';
+        // select 2
+        $e->choiceMission = 'eel';
+        $e->choiceMissionReadonly = 'cat';
+        $e->choiceMissions = ['eel', 'cat'];
+        $e->choiceMissionEntity = $this->missions[0];
+        $e->asyncChoiceMissions->add($this->missions[2]);
+        $e->asyncChoiceMissions->add($this->missions[3]);
+        $e->asyncChoiceMissionPaginated = $this->missions[4];
+
+        $e->text1 = 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.';
 
         // Collection
-        $i = new FormFieldsItem();
+        $i = new FormMockItem();
         $i->label = 'NASA';
-        $i->description = 'National Aeronautics and Space Administration - independent agency of the U.S. federal government ';
+        $i->description = 'National Aeronautics and Space Administration';
         $e->addItem($i);
 
-        $i = new FormFieldsItem();
+        $i = new FormMockItem();
         $i->label = 'ESA';
-        $i->description = 'European Space Agency - intergovernmental organisation of 22 member states';
+        $i->description = 'European Space Agency';
         $e->addItem($i);
-
-        $e->strings = ['symfony', 'admin', 'umbrella'];
 
         $manager->persist($e);
         $manager->flush();

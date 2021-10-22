@@ -56,7 +56,12 @@ class AdminMenu extends BaseAdminMenu
 
         $u->add('form')
             ->icon('uil-document-layout-center')
-            ->route('app_admin_form_index');
+            ->add('basic')
+                ->route('app_admin_form_basic')
+                ->end()
+            ->add('select2')
+                ->route('app_admin_form_select2');
+
         $u->add('js_response')
             ->icon('uil-exchange')
             ->route('app_admin_js_index');

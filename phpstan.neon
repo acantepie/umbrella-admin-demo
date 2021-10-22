@@ -7,8 +7,6 @@ includes:
 parameters:
     level: 4
     paths:
-        - vendor/umbrella2/corebundle/src
-        - vendor/umbrella2/adminbundle/src
         - src/
     checkUninitializedProperties: true
     checkAlwaysTrueCheckTypeFunctionCall: true

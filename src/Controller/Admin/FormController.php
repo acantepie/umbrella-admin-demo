@@ -2,9 +2,12 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\FormFields;
+use App\AppHelper;
+use App\Entity\FormMock;
 use App\Entity\SpaceMission;
-use App\Form\FormFieldsType;
+use App\Form\FormMockBasicType;
+use App\Form\FormMockSelect2Type;
+use App\Repository\SpaceMissionRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,54 +20,87 @@ use Umbrella\CoreBundle\Controller\BaseController;
 class FormController extends BaseController
 {
     /**
-     * @Route("/{layout}", defaults={"layout": "horizontal"})
+     * @Route("/basic/{layout}", defaults={"layout": "horizontal"})
      */
-    public function index(Request $request, string $layout)
+    public function basic(AppHelper $helper, Request $request, string $layout)
     {
-        $entity = $this->em()->createQuery(sprintf('SELECT e FROM %s e', FormFields::class))->getOneOrNullResult();
-
-        $form = $this->createForm(FormFieldsType::class, $entity);
+        $entity = $helper->loadOne(FormMock::class);
+        $form = $this->createForm(FormMockBasicType::class, $entity);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->persistAndFlush($entity);
 
             $this->toastSuccess(t('Item updated'));
-
-            return $this->redirectToRoute('app_admin_form_index');
+            return $this->redirectToRoute('app_admin_form_basic', ['layout' => $layout]);
         }
 
-        return $this->render('admin/form/index.html.twig', [
+        return $this->render('admin/form/basic.html.twig', [
             'form' => $form->createView(),
             'layout' => $layout
         ]);
     }
 
     /**
-     * @Route("/api")
+     * @Route("/select2")
      */
-    public function api(Request $request)
+    public function select2(AppHelper $helper, Request $request)
     {
-        $qb = $this->em()->createQueryBuilder();
-        $qb->select('e');
-        $qb->from(SpaceMission::class, 'e');
+        $entity = $helper->loadOne(FormMock::class);
+        $form = $this->createForm(FormMockSelect2Type::class, $entity);
+        $form->handleRequest($request);
 
-        $q = trim($request->query->get('query'));
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->persistAndFlush($entity);
 
-        if (!empty($q)) {
-            $qb->andWhere('LOWER(e.search) LIKE :search');
-            $qb->setParameter('search', '%' . strtolower($q) . '%');
+            $this->toastSuccess(t('Item updated'));
+            return $this->redirectToRoute('app_admin_form_select2');
         }
 
-        $results = [];
-        foreach ($qb->getQuery()->toIterable() as $mission) {
-            $results[] = [
+        return $this->render('admin/form/select2.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/load-mission")
+     */
+    public function loadMission(SpaceMissionRepository $repository, Request $request)
+    {
+        $results = $repository->search($request->query->get('q'));
+        $serialized = [];
+
+        foreach ($results as $mission) {
+            $serialized[] = [
                 'id' => $mission->id,
-                'text' => (string) $mission,
-                'detail' => $mission->detail,
+                'text' => $mission->detail,
+                'description' => $mission->companyName,
             ];
         }
 
-        return new JsonResponse(['results' => $results]);
+        return new JsonResponse($serialized);
+    }
+
+    /**
+     * @Route("/load-mission/paginate")
+     */
+    public function loadMissionAndPaginate(SpaceMissionRepository $repository, Request $request)
+    {
+        $results = $repository->searchAndPaginate($request->query->get('q'), $request->query->getInt('page', 1));
+        $serialized = [
+            'results' => [],
+            'more' => $results['more']
+        ];
+
+        /** @var SpaceMission $mission */
+        foreach ($results['results'] as $mission) {
+            $serialized['results'][] = [
+                'id' => $mission->id,
+                'text' => $mission->detail,
+                'description' => $mission->companyName,
+            ];
+        }
+
+        return new JsonResponse($serialized);
     }
 }
