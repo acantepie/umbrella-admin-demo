@@ -7,8 +7,8 @@
 </p>
 
 <p align="center">
-    <a href="https://umbrella-corp.dev"><b>Demo website</b></a> •
-    <a href="https://github.com/acantepie/umbrella"><b>Documenation</b></a>
+    <a href="https://umbrella-corp.dev"><b>Online demo</b></a> •
+    <a href="https://github.com/acantepie/umbrella/tree/master/docs"><b>Documenation</b></a>
 </p> 
 
 <p align="center">
@@ -17,7 +17,16 @@
 </p>
 
 # Installation
-First, make sure you <a href="https://nodejs.org/en/download/">install Node.js</a>, <a href="https://yarnpkg.com/getting-started/install">Yarn package manager</a> and also php7.4.
+
+### Technical requirements
+- PHP 7.4 or higher
+- PHP extensions: `json`, `zip`
+- [composer][get-composer]
+- [Symfony requirements][symfony-req]
+- [Node.js][node-js]
+- [yarn][yarn]
+
+### Installation
 
 - `git clone git@github.com:acantepie/umbrella-admin-demo.git my_project`
 - `cd my_project/`
@@ -40,3 +49,8 @@ Serve:
 
 - `php -S localhost:8000 -t public/`
 - Browse http://localhost:8000
+
+[get-composer]: https://getcomposer.org/
+[symfony-req]: https://symfony.com/doc/current/setup.html#technical-requirements
+[node-js]: https://nodejs.org/en/download/
+[yarn]: https://yarnpkg.com/getting-started/install
