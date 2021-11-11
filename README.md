@@ -8,7 +8,7 @@
 
 <p align="center">
     <a href="https://umbrella-corp.dev"><b>Online demo</b></a> •
-    <a href="https://github.com/acantepie/umbrella/tree/master/docs"><b>Documenation</b></a>
+    <a href="https://github.com/acantepie/umbrella/tree/master/docs"><b>Documentation</b></a>
 </p> 
 
 <p align="center">
