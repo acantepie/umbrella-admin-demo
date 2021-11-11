@@ -20,7 +20,7 @@
 
 ### Technical requirements
 - PHP 7.4 or higher
-- PHP extensions: `json`, `zip`
+- PHP extensions: `json`, `mbstring`, `xml`
 - [composer][get-composer]
 - [Symfony requirements][symfony-req]
 - [Node.js][node-js]
