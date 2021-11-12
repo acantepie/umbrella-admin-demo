@@ -19,5 +19,19 @@ fix-js: ## Fix files with eslint
 
 fix-all: fix-php fix-js ## Fix all files
 
+## —— Tests ——————————————————————————————————————————————————————
 test: ## Test app
 	$(PHPUNIT)
+
+
+## —— docker-composer ——————————————————————————————————————————————————————
+dc-sh:
+	docker-compose exec symfony bash
+
+
+dc-up:
+	docker-compose up -d
+
+dc-down:
+	docker-compose down --remove-orphans
+

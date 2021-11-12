@@ -16,40 +16,82 @@
     <br/><br/>
 </p>
 
-# Installation
+# Install with Docker Compose
+
+### Technical requirements
+- [docker-compose][docker-compose]
+
+### Installation
+
+```bash
+# Clone repository
+git clone git@github.com:acantepie/umbrella-admin-demo.git umbrella_demo
+cd umbrella-demo
+
+# Build / Up Docker
+docker-compose up -d
+```
+
+Open a docker shell :
+```bash
+docker-compose exec symfony bash
+```
+
+All commands below must be executed on *Docker Shell* :
+```bash
+# Install / build dependencies
+composer install
+yarn install
+yarn build
+yarn copy-ckeditor
+
+# Prepare database
+php bin/console doctrine:schema:create
+php bin/console doctrine:fixtures:load
+```
+
+App url : http://127.0.0.1:8080/
+
+# Install locally
 
 ### Technical requirements
 - PHP 7.4 or higher
 - PHP extensions: `json`, `mbstring`, `xml`
-- [composer][get-composer]
+- [docker-compose][https://docs.docker.com/compose/install/]
 - [Symfony requirements][symfony-req]
 - [Node.js][node-js]
 - [yarn][yarn]
 
 ### Installation
 
-- `git clone git@github.com:acantepie/umbrella-admin-demo.git my_project`
-- `cd my_project/`
-- `composer  install`
+```bash
+# Clone repository
+git clone git@github.com:acantepie/umbrella-admin-demo.git umbrella_demo
+cd umbrella-demo
+```
 
-Configure your database:
+You must edit the `DATABASE_URL` env var in the `.env` file to use your database credentials.
 
-- Edit the `DATABASE_URL` env var in the `.env` file to use your database credentials.
-- `php bin/console doctrine:database:create`
-- `php bin/console doctrine:schema:create`
-- `php bin/console doctrine:fixtures:load`
+```bash
+# Install / build dependencies
+composer install
+yarn install
+yarn build
+yarn copy-ckeditor
 
-Build assets with webpack:
-
-- `yarn install`
-- `yarn build`
-- `yarn copy-ckeditor`
+# Prepare database
+php bin/console doctrine:database:create
+php bin/console doctrine:schema:create
+php bin/console doctrine:fixtures:load
+```
 
 Serve:
+```bash
+php -S localhost:8000 -t public/
+```
+App url : http://127.0.0.1:8000/
 
-- `php -S localhost:8000 -t public/`
-- Browse http://localhost:8000
-
+[docker-compose]: https://docs.docker.com/compose/install/
 [get-composer]: https://getcomposer.org/
 [symfony-req]: https://symfony.com/doc/current/setup.html#technical-requirements
 [node-js]: https://nodejs.org/en/download/

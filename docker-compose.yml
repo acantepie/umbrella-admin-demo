@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./docker/nginx/symfony.conf:/etc/nginx/conf.d/default.conf
+      - ./public:/app/public
+
+  symfony:
+    hostname: umbrella-demo
+    container_name: symfony
+    build:
+      context: ./docker/symfony
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=mysql://docker:dockerpwd@db:3306/app
+    volumes:
+      - .:/app
+
+  db:
+    image: mariadb:latest
+    container_name: db
+    ports:
+      - "33061:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 'rootpwd'
+      MYSQL_USER: "docker"
+      MYSQL_PASSWORD: "dockerpwd"
+      MYSQL_DATABASE: "app"
+    volumes:
+      - mysqldata:/var/lib/mysql
+
+volumes:
+  mysqldata: {}
