@@ -57,7 +57,7 @@ App url : http://127.0.0.1:8080/
 ### Technical requirements
 - PHP 7.4 or higher
 - PHP extensions: `json`, `mbstring`, `xml`
-- [docker-compose][https://docs.docker.com/compose/install/]
+- [composer][get-composer]
 - [Symfony requirements][symfony-req]
 - [Node.js][node-js]
 - [yarn][yarn]
