@@ -20,9 +20,9 @@ use Umbrella\CoreBundle\Controller\BaseController;
 class FormController extends BaseController
 {
     /**
-     * @Route("/basic/{layout}", defaults={"layout": "horizontal"})
+     * @Route("/basic")
      */
-    public function basic(AppHelper $helper, Request $request, string $layout)
+    public function basic(AppHelper $helper, Request $request)
     {
         $entity = $helper->loadOne(FormMock::class);
         $form = $this->createForm(FormMockBasicType::class, $entity);
@@ -32,12 +32,11 @@ class FormController extends BaseController
             $this->persistAndFlush($entity);
 
             $this->toastSuccess(t('Item updated'));
-            return $this->redirectToRoute('app_admin_form_basic', ['layout' => $layout]);
+            return $this->redirectToRoute('app_admin_form_basic');
         }
 
         return $this->render('admin/form/basic.html.twig', [
-            'form' => $form->createView(),
-            'layout' => $layout
+            'form' => $form->createView()
         ]);
     }
 

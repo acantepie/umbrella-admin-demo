@@ -70,9 +70,6 @@ class AdminMenu extends BaseAdminMenu
         $r->add('notification')
             ->icon('uil-bell')
             ->route('app_admin_notification_index');
-        $r->add('tabs')
-            ->icon('uil-layers-alt')
-            ->route('app_admin_tabs_index');
         $r->add('config_reference')
             ->icon('uil-cog')
             ->route('app_admin_umbrellaconfig_index');

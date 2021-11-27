@@ -1,14 +1,19 @@
-{{ nav_config('bordered') }}
-{{ nav_start() }}
-{{ nav_item({'label' : 'Preview', 'url': '#preview-' ~ id}) }}
-{{ nav_item({'label' : 'Code', 'url': '#code-' ~ id}) }}
-{{ nav_end() }}
+<div class="mb-2">
+    <ul class="nav nav-pills mb-2">
+        <li class="nav-item">
+            <a class="nav-link active" href="#preview-{{ id }}" data-bs-toggle="tab">Preview</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#code-{{ id }}"  data-bs-toggle="tab">Code</a>
+        </li>
+    </ul>
 
-<div class="tab-content">
-    <div class="tab-pane active" id="preview-{{ id }}">
-        {% block form %}{% endblock %}
-    </div>
-    <div class="tab-pane" id="code-{{ id }}">
-        {% block code %}{% endblock %}
+    <div class="tab-content">
+        <div class="tab-pane active" id="preview-{{ id }}">
+            {% block form %}{% endblock %}
+        </div>
+        <div class="tab-pane" id="code-{{ id }}">
+            {% block code %}{% endblock %}
+        </div>
     </div>
 </div>

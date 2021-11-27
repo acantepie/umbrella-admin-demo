@@ -12,12 +12,12 @@
 
         {{ form_errors(form) }}
 
-        <div class="card card-body">
-            <div class="mb-3">
-                <h4 class="header-title">Choice2Type</h4>
-                <p class="text-muted">
-                    FormType based on <a href="https://symfony.com/doc/current/reference/forms/types/choice.html">ChoiceType</a>.
-                </p>
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Choice2Type</h4>
+                <div class="card-subtitle">FormType based on <a href="https://symfony.com/doc/current/reference/forms/types/choice.html">ChoiceType</a>.</div>
+            </div>
+            <div class="card-body">
                 {% embed "admin/form/select2/form.html.twig" with {id: 'choice2'} %}
                     {% block form %}
                         <div class="row">
@@ -36,19 +36,16 @@
                         <hl-code class="language-php">{{ source('admin/form/select2/_choice.txt') }}</hl-code>
                     {% endblock %}
                 {% endembed %}
-            </div>
-
-            <div class="mb-3">
                 {% include "admin/form/select2/_choice_options.html.twig" %}
             </div>
         </div>
 
-        <div class="card card-body">
-            <div class="mb-3">
-                <h4 class="header-title">Entity2Type</h4>
-                <p class="text-muted">
-                    FormType based on <a href="https://symfony.com/doc/current/reference/forms/types/entity.html">EntityType</a>.
-                </p>
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Entity2Type</h4>
+                <div class="card-subtitle">FormType based on <a href="https://symfony.com/doc/current/reference/forms/types/entity.html">EntityType</a>.</div>
+            </div>
+            <div class="card-body">
                 {% embed "admin/form/select2/form.html.twig" with {id: 'entity2'} %}
                     {% block form %}
                         <div class="row">
@@ -61,19 +58,16 @@
                         <hl-code class="language-php">{{ source('admin/form/select2/_entity.txt') }}</hl-code>
                     {% endblock %}
                 {% endembed %}
-            </div>
-
-            <div class="mb-3">
                 {% include "admin/form/select2/_entity_options.html.twig" %}
             </div>
         </div>
 
-        <div class="card card-body">
-            <div class="mb-3">
-                <h4 class="header-title">AutoCompleteType</h4>
-                <p class="text-muted">
-                    FormType with async loading (Ajax request).
-                </p>
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">AutoCompleteType</h4>
+                <div class="card-subtitle">FormType with async loading (Ajax request).</div>
+            </div>
+            <div class="card-body">
                 {% embed "admin/form/select2/form.html.twig" with {id: 'asyncentity2'} %}
                     {% block form %}
                         <div class="row">
@@ -91,9 +85,6 @@
                         <hl-code class="language-php">{{ source('admin/form/select2/_async_entity.txt') }}</hl-code>
                     {% endblock %}
                 {% endembed %}
-            </div>
-
-            <div class="mb-3">
                 {% include "admin/form/select2/_async_entity_options.html.twig" %}
             </div>
         </div>
