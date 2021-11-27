@@ -7,7 +7,7 @@
     {% for mission_status, table in tables %}
         <div class="card">
             <a href="#card-{{ table.id }}" class="card-header text-reset" data-bs-toggle="collapse">
-                <h4><i class="mdi mdi-chevron-right"></i> Space missions filtered by <span class="text-primary">{{ mission_status }}</span></h4>
+                <h4 class="card-title"><i class="mdi mdi-chevron-right"></i> Space missions filtered by <span class="text-primary">{{ mission_status }}</span></h4>
             </a>
             <div id="card-{{ table.id }}" class="card-body collapse">
                 {{ render_table(table) }}

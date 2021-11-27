@@ -57,7 +57,7 @@ class FormMockBasicType extends AbstractType
         ]);
 
         $builder->add('url', TextType::class, [
-            'input_prefix' => '<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Scheme</button><div class="dropdown-menu">'
+            'input_prefix' => '<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Scheme</button><div class="dropdown-menu">'
                 . '<a class="dropdown-item" href="#">HTTP</a>'
                 . '<a class="dropdown-item" href="#">HTTPS</a>'
                 . '</div>',
