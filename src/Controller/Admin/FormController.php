@@ -7,6 +7,7 @@ use App\Entity\FormMock;
 use App\Entity\SpaceMission;
 use App\Form\FormCommonType;
 use App\Form\FormSelect2Type;
+use App\Form\FormThemeType;
 use App\Repository\SpaceMissionRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +25,9 @@ class FormController extends BaseController
      */
     public function theme()
     {
-        return $this->render('admin/form/theme.html.twig');
+        return $this->render('admin/form/theme.html.twig', [
+            'form' => $this->createForm(FormThemeType::class)->createView()
+        ]);
     }
 
     /**

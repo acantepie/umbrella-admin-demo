@@ -7,13 +7,27 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-md-6">
-                    <h5>Bootstrap 5 default theme</h5>
+                <div class="col-md-6 mb-2">
+                    <h5 class="fw-bold">Bootstrap 5 default theme</h5>
                     <hl-code class="language-twig">{{ source('admin/form/theme/single_form_bs.txt') }}</hl-code>
+
+                    <h5>Example :</h5>
+                    <div class="border p-2 bg-light">
+                        {{ umbrella_form_theme(form.default, 'default') }}
+                        {{ form_rest(form.default) }}
+                    </div>
+
                 </div>
                 <div class="col-md-6">
-                    <h5>Bootstrap 5 horizontal theme</h5>
+                    <h5 class="fw-bold">Bootstrap 5 horizontal theme</h5>
                     <hl-code class="language-twig">{{ source('admin/form/theme/single_form_bs_horizontal.txt') }}</hl-code>
+
+                    <h5>Example :</h5>
+                    <div class="border p-2 bg-light">
+                        {{ umbrella_form_theme(form.horizontal, 'horizontal') }}
+                        {{ form_rest(form.horizontal) }}
+                    </div>
+
                 </div>
             </div>
             <p>
