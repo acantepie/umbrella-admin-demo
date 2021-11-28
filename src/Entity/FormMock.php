@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\CoreBundle\Model\IdTrait;
 
@@ -13,12 +14,22 @@ class FormMock
 {
     use IdTrait;
 
-    // Basic
+    // Simple form elements
 
     /**
-     * @ORM\Column(type="boolean", options={"default": true})
+     * @ORM\Column(type="string", nullable=true)
      */
-    public bool $active = true;
+    public ?string $text = null;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    public ?string $textarea = null;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    public bool $checkMe = false;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -31,16 +42,43 @@ class FormMock
     public int $amount = 0;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(name="`select`", type="string", nullable=true)
      */
-    public ?string $url = null;
+    public ?string $select = null;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    public ?string $text = null;
+    public ?string $selectExpanded = null;
 
-    // Date
+    /**
+     * @ORM\Column(type="simple_array", nullable=true)
+     */
+    public ?array $selectMultiple = null;
+
+    /**
+     * @ORM\Column(type="simple_array", nullable=true)
+     */
+    public ?array $selectMultipleExpanded = null;
+
+    // Addon form extension
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    public ?string $inputGroupText = null;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    public ?string $inputGroupButton = null;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    public ?string $inputIcon = null;
+
+    // Advanced form elements
 
     /**
      * @var \DateTime|null
@@ -54,21 +92,25 @@ class FormMock
      */
     public ?\DateTimeInterface $dateTime = null;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    public ?string $richText = null;
+
     // Collection
 
     /**
      * @var FormMockItem[]|ArrayCollection
-     * @ORM\OneToMany(targetEntity="FormMockItem", mappedBy="formFields", orphanRemoval=true, cascade={"ALL"})
-     * @ORM\OrderBy({"order": "ASC"})
+     * @ORM\OneToMany(targetEntity="FormMockItem", mappedBy="collectionParent", orphanRemoval=true, cascade={"ALL"})
      */
-    public $items;
-
-    // Ckeditor
+    public Collection $collectionItems;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @var FormMockItem[]|ArrayCollection
+     * @ORM\OneToMany(targetEntity="FormMockItem", mappedBy="collectionOrderableParent", orphanRemoval=true, cascade={"ALL"})
+     * @ORM\OrderBy({"order": "ASC"})
      */
-    public ?string $text1 = null;
+    public Collection $collectionOrderableItems;
 
     // Select 2
 
@@ -133,19 +175,32 @@ class FormMock
 
     public function __construct()
     {
-        $this->items = new ArrayCollection();
+        $this->collectionItems = new ArrayCollection();
+        $this->collectionOrderableItems = new ArrayCollection();
         $this->asyncChoiceMissions = new ArrayCollection();
     }
 
-    public function addItem(FormMockItem $item): void
+    public function addCollectionItem(FormMockItem $item): void
     {
-        $item->formFields = $this;
-        $this->items->add($item);
+        $item->collectionParent = $this;
+        $this->collectionItems->add($item);
     }
 
-    public function removeItem(FormMockItem $item): void
+    public function removeCollectionItem(FormMockItem $item): void
     {
-        $item->formFields = null;
-        $this->items->removeElement($item);
+        $item->collectionParent = null;
+        $this->collectionItems->removeElement($item);
+    }
+
+    public function addCollectionOrderableItem(FormMockItem $item): void
+    {
+        $item->collectionOrderableParent = $this;
+        $this->collectionOrderableItems->add($item);
+    }
+
+    public function removeCollectionOrderableItem(FormMockItem $item): void
+    {
+        $item->collectionOrderableParent = null;
+        $this->collectionOrderableItems->removeElement($item);
     }
 }

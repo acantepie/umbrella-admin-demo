@@ -1,56 +1,116 @@
 {% extends "@UmbrellaAdmin/layout.html.twig" %}
 
 {% block content %}
-    {{ umbrella_form_theme(form) }}
-    <form enctype="multipart/form-data" method="POST" data-mount="Form">
+{{ umbrella_form_theme(form) }}
+<form enctype="multipart/form-data" method="POST" data-mount="Form">
 
-        {{ form_errors(form) }}
+    {{ form_errors(form) }}
 
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Basic</h4>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Basic form elements</h4>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+
+                <div class="mb-3">
+                    <a href="https://symfony.com/doc/current/reference/forms/types/text.html" class="h5 mb-1 d-block fw-bold"><i class="mdi mdi-link mr-1"></i> TextType</a>
+                    {{ form_row(form.text) }}
+                </div>
+
+                <div class="mb-3">
+                    <a href="https://symfony.com/doc/current/reference/forms/types/textarea.html" class="h5 mb-1 d-block fw-bold"><i class="mdi mdi-link mr-1"></i> TextareaType</a>
+                    {{ form_row(form.textarea) }}
+                </div>
+
+                <div class="mb-3">
+                    <a href="https://symfony.com/doc/current/reference/forms/types/checkbox.html" class="h5 mb-1 d-block fw-bold"><i class="mdi mdi-link mr-1"></i> CheckboxType</a>
+                    {{ form_row(form.checkMe) }}
+                </div>
+
+                <div class="mb-3">
+                    <a href="https://symfony.com/doc/current/reference/forms/types/color.html" class="h5 mb-1 d-block fw-bold"><i class="mdi mdi-link mr-1"></i> ColorType</a>
+                    {{ form_row(form.color) }}
+                </div>
+
+                <div class="mb-3">
+                    <a href="https://symfony.com/doc/current/reference/forms/types/range.html" class="h5 mb-1 d-block fw-bold"><i class="mdi mdi-link mr-1"></i> RangeType</a>
+                    {{ form_row(form.amount) }}
+                </div>
             </div>
-            <div class="card-body">
-                {{ form_row(form.active) }}
-                {{ form_row(form.amount) }}
-                {{ form_row(form.color) }}
-                {{ form_row(form.text) }}
-                {{ form_row(form.url) }}
+            <div class="col-md-6">
+
+                <div class="mb-3">
+                    <a href="https://symfony.com/doc/current/reference/forms/types/choice.html" class="h5 mb-1 d-block fw-bold"><i class="mdi mdi-link mr-1"></i> ChoiceType</a>
+                    {{ form_row(form.select) }}
+                    {{ form_row(form.selectExpanded) }}
+                    <div class="mt-n2 mb-2">Options : <code>['expanded' => true]</code></div>
+                    {{ form_row(form.selectMultiple) }}
+                    <div class="mt-n2 mb-2">Options : <code>['multiple' => true]</code></div>
+                    {{ form_row(form.selectMultipleExpanded) }}
+                    <div class="mt-n2 mb-2">Options : <code>['multiple' => true, 'expanded' => true]</code></div>
+                </div>
+
             </div>
         </div>
+    </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Date</h4>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Addon form extension</h4>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                {{ form_row(form.inputGroupText) }}
+                <div class="mt-n2 mb-2">Options : <code>['input_prefix_text' => '@']</code></div>
+                {{ form_row(form.inputGroupButton) }}
+                <div class="mt-n2 mb-2">Options : <code>['input_suffix' => '&lt;button class="btn btn-secondary"&gt;Click&lt;/button&gt;']</code></div>
             </div>
-            <div class="card-body">
+            <div class="col-md-6">
+                {{ form_row(form.inputIcon) }}
+                <div class="mt-n2 mb-2">Options : <code>['input_addon_container_class' => 'input-icon', 'input_prefix' => '&lt;span class="input-icon-addon"&gt;&lt;i class="mdi mdi-magnify"&gt;&lt;/i&gt;&lt;/span&gt;'</code></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Advanced form elements</h4>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                <h5 class="fw-bold">DatePickerType - use <a href="https://flatpickr.js.org/" class="text-primary">flatpickr</a> js libarary</h5>
                 {{ form_row(form.date) }}
                 {{ form_row(form.dateTime) }}
+                <div class="mt-n2 mb-2">Options : <code>['enable_time' => true]</code></div>
+            </div>
+            <div class="col-md-6">
+                <h5 class="fw-bold">CkeditorType - use <a href="https://ckeditor.com/" class="text-primary">ckeditor</a> js libarary</h5>
+                {{ form_row(form.richText) }}
             </div>
         </div>
+    </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Collection</h4>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Collection form elements</h4>
+        </div>
+        <div class="card-body row">
+            <h5 class="fw-bold">UmbrellaCollectionType (extends <a href="https://symfony.com/doc/current/reference/forms/types/collection.html" class="text-primary">CollectionType</a>)</h5>
+            <div class="col-md-6">
+                {{ form_row(form.collectionItems) }}
             </div>
-            <div class="card-body">
-                {{ form_row(form.items) }}
+            <div class="col-md-6">
+                {{ form_row(form.collectionOrderableItems) }}
+                <div class="mt-n2 mb-2">Options : <code>['sort_by' => 'order']</code></div>
             </div>
         </div>
+    </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Ckeditor</h4>
-            </div>
-            <div class="card-body">
-                {{ form_row(form.text1) }}
-            </div>
-        </div>
+    <button type="submit" class="btn btn-primary ms-auto">
+        <i class="mdi mdi-check me-1"></i> {{ 'Save' | trans }}
+    </button>
 
-        <button type="submit" class="btn btn-primary ms-auto">
-            <i class="mdi mdi-check me-1"></i> {{ 'Save' | trans }}
-        </button>
-
-        {{ form_rest(form) }}
-    </form>
+    {{ form_rest(form) }}
+</form>
 {% endblock %}

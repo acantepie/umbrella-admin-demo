@@ -23,10 +23,10 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Try it yourself</h4>
-                    <div class="card-subtitle">Create a simple notification</div>
+                    <h4 class="card-title">Examples</h4>
                 </div>
                 <div class="card-body">
+                    <h4>Create a text notification</h4>
                     <form enctype="multipart/form-data" method="POST" data-mount="Form">
                         {{ umbrella_form_theme(new_notification_form) }}
                         {{ form_rest(new_notification_form) }}
@@ -36,15 +36,9 @@
                         </button>
                     </form>
                 </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Try it yourself</h4>
-                    <div class="card-subtitle">Start a counter using <b>messenger bundle</b> and notify progress</div>
-                </div>
                 <div class="card-body">
                     <form enctype="multipart/form-data" method="POST" data-mount="Form">
+                        <h4>Create and update a notification using <code>symfony/messenger</code></h4>
 
                         <div class="alert alert-primary">
                             Messenger is a Symfony component. See <a href="https://symfony.com/doc/current/messenger.html" target="_blank">Messenger: Sync & Queued Message Handling</a>

@@ -15,10 +15,16 @@ class FormMockItem
     use OrderTrait;
 
     /**
-     * @ORM\ManyToOne(targetEntity="FormMock", inversedBy="items")
-     * @ORM\JoinColumn(name="form_fields_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="FormMock", inversedBy="collectionItems")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    public ?FormMock $formFields = null;
+    public ?FormMock $collectionParent = null;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="FormMock", inversedBy="collectionOrderableItems")
+     * @ORM\JoinColumn(name="parent_orderable_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    public ?FormMock $collectionOrderableParent = null;
 
     /**
      * @ORM\Column(type="string", nullable=false)
@@ -26,7 +32,8 @@ class FormMockItem
     public ?string $label = null;
 
     /**
-     * @ORM\Column(type="text", nullable=false)
+     * @var \DateTime|null
+     * @ORM\Column(type="date", nullable=true)
      */
-    public ?string $description = null;
+    public ?\DateTimeInterface $date = null;
 }
