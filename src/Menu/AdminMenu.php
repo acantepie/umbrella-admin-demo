@@ -59,7 +59,10 @@ class AdminMenu extends BaseAdminMenu
                 ->route('app_admin_form_theme')
                 ->end()
             ->add('common')
-                ->route('app_admin_form_common');
+                ->route('app_admin_form_common')
+                ->end()
+            ->add('advanced_select')
+                ->route('app_admin_form_select');
 
         $r->add('js_response')
             ->icon('uil-exchange')

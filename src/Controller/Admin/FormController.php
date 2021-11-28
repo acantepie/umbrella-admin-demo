@@ -6,7 +6,7 @@ use App\AppHelper;
 use App\Entity\FormMock;
 use App\Entity\SpaceMission;
 use App\Form\FormCommonType;
-use App\Form\FormSelect2Type;
+use App\Form\FormSelectType;
 use App\Form\FormThemeType;
 use App\Repository\SpaceMissionRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -52,22 +52,22 @@ class FormController extends BaseController
     }
 
     /**
-     * @Route("/select2")
+     * @Route("/select")
      */
-    public function select2(AppHelper $helper, Request $request)
+    public function select(AppHelper $helper, Request $request)
     {
         $entity = $helper->loadOne(FormMock::class);
-        $form = $this->createForm(FormSelect2Type::class, $entity);
+        $form = $this->createForm(FormSelectType::class, $entity);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->persistAndFlush($entity);
 
             $this->toastSuccess(t('Item updated'));
-            return $this->redirectToRoute('app_admin_form_select2');
+            return $this->redirectToRoute('app_admin_form_select');
         }
 
-        return $this->render('admin/form/select2.html.twig', [
+        return $this->render('admin/form/select.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -82,7 +82,7 @@ class FormController extends BaseController
 
         foreach ($results as $mission) {
             $serialized[] = [
-                'id' => $mission->id,
+                'value' => $mission->id,
                 'text' => $mission->detail,
                 'description' => $mission->companyName,
             ];
@@ -105,7 +105,7 @@ class FormController extends BaseController
         /** @var SpaceMission $mission */
         foreach ($results['results'] as $mission) {
             $serialized['results'][] = [
-                'id' => $mission->id,
+                'value' => $mission->id,
                 'text' => $mission->detail,
                 'description' => $mission->companyName,
             ];

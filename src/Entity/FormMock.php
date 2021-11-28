@@ -120,11 +120,6 @@ class FormMock
     public ?string $choiceMission = null;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    public ?string $choiceMissionReadonly = null;
-
-    /**
      * @ORM\Column(type="array", nullable=true)
      */
     public ?array $choiceMissions = [];

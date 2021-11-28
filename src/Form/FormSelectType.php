@@ -8,10 +8,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\Form\AutocompleteType;
-use Umbrella\CoreBundle\Form\Choice2Type;
-use Umbrella\CoreBundle\Form\Entity2Type;
+use Umbrella\CoreBundle\Form\UmbrellaChoiceType;
+use Umbrella\CoreBundle\Form\UmbrellaEntityType;
 
-class FormSelect2Type extends AbstractType
+class FormSelectType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -32,23 +32,15 @@ class FormSelect2Type extends AbstractType
         };
 
         // --- select
-        $builder->add('choiceMission', Choice2Type::class, [
+        $builder->add('choiceMission', UmbrellaChoiceType::class, [
             'label' => 'Select',
             'choices' => $choices,
-            'required' => false,
-        ]);
-
-        $builder->add('choiceMissionReadonly', Choice2Type::class, [
-            'label' => 'Select readonly',
-            'choices' => $choices,
-            'required' => false,
-            'attr' => [
-                'readonly' => true
-            ]
+            'multiple' => false,
+            'required' => true,
         ]);
 
         // --- select multiple
-        $builder->add('choiceMissions', Choice2Type::class, [
+        $builder->add('choiceMissions', UmbrellaChoiceType::class, [
             'label' => 'Select multiple',
             'choices' => $choices,
             'required' => false,
@@ -56,18 +48,16 @@ class FormSelect2Type extends AbstractType
         ]);
 
         // --- select with html template
-        $builder->add('choiceMissionTemplated', Choice2Type::class, [
+        $builder->add('choiceMissionTemplated', UmbrellaChoiceType::class, [
             'label' => 'Select with html template',
             'choices' => $choices,
-            'expose' => function ($choice) use ($getSpecie) {
-                return ['specie' => $getSpecie($choice)];
-            },
+            'expose' => fn ($choice) => ['specie' => $getSpecie($choice)],
             'required' => false,
-            'template' => '<span>[[text]]</span><br><span class="text-muted">[[specie]]</span>',
+            'template' => '[[text]]<div class="text-muted">[[specie]]</div>',
         ]);
 
         // --- select with grouped options
-        $builder->add('choiceMissionGrouped', Choice2Type::class, [
+        $builder->add('choiceMissionGrouped', UmbrellaChoiceType::class, [
             'label' => 'Select with grouped options',
             'choices' => $choices,
             'group_by' => $getSpecie,
@@ -75,7 +65,7 @@ class FormSelect2Type extends AbstractType
         ]);
 
         // --- select on doctrine entity
-        $builder->add('choiceMissionEntity', Entity2Type::class, [
+        $builder->add('choiceMissionEntity', UmbrellaEntityType::class, [
             'label' => 'Select on doctrine entity',
             'class' => SpaceMission::class,
             'required' => false,
@@ -105,12 +95,12 @@ class FormSelect2Type extends AbstractType
             'template' => '<span>[[text]]</span><br><span class="text-muted">[[description]]</span>',
         ]);
 
-        $builder->add('asyncChoiceMissionPaginated', AutocompleteType::class, [
-            'label' => 'Select with pagination',
-            'route' => 'app_admin_form_loadmissionandpaginate',
-            'class' => SpaceMission::class,
-            'required' => false
-        ]);
+//        $builder->add('asyncChoiceMissionPaginated', AutocompleteType::class, [
+//            'label' => 'Select with pagination',
+//            'route' => 'app_admin_form_loadmissionandpaginate',
+//            'class' => SpaceMission::class,
+//            'required' => false
+//        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

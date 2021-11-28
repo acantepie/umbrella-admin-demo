@@ -1,6 +1,0 @@
-// --- select on doctrine entity
-$builder->add('choiceMissionEntity', Entity2Type::class, [
-    'label' => 'Select on doctrine entity',
-    'class' => SpaceMission::class,
-    'required' => false,
-]);
