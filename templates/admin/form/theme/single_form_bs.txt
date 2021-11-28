@@ -1,0 +1,5 @@
+{{ umbrella_form_theme(form, 'default') }}
+{# or #}
+{% form_theme form "@UmbrellaCore/Form/layout.html.twig" %}
+
+{{ form_rest(form) }}

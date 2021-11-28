@@ -11,7 +11,7 @@ use Umbrella\CoreBundle\Form\AutocompleteType;
 use Umbrella\CoreBundle\Form\Choice2Type;
 use Umbrella\CoreBundle\Form\Entity2Type;
 
-class FormMockSelect2Type extends AbstractType
+class FormSelect2Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

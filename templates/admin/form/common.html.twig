@@ -1,9 +1,9 @@
 {% extends "@UmbrellaAdmin/layout.html.twig" %}
 
 {% block content %}
-{{ umbrella_form_theme(form) }}
-<form enctype="multipart/form-data" method="POST" data-mount="Form">
+<form enctype="multipart/form-data" method="POST" class="mb-3">
 
+    {{ umbrella_form_theme(form) }}
     {{ form_errors(form) }}
 
     <div class="card">
@@ -106,11 +106,10 @@
             </div>
         </div>
     </div>
+    {{ form_rest(form) }}
 
     <button type="submit" class="btn btn-primary ms-auto">
         <i class="mdi mdi-check me-1"></i> {{ 'Save' | trans }}
     </button>
-
-    {{ form_rest(form) }}
 </form>
 {% endblock %}

@@ -1,3 +1,0 @@
-use App\Entity\FormCkeditor;
-
-$builder->add('text1', CkeditorType::class);

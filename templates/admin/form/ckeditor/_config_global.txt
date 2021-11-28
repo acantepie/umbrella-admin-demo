@@ -1,8 +1,0 @@
-# app/config/packages/umbrella.yaml
-umbrella_core:
-  ckeditor:
-    configs:
-      custom:
-        toolbar:
-          - { name: links, items: [ 'Link', 'Unlink' ] }
-        uiColor: '#FEFEFE'

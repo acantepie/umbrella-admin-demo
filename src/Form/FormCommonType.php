@@ -16,10 +16,7 @@ use Umbrella\CoreBundle\Form\CkeditorType;
 use Umbrella\CoreBundle\Form\DatepickerType;
 use Umbrella\CoreBundle\Form\UmbrellaCollectionType;
 
-/**
- * Class FormBasicType
- */
-class FormMockBasicType extends AbstractType
+class FormCommonType extends AbstractType
 {
     public const CHOICES = [
         'Option one',
@@ -100,11 +97,11 @@ class FormMockBasicType extends AbstractType
 
         // Collection
         $builder->add('collectionItems', UmbrellaCollectionType::class, [
-            'entry_type' => FormMockItemType::class,
+            'entry_type' => FormItemType::class,
         ]);
 
         $builder->add('collectionOrderableItems', UmbrellaCollectionType::class, [
-            'entry_type' => FormMockItemType::class,
+            'entry_type' => FormItemType::class,
             'sort_by' => 'order',
         ]);
     }
@@ -114,9 +111,5 @@ class FormMockBasicType extends AbstractType
         $resolver->setDefaults([
             'data_class' => FormMock::class
         ]);
-    }
-
-    public function buildCollection(FormBuilderInterface $builder, array $options)
-    {
     }
 }

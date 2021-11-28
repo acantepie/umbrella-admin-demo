@@ -8,12 +8,10 @@ class MyMenu extends MenuType
     public function buildMenu(MenuBuilder $builder)
     {
        $root = $builder->root();
-       $root->add('app')
-            ->add('welcome')
-                ->show(/* Your custom condition */)
-                ->icon('uil-apps')
-                ->route('app_welcome')
-                ->matchRoute('app_welcome2'); /* Item will be active if this route is matched */
+       $root->add('welcome')
+            ->icon('uil-apps')
+            ->route('app_welcome')
+            ->matchRoute('app_welcome2'); /* Item will be active if this route is matched */
     }
 
     /**

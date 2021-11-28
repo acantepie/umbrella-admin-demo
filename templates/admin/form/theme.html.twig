@@ -1,0 +1,37 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Applying theme to single Forms</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Bootstrap 5 default theme</h5>
+                    <hl-code class="language-twig">{{ source('admin/form/theme/single_form_bs.txt') }}</hl-code>
+                </div>
+                <div class="col-md-6">
+                    <h5>Bootstrap 5 horizontal theme</h5>
+                    <hl-code class="language-twig">{{ source('admin/form/theme/single_form_bs_horizontal.txt') }}</hl-code>
+                </div>
+            </div>
+            <p>
+                You can define a default value for <code>umbrella_form_theme</code> twig helper.
+                This is useful to avoid specify the theme used on all your form.
+            </p>
+            <hl-code class="language-yaml">{{ source('admin/form/theme/single_form_default_config.txt') }}</hl-code>
+            <hl-code class="language-twig">{{ source('admin/form/theme/single_form_bs_default.txt') }}</hl-code>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Applying theme to all forms</h4>
+        </div>
+        <div class="card-body">
+            <hl-code class="language-yaml">{{ source('admin/form/theme/all_form_config.txt') }}</hl-code>
+        </div>
+    </div>
+
+{% endblock %}

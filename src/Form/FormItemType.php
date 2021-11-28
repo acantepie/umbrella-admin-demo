@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\Form\DatepickerType;
 
-class FormMockItemType extends AbstractType
+class FormItemType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

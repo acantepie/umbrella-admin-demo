@@ -5,8 +5,8 @@ namespace App\Controller\Admin;
 use App\AppHelper;
 use App\Entity\FormMock;
 use App\Entity\SpaceMission;
-use App\Form\FormMockBasicType;
-use App\Form\FormMockSelect2Type;
+use App\Form\FormCommonType;
+use App\Form\FormSelect2Type;
 use App\Repository\SpaceMissionRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,22 +20,30 @@ use Umbrella\CoreBundle\Controller\BaseController;
 class FormController extends BaseController
 {
     /**
-     * @Route("/basic")
+     * @Route("/theme")
      */
-    public function basic(AppHelper $helper, Request $request)
+    public function theme()
+    {
+        return $this->render('admin/form/theme.html.twig');
+    }
+
+    /**
+     * @Route("/common")
+     */
+    public function common(AppHelper $helper, Request $request)
     {
         $entity = $helper->loadOne(FormMock::class);
-        $form = $this->createForm(FormMockBasicType::class, $entity);
+        $form = $this->createForm(FormCommonType::class, $entity);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->persistAndFlush($entity);
 
             $this->toastSuccess(t('Item updated'));
-            return $this->redirectToRoute('app_admin_form_basic');
+            return $this->redirectToRoute('app_admin_form_common');
         }
 
-        return $this->render('admin/form/basic.html.twig', [
+        return $this->render('admin/form/common.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -46,7 +54,7 @@ class FormController extends BaseController
     public function select2(AppHelper $helper, Request $request)
     {
         $entity = $helper->loadOne(FormMock::class);
-        $form = $this->createForm(FormMockSelect2Type::class, $entity);
+        $form = $this->createForm(FormSelect2Type::class, $entity);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
