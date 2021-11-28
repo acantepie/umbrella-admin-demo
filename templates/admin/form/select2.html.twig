@@ -1,15 +1,8 @@
 {% extends "@UmbrellaAdmin/layout.html.twig" %}
 
 {% block content %}
-    {{ umbrella_form_theme(form, 'default') }}
+    {{ umbrella_form_theme(form) }}
     <form enctype="multipart/form-data" method="POST" data-mount="Form">
-
-        <div class="d-flex mb-3 align-items-center">
-            <button type="submit" class="btn btn-primary ms-auto">
-                <i class="mdi mdi-check"></i> {{ 'Save' | trans }}
-            </button>
-        </div>
-
         {{ form_errors(form) }}
 
         <div class="card">
@@ -88,7 +81,11 @@
                 {% include "admin/form/select2/_async_entity_options.html.twig" %}
             </div>
         </div>
-
         {{ form_rest(form) }}
+
+        <button type="submit" class="btn btn-primary ms-auto">
+            <i class="mdi mdi-check me-1"></i> {{ 'Save' | trans }}
+        </button>
+
     </form>
 {% endblock %}
