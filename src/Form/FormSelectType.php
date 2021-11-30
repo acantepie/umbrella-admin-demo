@@ -13,6 +13,8 @@ use Umbrella\CoreBundle\Form\UmbrellaEntityType;
 
 class FormSelectType extends AbstractType
 {
+    public const MISSION_PAGE_LENGTH = 30;
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $choices = [
@@ -97,7 +99,8 @@ class FormSelectType extends AbstractType
 
 //        $builder->add('asyncChoiceMissionPaginated', AutocompleteType::class, [
 //            'label' => 'Select with pagination',
-//            'route' => 'app_admin_form_loadmissionandpaginate',
+//            'route' => 'app_admin_form_loadmission',
+//            'page_length' => self::MISSION_PAGE_LENGTH,
 //            'class' => SpaceMission::class,
 //            'required' => false
 //        ]);

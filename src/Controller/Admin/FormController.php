@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\AppHelper;
 use App\Entity\FormMock;
-use App\Entity\SpaceMission;
 use App\Form\FormCommonType;
 use App\Form\FormSelectType;
 use App\Form\FormThemeType;
@@ -77,34 +76,18 @@ class FormController extends BaseController
      */
     public function loadMission(SpaceMissionRepository $repository, Request $request)
     {
-        $results = $repository->search($request->query->get('q'));
+        $q = $request->query->has('q');
+
+        if ($request->query->has('p')) {
+            $results = $repository->search($q, $request->query->getInt('p', 1), FormSelectType::MISSION_PAGE_LENGTH);
+        } else {
+            $results = $repository->search($q);
+        }
+
         $serialized = [];
 
         foreach ($results as $mission) {
             $serialized[] = [
-                'value' => $mission->id,
-                'text' => $mission->detail,
-                'description' => $mission->companyName,
-            ];
-        }
-
-        return new JsonResponse($serialized);
-    }
-
-    /**
-     * @Route("/load-mission/paginate")
-     */
-    public function loadMissionAndPaginate(SpaceMissionRepository $repository, Request $request)
-    {
-        $results = $repository->searchAndPaginate($request->query->get('q'), $request->query->getInt('page', 1));
-        $serialized = [
-            'results' => [],
-            'more' => $results['more']
-        ];
-
-        /** @var SpaceMission $mission */
-        foreach ($results['results'] as $mission) {
-            $serialized['results'][] = [
                 'value' => $mission->id,
                 'text' => $mission->detail,
                 'description' => $mission->companyName,
