@@ -13,35 +13,15 @@
         <div class="card-body row">
             <div class="col-md-6">
 
-                <div class="mb-3">
-                    <a href="https://symfony.com/doc/current/reference/forms/types/text.html" class="h5 mb-1 d-block fw-bold"><i class="mdi mdi-link mr-1"></i> TextType</a>
-                    {{ form_row(form.text) }}
-                </div>
-
-                <div class="mb-3">
-                    <a href="https://symfony.com/doc/current/reference/forms/types/textarea.html" class="h5 mb-1 d-block fw-bold"><i class="mdi mdi-link mr-1"></i> TextareaType</a>
-                    {{ form_row(form.textarea) }}
-                </div>
-
-                <div class="mb-3">
-                    <a href="https://symfony.com/doc/current/reference/forms/types/checkbox.html" class="h5 mb-1 d-block fw-bold"><i class="mdi mdi-link mr-1"></i> CheckboxType</a>
-                    {{ form_row(form.checkMe) }}
-                </div>
-
-                <div class="mb-3">
-                    <a href="https://symfony.com/doc/current/reference/forms/types/color.html" class="h5 mb-1 d-block fw-bold"><i class="mdi mdi-link mr-1"></i> ColorType</a>
-                    {{ form_row(form.color) }}
-                </div>
-
-                <div class="mb-3">
-                    <a href="https://symfony.com/doc/current/reference/forms/types/range.html" class="h5 mb-1 d-block fw-bold"><i class="mdi mdi-link mr-1"></i> RangeType</a>
-                    {{ form_row(form.amount) }}
-                </div>
+                {{ form_row(form.text) }}
+                {{ form_row(form.textarea) }}
+                {{ form_row(form.checkMe) }}
+                {{ form_row(form.color) }}
+                {{ form_row(form.amount) }}
             </div>
             <div class="col-md-6">
 
                 <div class="mb-3">
-                    <a href="https://symfony.com/doc/current/reference/forms/types/choice.html" class="h5 mb-1 d-block fw-bold"><i class="mdi mdi-link mr-1"></i> ChoiceType</a>
                     {{ form_row(form.select) }}
                     {{ form_row(form.selectExpanded) }}
                     <div class="mt-n2 mb-2">Options : <code>['expanded' => true]</code></div>
@@ -79,13 +59,13 @@
         </div>
         <div class="card-body row">
             <div class="col-md-6">
-                <h5 class="fw-bold">DatePickerType - use <a href="https://flatpickr.js.org/" class="text-primary">flatpickr</a> js libarary</h5>
+                <div class="mb-2">DatePickerType - use <a href="https://flatpickr.js.org/" class="text-primary">flatpickr</a> js libarary</div>
                 {{ form_row(form.date) }}
                 {{ form_row(form.dateTime) }}
                 <div class="mt-n2 mb-2">Options : <code>['enable_time' => true]</code></div>
             </div>
             <div class="col-md-6">
-                <h5 class="fw-bold">CkeditorType - use <a href="https://ckeditor.com/" class="text-primary">ckeditor</a> js libarary</h5>
+                <div class="mb-2">CkeditorType - use <a href="https://ckeditor.com/" class="text-primary">ckeditor</a> js libarary</div>
                 {{ form_row(form.richText) }}
             </div>
         </div>
@@ -96,7 +76,7 @@
             <h4 class="card-title">Collection form elements</h4>
         </div>
         <div class="card-body row">
-            <h5 class="fw-bold">UmbrellaCollectionType (extends <a href="https://symfony.com/doc/current/reference/forms/types/collection.html" class="text-primary">CollectionType</a>)</h5>
+            <div class="mb-2">UmbrellaCollectionType (extends <a href="https://symfony.com/doc/current/reference/forms/types/collection.html" class="text-primary">CollectionType</a>)</div>
             <div class="col-md-6">
                 {{ form_row(form.collectionItems) }}
             </div>

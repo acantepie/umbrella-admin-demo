@@ -73,7 +73,7 @@ class FormCommonType extends AbstractType
             'required' => false
         ]);
         $builder->add('inputGroupButton', TextType::class, [
-            'input_suffix' => '<button class="btn btn-secondary">Click</button>',
+            'input_suffix' => '<button class="btn btn-secondary" type="button">Click</button>',
             'required' => false
         ]);
 
