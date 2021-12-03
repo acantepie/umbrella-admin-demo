@@ -152,7 +152,7 @@ class AppFixtures extends Fixture
     private function loadNotifications(ObjectManager $manager)
     {
         $notification = new AdminNotification();
-        $notification->bgIcon = 'bg-danger';
+        $notification->iconColor = 'danger';
         $notification->icon = 'mdi mdi-umbrella';
         $notification->title = 'Notification are now available !';
         $notification->createdAt = new \DateTime('02/07/2021');

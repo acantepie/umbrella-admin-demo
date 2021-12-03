@@ -29,6 +29,8 @@ class AdminMenu extends BaseAdminMenu
             ->icon('uil-home')
             ->route('app_admin_default_about');
 
+        $r->add('components');
+
         $r->add('datatable')
             ->icon('uil-table')
             ->add('basic')
@@ -77,25 +79,25 @@ class AdminMenu extends BaseAdminMenu
             ->icon('uil-cog')
             ->route('app_admin_umbrellaconfig_index');
 
-        $r->add('pages')
-            ->icon('uil-layers')
-            ->add('login')
-                ->route('umbrella_admin_login')
-                ->end()
-            ->add('reset password')
-                ->route('umbrella_admin_security_passwordrequest')
-                ->end();
+        $r->add('pages');
+
+        $r->add('login')
+            ->route('umbrella_admin_login')
+            ->icon('uil-layers');
+        $r->add('reset password')
+            ->route('umbrella_admin_security_passwordrequest')
+            ->icon('uil-layers');
 
         if ($this->security->getUser()) {
-            $r->get('pages')
-                ->add('my profile')
-                    ->route('umbrella_admin_profile_index');
+            $r->add('my profile')
+                ->route('umbrella_admin_profile_index')
+                ->icon('uil-layers');
         }
 
-        $r->add('admin')
-            ->icon('uil-shield-plus')
-            ->add('users')
-                ->badge('crud')
-                ->route('umbrella_admin_user_index');
+        $r->add('crud');
+
+        $r->add('users')
+            ->icon('uil uil-user')
+            ->route('umbrella_admin_user_index');
     }
 }
