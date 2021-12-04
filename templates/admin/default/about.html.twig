@@ -1,67 +1,71 @@
 {% extends "@UmbrellaAdmin/layout.html.twig" %}
 
-{% block content %}
-    <div class="card">
-        <div class="card-header">
-            <h4 class="card-title">About framework</h4>
-        </div>
-        <div class="card-body">
-            <p>
-                <strong>Umbrella</strong> provide many components to easily create administration backends.<br>
-                All vendor was developed on Symfony 5.<br>
+{% block javascripts %}
+    {{ parent() }}
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+{% endblock %}
 
+{% block content %}
+    <div class="row">
+        <div class="col-md-10 col-xl-8 mx-auto">
+            <h1 class="text-center">Umbrella framework</h1>
+            <p class="lead text-center mb-4">Build your own admin.</p>
+        </div>
+    </div>
+
+    <div class="col-11 mx-auto">
+
+        <div class="text-center mb-1">
+            <a class="github-button" href="https://github.com/sponsors/acantepie" data-icon="octicon-heart" data-size="large" aria-label="Sponsor @acantepie on GitHub">Sponsor</a>
+            <a class="github-button" href="https://github.com/acantepie/umbrella" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star acantepie/umbrella on GitHub">Star</a>
+        </div>
+
+        <div class="my-4">
+            <h3>Introduction</h3>
+            <p class="lead">
+                Umbrella provide many components to easily create administration backends.<br>
                 Unlike <strong>EasyAdmin</strong> or <strong>Sonata</strong>, this framework is component oriented and doesn't use an abstraction layer for CRUD, that makes it very easy to understand.
             </p>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <h4 class="card-title"><a href="https://github.com/acantepie/umbrella-core" class="text-primary">umbrella-core</a> bundle</h4>
-        </div>
-        <div class="card-body">
-            <p>
-                Libraries of component, they can be used on back-office but also on front-office :
-            </p>
-
+            <hr>
+            <h3>Requirments</h3>
             <ul>
-                <li class="pb-2">
-                    <strong>Datatable</strong> : Datable creation component based on <a href="https://datatables.net/" class="text-primary">DataTable.js</a>.<br>
-                    Uses the same principle as Symfony FormT(Factory, Builder, Type) and supports a lot of features (Async loading, Tree view, Custom adapter, Form filter, ...)
-                </li>
-                <li class="pb-2">
-                    <strong>Menu / Breadcrumb</strong> : Menu / breadcrumb creation component.
-                </li>
-                <li class="pb-2">
-                    <strong>Form</strong> : Add some useful FormType and theme - UmbrellaChoiceType / UmbrellaEntityType, AutoCompleteType, DatePicker / DateTimepicker,  Collection, Ckeditor, ...
-                </li>
+                <li>PHP 7.4 or higher</li>
+                <li>PHP extensions: <code>json</code>, <code>mbstring</code>, <code>xml</code></li>
+                <li><a href="https://getcomposer.org/">composer</a></li>
             </ul>
+            <h3>Getting started</h3>
+            <hl-code class="language-bash">composer require umbrella2/adminbundle</hl-code>
+            <p>Read more on <a href="https://github.com/acantepie/umbrella/tree/master/docs">Documentation</a></p>
         </div>
-    </div>
 
-    <div class="card">
-        <div class="card-header">
-            <h4 class="card-title"><a href="https://github.com/acantepie/umbrella-admin" class="text-primary">umbrella-admin</a> bundle</h4>
-        </div>
-        <div class="card-body">
-            <p>
-                Contains all tools needed to create backends :
-            </p>
-
-            <ul>
-                <li class="pb-2">
-                    <strong>Admin theme and template</strong> : Based on <a href="https://tabler.io/">Tabler.io</a>.
-                </li>
-                <li class="pb-2">
-                    <strong>User management</strong> : Admin view to edit admin user, Profile view to edit your own account and security system to login and recover password.
-                </li>
-                <li class="pb-2">
-                    <strong>Maker</strong> : Create table <code>php bin/console make:admin:table</code> and tree <code>php bin/console make:admin:tree</code> view with Maker command.
-                </li>
-                <li class="pb-2">
-                    <strong>Notification manager</strong> : Lightweight notification system.
-                </li>
-            </ul>
+        <div class="my-4">
+            <h3>UI Plugins & Addons</h3>
+            <div class="row">
+                <div class="col-6 col-lg-4 col-xl-3 my-2">
+                    {% include "admin/default/plugins/_adminkit.html.twig" %}
+                </div>
+                <div class="col-6 col-lg-4 col-xl-3 my-2">
+                    {% include "admin/default/plugins/_datatable.html.twig" %}
+                </div>
+                <div class="col-6 col-lg-4 col-xl-3 my-2">
+                    {% include "admin/default/plugins/_jquery_treetable.html.twig" %}
+                </div>
+                <div class="col-6 col-lg-4 col-xl-3 my-2">
+                    {% include "admin/default/plugins/_tomselect.html.twig" %}
+                </div>
+                <div class="col-6 col-lg-4 col-xl-3 my-2">
+                    {% include "admin/default/plugins/_flatpickr.html.twig" %}
+                </div>
+                <div class="col-6 col-lg-4 col-xl-3 my-2">
+                    {% include "admin/default/plugins/_dragula.html.twig" %}
+                </div>
+                <div class="col-6 col-lg-4 col-xl-3 my-2">
+                    {% include "admin/default/plugins/_unicons.html.twig" %}
+                </div>
+                <div class="col-6 col-lg-4 col-xl-3 my-2">
+                    {% include "admin/default/plugins/_material_icons.html.twig" %}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

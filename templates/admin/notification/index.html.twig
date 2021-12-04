@@ -25,8 +25,8 @@
                 <div class="card-header">
                     <h4 class="card-title">Examples</h4>
                 </div>
-                <div class="card-body">
-                    <h4>Create a text notification</h4>
+                <div class="card-body border-bottom">
+                    <h5>Create a text notification</h5>
                     <form enctype="multipart/form-data" method="POST" data-mount="Form">
                         {{ umbrella_form_theme(new_notification_form) }}
                         {{ form_rest(new_notification_form) }}
@@ -38,7 +38,7 @@
                 </div>
                 <div class="card-body">
                     <form enctype="multipart/form-data" method="POST" data-mount="Form">
-                        <h4>Create and update a notification using <code>symfony/messenger</code></h4>
+                        <h5>Create and update a notification using <code>symfony/messenger</code></h5>
 
                         <div class="alert alert-primary">
                             Messenger is a Symfony component. See <a href="https://symfony.com/doc/current/messenger.html" target="_blank">Messenger: Sync & Queued Message Handling</a>

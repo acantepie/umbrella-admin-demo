@@ -9,12 +9,7 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
 
-    .addAliases({
-        umbrella_admin: path.join(__dirname, '/vendor/umbrella2/adminbundle/assets/')
-    })
-
-    .addEntry('front', './assets/front/front.js')
-    .addEntry('admin_highlight_code', './assets/admin/highlightCode.js')
+    .addEntry('admin', './assets/admin/main.js')
     .addEntry('admin_ckeditor', './assets/admin/ckeditor.js')
 
     .enableSassLoader()

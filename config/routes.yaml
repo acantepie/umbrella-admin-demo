@@ -1,9 +1,11 @@
-app_:
-  resource: "../src/Controller/"
-  type: annotation
-  prefix: /
-
 admin_:
   resource: "../src/Controller/Admin/"
   type: annotation
   prefix: /admin
+
+root:
+  path: /
+  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+  defaults:
+    path: /admin
+    permanent: false
