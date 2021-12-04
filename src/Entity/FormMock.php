@@ -141,6 +141,12 @@ class FormMock
     public ?SpaceMission $choiceMissionEntity = null;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\SpaceMissionClassification")
+     * @ORM\JoinColumn(onDelete="SET NULL")
+     */
+    public ?SpaceMissionClassification $choiceMissionClassificationEntity = null;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\SpaceMission")
      * @ORM\JoinColumn(onDelete="SET NULL")
      */

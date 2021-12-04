@@ -4,10 +4,12 @@ namespace App\Form;
 
 use App\Entity\FormMock;
 use App\Entity\SpaceMission;
+use App\Entity\SpaceMissionClassification;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\Form\AutocompleteType;
+use Umbrella\CoreBundle\Form\NestedTreeType;
 use Umbrella\CoreBundle\Form\UmbrellaChoiceType;
 use Umbrella\CoreBundle\Form\UmbrellaEntityType;
 
@@ -70,6 +72,12 @@ class FormSelectType extends AbstractType
         $builder->add('choiceMissionEntity', UmbrellaEntityType::class, [
             'label' => 'Select on doctrine entity',
             'class' => SpaceMission::class,
+            'required' => false,
+        ]);
+
+        $builder->add('choiceMissionClassificationEntity', NestedTreeType::class, [
+            'label' => 'Select on nested tree doctrine entity',
+            'class' => SpaceMissionClassification::class,
             'required' => false,
         ]);
 

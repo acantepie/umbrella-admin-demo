@@ -15,12 +15,12 @@
                     <div class="col-md-6">
                         {{ form_row(form.choiceMission) }}
                         {{ form_row(form.choiceMissions) }}
-                        <div class="mt-n2 mb-2">Options : <code>['multiple' => true]</code></div>
+                        <div class="mt-n2 mb-2"><code>['multiple' => true]</code></div>
                     </div>
                     <div class="col-md-6">
                         {{ form_row(form.choiceMissionGrouped) }}
                         {{ form_row(form.choiceMissionTemplated) }}
-                        <div class="mt-n2 mb-2">Options : <code>['expose' => fn($choice) => ['specie' => ...] , 'template' => '[[text]][[specie]];</code></div>
+                        <div class="mt-n2 mb-2"><code>['expose' => fn($choice) => ['specie' => ...] , 'template' => '[[text]][[specie]];</code></div>
                     </div>
                 </div>
                 {% include "admin/form/select/_choice_options.html.twig" %}
@@ -37,6 +37,10 @@
                     <div class="col-md-6">
                         {{ form_row(form.choiceMissionEntity) }}
                     </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.choiceMissionClassificationEntity) }}
+                        <div class="mt-n2 mb-2">Use <code>NestedTreeType</code> or options <code>template</code> and <code>expose</code> to get this result</div>
+                    </div>
                 </div>
                 {% include "admin/form/select/_entity_options.html.twig" %}
             </div>
@@ -47,6 +51,7 @@
                 <h4 class="card-title">AutoCompleteType</h4>
             </div>
             <div class="card-body">
+                <p>Selector with <b>async</b> loading.</p>
                 <div class="row">
                     <div class="col-md-6">
                         {{ form_row(form.asyncChoiceMission) }}
@@ -57,7 +62,7 @@
 {#                        {{ form_row(form.asyncChoiceMissionPaginated) }}#}
                     </div>
                 </div>
-                {% include "admin/form/select/_async_entity_options.html.twig" %}
+                {% include "admin/form/select/_autocomplete_options.html.twig" %}
             </div>
         </div>
 
