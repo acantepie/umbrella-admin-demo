@@ -89,7 +89,7 @@ class DataTableActionController extends BaseController
         $rowMove = RowReorder::createFromRequest($request);
         $rowMove->applyChanges($this->em(), SpaceMission::class, 'sequence');
 
-        return new JsResponse();
+        return $this->js();
     }
 
     // Export API
