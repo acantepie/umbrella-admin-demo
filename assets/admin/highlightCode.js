@@ -1,3 +1,5 @@
+import './highlightCode.scss'
+
 import highlightJs from 'highlight.js/lib/core'
 
 import yaml from 'highlight.js/lib/languages/yaml';
@@ -18,7 +20,10 @@ highlightJs.registerLanguage('php', php);
 import twig from 'highlight.js/lib/languages/twig';
 highlightJs.registerLanguage('twig', twig);
 
-export default class HighlightCode extends HTMLElement {
+import bash from 'highlight.js/lib/languages/bash';
+highlightJs.registerLanguage('bash', bash);
+
+class HighlightCode extends HTMLElement {
 
     constructor() {
         super()
@@ -28,3 +33,5 @@ export default class HighlightCode extends HTMLElement {
         highlightJs.highlightElement(this)
     }
 }
+
+customElements.define('hl-code', HighlightCode);

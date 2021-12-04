@@ -1,0 +1,13 @@
+@import "~highlight.js/scss/atom-one-dark-reasonable";
+
+hl-code {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+  white-space: pre;
+  margin-bottom: 1rem;
+
+  &.scroll {
+    max-height: 420px;
+  }
+}

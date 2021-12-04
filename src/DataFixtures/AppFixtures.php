@@ -153,7 +153,7 @@ class AppFixtures extends Fixture
     {
         $notification = new AdminNotification();
         $notification->iconColor = 'danger';
-        $notification->icon = 'mdi mdi-umbrella';
+        $notification->icon = 'mdi mdi-umbrella-outline';
         $notification->title = 'Notification are now available !';
         $notification->createdAt = new \DateTime('02/07/2021');
         $notification->url = $this->router->generate('app_admin_notification_index');
