@@ -1,2 +1,2 @@
-<a data-xhr="..." href>My link</a>
-<form data-xhr="..."></form>
+<a data-xhr="{{ path('handle_ajax') }}" href>My link</a>
+<form data-xhr="{{ path('handle_ajax_form') }}"></form>

@@ -1,0 +1,32 @@
+/**
+ * @Route("/ajax", name="handle_ajax")
+ */
+public function handleAjax()
+{
+    // display a success toast
+    return $this->js()->toastSuccess('Everything is going right');
+
+    // display an error toast
+    return $this->js()->toastError('Something goes wrong');
+
+    // open / update a modal
+    return $this->js()->modal('my_modal_template.html.twig', [ /* twig params */ ]);
+
+    // Update html in DOM
+    return $this->js()->update('.alert', 'Everything is going right');
+}
+
+/**
+ * @Route("/ajax-form", name="handle_ajax_form")
+ */
+public function handleAjaxForm(Request $request)
+{
+    $form = $this
+        ->createForm(FooType::class)
+        ->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        // Close current opened modal
+        return $this->js()->closeModal();
+    }
+}
