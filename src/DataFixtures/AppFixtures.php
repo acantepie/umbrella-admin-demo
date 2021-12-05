@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\RouterInterface;
+use function Symfony\Component\String\u;
 
 class AppFixtures extends Fixture
 {
@@ -44,14 +45,20 @@ class AppFixtures extends Fixture
 
     private function loadUser(ObjectManager $manager)
     {
-        $u = new AdminUser();
-        $u->firstname = 'John';
-        $u->lastname = 'Doe';
-        $u->email = 'john.doe@mail.com';
-        $u->plainPassword = $u->email;
-        $u->password = $this->userPasswordHasher->hashPassword($u, $u->plainPassword);
+        $content = file_get_contents(__DIR__ . '/data/user.json');
+        $json = json_decode($content, true);
 
-        $manager->persist($u);
+        foreach ($json as $row) {
+            $u = new AdminUser();
+            $u->firstname = $row['firstname'];
+            $u->lastname = $row['lastname'];
+            $u->active = $row['active'];
+            $u->email = sprintf('%s.%s@umbrella-corp.dev', u($u->firstname)->snake(), u($u->lastname)->snake());
+            $u->plainPassword = $u->email;
+            $u->password = $this->userPasswordHasher->hashPassword($u, $u->plainPassword);
+            $manager->persist($u);
+        }
+
         $manager->flush();
     }
 
