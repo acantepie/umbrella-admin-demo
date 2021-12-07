@@ -1,0 +1,4 @@
+# config/packages/umbrella_core.yaml
+umbrella_core:
+  form:
+    layout: 'default' # 'default' or 'horizontal'

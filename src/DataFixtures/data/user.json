@@ -1,0 +1,77 @@
+[
+  {
+    "firstname": "Leanne",
+    "lastname": "Graham",
+    "active": true
+  },
+  {
+    "firstname": "Ervin",
+    "lastname": "Howell",
+    "active": true
+  },
+  {
+    "firstname": "Clementine",
+    "lastname": "Bauch",
+    "active": true
+  },
+  {
+    "firstname": "Patricia",
+    "lastname": "Lebsack",
+    "active": true
+  },
+  {
+    "firstname": "Chelsey",
+    "lastname": "Dietrich",
+    "active": true
+  },
+  {
+    "firstname": "Dennis",
+    "lastname": "Schulist",
+    "active": false
+  },
+  {
+    "firstname": "Kurtis",
+    "lastname": "Weissnat",
+    "active": false
+  },
+  {
+    "firstname": "Nicholas",
+    "lastname": "Runolfsdottir V",
+    "active": true
+  },
+  {
+    "firstname": "Glenna",
+    "lastname": "Reichert",
+    "active": true
+  },
+  {
+    "firstname": "Clementina",
+    "lastname": "DuBuque",
+    "active": false
+  },
+  {
+    "firstname": "Janet",
+    "lastname": "Weaver",
+    "active": true
+  },
+  {
+    "firstname": "Emma",
+    "lastname": "Wong",
+    "active": true
+  },
+  {
+    "firstname": "Eve",
+    "lastname": "Holt",
+    "active": true
+  },
+  {
+    "firstname": "Charles",
+    "lastname": "Morris",
+    "active": true
+  },
+  {
+    "firstname": "Tracey",
+    "lastname": "Ramos",
+    "active": true
+  }
+]

@@ -3,7 +3,7 @@
 {% block content %}
     <div class="card">
         <div class="card-header">
-            <h4>Principle</h4>
+            <h4 class="card-title">Principle</h4>
         </div>
         <div class="card-body">
             <p>
@@ -24,7 +24,7 @@
                 <li>action : redirect &rightarrow; <code>window.location.href=...</code></li>
             </ul>
 
-            <p class="alert alert-info">
+            <p class="alert alert-primary">
                 Easiest way to return response in good format is to use the service <b>JsResponseBuilder</b> on Symfony controller.
             </p>
 
@@ -35,15 +35,19 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4><span class="text-primary">data-xhr</span> attribute</h4>
+                    <h4 class="card-title"><span class="text-primary">data-xhr</span> attribute</h4>
                 </div>
                 <div class="card-body">
                     <p>
                         This attribute will override the default behaviour of <b>link</b> or <b>form</b> and send an <b>Ajax</b> request to server on
                         <b>click</b> or on <b>submit</b>.<br>
                     </p>
-                    <hl-code class="language-xml">{{ source('admin/js/_async_link.txt') | e('html') }}</hl-code>
 
+                    <h5>On view : </h5>
+                    <hl-code class="language-twig">{{ source('admin/js/_async_link.txt') | e('html') }}</hl-code>
+
+                    <h5>On controller : </h5>
+                    <hl-code class="language-php">{{ source('admin/js/_async_controller.txt') | e('html') }}</hl-code>
                     <div>
                         {% for action, label in actions %}
                             <a href data-xhr="{{ path('app_admin_js_xhr', {'action' : action}) }}" class="btn btn-primary me-2 mb-2">
@@ -60,7 +64,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4><span class="text-primary">data-spinner</span> attribute</h4>
+                    <h4 class="card-title"><span class="text-primary">data-spinner</span> attribute</h4>
                 </div>
                 <div class="card-body">
                     <p>
@@ -80,7 +84,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4><span class="text-primary">data-confirm</span> attribute</h4>
+                    <h4 class="card-title"><span class="text-primary">data-confirm</span> attribute</h4>
                 </div>
                 <div class="card-body">
                     <p>
@@ -100,7 +104,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header d-flex align-items-center">
-                    <h4><span class="text-primary">data-xhr-id</span> attribute</h4>
+                    <h4 class="card-title"><span class="text-primary">data-xhr-id</span> attribute</h4>
                     <span class="badge bg-danger ms-auto">New</span>
                 </div>
                 <div class="card-body">
@@ -124,7 +128,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h4>JavaScript API</h4>
+            <h4 class="card-title">JavaScript API</h4>
         </div>
         <div class="card-body">
             <p>
@@ -138,7 +142,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h4>To go further...</h4>
+            <h4 class="card-title">To go further...</h4>
         </div>
         <div class="card-body">
             <h5>Error handling</h5>

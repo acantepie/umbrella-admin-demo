@@ -1,0 +1,95 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+<form enctype="multipart/form-data" method="POST" class="mb-3">
+
+    {{ umbrella_form_theme(form) }}
+    {{ form_errors(form) }}
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Basic form elements</h4>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+
+                {{ form_row(form.text) }}
+                {{ form_row(form.textarea) }}
+                {{ form_row(form.checkMe) }}
+                {{ form_row(form.color) }}
+                {{ form_row(form.amount) }}
+            </div>
+            <div class="col-md-6">
+
+                <div class="mb-3">
+                    {{ form_row(form.select) }}
+                    {{ form_row(form.selectExpanded) }}
+                    <div class="mt-n2 mb-2">Options : <code>['expanded' => true]</code></div>
+                    {{ form_row(form.selectMultiple) }}
+                    <div class="mt-n2 mb-2">Options : <code>['multiple' => true]</code></div>
+                    {{ form_row(form.selectMultipleExpanded) }}
+                    <div class="mt-n2 mb-2">Options : <code>['multiple' => true, 'expanded' => true]</code></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Addon form extension</h4>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                {{ form_row(form.inputGroupText) }}
+                <div class="mt-n2 mb-2">Options : <code>['input_prefix_text' => '@']</code></div>
+                {{ form_row(form.inputGroupButton) }}
+                <div class="mt-n2 mb-2">Options : <code>['input_suffix' => '&lt;button class="btn btn-secondary"&gt;Click&lt;/button&gt;']</code></div>
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.inputIcon) }}
+                <div class="mt-n2 mb-2">Options : <code>['input_addon_container_class' => 'input-icon', 'input_prefix' => '&lt;span class="input-icon-addon"&gt;&lt;i class="mdi mdi-magnify"&gt;&lt;/i&gt;&lt;/span&gt;'</code></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Advanced form elements</h4>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                <div class="mb-2">DatePickerType - use <a href="https://flatpickr.js.org/" class="text-primary">flatpickr</a> js libarary</div>
+                {{ form_row(form.date) }}
+                {{ form_row(form.dateTime) }}
+                <div class="mt-n2 mb-2">Options : <code>['enable_time' => true]</code></div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-2">CkeditorType - use <a href="https://ckeditor.com/" class="text-primary">ckeditor</a> js libarary</div>
+                {{ form_row(form.richText) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Collection form elements</h4>
+        </div>
+        <div class="card-body row">
+            <div class="mb-2">UmbrellaCollectionType (extends <a href="https://symfony.com/doc/current/reference/forms/types/collection.html" class="text-primary">CollectionType</a>)</div>
+            <div class="col-md-6">
+                {{ form_row(form.collectionItems) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.collectionOrderableItems) }}
+                <div class="mt-n2 mb-2">Options : <code>['sort_by' => 'order']</code></div>
+            </div>
+        </div>
+    </div>
+    {{ form_rest(form) }}
+
+    <button type="submit" class="btn btn-primary ms-auto">
+        <i class="mdi mdi-check me-1"></i> {{ 'Save' | trans }}
+    </button>
+</form>
+{% endblock %}

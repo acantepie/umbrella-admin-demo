@@ -1,0 +1,76 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+    {{ umbrella_form_theme(form) }}
+    <form enctype="multipart/form-data" method="POST" data-mount="Form">
+        {{ form_errors(form) }}
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">UmbrellaChoiceType</h4>
+            </div>
+            <div class="card-body">
+                <p>FormType based on <a href="https://symfony.com/doc/current/reference/forms/types/choice.html">ChoiceType</a> (use <a href="https://tom-select.js.org/">Tom select</a> js library).</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.choiceMission) }}
+                        {{ form_row(form.choiceMissions) }}
+                        <div class="mt-n2 mb-2"><code>['multiple' => true]</code></div>
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.choiceMissionGrouped) }}
+                        {{ form_row(form.choiceMissionTemplated) }}
+                        <div class="mt-n2 mb-2"><code>['expose' => fn($choice) => ['specie' => ...] , 'template' => '[[text]][[specie]];</code></div>
+                    </div>
+                </div>
+                {% include "admin/form/select/_choice_options.html.twig" %}
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">UmbrellaEntityType</h4>
+            </div>
+            <div class="card-body">
+                <p>FormType based on <a href="https://symfony.com/doc/current/reference/forms/types/choice.html">ChoiceType</a> and UmbrellaChoiceType.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.choiceMissionEntity) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.choiceMissionClassificationEntity) }}
+                        <div class="mt-n2 mb-2">Use <code>NestedTreeType</code> or options <code>template</code> and <code>expose</code> to get this result</div>
+                    </div>
+                </div>
+                {% include "admin/form/select/_entity_options.html.twig" %}
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">AutoCompleteType</h4>
+            </div>
+            <div class="card-body">
+                <p>Selector with <b>async</b> loading.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.asyncChoiceMission) }}
+                        {{ form_row(form.asyncChoiceMissions) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(form.asyncChoiceMissionTemplated) }}
+{#                        {{ form_row(form.asyncChoiceMissionPaginated) }}#}
+                    </div>
+                </div>
+                {% include "admin/form/select/_autocomplete_options.html.twig" %}
+            </div>
+        </div>
+
+        {{ form_rest(form) }}
+
+        <button type="submit" class="btn btn-primary ms-auto">
+            <i class="mdi mdi-check me-1"></i> {{ 'Save' | trans }}
+        </button>
+
+    </form>
+{% endblock %}

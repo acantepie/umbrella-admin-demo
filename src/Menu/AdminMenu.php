@@ -24,13 +24,14 @@ class AdminMenu extends BaseAdminMenu
     public function buildMenu(MenuBuilder $builder)
     {
         $r = $builder->root();
-        $u = $r->add('umbrella');
 
-        $u->add('about')
-            ->icon('mdi mdi-lifebuoy')
+        $r->add('about')
+            ->icon('uil-home')
             ->route('app_admin_default_about');
 
-        $u->add('datatable')
+        $r->add('components');
+
+        $r->add('datatable')
             ->icon('uil-table')
             ->add('basic')
                 ->route('app_admin_datatable_basic')
@@ -54,51 +55,49 @@ class AdminMenu extends BaseAdminMenu
                 ->route('app_admin_datatable_tree')
                 ->end();
 
-        $u->add('form')
+        $r->add('form')
             ->icon('uil-document-layout-center')
-            ->add('basic')
-                ->route('app_admin_form_basic')
+            ->add('theme')
+                ->route('app_admin_form_theme')
                 ->end()
-            ->add('select2')
-                ->route('app_admin_form_select2');
+            ->add('common')
+                ->route('app_admin_form_common')
+                ->end()
+            ->add('advanced_select')
+                ->route('app_admin_form_select');
 
-        $u->add('js_response')
+        $r->add('js_response')
             ->icon('uil-exchange')
             ->route('app_admin_js_index');
-        $u->add('menu')
+        $r->add('menu')
             ->icon('uil-bars')
             ->route('app_admin_menu_index');
-        $u->add('notification')
+        $r->add('notification')
             ->icon('uil-bell')
             ->route('app_admin_notification_index');
-        $u->add('tabs')
-            ->icon('uil-layers-alt')
-            ->route('app_admin_tabs_index');
-        $u->add('config_reference')
-            ->icon('mdi mdi-cogs')
+        $r->add('config_reference')
+            ->icon('uil-cog')
             ->route('app_admin_umbrellaconfig_index');
 
-        $r->add('pages')
-            ->add('login')
-                ->icon('mdi mdi-login')
-                ->route('umbrella_admin_login')
-                ->end()
-            ->add('reset password')
-                ->icon('mdi mdi-lock-reset')
-                ->route('umbrella_admin_security_passwordrequest')
-                ->end();
+        $r->add('pages');
+
+        $r->add('login')
+            ->route('umbrella_admin_login')
+            ->icon('uil-layers');
+        $r->add('reset password')
+            ->route('umbrella_admin_security_passwordrequest')
+            ->icon('uil-layers');
 
         if ($this->security->getUser()) {
-            $r->get('pages')
-                ->add('my profile')
-                    ->icon('uil-user')
-                    ->route('umbrella_admin_profile_index');
+            $r->add('my profile')
+                ->route('umbrella_admin_profile_index')
+                ->icon('uil-layers');
         }
 
-        $r->add('admin')
-            ->add('users')
-                ->badge('crud')
-                ->icon('uil-user')
-                ->route('umbrella_admin_user_index');
+        $r->add('crud');
+
+        $r->add('users')
+            ->icon('uil uil-user')
+            ->route('umbrella_admin_user_index');
     }
 }

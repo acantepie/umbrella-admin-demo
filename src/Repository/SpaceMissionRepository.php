@@ -22,39 +22,22 @@ class SpaceMissionRepository extends EntityRepository
     /**
      * @return SpaceMission[]
      */
-    public function search(string $q): array
+    public function search(string $q, ?int $page = null, int $pageLength = 10): array
     {
         $qb = $this->createQueryBuilder('e');
 
-        $q = trim($q);
-        if (!empty($q)) {
-            $qb->andWhere('LOWER(e.search) LIKE :search');
-            $qb->setParameter('search', '%' . strtolower($q) . '%');
+        /*        $q = trim($q);
+                if (!empty($q)) {
+                    $qb->andWhere('LOWER(e.search) LIKE :search');
+                    $qb->setParameter('search', '%' . strtolower($q) . '%');
+                }
+        */
+        if (null !== $page) {
+            $page = max(1, $page);
+            $qb->setMaxResults($pageLength);
+            $qb->setFirstResult(($page - 1) * $pageLength);
         }
 
         return $qb->getQuery()->getResult();
-    }
-
-    public function searchAndPaginate(string $q, int $page = 1, int $pageLength = 5): array
-    {
-        $qb = $this->createQueryBuilder('e');
-
-        $q = trim($q);
-        if (!empty($q)) {
-            $qb->andWhere('LOWER(e.search) LIKE :search');
-            $qb->setParameter('search', '%' . strtolower($q) . '%');
-        }
-
-        $countQb = clone $qb;
-        $countQb->select('COUNT(e.id)');
-
-        $page = max(1, $page);
-        $qb->setMaxResults($pageLength);
-        $qb->setFirstResult(($page - 1) * $pageLength);
-
-        return [
-            'results' => $qb->getQuery()->getResult(),
-            'more' => $countQb->getQuery()->getSingleScalarResult() > $page * $pageLength
-        ];
     }
 }

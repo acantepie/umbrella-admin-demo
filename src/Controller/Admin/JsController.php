@@ -46,7 +46,7 @@ class JsController extends BaseController
 
             case 'open_modal':
                 return $jsBuilder->modalHtml(
-                    '<div class="modal js-umbrella-modal fade show" tabindex="-1" role="dialog">'
+                    '<div class="modal fade show" tabindex="-1" role="dialog" id="umbrella-modal">'
                     . '<div class="modal-dialog modal-lg">'
                     . '<div class="modal-content">'
                     . '<div class="modal-body">'

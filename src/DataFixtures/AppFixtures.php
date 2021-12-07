@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\RouterInterface;
+use function Symfony\Component\String\u;
 
 class AppFixtures extends Fixture
 {
@@ -44,14 +45,20 @@ class AppFixtures extends Fixture
 
     private function loadUser(ObjectManager $manager)
     {
-        $u = new AdminUser();
-        $u->firstname = 'John';
-        $u->lastname = 'Doe';
-        $u->email = 'john.doe@mail.com';
-        $u->plainPassword = $u->email;
-        $u->password = $this->userPasswordHasher->hashPassword($u, $u->plainPassword);
+        $content = file_get_contents(__DIR__ . '/data/user.json');
+        $json = json_decode($content, true);
 
-        $manager->persist($u);
+        foreach ($json as $row) {
+            $u = new AdminUser();
+            $u->firstname = $row['firstname'];
+            $u->lastname = $row['lastname'];
+            $u->active = $row['active'];
+            $u->email = sprintf('%s.%s@umbrella-corp.dev', u($u->firstname)->snake(), u($u->lastname)->snake());
+            $u->plainPassword = $u->email;
+            $u->password = $this->userPasswordHasher->hashPassword($u, $u->plainPassword);
+            $manager->persist($u);
+        }
+
         $manager->flush();
     }
 
@@ -124,31 +131,26 @@ class AppFixtures extends Fixture
     private function loadFormMock(ObjectManager $manager)
     {
         $e = new FormMock();
-
-        // Date
         $e->date = new \DateTime();
+        $e->richText = 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.';
 
-        // select 2
-        $e->choiceMission = 'eel';
-        $e->choiceMissionReadonly = 'cat';
-        $e->choiceMissions = ['eel', 'cat'];
-        $e->choiceMissionEntity = $this->missions[0];
-        $e->asyncChoiceMissions->add($this->missions[2]);
-        $e->asyncChoiceMissions->add($this->missions[3]);
-        $e->asyncChoiceMissionPaginated = $this->missions[4];
-
-        $e->text1 = 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.';
-
-        // Collection
         $i = new FormMockItem();
         $i->label = 'NASA';
-        $i->description = 'National Aeronautics and Space Administration';
-        $e->addItem($i);
-
+        $i->date = new \DateTime('NOW');
+        $e->addCollectionItem($i);
         $i = new FormMockItem();
         $i->label = 'ESA';
-        $i->description = 'European Space Agency';
-        $e->addItem($i);
+        $e->addCollectionItem($i);
+
+        $i = new FormMockItem();
+        $i->label = 'NASA';
+        $i->order = 0;
+        $i->date = new \DateTime('NOW');
+        $e->addCollectionOrderableItem($i);
+        $i = new FormMockItem();
+        $i->label = 'ESA';
+        $i->order = 1;
+        $e->addCollectionOrderableItem($i);
 
         $manager->persist($e);
         $manager->flush();
@@ -157,8 +159,8 @@ class AppFixtures extends Fixture
     private function loadNotifications(ObjectManager $manager)
     {
         $notification = new AdminNotification();
-        $notification->bgIcon = 'bg-danger';
-        $notification->icon = 'mdi mdi-umbrella';
+        $notification->iconColor = 'danger';
+        $notification->icon = 'mdi mdi-umbrella-outline';
         $notification->title = 'Notification are now available !';
         $notification->createdAt = new \DateTime('02/07/2021');
         $notification->url = $this->router->generate('app_admin_notification_index');

@@ -1,0 +1,71 @@
+<a data-bs-toggle="collapse" data-bs-target="#autocomplete-options" class="card-link">
+    <h4 class="dropdown-toggle">Form options</h4>
+</a>
+<div class="collapse" id="autocomplete-options">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Option</th>
+            <th>Type</th>
+            <th>Default value</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>route</th>
+            <td>string</td>
+            <td>null</td>
+            <td><b>Mandatory</b>, route name of action returning results</td>
+        </tr>
+        <tr>
+            <th>route_params</th>
+            <td>array</td>
+            <td>[]</td>
+            <td>Route parameters</td>
+        </tr>
+        <tr>
+            <th>class</th>
+            <td>string</td>
+            <td>null</td>
+            <td><b>Mandatory</b>, doctrine entity classname.</td>
+        </tr>
+        <tr>
+            <th>multiple</th>
+            <td>bool</td>
+            <td>false</td>
+            <td>Multiple selection if true.</td>
+        </tr>
+        <tr>
+            <th>hide_selected</th>
+            <td>bool</td>
+            <td>true</td>
+            <td>Hide selected options on dropdown.</td>
+        </tr>
+        <tr>
+            <th>highlight</th>
+            <td>bool</td>
+            <td>true</td>
+            <td>Highlight searched options on dropdown.</td>
+        </tr>
+        <tr>
+            <th>max_items</th>
+            <td>int | null</td>
+            <td>null</td>
+            <td>Only effective if "multiple" is true : the max number of items the user can select.</td>
+        </tr>
+        <tr>
+            <th>template_html</th>
+            <td>string | null</td>
+            <td>null</td>
+            <td>Mustache template (by default, 2 variables are available : id and text).</td>
+        </tr>
+        <tr>
+            <th>template_selector</th>
+            <td>string | null</td>
+            <td>null</td>
+            <td>Css selector of mustache template in HTML dom.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

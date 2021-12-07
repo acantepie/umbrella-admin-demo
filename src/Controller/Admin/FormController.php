@@ -4,9 +4,9 @@ namespace App\Controller\Admin;
 
 use App\AppHelper;
 use App\Entity\FormMock;
-use App\Entity\SpaceMission;
-use App\Form\FormMockBasicType;
-use App\Form\FormMockSelect2Type;
+use App\Form\FormCommonType;
+use App\Form\FormSelectType;
+use App\Form\FormThemeType;
 use App\Repository\SpaceMissionRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,44 +20,53 @@ use Umbrella\CoreBundle\Controller\BaseController;
 class FormController extends BaseController
 {
     /**
-     * @Route("/basic/{layout}", defaults={"layout": "horizontal"})
+     * @Route("/theme")
      */
-    public function basic(AppHelper $helper, Request $request, string $layout)
+    public function theme()
     {
-        $entity = $helper->loadOne(FormMock::class);
-        $form = $this->createForm(FormMockBasicType::class, $entity);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->persistAndFlush($entity);
-
-            $this->toastSuccess(t('Item updated'));
-            return $this->redirectToRoute('app_admin_form_basic', ['layout' => $layout]);
-        }
-
-        return $this->render('admin/form/basic.html.twig', [
-            'form' => $form->createView(),
-            'layout' => $layout
+        return $this->render('admin/form/theme.html.twig', [
+            'form' => $this->createForm(FormThemeType::class)->createView()
         ]);
     }
 
     /**
-     * @Route("/select2")
+     * @Route("/common")
      */
-    public function select2(AppHelper $helper, Request $request)
+    public function common(AppHelper $helper, Request $request)
     {
         $entity = $helper->loadOne(FormMock::class);
-        $form = $this->createForm(FormMockSelect2Type::class, $entity);
+        $form = $this->createForm(FormCommonType::class, $entity);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->persistAndFlush($entity);
 
             $this->toastSuccess(t('Item updated'));
-            return $this->redirectToRoute('app_admin_form_select2');
+            return $this->redirectToRoute('app_admin_form_common');
         }
 
-        return $this->render('admin/form/select2.html.twig', [
+        return $this->render('admin/form/common.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/select")
+     */
+    public function select(AppHelper $helper, Request $request)
+    {
+        $entity = $helper->loadOne(FormMock::class);
+        $form = $this->createForm(FormSelectType::class, $entity);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->persistAndFlush($entity);
+
+            $this->toastSuccess(t('Item updated'));
+            return $this->redirectToRoute('app_admin_form_select');
+        }
+
+        return $this->render('admin/form/select.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -67,35 +76,19 @@ class FormController extends BaseController
      */
     public function loadMission(SpaceMissionRepository $repository, Request $request)
     {
-        $results = $repository->search($request->query->get('q'));
+        $q = $request->query->has('q');
+
+        if ($request->query->has('p')) {
+            $results = $repository->search($q, $request->query->getInt('p', 1), FormSelectType::MISSION_PAGE_LENGTH);
+        } else {
+            $results = $repository->search($q);
+        }
+
         $serialized = [];
 
         foreach ($results as $mission) {
             $serialized[] = [
-                'id' => $mission->id,
-                'text' => $mission->detail,
-                'description' => $mission->companyName,
-            ];
-        }
-
-        return new JsonResponse($serialized);
-    }
-
-    /**
-     * @Route("/load-mission/paginate")
-     */
-    public function loadMissionAndPaginate(SpaceMissionRepository $repository, Request $request)
-    {
-        $results = $repository->searchAndPaginate($request->query->get('q'), $request->query->getInt('page', 1));
-        $serialized = [
-            'results' => [],
-            'more' => $results['more']
-        ];
-
-        /** @var SpaceMission $mission */
-        foreach ($results['results'] as $mission) {
-            $serialized['results'][] = [
-                'id' => $mission->id,
+                'value' => $mission->id,
                 'text' => $mission->detail,
                 'description' => $mission->companyName,
             ];

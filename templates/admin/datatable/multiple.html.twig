@@ -1,15 +1,15 @@
 {% extends "@UmbrellaAdmin/layout.html.twig" %}
 
 {% block content %}
-    <div class="alert alert-info">
+    <div class="alert alert-primary">
         Try edit space mission ( <i class="mdi mdi-pencil"></i> icon ) and change his <b>mission status</b>.
     </div>
     {% for mission_status, table in tables %}
         <div class="card">
-            <a href="#card-{{ table.id }}" class="card-header text-reset" data-bs-toggle="collapse">
-                <h4><i class="mdi mdi-chevron-right"></i> Space missions filtered by <span class="text-primary">{{ mission_status }}</span></h4>
+            <a href="#card-{{ table.id }}" class="card-link card-header" data-bs-toggle="collapse">
+                <h4 class="card-title"><i class="mdi mdi-chevron-right"></i> Space missions filtered by <span class="text-primary">{{ mission_status }}</span></h4>
             </a>
-            <div id="card-{{ table.id }}" class="card-body collapse">
+            <div id="card-{{ table.id }}" class="card-datatable collapse">
                 {{ render_table(table) }}
             </div>
         </div>

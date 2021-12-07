@@ -1,0 +1,4 @@
+{{ umbrella_form_theme(form) }}
+{# will apply layout defined on config #}
+
+{{ form_rest(form) }}

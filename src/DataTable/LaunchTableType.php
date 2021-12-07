@@ -36,7 +36,7 @@ class LaunchTableType extends DataTableType
     public function buildTable(DataTableBuilder $builder, array $options = [])
     {
         $builder->setRowClass(function ($o) {
-            return $o->success ? '' : 'table-danger';
+            return $o->success ? '' : 'row-border-danger';
         });
 
         $builder->add('details_handle', DetailsHandleColumnType::class, [
@@ -98,7 +98,7 @@ class LaunchTableType extends DataTableType
     {
         $resolver->setDefaults([
             'orderable' => false,
-            'class' => 'table dt-responsive w-100'
+            'table-class' => 'table-centered'
         ]);
     }
 }
