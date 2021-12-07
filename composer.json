@@ -47,8 +47,8 @@
         "symfony/yaml": "^5.4",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0",
-        "umbrella2/adminbundle": "4.x-dev",
-        "umbrella2/corebundle": "4.x-dev"
+        "umbrella2/adminbundle": "dev-master",
+        "umbrella2/corebundle": "dev-master"
     },
     "require-dev": {
         "ekino/phpstan-banned-code": "^0.4.0",
