@@ -4,6 +4,8 @@ services:
   nginx:
     image: nginx:latest
     container_name: nginx
+    depends_on:
+      - symfony
     ports:
       - "8080:80"
     volumes:
