@@ -48,7 +48,7 @@
         "twig/twig": "^2.12|^3.0",
         "vich/uploader-bundle": "^1.18",
         "umbrella2/adminbundle": "dev-master",
-        "umbrella2/corebundle": "dev-master",
+        "umbrella2/corebundle": "dev-master"
     },
     "require-dev": {
         "ekino/phpstan-banned-code": "^0.4.0",
