@@ -1,5 +1,16 @@
 {% extends "@UmbrellaAdmin/layout.html.twig" %}
 
+{% block stylesheets %}
+    {# Hack bootstrap5 add invalid class on legend  #}
+    {{ parent() }}
+    <style>
+        legend.col-form-label {
+            padding: 0;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
 <form enctype="multipart/form-data" method="POST" class="mb-3">
 
@@ -67,6 +78,37 @@
             <div class="col-md-6">
                 <div class="mb-2">CkeditorType - use <a href="https://ckeditor.com/" class="text-primary">ckeditor</a> js libarary</div>
                 {{ form_row(form.richText) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">File form elements</h4>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                <div class="mb-4">
+                    {{ form_row(form.file) }}
+                    {% if entity.filename %}
+                        <a href="{{ asset('uploads/' ~ entity.filename) }}" download class="mt-n2 d-block">
+                            <i class="mdi mdi-download"></i> Download
+                        </a>
+                    {% endif %}
+                </div>
+                <div>
+                    <i class="mdi mdi-arrow-right"></i>
+                    Read more about <a href="https://symfony.com/doc/current/controller/upload_file.html">How to upload file</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-4">
+                    {{ form_row(form.vichFile) }}
+                </div>
+                <div>
+                    <i class="mdi mdi-arrow-right"></i>
+                    Read more about <a href="https://github.com/dustin10/VichUploaderBundle/blob/master/docs/index.md">VichUploaderBundle</a>
+                </div>
             </div>
         </div>
     </div>

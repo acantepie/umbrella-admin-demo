@@ -2,12 +2,14 @@
 
 namespace App\Controller\Admin;
 
-use App\AppHelper;
 use App\Entity\FormMock;
 use App\Form\FormCommonType;
 use App\Form\FormSelectType;
 use App\Form\FormThemeType;
 use App\Repository\SpaceMissionRepository;
+use App\Service\AppHelper;
+use App\Service\FileUploader;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,13 +34,19 @@ class FormController extends BaseController
     /**
      * @Route("/common")
      */
-    public function common(AppHelper $helper, Request $request)
+    public function common(AppHelper $helper, FileUploader $fileUploader, Request $request)
     {
         $entity = $helper->loadOne(FormMock::class);
         $form = $this->createForm(FormCommonType::class, $entity);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var ?UploadedFile $file */
+            $file = $form->get('file')->getData();
+            if ($file) {
+                $entity->filename = $fileUploader->upload($file);
+            }
+
             $this->persistAndFlush($entity);
 
             $this->toastSuccess(t('Item updated'));
@@ -46,7 +54,8 @@ class FormController extends BaseController
         }
 
         return $this->render('admin/form/common.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'entity' => $entity
         ]);
     }
 

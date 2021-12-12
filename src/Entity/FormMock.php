@@ -5,10 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Umbrella\CoreBundle\Model\IdTrait;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class FormMock
 {
@@ -174,6 +177,28 @@ class FormMock
      */
     public $asyncChoiceMissions;
 
+    // File
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    public ?string $filename = null;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    public ?\DateTimeInterface $fileUpdatedAt = null;
+
+    /**
+     * @Vich\UploadableField(mapping="uploads", fileNameProperty="vichFilename")
+     */
+    public ?File $vichFile = null;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    public ?string $vichFilename = null;
+
     public function __construct()
     {
         $this->collectionItems = new ArrayCollection();
@@ -203,5 +228,14 @@ class FormMock
     {
         $item->collectionOrderableParent = null;
         $this->collectionOrderableItems->removeElement($item);
+    }
+
+    public function setVichFile(?File $vichFile): void
+    {
+        $this->vichFile = $vichFile;
+
+        if (null !== $vichFile) {
+            $this->fileUpdatedAt = new \DateTimeImmutable();
+        }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 
