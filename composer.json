@@ -12,7 +12,6 @@
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "doctrine/doctrine-migrations-bundle": "^3.1",
-        "doctrine/orm": "2.9",
         "knplabs/knp-time-bundle": "^1.16",
         "phpdocumentor/reflection-docblock": "^5.2",
         "stof/doctrine-extensions-bundle": "^1.4",
