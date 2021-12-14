@@ -115,7 +115,7 @@ class FormMock
      */
     public Collection $collectionOrderableItems;
 
-    // Select 2
+    // Tom Select
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -176,6 +176,11 @@ class FormMock
      * )
      */
     public $asyncChoiceMissions;
+
+    /**
+     * @ORM\Column(type="array", nullable=false)
+     */
+    public array $tags = [];
 
     // File
 

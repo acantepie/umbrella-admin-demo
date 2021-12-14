@@ -134,6 +134,8 @@ class AppFixtures extends Fixture
         $e->date = new \DateTime();
         $e->richText = 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.';
 
+        $e->tags = ['NASA', 'ESA'];
+
         $i = new FormMockItem();
         $i->label = 'NASA';
         $i->date = new \DateTime('NOW');

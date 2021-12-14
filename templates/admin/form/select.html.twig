@@ -1,8 +1,15 @@
 {% extends "@UmbrellaAdmin/layout.html.twig" %}
 
 {% block content %}
-    {{ umbrella_form_theme(form) }}
-    <form enctype="multipart/form-data" method="POST" data-mount="Form">
+    <section class="content-bar pb-3 d-flex">
+        <button class="btn btn-primary action-save ms-auto" type="submit" form="form">
+            <i class="mdi mdi-check me-1"></i> {{ 'Save changes' | trans }}
+        </button>
+    </section>
+
+    <form method="post" id="form">
+
+        {{ umbrella_form_theme(form) }}
         {{ form_errors(form) }}
 
         <div class="card">
@@ -48,6 +55,20 @@
 
         <div class="card">
             <div class="card-header">
+                <h4 class="card-title">UmnbrellaTagType</h4>
+            </div>
+            <div class="card-body">
+                <p>Selector with option creation</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(form.tags) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
                 <h4 class="card-title">AutoCompleteType</h4>
             </div>
             <div class="card-body">
@@ -67,10 +88,5 @@
         </div>
 
         {{ form_rest(form) }}
-
-        <button type="submit" class="btn btn-primary ms-auto">
-            <i class="mdi mdi-check me-1"></i> {{ 'Save' | trans }}
-        </button>
-
     </form>
 {% endblock %}

@@ -1,0 +1,5 @@
+.content-bar {
+  position: sticky;
+  top: calc(65px + 1rem); // topbar-height
+  z-index: 1020;
+}

@@ -12,6 +12,7 @@ use Umbrella\CoreBundle\Form\AutocompleteType;
 use Umbrella\CoreBundle\Form\NestedTreeType;
 use Umbrella\CoreBundle\Form\UmbrellaChoiceType;
 use Umbrella\CoreBundle\Form\UmbrellaEntityType;
+use Umbrella\CoreBundle\Form\UmbrellaTagType;
 
 class FormSelectType extends AbstractType
 {
@@ -39,8 +40,7 @@ class FormSelectType extends AbstractType
         $builder->add('choiceMission', UmbrellaChoiceType::class, [
             'label' => 'Select',
             'choices' => $choices,
-            'multiple' => false,
-            'required' => true,
+            'required' => false,
         ]);
 
         // --- select multiple
@@ -112,6 +112,10 @@ class FormSelectType extends AbstractType
 //            'class' => SpaceMission::class,
 //            'required' => false
 //        ]);
+
+        $builder->add('tags', UmbrellaTagType::class, [
+            'required' => false
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

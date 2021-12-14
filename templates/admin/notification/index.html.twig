@@ -27,25 +27,22 @@
                 </div>
                 <div class="card-body border-bottom">
                     <h5>Create a text notification</h5>
-                    <form enctype="multipart/form-data" method="POST" data-mount="Form">
-                        {{ umbrella_form_theme(new_notification_form) }}
+                    {{ umbrella_form_theme(new_notification_form) }}
+                    <form method="post">
                         {{ form_rest(new_notification_form) }}
-
                         <button type="submit" class="btn btn-primary">
                             <i class="mdi mdi-send me-1"></i> Send
                         </button>
                     </form>
                 </div>
                 <div class="card-body">
-                    <form enctype="multipart/form-data" method="POST" data-mount="Form">
+                    <form method="post">
                         <h5>Create and update a notification using <code>symfony/messenger</code></h5>
-
                         <div class="alert alert-primary">
                             Messenger is a Symfony component. See <a href="https://symfony.com/doc/current/messenger.html" target="_blank">Messenger: Sync & Queued Message Handling</a>
                         </div>
                         {{ umbrella_form_theme(counter_form) }}
                         {{ form_rest(counter_form) }}
-
                         <button type="submit" class="btn btn-primary">
                             <i class="mdi mdi-send me-1"></i> Send
                         </button>
