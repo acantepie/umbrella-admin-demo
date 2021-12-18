@@ -1,0 +1,5 @@
+{# -- build breadcrumb -- #}
+{% set my_breadcrumb = get_breadcrumb('App\\Menu\\MyMenu', { ...build menu options }, ...children) %}
+
+{# -- render breadcrumb -- #}
+{{ render_breadcrumb(my_breadcrumb, { ... render options }) }}

@@ -1,0 +1,2 @@
+{# -- render breadcrumb -- #}
+{{ render_breadcrumb('App\\Menu\\MyMenu', { ... render options }) }}

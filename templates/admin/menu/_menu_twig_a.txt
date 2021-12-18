@@ -1,0 +1,7 @@
+{# -- build menu -- #}
+{# options are passed to buildMenu function #}
+{% set my_menu = get_menu('App\\Menu\\MyMenu', { ... options }) %}
+
+{# -- render menu -- #}
+{# options are passed to renderMenu function #}
+{{ render_menu(my_menu, { ... options }) }}

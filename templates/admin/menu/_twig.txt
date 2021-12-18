@@ -1,1 +1,0 @@
-{{ menu_render('App\Menu\MyMenu') }}

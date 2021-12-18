@@ -21,7 +21,7 @@ class AdminMenu extends BaseAdminMenu
         parent::__construct($twig, $configuration);
     }
 
-    public function buildMenu(MenuBuilder $builder)
+    public function buildMenu(MenuBuilder $builder, array $options)
     {
         $r = $builder->root();
 

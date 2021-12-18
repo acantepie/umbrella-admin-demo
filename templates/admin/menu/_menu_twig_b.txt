@@ -1,0 +1,3 @@
+{# -- render menu -- #}
+{# options are passed to renderMenu function #}
+{{ render_menu('App\\Menu\\MyMenu', { ... options }) }}
