@@ -89,7 +89,7 @@ class AdminMenu extends BaseAdminMenu
             ->icon('uil-layers');
 
         if ($this->security->getUser()) {
-            $r->add('my profile')
+            $r->add('my account')
                 ->route('umbrella_admin_profile_index')
                 ->icon('uil-layers');
         }
