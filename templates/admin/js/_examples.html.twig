@@ -1,0 +1,45 @@
+<div class="mb-4">
+    <h5>Modal</h5>
+
+    <div class="mb-2">
+        <a href="#controller-modal" data-bs-toggle="collapse">
+            <i class="mdi mdi-code-tags me-1"></i> Code Symfony Controller
+        </a>
+        <hl-code class="language-js collapse" id="controller-modal">{{ source('admin/js/_controller_modal.txt') | e('html') }}</hl-code>
+    </div>
+
+    <div>
+        <a href data-xhr="{{ path('app_admin_js_modal') }}" class="btn btn-primary">
+            Large modal
+        </a>
+        <a href data-xhr="{{ path('app_admin_js_smallmodal') }}" class="btn btn-primary">
+            Small modal
+        </a>
+        <a href data-xhr="{{ path('app_admin_js_formmodal') }}" class="btn btn-primary">
+            Modal with FormType
+        </a>
+    </div>
+</div>
+
+<div class="mb-4">
+    <h5>Offcanvas</h5>
+
+    <div class="mb-2">
+        <a href="#offcanvas-modal" data-bs-toggle="collapse">
+            <i class="mdi mdi-code-tags me-1"></i> Code Symfony Controller
+        </a>
+        <hl-code class="language-js collapse" id="offcanvas-modal">{{ source('admin/js/_controller_offcanvas.txt') | e('html') }}</hl-code>
+    </div>
+
+    <div>
+        <a href data-xhr="{{ path('app_admin_js_offcanvas') }}" class="btn btn-primary">
+            Offcanvas left
+        </a>
+        <a href data-xhr="{{ path('app_admin_js_rightoffcanvas') }}" class="btn btn-primary">
+            Offcanvas right
+        </a>
+        <a href data-xhr="{{ path('app_admin_js_formoffcanvas') }}" class="btn btn-primary">
+            Offcanvas with FormType
+        </a>
+    </div>
+</div>

@@ -2,6 +2,9 @@
 
 namespace App\Controller\Admin;
 
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
@@ -10,68 +13,104 @@ use Umbrella\CoreBundle\Controller\BaseController;
  */
 class JsController extends BaseController
 {
-    public const ACTIONS = [
-        'toast_success' => 'Success TOAST',
-        'toast_error' => 'Error TOAST',
-        'update_html' => 'Update DOM html',
-        'open_modal' => 'Open a modal'
-    ];
-
     /**
      * @Route("")
      */
     public function index()
     {
-        return $this->render('admin/js/index.html.twig', [
-            'actions' => self::ACTIONS
+        return $this->render('admin/js/index.html.twig');
+    }
+
+    // modal
+
+    /**
+     * @Route("/modal")
+     */
+    public function modal()
+    {
+        return $this->js()->modal('@UmbrellaCore/Modal/default.html.twig', [
+            'title' => 'A modal',
+            'content' => '...'
         ]);
     }
 
     /**
-     * @Route("/xhr/{action}")
+     * @Route("/small-modal")
      */
-    public function xhr(string $action = 'toast_success')
+    public function smallModal()
     {
-        $jsBuilder = $this->js();
-
-        switch ($action) {
-            case 'toast_success':
-                return $jsBuilder->toastSuccess('Hi ^^', 'Server say');
-
-            case 'toast_error':
-                return $jsBuilder->toastError('Hi ^^', 'Server say');
-
-            case 'update_html':
-                return $jsBuilder->updateHtml('#update-me', '<p class="alert alert-info">Hi  ^^</p>');
-
-            case 'open_modal':
-                return $jsBuilder->modalHtml(
-                    '<div class="modal fade show" tabindex="-1" role="dialog" id="umbrella-modal">'
-                    . '<div class="modal-dialog modal-lg">'
-                    . '<div class="modal-content">'
-                    . '<div class="modal-body">'
-                    . '<p class="alert alert-info">Hi ^^</p>'
-                    . '</div>'
-                    . '<div class="modal-footer">'
-                    . '<button type="button" class="btn btn-light" data-bs-dismiss="modal"><i class="mdi mdi-close me-1"></i> Fermer</button>'
-                    . '</div>'
-                    . '</div>'
-                    . '</div>'
-                    . '</div>'
-                );
-
-            default:
-                return $jsBuilder->toastError('This action is not implemented yet');
-        }
+        return $this->js()->modal('@UmbrellaCore/Modal/default.html.twig', [
+            'title' => 'A modal',
+            'content' => '...',
+            'class' => 'modal-sm'
+        ]);
     }
 
     /**
-     * @Route("/xhr-sleep/{sleep}")
+     * @Route("/form-modal")
      */
-    public function sleepXhr(int $sleep = 1)
+    public function formModal(Request $request)
     {
-        sleep($sleep);
-        return $this->js()
-            ->toastSuccess('Hi ^^', 'Server say');
+        $form = $this->createFormBuilder()
+            ->add('Recipient', TextType::class, ['required' => false])
+            ->add('message', TextareaType::class, ['required' => false])
+            ->getForm()
+            ->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            return $this->js()->closeModal();
+        }
+
+        return $this->js()->modal('@UmbrellaCore/Modal/form.html.twig', [
+            'title' => 'New message',
+            'class' => 'modal-sm',
+            'form' => $form->createView()
+        ]);
+    }
+
+    // offcanvas
+
+    /**
+     * @Route("/offcanvas")
+     */
+    public function offcanvas()
+    {
+        return $this->js()->offcanvas('@UmbrellaCore/Offcanvas/default.html.twig', [
+            'title' => 'Left offcanvas',
+            'content' => '...'
+        ]);
+    }
+
+    /**
+     * @Route("/right-offcanvas")
+     */
+    public function rightOffcanvas()
+    {
+        return $this->js()->offcanvas('@UmbrellaCore/Offcanvas/default.html.twig', [
+            'title' => 'Left offcanvas',
+            'class' => 'offcanvas-end',
+            'content' => '...'
+        ]);
+    }
+
+    /**
+     * @Route("/form-offcanvas")
+     */
+    public function formOffcanvas(Request $request)
+    {
+        $form = $this->createFormBuilder()
+            ->add('Recipient', TextType::class, ['required' => false])
+            ->add('message', TextareaType::class, ['required' => false])
+            ->getForm()
+            ->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            return $this->js()->closeOffcanvas();
+        }
+
+        return $this->js()->offcanvas('@UmbrellaCore/Offcanvas/form.html.twig', [
+            'title' => 'New message',
+            'form' => $form->createView()
+        ]);
     }
 }

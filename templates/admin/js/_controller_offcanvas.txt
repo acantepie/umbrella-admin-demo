@@ -1,0 +1,12 @@
+class MyController extends BaseController {
+
+    public function offcanvas()
+    {
+        return $this->js()->offcanvas('@UmbrellaCore/Offcanvas/default.html.twig', [
+            'class' => ...,
+            'title' => ...,
+            'content' => ...,
+            ...
+        ]);
+    }
+}

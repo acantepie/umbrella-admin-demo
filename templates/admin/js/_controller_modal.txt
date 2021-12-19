@@ -1,0 +1,23 @@
+class MyController extends BaseController {
+
+    public function modal()
+    {
+        return $this->js()->modal('@UmbrellaCore/Modal/default.html.twig', [
+            'class' => ...,
+            'title' => ...,
+            'content' => ...,
+            ...
+        ]);
+    }
+
+    public function formModal()
+    {
+        $form = $this->createForm(...)
+
+        return $this->js()->modal('@UmbrellaCore/Modal/form.html.twig', [
+            'form' => $form->createView(),
+            'form_layout' => 'horizontal', // or 'default'
+            ...
+        ]);
+    }
+}

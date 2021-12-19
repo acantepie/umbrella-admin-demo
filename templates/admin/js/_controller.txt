@@ -1,0 +1,16 @@
+class MyController extends BaseController {
+
+    public function myAction()
+    {
+        return new JsonResponse([
+            ['action' => 'action1', 'params' => ...],
+            ['action' => 'action2', 'params' => ...],
+        ]);
+
+        // or use js() helper
+        // Your controller must extends Umbrella\CoreBundle\Controller\BaseController
+        return $this->js()
+            ->action1(...params)
+            ->action2(...params);
+    }
+}

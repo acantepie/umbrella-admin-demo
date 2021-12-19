@@ -3,13 +3,10 @@ import AjaxUtils from 'umbrella_core/utils/AjaxUtils';
 AjaxUtils.request({
     'method' : 'get',
     'url' : 'umbrella.dev/foo/bar',
-    'confirm' : '...',
-    'xhr-id' : 'my-id',
-    'spinner' : true,
-    'data' : { ...},
+    'data' : {},
+    'spinner' : true, // display a spinner until server respond
+    'confirm' : 'Are you sure ?' // open a confirm modal before perform ajax request
+    'xhr-id' : 'my-id' // prevent multiple ajax request with same id
     ...
-    // All $.ajax options are available
+    // Any other option available with $.ajax method
 });
-
-AjaxUtils.get({...});
-AjaxUtils.post({...});

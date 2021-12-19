@@ -1,0 +1,19 @@
+<!-- with anchor -->
+<a
+    data-xhr="umbrella.dev/foo/bar"
+    data-spinner="true"
+    data-confirm="Are you sure ?"
+    href>
+    My link</a>
+
+<!-- with form -->
+<form
+    data-xhr="umbrella.dev/foo/bar"
+    data-spinner="true"
+    data-confirm="Are you sure ?"
+    method="post"
+    >
+</form>
+
+<!-- work with all html element -->
+<div data-xhr="...."></div>
