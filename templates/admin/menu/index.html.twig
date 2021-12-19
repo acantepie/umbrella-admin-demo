@@ -1,101 +1,103 @@
 {% extends "@UmbrellaAdmin/layout.html.twig" %}
 
 {% block content %}
-    <div class="container">
-        <div class="card">
-            <a href="#create" class="card-link card-header collapsed" data-bs-toggle="collapse" aria-expanded="true">
-                <h4 class="card-title"><i class="mdi mdi-chevron-right"></i> How create a menu</h4>
-            </a>
-            <div class="card-body collapse show" id="create">
-                <div class="mb-4">
-                    <h4>1 - Create menu type</h4>
-                    <hl-code class="language-php">{{  source('admin/menu/_menu.txt') }}</hl-code>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">How create a menu</h4>
                 </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <h4>1 - Create menu type</h4>
+                        <hl-code class="language-php">{{  source('admin/menu/_menu.txt') }}</hl-code>
+                    </div>
 
-                <div class="mb-4">
-                    <h4>2 - Render menu on twig</h4>
-                    <div class="accordion" id="menu-methods">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menu-method-a" aria-expanded="false">
-                                    Method a)
-                                </button>
-                            </h2>
-                            <div id="menu-method-a" class="accordion-collapse collapse" data-bs-parent="#menu-methods">
-                                <hl-code class="language-yaml mb-0">{{  source('admin/menu/_menu_twig_a.txt') }}</hl-code>
+                    <div class="mb-4">
+                        <h4>2 - Render menu on twig</h4>
+                        <div class="accordion" id="menu-methods">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menu-method-a" aria-expanded="false">
+                                        Method a)
+                                    </button>
+                                </h2>
+                                <div id="menu-method-a" class="accordion-collapse collapse" data-bs-parent="#menu-methods">
+                                    <hl-code class="language-yaml mb-0">{{  source('admin/menu/_menu_twig_a.txt') }}</hl-code>
+                                </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menu-method-b" aria-expanded="false">
-                                    Method b)
-                                </button>
-                            </h2>
-                            <div id="menu-method-b" class="accordion-collapse collapse" data-bs-parent="#menu-methods">
-                                <hl-code class="language-yaml mb-0">{{  source('admin/menu/_menu_twig_b.txt') }}</hl-code>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menu-method-b" aria-expanded="false">
+                                        Method b)
+                                    </button>
+                                </h2>
+                                <div id="menu-method-b" class="accordion-collapse collapse" data-bs-parent="#menu-methods">
+                                    <hl-code class="language-yaml mb-0">{{  source('admin/menu/_menu_twig_b.txt') }}</hl-code>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="mb-4">
-                    <h4>3 - Render breadcrumb on twig</h4>
-                    <div class="accordion" id="bc-methods">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bc-method-a" aria-expanded="false">
-                                    Method a)
-                                </button>
-                            </h2>
-                            <div id="bc-method-a" class="accordion-collapse collapse" data-bs-parent="#bc-methods">
-                                <hl-code class="language-yaml mb-0">{{  source('admin/menu/_breadcrumb_twig_a.txt') }}</hl-code>
+                    <div class="mb-4">
+                        <h4>3 - Render breadcrumb on twig</h4>
+                        <div class="accordion" id="bc-methods">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bc-method-a" aria-expanded="false">
+                                        Method a)
+                                    </button>
+                                </h2>
+                                <div id="bc-method-a" class="accordion-collapse collapse" data-bs-parent="#bc-methods">
+                                    <hl-code class="language-yaml mb-0">{{  source('admin/menu/_breadcrumb_twig_a.txt') }}</hl-code>
+                                </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bc-method-b" aria-expanded="false">
-                                    Method b)
-                                </button>
-                            </h2>
-                            <div id="bc-method-b" class="accordion-collapse collapse" data-bs-parent="#bc-methods">
-                                <hl-code class="language-yaml mb-0">{{  source('admin/menu/_breadcrumb_twig_b.txt') }}</hl-code>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bc-method-b" aria-expanded="false">
+                                        Method b)
+                                    </button>
+                                </h2>
+                                <div id="bc-method-b" class="accordion-collapse collapse" data-bs-parent="#bc-methods">
+                                    <hl-code class="language-yaml mb-0">{{  source('admin/menu/_breadcrumb_twig_b.txt') }}</hl-code>
+                                </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bc-method-c" aria-expanded="false">
-                                    Method c)
-                                </button>
-                            </h2>
-                            <div id="bc-method-c" class="accordion-collapse collapse" data-bs-parent="#bc-methods">
-                                <hl-code class="language-yaml mb-0">{{  source('admin/menu/_breadcrumb_twig_c.txt') }}</hl-code>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bc-method-c" aria-expanded="false">
+                                        Method c)
+                                    </button>
+                                </h2>
+                                <div id="bc-method-c" class="accordion-collapse collapse" data-bs-parent="#bc-methods">
+                                    <hl-code class="language-yaml mb-0">{{  source('admin/menu/_breadcrumb_twig_c.txt') }}</hl-code>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">How use menu on admin</h4>
+                </div>
+                <div class="card-body">
+                    <p>
+                        The default menu used on Admin is <code>Umbrella\AdminBundle\Menu\BaseAdminMenu</code>
+                    </p>
 
-        <div class="card">
-            <a href="#admin-menu" class="card-link card-header collapsed" data-bs-toggle="collapse" aria-expanded="true">
-                <h4 class="card-title"><i class="mdi mdi-chevron-right"></i> How use menu on admin</h4>
-            </a>
-            <div class="card-body collapse show" id="admin-menu">
-                <p>
-                    The default menu used on Admin is <code>Umbrella\AdminBundle\Menu\BaseAdminMenu</code>
-                </p>
+                    <p>
+                        To use your own, you have to specify FQCN menu on config :
+                    </p>
+                    <hl-code class="language-yaml">{{ source('admin/menu/_admin_config.txt') }}</hl-code>
 
-                <p>
-                    To use your own, you have to specify FQCN menu on config :
-                </p>
-                <hl-code class="language-yaml">{{ source('admin/menu/_admin_config.txt') }}</hl-code>
-
-                <p>
-                    This is an example about how customize menu with the admin template :
-                </p>
-                <hl-code class="language-twig">{{ source('admin/menu/_customize.txt') }}</hl-code>
+                    <p>
+                        This is an example about how customize menu with the admin template :
+                    </p>
+                    <hl-code class="language-twig">{{ source('admin/menu/_customize.txt') }}</hl-code>
+                </div>
             </div>
         </div>
     </div>
-
 {% endblock %}
