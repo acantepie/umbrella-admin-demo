@@ -82,13 +82,13 @@ class JsController extends BaseController
     }
 
     /**
-     * @Route("/right-offcanvas")
+     * @Route("/left-offcanvas")
      */
-    public function rightOffcanvas()
+    public function leftOffcanvas()
     {
         return $this->js()->offcanvas('@UmbrellaCore/Offcanvas/default.html.twig', [
             'title' => 'Left offcanvas',
-            'class' => 'offcanvas-end',
+            'class' => 'offcanvas-start',
             'content' => '...'
         ]);
     }
