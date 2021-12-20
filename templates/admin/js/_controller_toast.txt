@@ -1,0 +1,13 @@
+class MyController extends BaseController {
+
+    public function success()
+    {
+        return $this->js()->toastSuccess('Toast text here...', 'Toast title here...');
+        // or $this->js()->toast('success', 'Toast text here...', 'Toast title here...');
+    }
+
+    public function error()
+    {
+        return $this->js()->toastError('Toast text here...', 'Toast title here...');
+    }
+}

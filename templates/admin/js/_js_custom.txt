@@ -1,0 +1,5 @@
+<script>
+    umbrella.jsResponseHandler.registerAction('alert', (params) => {
+        alert(params.text)
+    });
+</script>

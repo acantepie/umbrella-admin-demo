@@ -68,6 +68,19 @@ class JsController extends BaseController
         ]);
     }
 
+    /**
+     * @Route("/sleep-modal")
+     */
+    public function sleepModal()
+    {
+        \sleep(1);
+
+        return $this->js()->modal('@UmbrellaCore/Modal/default.html.twig', [
+            'title' => 'A modal',
+            'content' => '...'
+        ]);
+    }
+
     // offcanvas
 
     /**
@@ -112,5 +125,64 @@ class JsController extends BaseController
             'title' => 'New message',
             'form' => $form->createView()
         ]);
+    }
+
+    // toast
+
+    /**
+     * @Route("/success-toast")
+     */
+    public function successToast()
+    {
+        return $this->js()->toastSuccess('...', 'Success toast');
+    }
+
+    /**
+     * @Route("/error-toast")
+     */
+    public function errorToast()
+    {
+        return $this->js()->toastError('...', 'Error toast');
+    }
+
+    // dom
+
+    /**
+     * @Route("/update-dom")
+     */
+    public function updateDOM()
+    {
+        $now = new \DateTime();
+        $h = sprintf('<div class="alert alert-info my-2">Server time %s</div>', $now->format(\DateTimeInterface::ISO8601));
+
+        return $this->js()->updateHtml('#alert-stack', $h);
+    }
+
+    /**
+     * @Route("/remove-dom")
+     */
+    public function removeDOM()
+    {
+        return $this->js()->remove('#alert-stack > *');
+    }
+
+    // web components
+
+    /**
+     * @Route("/toggle-menu")
+     */
+    public function toggleMenu()
+    {
+        return $this->js()->callWebComponent('[is=umbrella-sidebar]', 'toggle');
+    }
+
+    // custom
+
+    /**
+     * @Route("/custom")
+     */
+    public function custom()
+    {
+        return $this->js()->add('alert', ['text' => '...']);
     }
 }
