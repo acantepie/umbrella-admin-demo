@@ -111,7 +111,7 @@ class FormMock
     /**
      * @var FormMockItem[]|ArrayCollection
      * @ORM\OneToMany(targetEntity="FormMockItem", mappedBy="collectionOrderableParent", orphanRemoval=true, cascade={"ALL"})
-     * @ORM\OrderBy({"order": "ASC"})
+     * @ORM\OrderBy({"position": "ASC"})
      */
     public Collection $collectionOrderableItems;
 

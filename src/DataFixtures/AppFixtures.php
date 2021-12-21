@@ -146,12 +146,12 @@ class AppFixtures extends Fixture
 
         $i = new FormMockItem();
         $i->label = 'NASA';
-        $i->order = 0;
+        $i->position = 0;
         $i->date = new \DateTime('NOW');
         $e->addCollectionOrderableItem($i);
         $i = new FormMockItem();
         $i->label = 'ESA';
-        $i->order = 1;
+        $i->position = 1;
         $e->addCollectionOrderableItem($i);
 
         $manager->persist($e);

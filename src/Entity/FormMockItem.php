@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\CoreBundle\Model\IdTrait;
-use Umbrella\CoreBundle\Model\OrderTrait;
 
 /**
  * @ORM\Entity
@@ -12,7 +11,11 @@ use Umbrella\CoreBundle\Model\OrderTrait;
 class FormMockItem
 {
     use IdTrait;
-    use OrderTrait;
+
+    /**
+     * @ORM\Column(type="smallint", options={"default": 0})
+     */
+    public int $position = 0;
 
     /**
      * @ORM\ManyToOne(targetEntity="FormMock", inversedBy="collectionItems")

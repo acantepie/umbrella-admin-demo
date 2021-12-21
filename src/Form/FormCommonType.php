@@ -105,7 +105,7 @@ class FormCommonType extends AbstractType
 
         $builder->add('collectionOrderableItems', UmbrellaCollectionType::class, [
             'entry_type' => FormItemType::class,
-            'sort_by' => 'order',
+            'sort_by' => 'position',
         ]);
 
         // File
