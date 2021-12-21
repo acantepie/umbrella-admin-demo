@@ -3,4 +3,3 @@ stof_doctrine_extensions:
     orm:
         default:
             tree: true
-            timestampable: true
