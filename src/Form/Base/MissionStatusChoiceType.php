@@ -20,7 +20,7 @@ class MissionStatusChoiceType extends AbstractType
                     'color' => SpaceMission::STATUS_COLORS[$choice]
                 ];
             },
-            'choice_label' => fn($c) => $c,
+            'choice_label' => fn ($c) => $c,
             'template' => '<i class="mdi mdi-circle text-[[ color ]]"></i> [[ text ]]',
         ]);
     }
