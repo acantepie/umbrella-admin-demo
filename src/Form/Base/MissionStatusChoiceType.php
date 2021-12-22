@@ -14,13 +14,13 @@ class MissionStatusChoiceType extends AbstractType
         $resolver->setDefaults([
             'label' => 'Mission status',
             'choices' => SpaceMission::MISSION_STATUSES,
-            'choices_as_values' => true,
             'translation_domain' => false,
             'expose' => function ($choice) {
                 return [
                     'color' => SpaceMission::STATUS_COLORS[$choice]
                 ];
             },
+            'choice_label' => fn($c) => $c,
             'template' => '<i class="mdi mdi-circle text-[[ color ]]"></i> [[ text ]]',
         ]);
     }
