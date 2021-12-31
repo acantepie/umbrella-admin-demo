@@ -6,31 +6,20 @@ use App\DataTable\Column\CostColumnType;
 use App\DataTable\Column\LocationColumnType;
 use App\DataTable\Column\StatusColumnType;
 use App\Entity\SpaceMission;
-use App\Form\Base\MissionStatusChoiceType;
 use Doctrine\ORM\QueryBuilder;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\DataTable\Adapter\EntityAdapter;
 use Umbrella\CoreBundle\DataTable\Column\DateColumnType;
 use Umbrella\CoreBundle\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\DataTable\DataTableType;
-use Umbrella\CoreBundle\Form\DatepickerType;
 use Umbrella\CoreBundle\Form\SearchType;
 
-class SpaceMissionTableType extends DataTableType
+class SpaceMissionDraggableTableType extends DataTableType
 {
     public function buildTable(DataTableBuilder $builder, array $options)
     {
         $builder
-            ->addFilter('search', SearchType::class)
-            ->addFilter('from', DatepickerType::class, [
-                'input_prefix_text' => 'From'
-            ])
-            ->addFilter('to', DatepickerType::class, [
-                'input_prefix_text' => 'To'
-            ])
-            ->addFilter('missionStatus', MissionStatusChoiceType::class, [
-                'required' => false,
-                'placeholder' => 'Mission status'
-            ]);
+            ->addFilter('search', SearchType::class);
 
         $builder
             ->add('date', DateColumnType::class, [
@@ -52,21 +41,18 @@ class SpaceMissionTableType extends DataTableType
                     $qb->setParameter('search', '%' . $formData['search'] . '%');
                 }
 
-                if (isset($formData['missionStatus'])) {
-                    $qb->andWhere('e.missionStatus = :missionStatus');
-                    $qb->setParameter('missionStatus', $formData['missionStatus']);
-                }
-
-                if (isset($formData['from'])) {
-                    $qb->andWhere('e.date >= :from');
-                    $qb->setParameter('from', $formData['from']);
-                }
-
-                if (isset($formData['to'])) {
-                    $qb->andWhere('e.date <= :to');
-                    $qb->setParameter('to', $formData['to']);
-                }
+                $qb->orderBy('e.sequence', 'ASC');
             }
+        ]);
+
+        // Enable row reorder plugin
+        $builder->setRowReorderUrl('app_admin_datatableaction_rowreorder');
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'orderable' => false
         ]);
     }
 }

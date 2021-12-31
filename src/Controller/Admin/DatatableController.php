@@ -4,12 +4,15 @@ namespace App\Controller\Admin;
 
 use App\DataTable\LaunchTableType;
 use App\DataTable\SpaceMissionClassificationTableType;
+use App\DataTable\SpaceMissionDraggableTableType;
+use App\DataTable\SpaceMissionEditableTableType;
+use App\DataTable\SpaceMissionSelectableTableType;
 use App\DataTable\SpaceMissionTableType;
 use App\Entity\SpaceMission;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use function Symfony\Component\String\u;
 use Umbrella\CoreBundle\Controller\BaseController;
-use Umbrella\CoreBundle\Utils\Utils;
 
 /**
  * @Route("/datatable")
@@ -51,13 +54,28 @@ class DatatableController extends BaseController
     }
 
     /**
+     * @Route("/selectable")
+     */
+    public function selectable(Request $request)
+    {
+        $table = $this->createTable(SpaceMissionSelectableTableType::class);
+        $table->handleRequest($request);
+
+        if ($table->isCallback()) {
+            return $table->getCallbackResponse();
+        }
+
+        return $this->render('admin/datatable/selectable.html.twig', [
+            'table' => $table,
+        ]);
+    }
+
+    /**
      * @Route("/draggable")
      */
     public function draggable(Request $request)
     {
-        $table = $this->createTable(SpaceMissionTableType::class, [
-            'row_reorder' => true
-        ]);
+        $table = $this->createTable(SpaceMissionDraggableTableType::class);
         $table->handleRequest($request);
 
         if ($table->isCallback()) {
@@ -74,10 +92,7 @@ class DatatableController extends BaseController
      */
     public function editable(Request $request)
     {
-        $table = $this->createTable(SpaceMissionTableType::class, [
-            'exportable' => true,
-            'editable' => true,
-        ]);
+        $table = $this->createTable(SpaceMissionEditableTableType::class);
         $table->handleRequest($request);
 
         if ($table->isCallback()) {
@@ -96,12 +111,10 @@ class DatatableController extends BaseController
     {
         $tables = [];
         foreach (SpaceMission::MISSION_STATUSES as $status) {
-            $table = $this->createTable(SpaceMissionTableType::class, [
-                'editable' => true,
-                'show_mission_status_filter' => false,
-                'mission_status' => $status,
-                'id' => 'space_mission_' . Utils::to_underscore($status),
-                'page_length' => 10
+            $table = $this->createTable(SpaceMissionEditableTableType::class, [
+                'id' => 'space_mission_' . u($status)->snake(),
+                'page_length' => 10,
+                'mission_status' => $status
             ]);
             $table->handleRequest($request);
 
@@ -122,20 +135,16 @@ class DatatableController extends BaseController
      */
     public function modal()
     {
-        return $this->render('admin/datatable/modal.html.twig', [
-            'statuses' => SpaceMission::MISSION_STATUSES
-        ]);
+        return $this->render('admin/datatable/modal.html.twig');
     }
 
     /**
-     * @Route("/xhr-modal/{status}")
+     * @Route("/open-modal")
      */
-    public function xhrModal(Request $request, string $status)
+    public function openModal(Request $request)
     {
         $table = $this->createTable(SpaceMissionTableType::class, [
-            'show_mission_status_filter' => false,
-            'mission_status' => $status,
-            'load_url' => $this->generateUrl('app_admin_datatable_xhrmodal', ['status' => $status]),
+            'load_route' => 'app_admin_datatable_openmodal',
             'page_length' => 10
         ]);
         $table->handleRequest($request);
@@ -145,7 +154,6 @@ class DatatableController extends BaseController
         }
 
         return $this->js()->modal('admin/datatable/_modal.html.twig', [
-            'status' => $status,
             'table' => $table
         ]);
     }

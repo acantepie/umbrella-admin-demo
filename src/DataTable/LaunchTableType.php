@@ -8,7 +8,7 @@ use function Symfony\Component\String\u;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Umbrella\CoreBundle\DataTable\Adapter\AdapterException;
 use Umbrella\CoreBundle\DataTable\Column\BooleanColumnType;
-use Umbrella\CoreBundle\DataTable\Column\DetailsHandleColumnType;
+use Umbrella\CoreBundle\DataTable\Column\DetailsColumnType;
 use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
 use Umbrella\CoreBundle\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\DataTable\DataTableType;
@@ -30,34 +30,14 @@ class LaunchTableType extends DataTableType
         $this->client = $client;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildTable(DataTableBuilder $builder, array $options = [])
     {
         $builder->setRowClass(function ($o) {
             return $o->success ? '' : 'row-border-danger';
         });
 
-        $builder->add('details_handle', DetailsHandleColumnType::class, [
-            'render_details' => function ($o) {
-                if (!$o->details && !$o->failures) {
-                    return '';
-                }
-
-                $h = '<dl class="row mb-0">';
-
-                $h .= '<dt class="col-2">Details</dt>';
-                $h .= sprintf('<dd class="col-10">%s</dd>', $o->details);
-
-                if ($o->failures) {
-                    $h .= '<dt class="col-2">Failure</dt>';
-                    $h .= sprintf('<dd class="col-10">%s</dd>', $o->failures[0]->reason);
-                }
-
-                $h .= '</dl>';
-                return $h;
-            }
+        $builder->add('__more__', DetailsColumnType::class, [
+            'render_details' => [$this, 'renderDetails']
         ]);
 
         $builder->add('date_utc', PropertyColumnType::class, [
@@ -73,25 +53,51 @@ class LaunchTableType extends DataTableType
             }
         ]);
 
-        $builder->useAdapter(function (DataTableState $state) {
-            try {
-                $response = $this->client->request('POST', 'https://api.spacexdata.com/v4/launches/query', [
-                    'timeout' => 3,
-                    'json' => [
-                        'options' => [
-                            'offset' => $state->getStart(),
-                            'limit' => $state->getLength(),
-                        ]
+        $builder->useAdapter([$this, 'getResult']);
+    }
+
+    /**
+     * @throws AdapterException
+     */
+    public function getResult(DataTableState $state): DataTableResult
+    {
+        try {
+            $response = $this->client->request('POST', 'https://api.spacexdata.com/v4/launches/query', [
+                'timeout' => 3,
+                'json' => [
+                    'options' => [
+                        'offset' => $state->getStart(),
+                        'limit' => $state->getLength(),
                     ]
-                ]);
+                ]
+            ]);
 
-                $json = json_decode($response->getContent());
+            $json = json_decode($response->getContent());
 
-                return new DataTableResult($json->docs, $json->totalDocs);
-            } catch (TransportException $e) {
-                throw new AdapterException($e->getMessage());
-            }
-        });
+            return new DataTableResult($json->docs, $json->totalDocs);
+        } catch (TransportException $e) {
+            throw new AdapterException($e->getMessage());
+        }
+    }
+
+    public function renderDetails($o): string
+    {
+        if (!$o->details && !$o->failures) {
+            return '';
+        }
+
+        $h = '<dl class="row mb-0">';
+
+        $h .= '<dt class="col-2">Details</dt>';
+        $h .= sprintf('<dd class="col-10">%s</dd>', $o->details);
+
+        if ($o->failures) {
+            $h .= '<dt class="col-2">Failure</dt>';
+            $h .= sprintf('<dd class="col-10">%s</dd>', $o->failures[0]->reason);
+        }
+
+        $h .= '</dl>';
+        return $h;
     }
 
     public function configureOptions(OptionsResolver $resolver)

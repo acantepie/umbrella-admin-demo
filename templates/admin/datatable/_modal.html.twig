@@ -3,9 +3,14 @@
 {% block modal_class %}modal-xl{% endblock %}
 
 {% block modal_title %}
-    <h4 class="modal-title">Missions by <u>{{ status }}</u></h4>
+    <h4 class="modal-title">DataTable on modal</h4>
 {% endblock %}
 
-{% block modal_content %}
-    {{ render_table(table) }}
+{% block modal_body %}
+    <div class="modal-datatable">
+        {{ render_table(table) }}
+    </div>
+{% endblock %}
+
+{% block modal_footer %}
 {% endblock %}
