@@ -9,15 +9,13 @@ use App\Entity\SpaceMission;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\DataTable\Adapter\EntityAdapter;
+use Umbrella\CoreBundle\DataTable\Column\ActionColumnType;
 use Umbrella\CoreBundle\DataTable\Column\DateColumnType;
-use Umbrella\CoreBundle\DataTable\Column\WidgetColumnType;
+use Umbrella\CoreBundle\DataTable\ColumnActionBuilder;
 use Umbrella\CoreBundle\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\DataTable\DataTableType;
 use Umbrella\CoreBundle\Form\SearchType;
 use Umbrella\CoreBundle\Widget\Type\AddLinkType;
-use Umbrella\CoreBundle\Widget\Type\RowDeleteLinkType;
-use Umbrella\CoreBundle\Widget\Type\RowEditLinkType;
-use Umbrella\CoreBundle\Widget\WidgetBuilder;
 
 class SpaceMissionEditableTableType extends DataTableType
 {
@@ -41,15 +39,15 @@ class SpaceMissionEditableTableType extends DataTableType
             ->add('cost', CostColumnType::class)
             ->add('rocketStatus', StatusColumnType::class)
             ->add('missionStatus', StatusColumnType::class)
-            ->add('links', WidgetColumnType::class, [
-                'build' => function (WidgetBuilder $builder, SpaceMission $s) {
-                    $builder->add('add', RowEditLinkType::class, [
+            ->add('__action__', ActionColumnType::class, [
+                'build' => function (ColumnActionBuilder $builder, SpaceMission $s) {
+                    $builder->editLink([
                         'route' => 'app_admin_datatableaction_edit',
                         'route_params' => ['id' => $s->id],
                         'xhr' => true
                     ]);
 
-                    $builder->add('delete', RowDeleteLinkType::class, [
+                    $builder->deleteLink([
                         'route' => 'app_admin_datatableaction_delete',
                         'route_params' => ['id' => $s->id]
                     ]);
