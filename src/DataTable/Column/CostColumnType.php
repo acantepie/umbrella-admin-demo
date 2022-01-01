@@ -2,7 +2,6 @@
 
 namespace App\DataTable\Column;
 
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
 
 class CostColumnType extends PropertyColumnType
@@ -12,9 +11,8 @@ class CostColumnType extends PropertyColumnType
         return null === $value ? '' : sprintf('<span class="badge bg-primary">%.2f m</span>', $value);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function isSafeHtml(): bool
     {
-        parent::configureOptions($resolver);
-        $resolver->setDefault('is_safe_html', true);
+        return true;
     }
 }
