@@ -8,6 +8,7 @@ use App\DataTable\Column\StatusColumnType;
 use App\Entity\SpaceMission;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Umbrella\CoreBundle\DataTable\Action\AddLinkType;
 use Umbrella\CoreBundle\DataTable\Adapter\EntityAdapter;
 use Umbrella\CoreBundle\DataTable\Column\ActionColumnType;
 use Umbrella\CoreBundle\DataTable\Column\DateColumnType;
@@ -15,7 +16,6 @@ use Umbrella\CoreBundle\DataTable\ColumnActionBuilder;
 use Umbrella\CoreBundle\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\DataTable\DataTableType;
 use Umbrella\CoreBundle\Form\SearchType;
-use Umbrella\CoreBundle\Widget\Type\AddLinkType;
 
 class SpaceMissionEditableTableType extends DataTableType
 {
@@ -23,7 +23,7 @@ class SpaceMissionEditableTableType extends DataTableType
     {
         $builder->addFilter('search', SearchType::class);
 
-        $builder->addWidget('add', AddLinkType::class, [
+        $builder->addAction('add', AddLinkType::class, [
             'route' => 'app_admin_datatableaction_edit',
             'xhr' => true
         ]);
