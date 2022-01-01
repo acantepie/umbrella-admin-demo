@@ -9,7 +9,6 @@ use App\Entity\SpaceMission;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\DataTable\Action\AddLinkType;
-use Umbrella\CoreBundle\DataTable\Adapter\EntityAdapter;
 use Umbrella\CoreBundle\DataTable\Column\ActionColumnType;
 use Umbrella\CoreBundle\DataTable\Column\DateColumnType;
 use Umbrella\CoreBundle\DataTable\ColumnActionBuilder;
@@ -54,7 +53,7 @@ class SpaceMissionEditableTableType extends DataTableType
                 }
             ]);
 
-        $builder->useAdapter(EntityAdapter::class, [
+        $builder->useEntityAdapter([
             'class' => SpaceMission::class,
             'query' => function (QueryBuilder $qb, array $formData) use ($options) {
                 if (isset($formData['search'])) {

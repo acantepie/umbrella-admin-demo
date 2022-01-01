@@ -8,7 +8,6 @@ use App\DataTable\Column\StatusColumnType;
 use App\Entity\SpaceMission;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\DataTable\Adapter\EntityAdapter;
 use Umbrella\CoreBundle\DataTable\Column\DateColumnType;
 use Umbrella\CoreBundle\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\DataTable\DataTableType;
@@ -33,7 +32,7 @@ class SpaceMissionSelectableTableType extends DataTableType
             ->add('rocketStatus', StatusColumnType::class)
             ->add('missionStatus', StatusColumnType::class);
 
-        $builder->useAdapter(EntityAdapter::class, [
+        $builder->useEntityAdapter([
             'class' => SpaceMission::class,
             'query' => function (QueryBuilder $qb, array $formData) {
                 if (isset($formData['search'])) {

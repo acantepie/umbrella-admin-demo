@@ -6,7 +6,7 @@ use Symfony\Component\HttpClient\Exception\TransportException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use function Symfony\Component\String\u;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use Umbrella\CoreBundle\DataTable\Adapter\AdapterException;
+use Umbrella\CoreBundle\DataTable\AdapterException;
 use Umbrella\CoreBundle\DataTable\Column\BooleanColumnType;
 use Umbrella\CoreBundle\DataTable\Column\DetailsColumnType;
 use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
