@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Enum\MissionStatus;
+use App\Enum\RocketStatus;
 use App\Repository\SpaceMissionRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\CoreBundle\Model\IdTrait;
@@ -17,33 +19,6 @@ class SpaceMission
 {
     use IdTrait;
     use SearchTrait;
-    public const ROCKET_ACTIVE = 'Active';
-    public const ROCKET_RETIRED = 'Retired';
-
-    public const MISSION_FAILURE = 'Failure';
-    public const MISSION_PARTIAL_FAILURE = 'Partial Failure';
-    public const MISSION_PRELAUNCH_FAILURE = 'Prelaunch Failure';
-    public const MISSION_SUCCESS = 'Success';
-
-    public const MISSION_STATUSES = [
-        self::MISSION_FAILURE, self::MISSION_PARTIAL_FAILURE, self::MISSION_PRELAUNCH_FAILURE, self::MISSION_SUCCESS
-    ];
-
-    public const STATUS_COLORS = [
-        self::ROCKET_ACTIVE => 'primary',
-        self::ROCKET_RETIRED => 'danger',
-        self::MISSION_FAILURE => 'danger',
-        self::MISSION_PARTIAL_FAILURE => 'warning',
-        self::MISSION_PRELAUNCH_FAILURE => 'warning',
-        self::MISSION_SUCCESS => 'success',
-    ];
-
-    public static function getIconStatus(string $status): string
-    {
-        return isset(self::STATUS_COLORS[$status])
-            ? sprintf('<i class="mdi mdi-circle text-%s me-1"></i> %s', self::STATUS_COLORS[$status], $status)
-            : $status;
-    }
 
     /**
      * @ORM\Column(type="smallint", options={"default": 0})
@@ -76,7 +51,7 @@ class SpaceMission
     /**
      * @ORM\Column(type="string")
      */
-    public string $rocketStatus = self::ROCKET_ACTIVE;
+    public string $rocketStatus = RocketStatus::ACTIVE;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -86,7 +61,7 @@ class SpaceMission
     /**
      * @ORM\Column(type="string")
      */
-    public string $missionStatus = self::MISSION_SUCCESS;
+    public string $missionStatus = MissionStatus::SUCCESS;
 
     public function __toString()
     {

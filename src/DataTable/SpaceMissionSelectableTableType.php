@@ -4,10 +4,12 @@ namespace App\DataTable;
 
 use App\DataTable\Column\CostColumnType;
 use App\DataTable\Column\LocationColumnType;
-use App\DataTable\Column\StatusColumnType;
+use App\DataTable\Column\MissionStatusColumnType;
+use App\DataTable\Column\RocketStatusColumnType;
 use App\Entity\SpaceMission;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Umbrella\CoreBundle\DataTable\Action\ButtonActionType;
 use Umbrella\CoreBundle\DataTable\Column\DateColumnType;
 use Umbrella\CoreBundle\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\DataTable\DataTableType;
@@ -21,6 +23,19 @@ class SpaceMissionSelectableTableType extends DataTableType
             ->addFilter('search', SearchType::class);
 
         $builder
+            ->addBulkAction('edit', ButtonActionType::class, [
+                'class' => 'btn btn-outline-primary',
+                'icon' => 'mdi mdi-pencil me-1',
+                'route' => 'app_admin_datatableaction_bulkedit'
+            ])
+            ->addBulkAction('delete', ButtonActionType::class, [
+                'class' => 'btn btn-outline-primary',
+                'icon' => 'mdi mdi-delete me-1',
+                'confirm' => 'Delete selection ?',
+                'route' => 'app_admin_datatableaction_bulkdelete'
+            ]);
+
+        $builder
             ->add('date', DateColumnType::class, [
                 'order' => 'DESC',
                 'format' => 'd M Y'
@@ -29,8 +44,8 @@ class SpaceMissionSelectableTableType extends DataTableType
             ->add('location', LocationColumnType::class)
             ->add('detail')
             ->add('cost', CostColumnType::class)
-            ->add('rocketStatus', StatusColumnType::class)
-            ->add('missionStatus', StatusColumnType::class);
+            ->add('rocketStatus', RocketStatusColumnType::class)
+            ->add('missionStatus', MissionStatusColumnType::class);
 
         $builder->useEntityAdapter([
             'class' => SpaceMission::class,

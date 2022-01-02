@@ -2,9 +2,9 @@
 
 namespace App\DataTable;
 
-use Symfony\Component\HttpClient\Exception\TransportException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use function Symfony\Component\String\u;
+use Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Umbrella\CoreBundle\DataTable\AdapterException;
 use Umbrella\CoreBundle\DataTable\Column\BooleanColumnType;
@@ -75,7 +75,7 @@ class LaunchTableType extends DataTableType
             $json = json_decode($response->getContent());
 
             return new DataTableResult($json->docs, $json->totalDocs);
-        } catch (TransportException $e) {
+        } catch (ExceptionInterface $e) {
             throw new AdapterException($e->getMessage());
         }
     }

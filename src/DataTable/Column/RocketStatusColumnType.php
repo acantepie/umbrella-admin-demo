@@ -2,14 +2,14 @@
 
 namespace App\DataTable\Column;
 
-use App\Entity\SpaceMission;
+use App\Enum\RocketStatus;
 use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
 
-class StatusColumnType extends PropertyColumnType
+class RocketStatusColumnType extends PropertyColumnType
 {
     public function renderProperty($value, array $options): string
     {
-        return SpaceMission::getIconStatus($value);
+        return $value ? RocketStatus::widget($value) : '';
     }
 
     public function isSafeHtml(): bool

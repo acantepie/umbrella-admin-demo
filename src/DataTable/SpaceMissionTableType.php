@@ -4,7 +4,8 @@ namespace App\DataTable;
 
 use App\DataTable\Column\CostColumnType;
 use App\DataTable\Column\LocationColumnType;
-use App\DataTable\Column\StatusColumnType;
+use App\DataTable\Column\MissionStatusColumnType;
+use App\DataTable\Column\RocketStatusColumnType;
 use App\Entity\SpaceMission;
 use App\Form\Base\MissionStatusChoiceType;
 use Doctrine\ORM\QueryBuilder;
@@ -40,8 +41,8 @@ class SpaceMissionTableType extends DataTableType
             ->add('location', LocationColumnType::class)
             ->add('detail')
             ->add('cost', CostColumnType::class)
-            ->add('rocketStatus', StatusColumnType::class)
-            ->add('missionStatus', StatusColumnType::class);
+            ->add('rocketStatus', RocketStatusColumnType::class)
+            ->add('missionStatus', MissionStatusColumnType::class);
 
         $builder->useEntityAdapter([
             'class' => SpaceMission::class,

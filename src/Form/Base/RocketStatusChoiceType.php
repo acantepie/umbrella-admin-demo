@@ -2,21 +2,21 @@
 
 namespace App\Form\Base;
 
-use App\Enum\MissionStatus;
+use App\Enum\RocketStatus;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\Form\UmbrellaChoiceType;
 
-class MissionStatusChoiceType extends AbstractType
+class RocketStatusChoiceType extends AbstractType
 {
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'choices' => MissionStatus::all(),
+            'choices' => RocketStatus::all(),
             'translation_domain' => false,
             'expose' => function ($choice) {
                 return [
-                    'color' => MissionStatus::color($choice)
+                    'color' => RocketStatus::color($choice)
                 ];
             },
             'choice_label' => fn ($c) => $c,

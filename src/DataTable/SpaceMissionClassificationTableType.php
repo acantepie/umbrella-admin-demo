@@ -4,6 +4,7 @@ namespace App\DataTable;
 
 use App\Entity\SpaceMission;
 use App\Entity\SpaceMissionClassification;
+use App\Enum\MissionStatus;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\DataTable\Column\ActionColumnType;
 use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
@@ -18,7 +19,7 @@ class SpaceMissionClassificationTableType extends DataTableType
         $builder->add('name', PropertyColumnType::class, [
             'render_html' => function (SpaceMissionClassification $c) {
                 if (SpaceMissionClassification::STATUS === $c->type) {
-                    return SpaceMission::getIconStatus($c->name);
+                    return MissionStatus::widget($c->name);
                 }
                 return $c->name;
             }

@@ -8,6 +8,7 @@ use App\Entity\FormMock;
 use App\Entity\FormMockItem;
 use App\Entity\SpaceMission;
 use App\Entity\SpaceMissionClassification;
+use App\Enum\MissionStatus;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -107,7 +108,7 @@ class AppFixtures extends Fixture
             $cCompany = new SpaceMissionClassification($row['companyName'], SpaceMissionClassification::COMPANY);
             $root->addChild($cCompany);
 
-            foreach (SpaceMission::MISSION_STATUSES as $status) {
+            foreach (MissionStatus::all() as $status) {
                 $missions = $manager->getRepository(SpaceMission::class)->findBy(
                     ['companyName' => $cCompany->name, 'missionStatus' => $status], null, 3
                 );

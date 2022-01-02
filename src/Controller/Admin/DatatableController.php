@@ -8,7 +8,7 @@ use App\DataTable\SpaceMissionDraggableTableType;
 use App\DataTable\SpaceMissionEditableTableType;
 use App\DataTable\SpaceMissionSelectableTableType;
 use App\DataTable\SpaceMissionTableType;
-use App\Entity\SpaceMission;
+use App\Enum\MissionStatus;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use function Symfony\Component\String\u;
@@ -110,7 +110,7 @@ class DatatableController extends BaseController
     public function multiple(Request $request)
     {
         $tables = [];
-        foreach (SpaceMission::MISSION_STATUSES as $status) {
+        foreach (MissionStatus::all() as $status) {
             $table = $this->createTable(SpaceMissionEditableTableType::class, [
                 'id' => 'space_mission_' . u($status)->snake(),
                 'page_length' => 10,
