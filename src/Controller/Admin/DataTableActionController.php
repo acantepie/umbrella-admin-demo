@@ -89,26 +89,9 @@ class DataTableActionController extends BaseController
         return $this->createTable(SpaceMissionSelectableTableType::class)
             ->getAdapterQueryBuilder()
             ->andWhere('e.id IN (:ids)')
-            ->setParameter('ids', $request->query->get('ids'))
+            ->setParameter('ids', $request->query->all('state')['ids'])
             ->getQuery()
             ->getResult();
-    }
-
-    /**
-     * @Route("/bulk/delete")
-     */
-    public function bulkDelete(Request $request)
-    {
-        $missions = $this->getBulkMission($request);
-        foreach ($missions as $mission) {
-            $this->em()->remove($mission);
-        }
-        $this->em()->flush();
-
-        return $this->js()
-            ->toastSuccess(sprintf('%d row.s deleted', count($missions)))
-            ->clearSelectionTable()
-            ->reloadTable();
     }
 
     /**
@@ -150,6 +133,23 @@ class DataTableActionController extends BaseController
             ]);
     }
 
+    /**
+     * @Route("/bulk/delete")
+     */
+    public function bulkDelete(Request $request)
+    {
+        $missions = $this->getBulkMission($request);
+        foreach ($missions as $mission) {
+            $this->em()->remove($mission);
+        }
+        $this->em()->flush();
+
+        return $this->js()
+            ->toastSuccess(sprintf('%d row.s deleted', count($missions)))
+            ->clearSelectionTable()
+            ->reloadTable();
+    }
+
     // Export API
 
     /**
@@ -172,7 +172,7 @@ class DataTableActionController extends BaseController
             unset($parameters['length']); // disable pagination
 
             $missions = $table
-                ->handleParameters($parameters)
+                ->submit($parameters)
                 ->getAdapterQueryBuilder()
                 ->getQuery()
                 ->getResult();
