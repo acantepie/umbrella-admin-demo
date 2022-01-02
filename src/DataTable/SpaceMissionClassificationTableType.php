@@ -2,7 +2,6 @@
 
 namespace App\DataTable;
 
-use App\Entity\SpaceMission;
 use App\Entity\SpaceMissionClassification;
 use App\Enum\MissionStatus;
 use Symfony\Component\OptionsResolver\OptionsResolver;

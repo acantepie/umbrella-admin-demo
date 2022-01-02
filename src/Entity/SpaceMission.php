@@ -21,11 +21,6 @@ class SpaceMission
     use SearchTrait;
 
     /**
-     * @ORM\Column(type="smallint", options={"default": 0})
-     */
-    public int $sequence = 0;
-
-    /**
      * @ORM\Column(type="string")
      * @SearchableField
      */

@@ -4,7 +4,6 @@ namespace App\Controller\Admin;
 
 use App\DataTable\LaunchTableType;
 use App\DataTable\SpaceMissionClassificationTableType;
-use App\DataTable\SpaceMissionDraggableTableType;
 use App\DataTable\SpaceMissionEditableTableType;
 use App\DataTable\SpaceMissionSelectableTableType;
 use App\DataTable\SpaceMissionTableType;
@@ -66,23 +65,6 @@ class DatatableController extends BaseController
         }
 
         return $this->render('admin/datatable/selectable.html.twig', [
-            'table' => $table,
-        ]);
-    }
-
-    /**
-     * @Route("/draggable")
-     */
-    public function draggable(Request $request)
-    {
-        $table = $this->createTable(SpaceMissionDraggableTableType::class);
-        $table->handleRequest($request);
-
-        if ($table->isCallback()) {
-            return $table->getCallbackResponse();
-        }
-
-        return $this->render('admin/datatable/draggable.html.twig', [
             'table' => $table,
         ]);
     }

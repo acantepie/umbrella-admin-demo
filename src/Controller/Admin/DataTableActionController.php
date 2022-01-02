@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use function Symfony\Component\Translation\t;
 use Umbrella\CoreBundle\Controller\BaseController;
-use Umbrella\CoreBundle\DataTable\DTO\RowReorder;
 
 /**
  * @Route("/datatable")
@@ -78,19 +77,6 @@ class DataTableActionController extends BaseController
 
         return $this->js()
             ->reloadTable();
-    }
-
-    // RowReorder API
-
-    /**
-     * @Route("row-reorder")
-     */
-    public function rowReorder(Request $request)
-    {
-        $rowMove = RowReorder::createFromRequest($request);
-        $rowMove->applyChanges($this->em(), SpaceMission::class, 'sequence');
-
-        return $this->js();
     }
 
     // Bulk Api

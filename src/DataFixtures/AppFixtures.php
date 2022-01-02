@@ -75,7 +75,6 @@ class AppFixtures extends Fixture
             }
 
             $spaceMission = new SpaceMission();
-            $spaceMission->sequence = $c - 1;
             $spaceMission->companyName = $row[2];
             $spaceMission->location = $row[3];
             $spaceMission->date = new \DateTime($row[4]);
