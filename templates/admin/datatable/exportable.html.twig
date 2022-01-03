@@ -1,0 +1,15 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body pb-0">
+            <h4 class="card-title">Exportable example</h4>
+            <p class="text-muted font-14">
+                Exporting data from a table.<br>
+            </p>
+        </div>
+        <div class="card-datatable">
+            {{ render_table(table) }}
+        </div>
+    </div>
+{% endblock %}

@@ -8,6 +8,7 @@ use App\Form\SpaceMissionBulkType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
+use Umbrella\CoreBundle\DataTable\Utils\DataTableActionState;
 
 /**
  * @Route("/datatable/selectable")
@@ -36,10 +37,12 @@ class DataTableSelectableController extends BaseController
      */
     private function getBulkMission(Request $request): array
     {
+        $state = DataTableActionState::createFromRequest($request);
+
         return $this->createTable(SpaceMissionSelectableTableType::class)
             ->getAdapterQueryBuilder()
             ->andWhere('e.id IN (:ids)')
-            ->setParameter('ids', $request->query->all('state')['ids'])
+            ->setParameter('ids', $state->getSelectedIds())
             ->getQuery()
             ->getResult();
     }

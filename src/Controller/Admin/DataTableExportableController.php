@@ -2,10 +2,13 @@
 
 namespace App\Controller\Admin;
 
-use App\DataTable\SpaceMissionTableType;
+use App\DataTable\SpaceMissionExportableTableType;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
+use Umbrella\CoreBundle\DataTable\Utils\DataTableActionState;
+use Umbrella\CoreBundle\JsResponse\JsResponse;
 
 /**
  * @Route("/datatable/exportable")
@@ -13,30 +16,91 @@ use Umbrella\CoreBundle\Controller\BaseController;
 class DataTableExportableController extends BaseController
 {
     /**
-     * @Route("/export")
+     * @Route("")
      */
-    public function export(Request $request)
+    public function index(Request $request)
     {
-        $table = $this->createTable(SpaceMissionTableType::class);
-        $mode = $request->query->get('mode');
+        $table = $this->createTable(SpaceMissionExportableTableType::class);
+        $table->handleRequest($request);
 
-        if ('selection' === $mode) {
-            $missions = $table
-                ->getAdapterQueryBuilder()
-                ->andWhere('e.id IN (:ids)')
-                ->setParameter('ids', $request->query->get('ids'))
-                ->getQuery()
-                ->getResult();
-        } else {
-            $parameters = $request->query->all();
-            unset($parameters['length']); // disable pagination
-
-            $missions = $table
-                ->submit($parameters)
-                ->getAdapterQueryBuilder()
-                ->getQuery()
-                ->getResult();
+        if ($table->isCallback()) {
+            return $table->getCallbackResponse();
         }
+
+        return $this->render('admin/datatable/exportable.html.twig', [
+            'table' => $table,
+        ]);
+    }
+
+    /**
+     * @Route("/export-confirm")
+     */
+    public function exportConfirm(Request $request)
+    {
+        $state = DataTableActionState::createFromRequest($request);
+
+        return $this->js()->modal('admin/datatable/_export_confirm_modal.html.twig', [
+            'state' => $state
+        ]);
+    }
+
+    /**
+     * @Route("/export-search")
+     */
+    public function exportSearch(Request $request)
+    {
+        $state = DataTableActionState::createFromRequest($request);
+
+        $qb = $this->createTable(SpaceMissionExportableTableType::class)
+            ->submit($state->disablePagination()->getData())
+            ->getAdapterQueryBuilder();
+
+        return $this->exportResponse($qb);
+    }
+
+    /**
+     * @Route("/export-selection")
+     */
+    public function exportSelection(Request $request)
+    {
+        $state = DataTableActionState::createFromRequest($request);
+
+        $qb = $this->createTable(SpaceMissionExportableTableType::class)
+            ->getAdapterQueryBuilder()
+            ->andWhere('e.id IN (:ids)')
+            ->setParameter('ids', $state->getSelectedIds());
+
+        return $this->exportResponse($qb);
+    }
+
+    /**
+     * @Route("/export-page")
+     */
+    public function exportPage(Request $request)
+    {
+        $state = DataTableActionState::createFromRequest($request);
+
+        $qb = $this->createTable(SpaceMissionExportableTableType::class)
+            ->submit($state->getData())
+            ->getAdapterQueryBuilder();
+
+        return $this->exportResponse($qb);
+    }
+
+    /**
+     * @Route("/export-all")
+     */
+    public function exportAll()
+    {
+        $qb = $this->createTable(SpaceMissionExportableTableType::class)
+            ->getAdapterQueryBuilder();
+
+        return $this->exportResponse($qb);
+    }
+
+    private function exportResponse(QueryBuilder $qb): JsResponse
+    {
+        $missions = $qb->getQuery()->getResult();
 
         $fp = fopen('php://temp', 'w');
         foreach ($missions as $mission) {
@@ -56,6 +120,8 @@ class DataTableExportableController extends BaseController
         fclose($fp);
 
         return $this->js()
-            ->download($content, 'export.csv');
+            ->closeModal()
+            ->download($content, 'export.csv')
+            ->getResponse();
     }
 }
