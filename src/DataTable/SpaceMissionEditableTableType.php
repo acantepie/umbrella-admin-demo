@@ -24,7 +24,7 @@ class SpaceMissionEditableTableType extends DataTableType
         $builder->addFilter('search', SearchType::class);
 
         $builder->addAction('add', ButtonAddActionType::class, [
-            'route' => 'app_admin_datatableaction_edit',
+            'route' => 'app_admin_datatableeditable_edit',
             'xhr' => true
         ]);
 
@@ -42,13 +42,13 @@ class SpaceMissionEditableTableType extends DataTableType
             ->add('__action__', ActionColumnType::class, [
                 'build' => function (ColumnActionBuilder $builder, SpaceMission $s) {
                     $builder->editLink([
-                        'route' => 'app_admin_datatableaction_edit',
+                        'route' => 'app_admin_datatableeditable_edit',
                         'route_params' => ['id' => $s->id],
                         'xhr' => true
                     ]);
 
                     $builder->deleteLink([
-                        'route' => 'app_admin_datatableaction_delete',
+                        'route' => 'app_admin_datatableeditable_delete',
                         'route_params' => ['id' => $s->id]
                     ]);
                 }

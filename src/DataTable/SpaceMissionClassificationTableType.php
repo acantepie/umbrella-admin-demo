@@ -27,7 +27,7 @@ class SpaceMissionClassificationTableType extends DataTableType
         $builder->add('__action__', ActionColumnType::class, [
             'build' => function (ColumnActionBuilder $builder, SpaceMissionClassification $c) {
                 $builder->moveLinks([
-                    'route' => 'app_admin_datatableaction_move',
+                    'route' => 'app_admin_datatabletree_move',
                     'route_params' => ['id' => $c->id]
                 ]);
             }
