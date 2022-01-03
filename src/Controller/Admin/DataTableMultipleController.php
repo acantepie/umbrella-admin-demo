@@ -2,11 +2,10 @@
 
 namespace App\Controller\Admin;
 
-use App\DataTable\SpaceMissionEditableTableType;
-use App\Enum\MissionStatus;
+use App\DataTable\SpaceMissionMultipleTableType;
+use App\Enum\RocketStatus;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use function Symfony\Component\String\u;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 /**
@@ -19,24 +18,27 @@ class DataTableMultipleController extends BaseController
      */
     public function index(Request $request)
     {
-        $tables = [];
-        foreach (MissionStatus::all() as $status) {
-            $table = $this->createTable(SpaceMissionEditableTableType::class, [
-                'id' => 'space_mission_' . u($status)->snake(),
-                'page_length' => 10,
-                'mission_status' => $status
-            ]);
-            $table->handleRequest($request);
+        $tableA = $this->createTable(SpaceMissionMultipleTableType::class, [
+            'id' => 'table_active',
+            'rocket_status' => RocketStatus::ACTIVE
+        ]);
 
-            if ($table->isCallback()) {
-                return $table->getCallbackResponse();
-            }
+        if ($tableA->handleRequest($request)->isCallback()) {
+            return $tableA->getCallbackResponse();
+        }
 
-            $tables[$status] = $table;
+        $tableB = $this->createTable(SpaceMissionMultipleTableType::class, [
+            'id' => 'table_retired',
+            'rocket_status' => RocketStatus::RETIRED
+        ]);
+
+        if ($tableB->handleRequest($request)->isCallback()) {
+            return $tableB->getCallbackResponse();
         }
 
         return $this->render('admin/datatable/multiple.html.twig', [
-            'tables' => $tables,
+            'tableA' => $tableA,
+            'tableB' => $tableB
         ]);
     }
 }
