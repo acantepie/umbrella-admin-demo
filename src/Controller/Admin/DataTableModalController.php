@@ -26,7 +26,6 @@ class DataTableModalController extends BaseController
     public function open(Request $request)
     {
         $table = $this->createTable(SpaceMissionTableType::class, [
-            'load_route' => 'app_admin_datatablemodal_open',
             'page_length' => 10
         ]);
         $table->handleRequest($request);

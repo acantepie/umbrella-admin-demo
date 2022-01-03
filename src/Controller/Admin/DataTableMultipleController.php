@@ -19,7 +19,7 @@ class DataTableMultipleController extends BaseController
     public function index(Request $request)
     {
         $tableA = $this->createTable(SpaceMissionMultipleTableType::class, [
-            'id' => 'table_active',
+            'id' => 'table_active', // You must define different id it them same table was rendered multiple times on view
             'rocket_status' => RocketStatus::ACTIVE
         ]);
 
@@ -28,7 +28,7 @@ class DataTableMultipleController extends BaseController
         }
 
         $tableB = $this->createTable(SpaceMissionMultipleTableType::class, [
-            'id' => 'table_retired',
+            'id' => 'table_retired', // You must define different id it them same table was rendered multiple times on view
             'rocket_status' => RocketStatus::RETIRED
         ]);
 
