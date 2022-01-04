@@ -14,9 +14,8 @@ class AppExtension extends AbstractExtension
         ];
     }
 
-    public function gitUrl(string $file, string $branch = 'master') : string
+    public function gitUrl(string $file, string $branch = 'master'): string
     {
         return sprintf('https://github.com/acantepie/umbrella-admin-demo/blob/%s/%s', $branch, ltrim($file));
     }
-
 }

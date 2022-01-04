@@ -23,7 +23,6 @@ class DataTableBasicController extends BaseController
         // Handle callback to load data on Table
         $table->handleRequest($request);
         if ($table->isCallback()) {
-
             // Return a Json response
             return $table->getCallbackResponse();
         }

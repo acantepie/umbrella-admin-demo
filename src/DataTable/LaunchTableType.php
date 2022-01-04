@@ -39,7 +39,7 @@ class LaunchTableType extends DataTableType
 
         $builder
             ->add('__more__', DetailsColumnType::class, [
-                'render_details' => function($o) {
+                'render_details' => function ($o) {
                     if (!$o->details && !$o->failures) {
                         return '';
                     }
