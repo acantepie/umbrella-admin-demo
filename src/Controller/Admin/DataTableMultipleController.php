@@ -36,7 +36,7 @@ class DataTableMultipleController extends BaseController
             return $tableB->getCallbackResponse();
         }
 
-        return $this->render('admin/datatable/multiple.html.twig', [
+        return $this->render('admin/datatable/multiple/index.html.twig', [
             'tableA' => $tableA,
             'tableB' => $tableB
         ]);

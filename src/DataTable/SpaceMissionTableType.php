@@ -9,6 +9,7 @@ use App\DataTable\Column\RocketStatusColumnType;
 use App\Entity\SpaceMission;
 use App\Form\Base\MissionStatusChoiceType;
 use Doctrine\ORM\QueryBuilder;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\DataTable\Column\DateColumnType;
 use Umbrella\CoreBundle\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\DataTable\DataTableType;
@@ -19,6 +20,7 @@ class SpaceMissionTableType extends DataTableType
 {
     public function buildTable(DataTableBuilder $builder, array $options)
     {
+        // Configure Filter (i.e. Symfony Formtype)
         $builder
             ->addFilter('search', SearchType::class)
             ->addFilter('from', DatepickerType::class, [
@@ -32,6 +34,7 @@ class SpaceMissionTableType extends DataTableType
                 'placeholder' => 'Mission status'
             ]);
 
+        // Configure Column
         $builder
             ->add('date', DateColumnType::class, [
                 'order' => 'DESC',
@@ -44,6 +47,8 @@ class SpaceMissionTableType extends DataTableType
             ->add('rocketStatus', RocketStatusColumnType::class)
             ->add('missionStatus', MissionStatusColumnType::class);
 
+        // Configure Adapter.
+        // On this example we used an EntityAdapter that retrieve result from Doctrine using "SpaceMission" entity
         $builder->useEntityAdapter([
             'class' => SpaceMission::class,
             'query' => function (QueryBuilder $qb, array $formData) {
@@ -68,5 +73,10 @@ class SpaceMissionTableType extends DataTableType
                 }
             }
         ]);
+    }
+
+    // Moreover we can configure options
+    public function configureOptions(OptionsResolver $resolver)
+    {
     }
 }

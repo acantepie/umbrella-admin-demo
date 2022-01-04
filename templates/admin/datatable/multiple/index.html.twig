@@ -1,6 +1,6 @@
-{% extends "@UmbrellaAdmin/layout.html.twig" %}
+{% extends "admin/datatable/layout.html.twig" %}
 
-{% block content %}
+{% block table_section %}
     <p>
         Try edit space mission ( <i class="mdi mdi-pencil"></i> icon ) and change his <b>rocket status</b>.
         If you update rocket status of a mission, both table will be automatically updated.
@@ -21,6 +21,16 @@
         </div>
         <div class="card-datatable">
             {{ render_table(tableB) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block code_section %}
+    <div class="card">
+        <div class="card-body">
+            <div>
+                <a href="{{ git_url('src/Controller/Admin/DataTableMultipleController.php') }}" target="_blank"><i class="mdi mdi-github"></i> Symfony Controller</a>
+            </div>
         </div>
     </div>
 {% endblock %}

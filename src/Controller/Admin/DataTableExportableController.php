@@ -27,7 +27,7 @@ class DataTableExportableController extends BaseController
             return $table->getCallbackResponse();
         }
 
-        return $this->render('admin/datatable/exportable.html.twig', [
+        return $this->render('admin/datatable/exportable/index.html.twig', [
             'table' => $table,
         ]);
     }
@@ -39,7 +39,7 @@ class DataTableExportableController extends BaseController
     {
         $state = DataTableActionState::createFromRequest($request);
 
-        return $this->js()->modal('admin/datatable/_export_confirm_modal.html.twig', [
+        return $this->js()->modal('admin/datatable/exportable/_confirm_modal.html.twig', [
             'state' => $state
         ]);
     }

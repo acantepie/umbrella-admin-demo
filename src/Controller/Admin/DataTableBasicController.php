@@ -17,14 +17,18 @@ class DataTableBasicController extends BaseController
      */
     public function index(Request $request)
     {
+        // Create table from Type with service DataTableFactory
         $table = $this->createTable(SpaceMissionTableType::class);
-        $table->handleRequest($request);
 
+        // Handle callback to load data on Table
+        $table->handleRequest($request);
         if ($table->isCallback()) {
+
+            // Return a Json response
             return $table->getCallbackResponse();
         }
 
-        return $this->render('admin/datatable/basic.html.twig', [
+        return $this->render('admin/datatable/basic/index.html.twig', [
             'table' => $table,
         ]);
     }

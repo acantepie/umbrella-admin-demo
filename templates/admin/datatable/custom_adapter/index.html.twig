@@ -1,6 +1,6 @@
-{% extends "@UmbrellaAdmin/layout.html.twig" %}
+{% extends "admin/datatable/layout.html.twig" %}
 
-{% block content %}
+{% block table_section %}
     <div class="card">
         <div class="card-body pb-0">
             <h4 class="card-title">Custom adapter</h4>
@@ -11,6 +11,16 @@
         </div>
         <div class="card-datatable pt-0">
             {{ render_table(table) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block code_section %}
+    <div class="card">
+        <div class="card-body">
+            <a href="{{ git_url('src/DataTable/LaunchTableType.php') }}" target="_blank">
+                <i class="mdi mdi-github"></i> DataTableType
+            </a>
         </div>
     </div>
 {% endblock %}

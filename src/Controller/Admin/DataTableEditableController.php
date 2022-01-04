@@ -27,7 +27,7 @@ class DataTableEditableController extends BaseController
             return $table->getCallbackResponse();
         }
 
-        return $this->render('admin/datatable/editable.html.twig', [
+        return $this->render('admin/datatable/editable/index.html.twig', [
             'table' => $table,
         ]);
     }

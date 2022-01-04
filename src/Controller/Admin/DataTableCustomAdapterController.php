@@ -24,7 +24,7 @@ class DataTableCustomAdapterController extends BaseController
             return $table->getCallbackResponse();
         }
 
-        return $this->render('admin/datatable/custom_adapter.html.twig', [
+        return $this->render('admin/datatable/custom_adapter/index.html.twig', [
             'table' => $table,
         ]);
     }

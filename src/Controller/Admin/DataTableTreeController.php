@@ -26,7 +26,7 @@ class DataTableTreeController extends BaseController
             return $table->getCallbackResponse();
         }
 
-        return $this->render('admin/datatable/tree.html.twig', [
+        return $this->render('admin/datatable/tree/index.html.twig', [
             'table' => $table,
         ]);
     }

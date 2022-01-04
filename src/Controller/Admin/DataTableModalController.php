@@ -17,7 +17,7 @@ class DataTableModalController extends BaseController
      */
     public function index()
     {
-        return $this->render('admin/datatable/modal.html.twig');
+        return $this->render('admin/datatable/modal/index.html.twig');
     }
 
     /**
@@ -34,7 +34,7 @@ class DataTableModalController extends BaseController
             return $table->getCallbackResponse();
         }
 
-        return $this->js()->modal('admin/datatable/_datatable_modal.html.twig', [
+        return $this->js()->modal('admin/datatable/modal/_modal.html.twig', [
             'table' => $table
         ]);
     }

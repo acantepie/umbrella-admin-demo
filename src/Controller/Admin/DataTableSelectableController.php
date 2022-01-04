@@ -27,7 +27,7 @@ class DataTableSelectableController extends BaseController
             return $table->getCallbackResponse();
         }
 
-        return $this->render('admin/datatable/selectable.html.twig', [
+        return $this->render('admin/datatable/selectable/index.html.twig', [
             'table' => $table,
         ]);
     }
