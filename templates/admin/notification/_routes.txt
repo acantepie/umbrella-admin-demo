@@ -1,0 +1,4 @@
+# config/routes.yaml
+umbrella_admin_notification_:
+  resource: "@UmbrellaAdminBundle/config/routes/notification.php"
+  prefix: /admin
