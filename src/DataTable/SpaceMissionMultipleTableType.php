@@ -56,7 +56,7 @@ class SpaceMissionMultipleTableType extends DataTableType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver
-            ->setDefault('table_class', 'table-sm table-striped')
+            ->setDefault('class', 'table-sm')
             ->setDefault('page_length', 10);
 
         $resolver

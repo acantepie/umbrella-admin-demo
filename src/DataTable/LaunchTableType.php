@@ -96,8 +96,7 @@ class LaunchTableType extends DataTableType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'orderable' => false, // Disable ordering on table
-            'table-class' => 'table-centered'
+            'orderable' => false // Disable ordering on table
         ]);
     }
 }
