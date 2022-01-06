@@ -26,13 +26,13 @@ class AdminMenu extends BaseAdminMenu
         $r = $builder->root();
 
         $r->add('about')
-            ->icon('uil-home')
+            ->icon('uil-estate')
             ->route('app_admin_default_about');
 
         $r->add('components');
 
         $r->add('datatable')
-            ->icon('uil-table')
+            ->icon('uil-th')
             ->add('basic')
                 ->route('app_admin_datatablebasic_index')
                 ->end()
@@ -60,7 +60,7 @@ class AdminMenu extends BaseAdminMenu
                 ->end();
 
         $r->add('form')
-            ->icon('uil-document-layout-center')
+            ->icon('uil-check-square')
             ->add('theme')
                 ->route('app_admin_form_theme')
                 ->end()
@@ -77,7 +77,7 @@ class AdminMenu extends BaseAdminMenu
             ->icon('uil-bars')
             ->route('app_admin_menu_index');
         $r->add('notification')
-            ->icon('uil-bell')
+            ->icon('mdi mdi-bell-outline')
             ->route('app_admin_notification_index');
         $r->add('config_reference')
             ->icon('uil-cog')
