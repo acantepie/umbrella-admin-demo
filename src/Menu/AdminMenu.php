@@ -80,9 +80,6 @@ class AdminMenu extends BaseAdminMenu
         $r->add('notification')
             ->icon('mdi mdi-bell-outline')
             ->route('app_admin_notification_index');
-        $r->add('config_reference')
-            ->icon('uil-cog')
-            ->route('app_admin_umbrellaconfig_index');
 
         $r->add('pages');
 
