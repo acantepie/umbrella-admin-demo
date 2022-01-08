@@ -15,14 +15,6 @@ class DefaultController extends BaseController
      */
     public function index()
     {
-        return $this->redirectToRoute('app_admin_default_about');
-    }
-
-    /**
-     * @Route("/about")
-     */
-    public function about()
-    {
-        return $this->render('admin/default/about.html.twig');
+        return $this->redirectToRoute('app_admin_datatablebasic_index');
     }
 }

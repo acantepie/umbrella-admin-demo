@@ -25,9 +25,10 @@ class AdminMenu extends BaseAdminMenu
     {
         $r = $builder->root();
 
-        $r->add('about')
-            ->icon('uil-estate')
-            ->route('app_admin_default_about');
+        $r->add('documentation')
+            ->icon('uil-book-reader')
+            ->url('https://acantepie.github.io/umbrella')
+            ->target('_blank');
 
         $r->add('components');
 
