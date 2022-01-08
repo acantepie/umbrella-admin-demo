@@ -8,7 +8,7 @@
 
 <p align="center">
     <a href="https://umbrella-corp.dev"><b>Online demo</b></a> •
-    <a href="https://github.com/acantepie/umbrella/tree/master/docs"><b>Documentation</b></a>
+    <a href="https://acantepie.github.io/umbrella/"><b>Documentation</b></a>
 </p> 
 
 <p align="center">
@@ -19,7 +19,7 @@
 # Install with Docker Compose
 
 ### Technical requirements
-- [docker-compose][docker-compose]
+- [docker-compose](https://docs.docker.com/compose/install/)
 
 ### Installation
 
@@ -57,10 +57,10 @@ App url : http://127.0.0.1:8080/
 ### Technical requirements
 - PHP 8.0 or higher
 - PHP extensions: `json`, `mbstring`, `xml`
-- [composer][get-composer]
-- [Symfony requirements][symfony-req]
-- [Node.js][node-js]
-- [yarn][yarn]
+- [composer](https://getcomposer.org/)
+- [Symfony requirements](https://symfony.com/doc/current/setup.html#technical-requirements)
+- [Node.js](https://nodejs.org/en/download/)
+- [yarn](https://yarnpkg.com/getting-started/install)
 
 ### Installation
 
@@ -90,9 +90,3 @@ Serve:
 php -S localhost:8000 -t public/
 ```
 App url : http://127.0.0.1:8000/
-
-[docker-compose]: https://docs.docker.com/compose/install/
-[get-composer]: https://getcomposer.org/
-[symfony-req]: https://symfony.com/doc/current/setup.html#technical-requirements
-[node-js]: https://nodejs.org/en/download/
-[yarn]: https://yarnpkg.com/getting-started/install
