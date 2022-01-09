@@ -1,5 +1,5 @@
-<h1 align="center" style="border-bottom: none">
-    ☂ Umbrella Admin Demo
+<h1 style="text-align: center">
+    <img src="./umbrella.svg" width="25" height="25" alt="Umbrella logo"/> Umbrella Admin Demo
 </h1>
 
 <p align="center">
