@@ -1,3 +1,0 @@
-# config/packages/twig.yaml
-twig:
-    form_themes: ['@UmbrellaCore/Form/layout.html.twig'] # or @UmbrellaCore/Form/layout_horizontal.html.twig

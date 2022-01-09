@@ -1,5 +1,0 @@
-{{ umbrella_form_theme(form, 'horizontal') }}
-{# or #}
-{% form_theme form "@UmbrellaCore/Form/layout_horizontal.html.twig" %}
-
-{{ form_rest(form) }}

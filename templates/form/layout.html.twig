@@ -1,0 +1,45 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% set theme = app.request.query.get('theme', 'default') %}
+
+{% block stylesheets %}
+    {# Hack bootstrap5 add invalid class on legend  #}
+    {{ parent() }}
+    <style>
+        legend.col-form-label {
+            padding: 0;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <section class="content-bar pb-3 d-flex">
+        <div class="ms-auto">
+
+            <div class="btn-group">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Theme : {{ theme }}
+                </button>
+                <ul class="dropdown-menu">
+                    {% if theme == 'default' %}
+                        <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), {theme : 'horizontal'}) }}">Horizontal Theme</a>
+                    {% else %}
+                        <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route')) }}">Default theme</a>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <button class="btn btn-primary action-save" type="submit" form="form">
+                {{ 'Save changes' | trans }}
+            </button>
+        </div>
+    </section>
+
+    {{ umbrella_form_theme(form, theme) }}
+    {{ form_start(form, {id: 'form'}) }}
+    {% block form %}
+        {{ form_rest(form) }}
+    {% endblock %}
+    {{ form_end(form) }}
+{% endblock %}

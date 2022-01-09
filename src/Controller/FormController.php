@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\FormMock;
 use App\Form\FormCommonType;
 use App\Form\FormSelectType;
-use App\Form\FormThemeType;
 use App\Repository\SpaceMissionRepository;
 use App\Service\AppHelper;
 use App\Service\FileUploader;
@@ -21,16 +20,6 @@ use Umbrella\CoreBundle\Controller\BaseController;
  */
 class FormController extends BaseController
 {
-    /**
-     * @Route("/theme")
-     */
-    public function theme()
-    {
-        return $this->render('form/theme.html.twig', [
-            'form' => $this->createForm(FormThemeType::class)->createView()
-        ]);
-    }
-
     /**
      * @Route("/common")
      */

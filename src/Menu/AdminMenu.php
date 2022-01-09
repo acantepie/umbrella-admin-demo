@@ -62,9 +62,6 @@ class AdminMenu extends BaseAdminMenu
 
         $r->add('form')
             ->icon('uil-check-square')
-            ->add('theme')
-                ->route('app_form_theme')
-                ->end()
             ->add('common')
                 ->route('app_form_common')
                 ->end()

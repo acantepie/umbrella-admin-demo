@@ -1,139 +1,118 @@
-{% extends "@UmbrellaAdmin/layout.html.twig" %}
+{% extends "form/layout.html.twig" %}
 
-{% block stylesheets %}
-    {# Hack bootstrap5 add invalid class on legend  #}
-    {{ parent() }}
-    <style>
-        legend.col-form-label {
-            padding: 0;
-            margin-bottom: 0.5rem;
-        }
-    </style>
-{% endblock %}
+{% block form %}
+    {{ form_errors(form) }}
 
-{% block content %}
-    <section class="content-bar pb-3 d-flex">
-        <button class="btn btn-primary action-save ms-auto" type="submit" form="form">
-            <i class="mdi mdi-check me-1"></i> {{ 'Save changes' | trans }}
-        </button>
-    </section>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Basic form elements</h4>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
 
-    <form enctype="multipart/form-data" method="post" class="mb-3" id="form">
-
-        {{ umbrella_form_theme(form) }}
-        {{ form_errors(form) }}
-
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Basic form elements</h4>
+                {{ form_row(form.text) }}
+                {{ form_row(form.textarea) }}
+                {{ form_row(form.checkMe) }}
+                {{ form_row(form.color) }}
+                {{ form_row(form.amount) }}
             </div>
-            <div class="card-body row">
-                <div class="col-md-6">
+            <div class="col-md-6">
 
-                    {{ form_row(form.text) }}
-                    {{ form_row(form.textarea) }}
-                    {{ form_row(form.checkMe) }}
-                    {{ form_row(form.color) }}
-                    {{ form_row(form.amount) }}
+                <div class="mb-3">
+                    {{ form_row(form.select) }}
+                    {{ form_row(form.selectExpanded) }}
+                    <div class="mt-n2 mb-2">Options : <code>['expanded' => true]</code></div>
+                    {{ form_row(form.selectMultiple) }}
+                    <div class="mt-n2 mb-2">Options : <code>['multiple' => true]</code></div>
+                    {{ form_row(form.selectMultipleExpanded) }}
+                    <div class="mt-n2 mb-2">Options : <code>['multiple' => true, 'expanded' => true]</code></div>
                 </div>
-                <div class="col-md-6">
 
-                    <div class="mb-3">
-                        {{ form_row(form.select) }}
-                        {{ form_row(form.selectExpanded) }}
-                        <div class="mt-n2 mb-2">Options : <code>['expanded' => true]</code></div>
-                        {{ form_row(form.selectMultiple) }}
-                        <div class="mt-n2 mb-2">Options : <code>['multiple' => true]</code></div>
-                        {{ form_row(form.selectMultipleExpanded) }}
-                        <div class="mt-n2 mb-2">Options : <code>['multiple' => true, 'expanded' => true]</code></div>
-                    </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Addon form extension</h4>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                {{ form_row(form.inputGroupText) }}
+                <div class="mt-n2 mb-2">Options : <code>['input_prefix_text' => '@']</code></div>
+                {{ form_row(form.inputGroupButton) }}
+                <div class="mt-n2 mb-2">Options : <code>['input_suffix' => '&lt;button class="btn btn-secondary"&gt;Click&lt;/button&gt;']</code></div>
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.inputIcon) }}
+                <div class="mt-n2 mb-2">Options : <code>['input_addon_container_class' => 'input-icon', 'input_prefix' => '&lt;span class="input-icon-addon"&gt;&lt;i class="mdi mdi-magnify"&gt;&lt;/i&gt;&lt;/span&gt;'</code></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Advanced form elements</h4>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                <div class="mb-2">DatePickerType - use <a href="https://flatpickr.js.org/" class="text-primary">flatpickr</a> js libarary</div>
+                {{ form_row(form.date) }}
+                {{ form_row(form.dateTime) }}
+                <div class="mt-n2 mb-2">Options : <code>['enable_time' => true]</code></div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-2">CkeditorType - use <a href="https://ckeditor.com/" class="text-primary">ckeditor</a> js libarary</div>
+                {{ form_row(form.richText) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">File form elements</h4>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                <div class="mb-4">
+                    {{ form_row(form.file) }}
+                    {% if entity.filename %}
+                        <a href="{{ asset('uploads/' ~ entity.filename) }}" download class="mt-n2 d-block">
+                            <i class="mdi mdi-download"></i> Download
+                        </a>
+                    {% endif %}
+                </div>
+                <div>
+                    <i class="mdi mdi-arrow-right"></i>
+                    Read more about <a href="https://symfony.com/doc/current/controller/upload_file.html">How to upload file</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-4">
+                    {{ form_row(form.vichFile) }}
+                </div>
+                <div>
+                    <i class="mdi mdi-arrow-right"></i>
+                    Read more about <a href="https://github.com/dustin10/VichUploaderBundle/blob/master/docs/index.md">VichUploaderBundle</a>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Addon form extension</h4>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Collection form elements</h4>
+        </div>
+        <div class="card-body row">
+            <div class="mb-2">UmbrellaCollectionType (extends <a href="https://symfony.com/doc/current/reference/forms/types/collection.html" class="text-primary">CollectionType</a>)</div>
+            <div class="col-md-6">
+                {{ form_row(form.collectionItems) }}
             </div>
-            <div class="card-body row">
-                <div class="col-md-6">
-                    {{ form_row(form.inputGroupText) }}
-                    <div class="mt-n2 mb-2">Options : <code>['input_prefix_text' => '@']</code></div>
-                    {{ form_row(form.inputGroupButton) }}
-                    <div class="mt-n2 mb-2">Options : <code>['input_suffix' => '&lt;button class="btn btn-secondary"&gt;Click&lt;/button&gt;']</code></div>
-                </div>
-                <div class="col-md-6">
-                    {{ form_row(form.inputIcon) }}
-                    <div class="mt-n2 mb-2">Options : <code>['input_addon_container_class' => 'input-icon', 'input_prefix' => '&lt;span class="input-icon-addon"&gt;&lt;i class="mdi mdi-magnify"&gt;&lt;/i&gt;&lt;/span&gt;'</code></div>
-                </div>
+            <div class="col-md-6">
+                {{ form_row(form.collectionOrderableItems) }}
+                <div class="mt-n2 mb-2">Options : <code>['sort_by' => 'order']</code></div>
             </div>
         </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Advanced form elements</h4>
-            </div>
-            <div class="card-body row">
-                <div class="col-md-6">
-                    <div class="mb-2">DatePickerType - use <a href="https://flatpickr.js.org/" class="text-primary">flatpickr</a> js libarary</div>
-                    {{ form_row(form.date) }}
-                    {{ form_row(form.dateTime) }}
-                    <div class="mt-n2 mb-2">Options : <code>['enable_time' => true]</code></div>
-                </div>
-                <div class="col-md-6">
-                    <div class="mb-2">CkeditorType - use <a href="https://ckeditor.com/" class="text-primary">ckeditor</a> js libarary</div>
-                    {{ form_row(form.richText) }}
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">File form elements</h4>
-            </div>
-            <div class="card-body row">
-                <div class="col-md-6">
-                    <div class="mb-4">
-                        {{ form_row(form.file) }}
-                        {% if entity.filename %}
-                            <a href="{{ asset('uploads/' ~ entity.filename) }}" download class="mt-n2 d-block">
-                                <i class="mdi mdi-download"></i> Download
-                            </a>
-                        {% endif %}
-                    </div>
-                    <div>
-                        <i class="mdi mdi-arrow-right"></i>
-                        Read more about <a href="https://symfony.com/doc/current/controller/upload_file.html">How to upload file</a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="mb-4">
-                        {{ form_row(form.vichFile) }}
-                    </div>
-                    <div>
-                        <i class="mdi mdi-arrow-right"></i>
-                        Read more about <a href="https://github.com/dustin10/VichUploaderBundle/blob/master/docs/index.md">VichUploaderBundle</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Collection form elements</h4>
-            </div>
-            <div class="card-body row">
-                <div class="mb-2">UmbrellaCollectionType (extends <a href="https://symfony.com/doc/current/reference/forms/types/collection.html" class="text-primary">CollectionType</a>)</div>
-                <div class="col-md-6">
-                    {{ form_row(form.collectionItems) }}
-                </div>
-                <div class="col-md-6">
-                    {{ form_row(form.collectionOrderableItems) }}
-                    <div class="mt-n2 mb-2">Options : <code>['sort_by' => 'order']</code></div>
-                </div>
-            </div>
-        </div>
-        {{ form_rest(form) }}
-    </form>
+    </div>
+    {{ form_rest(form) }}
 {% endblock %}
