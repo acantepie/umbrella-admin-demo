@@ -1,0 +1,30 @@
+{% extends "datatable/layout.html.twig" %}
+
+{% block table_section %}
+    <div class="card">
+        <div class="card-body pb-0">
+            <h4 class="card-title">Editable example</h4>
+            <p class="text-muted font-14">
+                There is no limitation about how you edit your data in datatable.<br>
+                You just have to add <code>ActionColumnType</code> on your <code>DataTableType</code> and define link depending on data in row (You can create your own column too or customize the render of your columns).<br>
+                If you want edit data with modal, you can use <code>JsResponse</code> to open modal, or refresh table data.
+            </p>
+        </div>
+        <div class="card-datatable">
+            {{ render_table(table) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block code_section %}
+    <div class="card">
+        <div class="card-body">
+            <div class="mb-3">
+                <a href="{{ git_url('src/Controller/Admin/DataTableEditableController.php') }}" target="_blank"><i class="mdi mdi-github"></i> Symfony Controller</a>
+            </div>
+            <div>
+                <a href="{{ git_url('src/DataTable/SpaceMissionEditableTableType.php') }}" target="_blank"><i class="mdi mdi-github"></i> DataTableType</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

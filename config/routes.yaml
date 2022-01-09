@@ -1,31 +1,24 @@
 admin_:
-  resource: "../src/Controller/Admin/"
+  resource: "../src/Controller/"
   type: annotation
-  prefix: /admin
+  prefix: /
 
 # User Profile
 umbrella_admin_profile_:
   resource: "@UmbrellaAdminBundle/config/routes/profile.php"
-  prefix: /admin
+  prefix: /
 
 # User CRUD
 umbrella_admin_user_:
   resource: "@UmbrellaAdminBundle/config/routes/user.php"
-  prefix: /admin
+  prefix: /
 
 # Security (login, logout, password resetting)
 umbrella_admin_security_:
   resource: "@UmbrellaAdminBundle/config/routes/security.php"
-  prefix: /admin
+  prefix: /
 
 # Notifications
 umbrella_admin_notification_:
   resource: "@UmbrellaAdminBundle/config/routes/notification.php"
-  prefix: /admin
-
-root:
-  path: /
-  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
-  defaults:
-    path: /admin
-    permanent: false
+  prefix: /

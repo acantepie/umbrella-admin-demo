@@ -84,14 +84,14 @@ class FormSelectType extends AbstractType
         // --- select with async loading
         $builder->add('asyncChoiceMission', AutocompleteType::class, [
             'label' => 'Select',
-            'route' => 'app_admin_form_loadmission',
+            'route' => 'app_form_loadmission',
             'class' => SpaceMission::class,
             'required' => false,
         ]);
 
         $builder->add('asyncChoiceMissions', AutocompleteType::class, [
             'label' => 'Select multiple',
-            'route' => 'app_admin_form_loadmission',
+            'route' => 'app_form_loadmission',
             'multiple' => true,
             'class' => SpaceMission::class,
             'required' => false,
@@ -99,7 +99,7 @@ class FormSelectType extends AbstractType
 
         $builder->add('asyncChoiceMissionTemplated', AutocompleteType::class, [
             'label' => 'Select with html template',
-            'route' => 'app_admin_form_loadmission',
+            'route' => 'app_form_loadmission',
             'class' => SpaceMission::class,
             'required' => false,
             'template' => '<span>[[text]]</span><br><span class="text-muted">[[description]]</span>',
@@ -107,7 +107,7 @@ class FormSelectType extends AbstractType
 
 //        $builder->add('asyncChoiceMissionPaginated', AutocompleteType::class, [
 //            'label' => 'Select with pagination',
-//            'route' => 'app_admin_form_loadmission',
+//            'route' => 'app_form_loadmission',
 //            'page_length' => self::MISSION_PAGE_LENGTH,
 //            'class' => SpaceMission::class,
 //            'required' => false

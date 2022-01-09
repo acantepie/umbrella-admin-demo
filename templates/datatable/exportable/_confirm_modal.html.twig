@@ -1,0 +1,41 @@
+{% extends "@UmbrellaCore/Modal/default.html.twig" %}
+
+{% block modal_title %}
+    <h4 class="modal-title">Export Missions</h4>
+{% endblock %}
+
+{% block modal_content %}
+    <p>
+        Data will be exported on a CSV file.
+    </p>
+
+    <div>
+        <div class="mb-1">Choose data to export :</div>
+        <ul>
+            <li class="mb-1">
+                {% if state.selectedCount > 0 %}
+                    <a href data-xhr="{{ path('app_datatable_datatableexportable_exportselection', {state: state.data}) }}" data-spinner="true">Selected : {{ state.selectedCount }} rows</a>
+                {% else %}
+                    <span class="text-muted">Selected : 0 rows</span>
+                {% endif %}
+            </li>
+            <li class="mb-1">
+                {% if state.totalCount > 0 %}
+                    <a href data-xhr="{{ path('app_datatable_datatableexportable_exportsearch', {state: state.data}) }}" data-spinner="true">{{ state.totalCount }} rows matching search</a>
+                {% else %}
+                    <span class="text-muted">0 rows matching search</span>
+                {% endif %}
+            </li>
+            <li class="mb-1">
+                {% if state.pageCount > 0 %}
+                    <a href data-xhr="{{ path('app_datatable_datatableexportable_exportpage', {state: state.data}) }}" data-spinner="true">Current page</a>
+                {% else %}
+                    <span class="text-muted">Current page</span>
+                {% endif %}
+            </li>
+            <li class="mb-1">
+                <a href data-xhr="{{ path('app_datatable_datatableexportable_exportall') }}" data-spinner="true">All rows</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

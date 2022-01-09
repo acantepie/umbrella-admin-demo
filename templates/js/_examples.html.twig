@@ -1,0 +1,134 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="mb-4">
+            <h5>Modal</h5>
+
+            <div class="mb-2">
+                <a href="#code-modal" data-bs-toggle="collapse">
+                    <i class="mdi mdi-code-tags me-1"></i> Code Symfony Controller
+                </a>
+                <hl-code class="language-php collapse" id="code-modal">{{ source('js/_controller_modal.txt') | e('html') }}</hl-code>
+            </div>
+
+            <div>
+                <a href data-xhr="{{ path('app_js_modal') }}" class="btn btn-primary">
+                    Large modal
+                </a>
+                <a href data-xhr="{{ path('app_js_smallmodal') }}" class="btn btn-primary">
+                    Small modal
+                </a>
+                <a href data-xhr="{{ path('app_js_formmodal') }}" class="btn btn-primary">
+                    Modal with FormType
+                </a>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <h5>Offcanvas</h5>
+
+            <div class="mb-2">
+                <a href="#code-offcanvas" data-bs-toggle="collapse">
+                    <i class="mdi mdi-code-tags me-1"></i> Code Symfony Controller
+                </a>
+                <hl-code class="language-php collapse" id="code-offcanvas">{{ source('js/_controller_offcanvas.txt') | e('html') }}</hl-code>
+            </div>
+
+            <div>
+                <a href data-xhr="{{ path('app_js_offcanvas') }}" class="btn btn-primary">
+                    Offcanvas right
+                </a>
+                <a href data-xhr="{{ path('app_js_leftoffcanvas') }}" class="btn btn-primary">
+                    Offcanvas left
+                </a>
+                <a href data-xhr="{{ path('app_js_formoffcanvas') }}" class="btn btn-primary">
+                    Offcanvas with FormType
+                </a>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <h5>Toast (notification)</h5>
+
+            <div class="mb-2">
+                <a href="#code-toast" data-bs-toggle="collapse">
+                    <i class="mdi mdi-code-tags me-1"></i> Code Symfony Controller
+                </a>
+                <hl-code class="language-php collapse" id="code-toast">{{ source('js/_controller_toast.txt') | e('html') }}</hl-code>
+            </div>
+
+            <div>
+                <a href data-xhr="{{ path('app_js_successtoast') }}" class="btn btn-primary">
+                    Toast success
+                </a>
+                <a href data-xhr="{{ path('app_js_errortoast') }}" class="btn btn-primary">
+                    Toast error
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="mb-4">
+            <h5>DOM manipulation</h5>
+
+            <div class="mb-2">
+                <a href="#code-dom" data-bs-toggle="collapse">
+                    <i class="mdi mdi-code-tags me-1"></i> Code Symfony Controller
+                </a>
+                <hl-code class="language-php collapse" id="code-dom">{{ source('js/_controller_dom.txt') | e('html') }}</hl-code>
+            </div>
+
+            <div>
+                <a href data-xhr="{{ path('app_js_updatedom') }}" class="btn btn-primary">
+                    Update node in HTML DOM
+                </a>
+                <a href data-xhr="{{ path('app_js_removedom') }}" class="btn btn-primary">
+                    Remove node in HTML DOM
+                </a>
+            </div>
+
+            <div id="alert-stack"></div>
+        </div>
+
+        <div class="mb-4">
+            <h5>Web components (<a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank">@see documentation</a>)</h5>
+
+            <div class="mb-2">
+                <a href="#code-webcomponents" data-bs-toggle="collapse">
+                    <i class="mdi mdi-code-tags me-1"></i> Code Symfony Controller
+                </a>
+                <hl-code class="language-php collapse" id="code-webcomponents">{{ source('js/_controller_webcomponents.txt') | e('html') }}</hl-code>
+            </div>
+
+            <div>
+                <a href data-xhr="{{ path('app_js_togglemenu') }}" class="btn btn-primary">
+                    Toggle menu
+                </a>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <h5>Custom</h5>
+
+            <div class="mb-2">
+                <a href="#code-custom" data-bs-toggle="collapse">
+                    <i class="mdi mdi-code-tags me-1"></i> Code Symfony Controller
+                </a>
+                <hl-code class="language-php collapse" id="code-custom">{{ source('js/_controller_custom.txt') | e('html') }}</hl-code>
+            </div>
+
+            <div class="mb-2">
+                <a href="#code-custom-js" data-bs-toggle="collapse">
+                    <i class="mdi mdi-code-tags me-1"></i> Code Javascript
+                </a>
+                <hl-code class="language-js collapse" id="code-custom-js">{{ source('js/_js_custom.txt') | e('html') }}</hl-code>
+            </div>
+
+            <div>
+                <a href data-xhr="{{ path('app_js_custom') }}" class="btn btn-primary">
+                    Show an alert
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

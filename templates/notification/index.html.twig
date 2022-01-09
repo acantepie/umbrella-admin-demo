@@ -1,0 +1,33 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+    <div class="container-md">
+
+        <div class="card card-body">
+            <h4 class="card-title">Create a text notification</h4>
+            {{ umbrella_form_theme(new_notification_form) }}
+            {{ form_start(new_notification_form) }}
+                {{ form_rest(new_notification_form) }}
+                <button type="submit" class="btn btn-primary">
+                    <i class="mdi mdi-send me-1"></i> Send
+                </button>
+            {{ form_end(new_notification_form) }}
+        </div>
+
+        <div class="card card-body">
+            <h4 class="card-title">Create and update a notification using <code>symfony/messenger</code></h4>
+            <div class="alert alert-primary">
+                Messenger is a Symfony component. See <a href="https://symfony.com/doc/current/messenger.html" target="_blank">Messenger: Sync & Queued Message Handling</a>
+            </div>
+
+            {{ umbrella_form_theme(counter_form) }}
+            {{ form_start(counter_form) }}
+                {{ form_rest(counter_form) }}
+                <button type="submit" class="btn btn-primary">
+                    <i class="mdi mdi-send me-1"></i> Send
+                </button>
+            {{ form_end(counter_form) }}
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "datatable/layout.html.twig" %}
+
+{% block table_section %}
+    <div class="card">
+        <div class="card-body pb-0">
+            <h4 class="card-title">Custom adapter</h4>
+            <p class="text-muted font-14">
+                Example of DataTable with data read from an Api.<br>
+                Server compute, filter and paginate data fetched from <a href="https://github.com/r-spacex/SpaceX-API" class="text-primary">SpaceX API</a> with a custom adapter.
+            </p>
+        </div>
+        <div class="card-datatable pt-0">
+            {{ render_table(table) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block code_section %}
+    <div class="card">
+        <div class="card-body">
+            <a href="{{ git_url('src/DataTable/LaunchTableType.php') }}" target="_blank">
+                <i class="mdi mdi-github"></i> DataTableType
+            </a>
+        </div>
+    </div>
+{% endblock %}

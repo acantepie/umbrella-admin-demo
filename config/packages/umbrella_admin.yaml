@@ -1,5 +1,5 @@
 umbrella_admin:
-  app_name: "Umbrella Admin"
+  app_name: "Admin Demo"
   menu: App\Menu\AdminMenu
   notification:
     provider: App\Notification\AdminNotificationProvider

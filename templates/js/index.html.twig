@@ -1,0 +1,80 @@
+{% extends "@UmbrellaAdmin/layout.html.twig" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">How it works</h4>
+        </div>
+        <div class="card-body">
+            <div class="mb-4">
+                Client ( your web browser ) send an <b>Ajax</b> request to server.<br>
+                Then, server return a Json response respecting the good format.<br>
+                <a href="#response-format" data-bs-toggle="collapse" class="text-primary">
+                    <i class="mdi mdi-code-json me-1"></i> Response format
+                </a>
+                <hl-code class="language-json collapse" id="response-format">{{ source('js/_js_response.txt') | e('html') }}</hl-code>
+            </div>
+
+            <div class="mb-4">
+                So, Client resolves each actions one by one, calling the right js function depending of action type :
+                <ul>
+                    <li>action : toast &rightarrow; <code>Toastify({text: 'Lorem ipsum'}).showToast()</code></li>
+                    <li>action : redirect &rightarrow; <code>window.location.href=...</code></li>
+                </ul>
+            </div>
+
+            <div class="mb-4">
+                <i class="mdi mdi-arrow-right"></i> To send ajax request, you must call <code>AjaxUtils.request()</code> on Javascript.<br>
+                <a href="#ajax-utils" data-bs-toggle="collapse" class="text-primary">
+                    <i class="mdi mdi-code-tags me-1"></i> Code Javascript
+                </a>
+                <hl-code class="language-js collapse" id="ajax-utils">{{ source('js/_ajax_utils.txt') | e('html') }}</hl-code>
+            </div>
+
+            <div class="mb-4">
+                <i class="mdi mdi-arrow-right"></i> Then, your controller must return a JsonResponse.<br>
+                <a href="#controller" data-bs-toggle="collapse" class="text-primary">
+                    <i class="mdi mdi-code-tags me-1"></i> Code Symfony Controller
+                </a>
+                <hl-code class="language-js collapse" id="controller">{{ source('js/_controller.txt') | e('html') }}</hl-code>
+            </div>
+
+            <h5>The <code>data-xhr</code> attribute</h5>
+            <p>
+                This attribute will override the default behaviour of <b>link</b> or <b>form</b> and send an <b>Ajax</b> request (with <code>AJaxUtils</code>) to server on
+                <b>click</b> or on <b>submit</b>.<br>
+                <a href="#data-xhr-attribute" data-bs-toggle="collapse" class="text-primary">
+                    <i class="mdi mdi-code-tags me-1"></i> Code HTML
+                </a>
+                <hl-code class="language-html collapse" id="data-xhr-attribute">{{ source('js/_data_xhr_attribute.txt') | e('html') }}</hl-code>
+            </p>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Example</h4>
+        </div>
+        <div class="card-body">
+            {% include "js/_examples.html.twig" %}
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Options</h4>
+        </div>
+        <div class="card-body">
+            {% include "js/_options.html.twig" %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        umbrella.jsResponseHandler.registerAction('alert', (params) => {
+            alert(params.text)
+        });
+    </script>
+{% endblock %}

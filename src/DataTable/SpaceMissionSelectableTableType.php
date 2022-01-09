@@ -26,13 +26,13 @@ class SpaceMissionSelectableTableType extends DataTableType
             ->addBulkAction('edit', ButtonActionType::class, [
                 'class' => 'btn btn-outline-primary',
                 'icon' => 'mdi mdi-pencil me-1',
-                'route' => 'app_admin_datatableselectable_edit'
+                'route' => 'app_datatable_datatableselectable_edit'
             ])
             ->addBulkAction('delete', ButtonActionType::class, [
                 'class' => 'btn btn-outline-primary',
                 'icon' => 'mdi mdi-delete me-1',
                 'confirm' => 'Delete selection ?',
-                'route' => 'app_admin_datatableselectable_delete'
+                'route' => 'app_datatable_datatableselectable_delete'
             ]);
 
         $builder

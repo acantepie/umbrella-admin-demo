@@ -1,5 +1,0 @@
-$notification = new AdminNotification();
-$notification->title = 'Hello';
-
-$em->persist($notification);
-$em->flush();

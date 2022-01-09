@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="mb-4">
+            <h5>Confirm</h5>
+            <div class="mb-2">
+                <div>Show a confirm modal before perform ajax request : </div>
+                <code>{{ '<a data-xhr="umbrella.dev/foo/bar" data-confirm="Are you sure ?" href></a>' | e('html') }}</code>
+            </div>
+            <div>
+                <a href data-xhr="{{ path('app_js_modal') }}" class="btn btn-primary" data-confirm="Are you sure ?">
+                    Launch modal
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="mb-4">
+            <h5>Spinner</h5>
+            <div class="mb-2">
+                <div>Show a spinner until server respond : </div>
+                <code>{{ '<a data-xhr="umbrella.dev/foo/bar" data-spinner="true" href></a>' | e('html') }}</code>
+            </div>
+            <div>
+                <a href data-xhr="{{ path('app_js_sleepmodal') }}" class="btn btn-primary" data-spinner="true">
+                    Launch modal
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

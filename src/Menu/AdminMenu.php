@@ -35,51 +35,48 @@ class AdminMenu extends BaseAdminMenu
         $r->add('datatable')
             ->icon('uil-th')
             ->add('basic')
-                ->route('app_admin_datatablebasic_index')
+                ->route('app_datatable_datatablebasic_index')
                 ->end()
             ->add('custom_adapter')
-                ->route('app_admin_datatablecustomadapter_index')
+                ->route('app_datatable_datatablecustomadapter_index')
                 ->end()
             ->add('editable')
-                ->route('app_admin_datatableeditable_index')
+                ->route('app_datatable_datatableeditable_index')
                 ->end()
             ->add('selectable')
                 ->label('Selectable / Bulk edition')
-                ->route('app_admin_datatableselectable_index')
+                ->route('app_datatable_datatableselectable_index')
                 ->end()
             ->add('exportable')
-                ->route('app_admin_datatableexportable_index')
+                ->route('app_datatable_datatableexportable_index')
                 ->end()
             ->add('multiple')
-                ->route('app_admin_datatablemultiple_index')
+                ->route('app_datatable_datatablemultiple_index')
                 ->end()
             ->add('modal')
-                ->route('app_admin_datatablemodal_index')
+                ->route('app_datatable_datatablemodal_index')
                 ->end()
             ->add('tree')
-                ->route('app_admin_datatabletree_index')
+                ->route('app_datatable_datatabletree_index')
                 ->end();
 
         $r->add('form')
             ->icon('uil-check-square')
             ->add('theme')
-                ->route('app_admin_form_theme')
+                ->route('app_form_theme')
                 ->end()
             ->add('common')
-                ->route('app_admin_form_common')
+                ->route('app_form_common')
                 ->end()
             ->add('advanced_select')
-                ->route('app_admin_form_select');
+                ->route('app_form_select');
 
         $r->add('js_response')
             ->icon('uil-exchange')
-            ->route('app_admin_js_index');
-        $r->add('menu')
-            ->icon('uil-bars')
-            ->route('app_admin_menu_index');
+            ->route('app_js_index');
         $r->add('notification')
             ->icon('mdi mdi-bell-outline')
-            ->route('app_admin_notification_index');
+            ->route('app_notification_index');
 
         $r->add('pages');
 

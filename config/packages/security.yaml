@@ -19,7 +19,7 @@ security:
 
         admin:
             login_throttling: ~
-            pattern: ^/admin
+            pattern: ^/
             user_checker: Umbrella\AdminBundle\Security\UserChecker
             entry_point: Umbrella\AdminBundle\Security\AuthenticationEntryPoint
             provider: admin_entity_provider
@@ -27,7 +27,7 @@ security:
             form_login:
                 login_path: umbrella_admin_login
                 check_path: umbrella_admin_login
-                default_target_path: app_admin_default_index
+                default_target_path: app_default_index
                 enable_csrf: true
             logout:
                 path: umbrella_admin_logout

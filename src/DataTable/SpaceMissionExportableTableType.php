@@ -31,7 +31,7 @@ class SpaceMissionExportableTableType extends DataTableType
             ->addAction('export', ButtonActionType::class, [
                 'send_state' => true,
                 'icon' => 'mdi mdi-export me-1',
-                'route' => 'app_admin_datatableexportable_exportconfirm'
+                'route' => 'app_datatable_datatableexportable_exportconfirm'
             ]);
 
         $builder

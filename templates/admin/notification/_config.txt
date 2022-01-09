@@ -1,5 +1,0 @@
-# config/packages/umbrella_admin.yaml
-umbrella_admin:
-  notification:
-    provider: App\Notification\AdminNotificationProvider
-    poll_interval: 10

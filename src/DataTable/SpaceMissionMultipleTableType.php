@@ -30,7 +30,7 @@ class SpaceMissionMultipleTableType extends DataTableType
             ->add('__action__', ActionColumnType::class, [
                 'build' => function (ColumnActionBuilder $builder, SpaceMission $s) {
                     $builder->editLink([
-                        'route' => 'app_admin_datatableeditable_edit',
+                        'route' => 'app_datatable_datatableeditable_edit',
                         'route_params' => ['id' => $s->id],
                         'xhr' => true
                     ]);
