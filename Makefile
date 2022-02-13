@@ -8,7 +8,7 @@ help: ## Outputs this help screen
 	@grep -E '(^[a-zA-Z0-9_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}{printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
 
 ## —— Coding standards ——————————————————————————————————————————————————————
-analyse-php: ## Analyse PHP
+analyse: ## Analyse PHP
 	$(PHPSTAN) analyse
 
 fix-php: ## Fix files with php-cs-fixer
@@ -23,6 +23,7 @@ fix-all: fix-php fix-js ## Fix all files
 test: ## Test app
 	$(PHPUNIT)
 
+check: fix-all analyse test
 
 ## —— docker-composer ——————————————————————————————————————————————————————
 dc-sh:

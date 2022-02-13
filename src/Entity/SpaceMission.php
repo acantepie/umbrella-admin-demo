@@ -13,8 +13,8 @@ use Umbrella\CoreBundle\Search\Annotation\SearchableField;
 
 /**
  * @ORM\Entity(repositoryClass=SpaceMissionRepository::class)
- * @Searchable
  */
+#[Searchable]
 class SpaceMission implements \Stringable
 {
     use IdTrait;
@@ -22,14 +22,14 @@ class SpaceMission implements \Stringable
 
     /**
      * @ORM\Column(type="string")
-     * @SearchableField
      */
+    #[SearchableField]
     public ?string $companyName = null;
 
     /**
      * @ORM\Column(type="string")
-     * @SearchableField
      */
+    #[SearchableField]
     public ?string $location = null;
 
     /**
@@ -39,8 +39,8 @@ class SpaceMission implements \Stringable
 
     /**
      * @ORM\Column(type="string")
-     * @SearchableField
      */
+    #[SearchableField]
     public ?string $detail = null;
 
     /**
