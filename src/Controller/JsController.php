@@ -8,14 +8,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
-/**
- * @Route("/js")
- */
+#[Route('/js')]
 class JsController extends BaseController
 {
-    /**
-     * @Route("")
-     */
+    #[Route('')]
     public function index()
     {
         return $this->render('js/index.html.twig');
@@ -23,9 +19,7 @@ class JsController extends BaseController
 
     // modal
 
-    /**
-     * @Route("/modal")
-     */
+    #[Route('/modal')]
     public function modal()
     {
         return $this->js()->modal('@UmbrellaCore/Modal/default.html.twig', [
@@ -34,9 +28,7 @@ class JsController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/small-modal")
-     */
+    #[Route('/modal/small')]
     public function smallModal()
     {
         return $this->js()->modal('@UmbrellaCore/Modal/default.html.twig', [
@@ -46,9 +38,7 @@ class JsController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/form-modal")
-     */
+    #[Route('/modal/form')]
     public function formModal(Request $request)
     {
         $form = $this->createFormBuilder()
@@ -68,9 +58,7 @@ class JsController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/sleep-modal")
-     */
+    #[Route('/modal/sleep')]
     public function sleepModal()
     {
         \sleep(1);
@@ -83,9 +71,7 @@ class JsController extends BaseController
 
     // offcanvas
 
-    /**
-     * @Route("/offcanvas")
-     */
+    #[Route('/offcanvas')]
     public function offcanvas()
     {
         return $this->js()->offcanvas('@UmbrellaCore/Offcanvas/default.html.twig', [
@@ -94,9 +80,7 @@ class JsController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/left-offcanvas")
-     */
+    #[Route('/offcanvas/left')]
     public function leftOffcanvas()
     {
         return $this->js()->offcanvas('@UmbrellaCore/Offcanvas/default.html.twig', [
@@ -106,9 +90,7 @@ class JsController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/form-offcanvas")
-     */
+    #[Route('/offcanvas/form')]
     public function formOffcanvas(Request $request)
     {
         $form = $this->createFormBuilder()
@@ -129,17 +111,13 @@ class JsController extends BaseController
 
     // toast
 
-    /**
-     * @Route("/success-toast")
-     */
+    #[Route('/toast/success')]
     public function successToast()
     {
         return $this->js()->toastSuccess('...', 'Success toast');
     }
 
-    /**
-     * @Route("/error-toast")
-     */
+    #[Route('/toast/error')]
     public function errorToast()
     {
         return $this->js()->toastError('...', 'Error toast');
@@ -147,9 +125,7 @@ class JsController extends BaseController
 
     // dom
 
-    /**
-     * @Route("/update-dom")
-     */
+    #[Route('/dom/update')]
     public function updateDOM()
     {
         $now = new \DateTime();
@@ -158,9 +134,7 @@ class JsController extends BaseController
         return $this->js()->updateHtml('#alert-stack', $h);
     }
 
-    /**
-     * @Route("/remove-dom")
-     */
+    #[Route('/dom/remove')]
     public function removeDOM()
     {
         return $this->js()->remove('#alert-stack > *');
@@ -168,9 +142,7 @@ class JsController extends BaseController
 
     // web components
 
-    /**
-     * @Route("/toggle-menu")
-     */
+    #[Route('/menu/toggle')]
     public function toggleMenu()
     {
         return $this->js()->callWebComponent('[is=umbrella-sidebar]', 'toggle');
@@ -178,9 +150,7 @@ class JsController extends BaseController
 
     // custom
 
-    /**
-     * @Route("/custom")
-     */
+    #[Route('/custom')]
     public function custom()
     {
         return $this->js()->add('alert', ['text' => '...']);

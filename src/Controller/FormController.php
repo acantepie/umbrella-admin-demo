@@ -15,14 +15,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use function Symfony\Component\Translation\t;
 use Umbrella\CoreBundle\Controller\BaseController;
 
-/**
- * @Route("/form")
- */
+#[Route('/form')]
 class FormController extends BaseController
 {
-    /**
-     * @Route("/common")
-     */
+    #[Route('/common')]
     public function common(AppHelper $helper, FileUploader $fileUploader, Request $request)
     {
         $entity = $helper->loadOne(FormMock::class);
@@ -48,9 +44,7 @@ class FormController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/select")
-     */
+    #[Route('/select')]
     public function select(AppHelper $helper, Request $request)
     {
         $entity = $helper->loadOne(FormMock::class);
@@ -69,9 +63,7 @@ class FormController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/load-mission")
-     */
+    #[Route('/load-mission')]
     public function loadMission(SpaceMissionRepository $repository, Request $request)
     {
         $q = $request->query->get('q');

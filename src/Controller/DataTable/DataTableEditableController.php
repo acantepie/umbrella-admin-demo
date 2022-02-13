@@ -10,14 +10,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use function Symfony\Component\Translation\t;
 use Umbrella\CoreBundle\Controller\BaseController;
 
-/**
- * @Route("/datatable/editable")
- */
+#[Route('/datatable/editable')]
 class DataTableEditableController extends BaseController
 {
-    /**
-     * @Route("")
-     */
+    #[Route('')]
     public function index(Request $request)
     {
         $table = $this->createTable(SpaceMissionEditableTableType::class);
@@ -32,10 +28,8 @@ class DataTableEditableController extends BaseController
         ]);
     }
 
-    /**
-     * @Route(path="/edit/{id}", requirements={"id": "\d+"})
-     */
-    public function edit(Request $request, $id = null)
+    #[Route('/edit/{id}', requirements: ['id' => '\d+'])]
+    public function edit(Request $request, ?int $id = null)
     {
         if (null === $id) {
             $entity = new SpaceMission();
@@ -62,10 +56,8 @@ class DataTableEditableController extends BaseController
             ]);
     }
 
-    /**
-     * @Route(path="/delete/{id}", requirements={"id": "\d+"})
-     */
-    public function delete($id)
+    #[Route('/delete/{id}', requirements: ['id' => '\d+'])]
+    public function delete(int $id)
     {
         $entity = $this->findOrNotFound(SpaceMission::class, $id);
         $this->removeAndFlush($entity);

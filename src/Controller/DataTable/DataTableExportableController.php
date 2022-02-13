@@ -10,14 +10,10 @@ use Umbrella\CoreBundle\Controller\BaseController;
 use Umbrella\CoreBundle\DataTable\Utils\DataTableActionState;
 use Umbrella\CoreBundle\JsResponse\JsResponse;
 
-/**
- * @Route("/datatable/exportable")
- */
+#[Route('/datatable/exportable')]
 class DataTableExportableController extends BaseController
 {
-    /**
-     * @Route("")
-     */
+    #[Route('')]
     public function index(Request $request)
     {
         $table = $this->createTable(SpaceMissionExportableTableType::class);
@@ -32,9 +28,7 @@ class DataTableExportableController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/export-confirm")
-     */
+    #[Route('/export/confirm')]
     public function exportConfirm(Request $request)
     {
         $state = DataTableActionState::createFromRequest($request);
@@ -44,9 +38,7 @@ class DataTableExportableController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/export-search")
-     */
+    #[Route('/export/search')]
     public function exportSearch(Request $request)
     {
         $state = DataTableActionState::createFromRequest($request);
@@ -58,9 +50,7 @@ class DataTableExportableController extends BaseController
         return $this->exportResponse($qb);
     }
 
-    /**
-     * @Route("/export-selection")
-     */
+    #[Route('/export/selection')]
     public function exportSelection(Request $request)
     {
         $state = DataTableActionState::createFromRequest($request);
@@ -73,9 +63,7 @@ class DataTableExportableController extends BaseController
         return $this->exportResponse($qb);
     }
 
-    /**
-     * @Route("/export-page")
-     */
+    #[Route('/export/page')]
     public function exportPage(Request $request)
     {
         $state = DataTableActionState::createFromRequest($request);
@@ -87,9 +75,7 @@ class DataTableExportableController extends BaseController
         return $this->exportResponse($qb);
     }
 
-    /**
-     * @Route("/export-all")
-     */
+    #[Route('/export/all')]
     public function exportAll()
     {
         $qb = $this->createTable(SpaceMissionExportableTableType::class)

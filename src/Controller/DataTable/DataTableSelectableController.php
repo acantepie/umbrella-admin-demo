@@ -10,14 +10,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 use Umbrella\CoreBundle\DataTable\Utils\DataTableActionState;
 
-/**
- * @Route("/datatable/selectable")
- */
+#[Route('/datatable/selectable')]
 class DataTableSelectableController extends BaseController
 {
-    /**
-     * @Route("")
-     */
+    #[Route('')]
     public function index(Request $request)
     {
         $table = $this->createTable(SpaceMissionSelectableTableType::class);
@@ -47,9 +43,7 @@ class DataTableSelectableController extends BaseController
             ->getResult();
     }
 
-    /**
-     * @Route("/edit")
-     */
+    #[Route('/edit')]
     public function edit(Request $request)
     {
         $form = $this
@@ -86,9 +80,7 @@ class DataTableSelectableController extends BaseController
             ]);
     }
 
-    /**
-     * @Route("/delete")
-     */
+    #[Route('/delete')]
     public function delete(Request $request)
     {
         $missions = $this->getBulkMission($request);

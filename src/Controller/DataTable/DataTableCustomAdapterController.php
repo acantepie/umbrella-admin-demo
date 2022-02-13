@@ -7,14 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
-/**
- * @Route("/datatable/custom-adapter")
- */
+#[Route('/datatable/custom-adapter')]
 class DataTableCustomAdapterController extends BaseController
 {
-    /**
-     * @Route("")
-     */
+    #[Route('')]
     public function index(Request $request)
     {
         $table = $this->createTable(LaunchTableType::class);

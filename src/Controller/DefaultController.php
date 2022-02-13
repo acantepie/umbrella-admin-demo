@@ -5,14 +5,10 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
-/**
- * @Route("/")
- */
+#[Route('/')]
 class DefaultController extends BaseController
 {
-    /**
-     * @Route("/")
-     */
+    #[Route('')]
     public function index()
     {
         return $this->redirectToRoute('app_datatable_datatablebasic_index');

@@ -7,14 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
-/**
- * @Route("/datatable/basic")
- */
+#[Route('/datatable/basic')]
 class DataTableBasicController extends BaseController
 {
-    /**
-     * @Route("")
-     */
+    #[Route('')]
     public function index(Request $request)
     {
         // Create table from Type with service DataTableFactory

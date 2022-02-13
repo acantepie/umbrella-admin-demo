@@ -11,14 +11,10 @@ use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
-/**
- * @Route("/notification")
- */
+#[Route('/notification')]
 class NotificationController extends BaseController
 {
-    /**
-     * @Route("/")
-     */
+    #[Route('')]
     public function index(Request $request, MessageBusInterface $bus)
     {
         $notification = new AdminNotification();

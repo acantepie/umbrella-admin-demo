@@ -9,14 +9,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
-/**
- * @Route("/datatable/tree")
- */
+#[Route('/datatable/tree')]
 class DataTableTreeController extends BaseController
 {
-    /**
-     * @Route("")
-     */
+    #[Route('')]
     public function index(Request $request)
     {
         $table = $this->createTable(SpaceMissionClassificationTableType::class);
@@ -31,10 +27,8 @@ class DataTableTreeController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/move/{id}/{direction}", requirements={"id": "\d+"})
-     */
-    public function move(SpaceMissionClassificationRepository $repository, $id, string $direction)
+    #[Route('/move/{id}/{direction}', requirements: ['id' => '\d+'])]
+    public function move(SpaceMissionClassificationRepository $repository, int $id, string $direction)
     {
         $entity = $this->findOrNotFound(SpaceMissionClassification::class, $id);
         if ('up' === $direction) {

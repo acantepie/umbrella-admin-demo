@@ -8,14 +8,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
-/**
- * @Route("/datatable/multiple")
- */
+#[Route('/datatable/multiple')]
 class DataTableMultipleController extends BaseController
 {
-    /**
-     * @Route("")
-     */
+    #[Route('')]
     public function index(Request $request)
     {
         $tableA = $this->createTable(SpaceMissionMultipleTableType::class, [
