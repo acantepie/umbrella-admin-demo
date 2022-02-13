@@ -8,20 +8,15 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\AdminBundle\Entity\BaseNotification;
 
-/**
- * @ORM\Entity(repositoryClass=AdminNotificationRepository::class)
- */
+#[ORM\Entity(repositoryClass: AdminNotificationRepository::class)]
 class AdminNotification extends BaseNotification
 {
     /**
      * @var ArrayCollection|AdminUser[]
-     *
-     * @ORM\ManyToMany(targetEntity="AdminUser")
-     * @ORM\JoinTable(
-     *     joinColumns={@ORM\JoinColumn(onDelete="CASCADE")},
-     *     inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")}
-     * )
      */
+    #[ORM\ManyToMany(targetEntity: AdminUser::class)]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
+    #[ORM\InverseJoinColumn(onDelete: 'CASCADE')]
     public Collection $users;
 
     public function __construct()

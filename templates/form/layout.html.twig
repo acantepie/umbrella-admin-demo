@@ -37,7 +37,7 @@
     </section>
 
     {{ umbrella_form_theme(form, theme) }}
-    {{ form_start(form, {id: 'form'}) }}
+    {{ form_start(form, {attr: {'id': 'form'}}) }}
     {% block form %}
         {{ form_rest(form) }}
     {% endblock %}
