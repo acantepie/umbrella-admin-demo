@@ -14,11 +14,9 @@ class MissionStatusChoiceType extends AbstractType
         $resolver->setDefaults([
             'choices' => MissionStatus::all(),
             'translation_domain' => false,
-            'expose' => function ($choice) {
-                return [
-                    'color' => MissionStatus::color($choice)
-                ];
-            },
+            'expose' => fn ($choice) => [
+                'color' => MissionStatus::color($choice)
+            ],
             'choice_label' => fn ($c) => $c,
             'template' => '<i class="mdi mdi-circle text-[[ color ]]"></i> [[ text ]]',
         ]);

@@ -6,14 +6,11 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class AppHelper
 {
-    private EntityManagerInterface $em;
-
     /**
      * AppHelper constructor.
      */
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(private EntityManagerInterface $em)
     {
-        $this->em = $em;
     }
 
     public function loadOne(string $entityClass): ?object

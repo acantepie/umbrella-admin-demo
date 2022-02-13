@@ -20,22 +20,17 @@ use Umbrella\CoreBundle\DataTable\DTO\DataTableState;
  */
 class LaunchTableType extends DataTableType
 {
-    private HttpClientInterface $client;
-
     /**
      * ApiTableType constructor.
      */
-    public function __construct(HttpClientInterface $client)
+    public function __construct(private HttpClientInterface $client)
     {
-        $this->client = $client;
     }
 
     public function buildTable(DataTableBuilder $builder, array $options = [])
     {
         // Define a row class depending of data
-        $builder->setRowClass(function ($o) {
-            return $o->success ? '' : 'row-border-danger';
-        });
+        $builder->setRowClass(fn ($o) => $o->success ? '' : 'row-border-danger');
 
         $builder
             ->add('__more__', DetailsColumnType::class, [
@@ -59,16 +54,12 @@ class LaunchTableType extends DataTableType
                 }
             ])
             ->add('date_utc', PropertyColumnType::class, [
-                'render' => function ($o) {
-                    return (new \DateTime($o->date_utc))->format('d M Y H:i');
-                }
+                'render' => fn ($o) => (new \DateTime($o->date_utc))->format('d M Y H:i')
             ])
             ->add('name', PropertyColumnType::class)
             ->add('success', BooleanColumnType::class)
             ->add('details', PropertyColumnType::class, [
-                'render' => function ($o) {
-                    return u($o->details)->truncate(100, '...');
-                }
+                'render' => fn ($o) => u($o->details)->truncate(100, '...')
             ]);
 
         $builder->useAdapter(function (DataTableState $state) {

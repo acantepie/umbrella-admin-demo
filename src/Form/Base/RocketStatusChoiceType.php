@@ -14,11 +14,9 @@ class RocketStatusChoiceType extends AbstractType
         $resolver->setDefaults([
             'choices' => RocketStatus::all(),
             'translation_domain' => false,
-            'expose' => function ($choice) {
-                return [
-                    'color' => RocketStatus::color($choice)
-                ];
-            },
+            'expose' => fn ($choice) => [
+                'color' => RocketStatus::color($choice)
+            ],
             'choice_label' => fn ($c) => $c,
             'template' => '<i class="mdi mdi-circle text-[[ color ]]"></i> [[ text ]]',
         ]);

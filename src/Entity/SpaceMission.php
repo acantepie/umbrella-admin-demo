@@ -15,7 +15,7 @@ use Umbrella\CoreBundle\Search\Annotation\SearchableField;
  * @ORM\Entity(repositoryClass=SpaceMissionRepository::class)
  * @Searchable
  */
-class SpaceMission
+class SpaceMission implements \Stringable
 {
     use IdTrait;
     use SearchTrait;
@@ -58,7 +58,7 @@ class SpaceMission
      */
     public string $missionStatus = MissionStatus::SUCCESS;
 
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->detail;
     }

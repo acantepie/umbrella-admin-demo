@@ -9,14 +9,11 @@ use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
 class CounterMessageHandler implements MessageHandlerInterface
 {
-    private EntityManagerInterface $em;
-
     /**
      * CounterMessageHandler constructor.
      */
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(private EntityManagerInterface $em)
     {
-        $this->em = $em;
     }
 
     public function __invoke(CounterMessage $message)

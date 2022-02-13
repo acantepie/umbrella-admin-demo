@@ -26,14 +26,9 @@ class FormSelectType extends AbstractType
             'Cat' => 'cat',
         ];
 
-        $getSpecie = function ($Mission) {
-            switch ($Mission) {
-                case 'eel':
-                case 'salmon':
-                    return 'Fish';
-                default:
-                    return 'Other';
-            }
+        $getSpecie = fn ($Mission) => match ($Mission) {
+            'eel', 'salmon' => 'Fish',
+            default => 'Other',
         };
 
         // --- select

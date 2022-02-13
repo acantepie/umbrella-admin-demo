@@ -10,14 +10,11 @@ use Umbrella\CoreBundle\Menu\Builder\MenuBuilder;
 
 class AdminMenu extends BaseAdminMenu
 {
-    private Security $security;
-
     /**
      * AdminMenu constructor.
      */
-    public function __construct(Security $security, Environment $twig, UmbrellaAdminConfiguration $configuration)
+    public function __construct(private Security $security, Environment $twig, UmbrellaAdminConfiguration $configuration)
     {
-        $this->security = $security;
         parent::__construct($twig, $configuration);
     }
 

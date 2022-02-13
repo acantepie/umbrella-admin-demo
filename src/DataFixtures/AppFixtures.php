@@ -18,9 +18,6 @@ use function Symfony\Component\String\u;
 
 class AppFixtures extends Fixture
 {
-    private UserPasswordHasherInterface $userPasswordHasher;
-    private RouterInterface $router;
-
     /**
      * @var SpaceMission[]
      */
@@ -29,16 +26,14 @@ class AppFixtures extends Fixture
     /**
      * AppFixtures constructor.
      */
-    public function __construct(UserPasswordHasherInterface $userPasswordHasher, RouterInterface $router)
+    public function __construct(private UserPasswordHasherInterface $userPasswordHasher, private RouterInterface $router)
     {
-        $this->userPasswordHasher = $userPasswordHasher;
-        $this->router = $router;
     }
 
     public function load(ObjectManager $manager)
     {
         if (!$manager instanceof EntityManagerInterface) {
-            throw new \Exception(sprintf('Unsupported object manager, expected %s, have %s', EntityManagerInterface::class, get_class($manager)));
+            throw new \Exception(sprintf('Unsupported object manager, expected %s, have %s', EntityManagerInterface::class, $manager::class));
         }
 
         $this->loadUser($manager);
