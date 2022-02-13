@@ -13,7 +13,7 @@ use Umbrella\CoreBundle\Model\NestedTreeEntityInterface;
 
 #[ORM\Entity(repositoryClass: SpaceMissionClassificationRepository::class)]
 #[Gedmo\Tree(type: 'nested')]
-class SpaceMissionClassification implements NestedTreeEntityInterface
+class SpaceMissionClassification implements NestedTreeEntityInterface, \Stringable
 {
     use IdTrait;
     public const ROOT = 'root';
