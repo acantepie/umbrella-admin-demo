@@ -7,6 +7,7 @@ use App\Form\AdminNotificationType;
 use App\Form\CounterType;
 use App\Message\CounterMessage;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
@@ -18,7 +19,7 @@ class NotificationController extends BaseController
     /**
      * @Route("/")
      */
-    public function index(Request $request)
+    public function index(Request $request, MessageBusInterface $bus)
     {
         $notification = new AdminNotification();
         $notification->title = 'Hello !';
@@ -37,7 +38,7 @@ class NotificationController extends BaseController
         $f2 = $this->createForm(CounterType::class, $counter);
         $f2->handleRequest($request);
         if ($f2->isSubmitted() && $f2->isValid()) {
-            $this->dispatchMessage($counter);
+            $bus->dispatch($counter);
             $this->toastSuccess('Counter started');
 
             return $this->redirectToRoute('app_notification_index');

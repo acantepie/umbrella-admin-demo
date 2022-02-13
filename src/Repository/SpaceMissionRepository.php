@@ -26,12 +26,12 @@ class SpaceMissionRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('e');
 
-        /*        $q = trim($q);
-                if (!empty($q)) {
-                    $qb->andWhere('LOWER(e.search) LIKE :search');
-                    $qb->setParameter('search', '%' . strtolower($q) . '%');
-                }
-        */
+        $q = trim($q);
+        if (!empty($q)) {
+            $qb->andWhere('LOWER(e.search) LIKE :search');
+            $qb->setParameter('search', '%' . strtolower($q) . '%');
+        }
+
         if (null !== $page) {
             $page = max(1, $page);
             $qb->setMaxResults($pageLength);

@@ -74,7 +74,7 @@ class FormController extends BaseController
      */
     public function loadMission(SpaceMissionRepository $repository, Request $request)
     {
-        $q = $request->query->has('q');
+        $q = $request->query->get('q');
 
         if ($request->query->has('p')) {
             $results = $repository->search($q, $request->query->getInt('p', 1), FormSelectType::MISSION_PAGE_LENGTH);

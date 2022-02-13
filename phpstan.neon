@@ -1,11 +1,10 @@
 includes:
     - vendor/phpstan/phpstan-symfony/extension.neon
     - vendor/phpstan/phpstan-symfony/rules.neon
-    - vendor/ekino/phpstan-banned-code/extension.neon
     - vendor/phpstan/phpstan-doctrine/extension.neon
 
 parameters:
-    level: 4
+    level: 5
     paths:
         - src/
     checkUninitializedProperties: true
@@ -15,27 +14,5 @@ parameters:
     checkInternalClassCaseSensitivity: true
     symfony:
         container_xml_path: var/cache/dev/App_KernelDevDebugContainer.xml
-    excludes_analyse:
-        - vendor/umbrella2/corebundle/src/Component/Menu/MenuAuthorizationChecker.php
-    banned_code:
-        nodes:
-            - { type: Stmt_Echo, functions: null }
-            - { type: Expr_Eval, functions: null }
-            - { type: Expr_Exit, functions: null }
-            - type: Expr_FuncCall
-              functions:
-                  - dd
-                  - debug_backtrace
-                  - passthru
-                  - phpinfo
-                  - print_r
-                  - var_dump
-                  - dump
-                  - exec
-                  - shell_exec
-                  - system
-                  - error_log
-                  - var_export
-                  - eval
     doctrine:
         objectManagerLoader: tests/object-manager.php

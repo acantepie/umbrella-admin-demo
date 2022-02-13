@@ -37,6 +37,10 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+        if (!$manager instanceof EntityManagerInterface) {
+            throw new \Exception(sprintf('Unsupported object manager, expected %s, have %s', EntityManagerInterface::class, get_class($manager)));
+        }
+
         $this->loadUser($manager);
         $this->loadSpaceMission($manager);
         $this->loadSpaceMissionClassification($manager);
@@ -44,7 +48,7 @@ class AppFixtures extends Fixture
         $this->loadNotifications($manager);
     }
 
-    private function loadUser(ObjectManager $manager)
+    private function loadUser(EntityManagerInterface $manager)
     {
         $content = file_get_contents(__DIR__ . '/data/user.json');
         $json = json_decode($content, true);
@@ -63,7 +67,7 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadSpaceMission(ObjectManager $manager)
+    private function loadSpaceMission(EntityManagerInterface $manager)
     {
         $handle = fopen(__DIR__ . '/data/space_mission.csv', 'r');
 
@@ -95,10 +99,7 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    /**
-     * @param EntityManagerInterface $manager
-     */
-    private function loadSpaceMissionClassification(ObjectManager $manager)
+    private function loadSpaceMissionClassification(EntityManagerInterface $manager)
     {
         $root = new SpaceMissionClassification();
 
@@ -128,7 +129,7 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadFormMock(ObjectManager $manager)
+    private function loadFormMock(EntityManagerInterface $manager)
     {
         $e = new FormMock();
         $e->date = new \DateTime();
@@ -158,7 +159,7 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadNotifications(ObjectManager $manager)
+    private function loadNotifications(EntityManagerInterface $manager)
     {
         $notification = new AdminNotification();
         $notification->iconColor = 'danger';
