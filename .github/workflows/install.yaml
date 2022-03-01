@@ -1,8 +1,5 @@
 name: Test install
-on:
-  push:
-    tags:
-      - 'foo'
+on: [push]
 
 jobs:
   install-project:
