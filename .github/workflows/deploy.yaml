@@ -2,7 +2,7 @@ name: Deploy app
 
 on:
     workflow_run:
-        workflows: ["install"]
+        workflows: ["Test install"]
         types:
             - completed
 
