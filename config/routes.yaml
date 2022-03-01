@@ -1,24 +1,28 @@
+kernel:
+    resource: ../src/Kernel.php
+    type: annotation
+
 admin_:
-  resource: "../src/Controller/"
-  type: annotation
-  prefix: /
+    resource: "../src/Controller/"
+    type: annotation
+    prefix: /
 
 # User Profile
 umbrella_admin_profile_:
-  resource: "@UmbrellaAdminBundle/config/routes/profile.php"
-  prefix: /
+    resource: "@UmbrellaAdminBundle/config/routes/profile.php"
+    prefix: /
 
 # User CRUD
 umbrella_admin_user_:
-  resource: "@UmbrellaAdminBundle/config/routes/user.php"
-  prefix: /
+    resource: "@UmbrellaAdminBundle/config/routes/user.php"
+    prefix: /
 
 # Security (login, logout, password resetting)
 umbrella_admin_security_:
-  resource: "@UmbrellaAdminBundle/config/routes/security.php"
-  prefix: /
+    resource: "@UmbrellaAdminBundle/config/routes/security.php"
+    prefix: /
 
 # Notifications
 umbrella_admin_notification_:
-  resource: "@UmbrellaAdminBundle/config/routes/notification.php"
-  prefix: /
+    resource: "@UmbrellaAdminBundle/config/routes/notification.php"
+    prefix: /

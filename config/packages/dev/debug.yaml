@@ -1,3 +1,0 @@
-debug:
-    # php bin/console server:dump to watch dump (usefull on ajax request)
-    dump_destination: "tcp://%env(VAR_DUMPER_SERVER)%"

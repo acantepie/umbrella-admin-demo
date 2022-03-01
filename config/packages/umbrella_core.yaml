@@ -1,3 +1,3 @@
 umbrella_core:
-  ckeditor:
-    asset: ckeditor4/ckeditor.js
+    ckeditor:
+        asset: ckeditor4/ckeditor.js

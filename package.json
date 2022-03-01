@@ -1,22 +1,22 @@
 {
-  "devDependencies": {
-    "@babel/eslint-parser": "^7.16.3",
-    "@symfony/webpack-encore": "^1.6.1",
-    "eslint": "^8.2.0",
-    "sass": "^1.43.4",
-    "sass-loader": "^12.3.0"
-  },
-  "dependencies": {
-    "ckeditor4": "^4.16.2",
-    "highlight.js": "^11.3.1"
-  },
-  "scripts": {
-    "dev-server": "encore dev-server",
-    "dev": "encore dev",
-    "watch": "encore dev --watch",
-    "build": "encore production --progress",
-    "copy-ckeditor": "cp -R node_modules/ckeditor4 public",
-    "lint": "eslint assets",
-    "lint-fix": "eslint assets --fix"
-  }
+    "devDependencies": {
+        "@babel/eslint-parser": "^7.16.3",
+        "@symfony/webpack-encore": "^1.7.0",
+        "eslint": "^8.2.0",
+        "sass": "^1.43.4",
+        "sass-loader": "^12.3.0"
+    },
+    "dependencies": {
+        "ckeditor4": "^4.16.2",
+        "highlight.js": "^11.3.1"
+    },
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress",
+        "copy-ckeditor": "cp -R node_modules/ckeditor4 public",
+        "lint": "eslint assets",
+        "lint-fix": "eslint assets --fix"
+    }
 }

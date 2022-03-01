@@ -6,10 +6,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class CounterMessage
 {
-    /**
-     * @Assert\GreaterThanOrEqual(10)
-     * @Assert\LessThanOrEqual(100)
-     */
+    #[Assert\GreaterThanOrEqual(10)]
+    #[Assert\LessThanOrEqual(100)]
     public int $max;
 
     /**

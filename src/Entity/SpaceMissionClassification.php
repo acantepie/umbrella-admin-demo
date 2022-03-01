@@ -128,7 +128,7 @@ class SpaceMissionClassification implements NestedTreeEntityInterface, \Stringab
     /**
      * {@inheritdoc}
      */
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->name;
     }

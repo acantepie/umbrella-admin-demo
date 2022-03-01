@@ -1,9 +1,9 @@
 umbrella_admin:
-  app_name: "Admin Demo"
-  menu: App\Menu\AdminMenu
-  notification:
-    provider: App\Notification\AdminNotificationProvider
-    poll_interval: 2
-  user:
-    class: App\Entity\AdminUser
+    app_name: "Admin Demo"
+    menu: App\Menu\AdminMenu
+    notification:
+        provider: App\Notification\AdminNotificationProvider
+        poll_interval: 2
+    user:
+        class: App\Entity\AdminUser
 
