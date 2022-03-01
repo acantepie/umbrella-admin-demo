@@ -1,0 +1,16 @@
+name: Deploy app
+
+on:
+    workflow_run:
+        workflows: ["install"]
+        types:
+            - completed
+
+jobs:
+    deploy-project:
+        name: Deploy app
+        runs-on: ubuntu-20.04
+        steps:
+            # Checkout
+            - name: Checkout
+              uses: actions/checkout@v2

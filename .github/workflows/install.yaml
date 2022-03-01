@@ -2,7 +2,7 @@ name: Test install
 on: [push]
 
 jobs:
-  symfony:
+  install-project:
     name: Symfony (PHP ${{ matrix.php-versions }})
     runs-on: ubuntu-20.04
     strategy:
