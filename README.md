@@ -26,7 +26,7 @@
 ```bash
 # Clone repository
 git clone git@github.com:acantepie/umbrella-admin-demo.git umbrella_demo
-cd umbrella-demo
+cd umbrella_demo
 
 # Build / Up Docker
 docker-compose up -d
