@@ -42,6 +42,9 @@ RUN npm install --global yarn
 
 # php extension
 RUN docker-php-ext-install pdo pdo_mysql
+RUN apt-get install -y libicu-dev \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install intl
 
 # Clear packages artifcat
 RUN apt-get clean && apt-get --yes --quiet autoremove --purge && \
