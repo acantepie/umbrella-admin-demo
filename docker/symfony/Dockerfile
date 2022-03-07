@@ -23,6 +23,10 @@ RUN chown -R ${USER}:${USER} ${WORKDIR}
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 RUN chmod +x /usr/local/bin/composer
 
+# dev tools (git / zip)
+RUN apt-get -y update
+RUN apt-get -y install git p7zip-full
+
 # node / yarn
 RUN mkdir -p $NVM_DIR
 RUN curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
@@ -35,8 +39,6 @@ ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 RUN npm install --global yarn
-RUN apt-get update
-RUN apt-get -y install git p7zip-full
 
 # php extension
 RUN docker-php-ext-install pdo pdo_mysql
