@@ -6,7 +6,7 @@ ARG UID=1000
 ARG GID=1000
 ARG WORKDIR=/app
 
-ENV NODE_VERSION=15.8.0
+ENV NODE_VERSION=16.0.0
 ENV NVM_DIR /usr/local/nvm
 
 # Docker user
@@ -35,6 +35,8 @@ ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 RUN npm install --global yarn
+RUN apt-get update
+RUN apt-get -y install git p7zip-full
 
 # php extension
 RUN docker-php-ext-install pdo pdo_mysql
