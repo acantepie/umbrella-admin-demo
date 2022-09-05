@@ -12,7 +12,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+
 use function Symfony\Component\Translation\t;
+
 use Umbrella\CoreBundle\Controller\BaseController;
 
 #[Route('/form')]

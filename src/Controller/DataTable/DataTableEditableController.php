@@ -7,7 +7,9 @@ use App\Entity\SpaceMission;
 use App\Form\SpaceMissionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+
 use function Symfony\Component\Translation\t;
+
 use Umbrella\CoreBundle\Controller\BaseController;
 
 #[Route('/datatable/editable')]
