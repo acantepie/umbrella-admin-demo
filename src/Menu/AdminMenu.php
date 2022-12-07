@@ -2,7 +2,7 @@
 
 namespace App\Menu;
 
-use Symfony\Component\Security\Core\Security;
+use Symfony\Bundle\SecurityBundle\Security;
 use Twig\Environment;
 use Umbrella\AdminBundle\Menu\BaseAdminMenu;
 use Umbrella\AdminBundle\UmbrellaAdminConfiguration;

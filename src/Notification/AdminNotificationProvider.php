@@ -4,7 +4,7 @@ namespace App\Notification;
 
 use App\Entity\AdminNotification;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Bundle\SecurityBundle\Security;
 use Umbrella\AdminBundle\Notification\BaseNotificationProvider;
 
 class AdminNotificationProvider extends BaseNotificationProvider
