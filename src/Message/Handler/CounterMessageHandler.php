@@ -5,9 +5,10 @@ namespace App\Message\Handler;
 use App\Entity\AdminNotification;
 use App\Message\CounterMessage;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
-class CounterMessageHandler implements MessageHandlerInterface
+#[AsMessageHandler]
+class CounterMessageHandler
 {
     /**
      * CounterMessageHandler constructor.
