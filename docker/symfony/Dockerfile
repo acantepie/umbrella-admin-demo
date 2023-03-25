@@ -1,5 +1,5 @@
 # The latest PHP fpm-buster image
-FROM php:8.0-fpm-buster
+FROM php:8.1-fpm-buster
 ARG USER=docker
 ARG USER_PWD=docker
 ARG UID=1000
