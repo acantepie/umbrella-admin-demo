@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php-versions: ['8.1']
+        php-versions: ['8.2']
     steps:
       # —— Setup Github actions —————————————————————————————————————————————
       # https://github.com/actions/checkout (official)
@@ -61,7 +61,7 @@ jobs:
       - name: Yarn install / build
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '20'
       - run: |
           yarn install
           yarn encore production
