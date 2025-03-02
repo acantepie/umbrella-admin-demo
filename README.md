@@ -16,77 +16,46 @@
     <br/><br/>
 </p>
 
-# Install with Docker Compose
+# Installation
 
-### Technical requirements
-- [docker-compose](https://docs.docker.com/compose/install/)
-
-### Installation
+### Requirements
+- [docker compose](https://docs.docker.com/compose/install/)
 
 ```bash
 # Clone repository
 git clone git@github.com:acantepie/umbrella-admin-demo.git umbrella_demo
 cd umbrella_demo
 
-# Build / Up Docker
-docker-compose up -d
+# up docker
+docker compose up -d
+
+# install php dependency
+docker compose exec web composer install
+
+# create database
+docker compose exec web bin/console doctrine:database:create
+docker compose exec web bin/console doctrine:schema:update --force
+
+# load fixtures
+docker compose exec web bin/console doctrine:load:fixtures -n
 ```
 
-Open a docker shell :
-```bash
-docker-compose exec symfony bash
-```
+App url : http://localhost
 
-All commands below must be executed on *Docker Shell* :
+# Build assets
+
+### Requirements
+- node 20 or higher
+- yarn
+
 ```bash
-# Install / build dependencies
-composer install
+# install assets
 yarn install
+
+# build assets in prod mode
 yarn build
-yarn copy-ckeditor
 
-# Prepare database
-php bin/console doctrine:schema:create
-php bin/console doctrine:fixtures:load --no-interaction
+# install ckeditor
+cp -R node_modules/ckeditor4 public
+# or yarn copy-ckeditor
 ```
-
-App url : http://127.0.0.1:8080/
-
-# Install locally
-
-### Technical requirements
-- PHP 8.2 or higher
-- PHP extensions: `json`, `mbstring`, `xml`
-- [composer](https://getcomposer.org/)
-- [Symfony requirements](https://symfony.com/doc/current/setup.html#technical-requirements)
-- [Node.js](https://nodejs.org/en/download/)
-- [yarn](https://yarnpkg.com/getting-started/install)
-
-### Installation
-
-```bash
-# Clone repository
-git clone git@github.com:acantepie/umbrella-admin-demo.git umbrella_demo
-cd umbrella-demo
-```
-
-You must edit the `DATABASE_URL` env var in the `.env` file to use your database credentials.
-
-```bash
-# Install / build dependencies
-composer install
-yarn install
-yarn build
-yarn copy-ckeditor
-
-# Prepare database
-php bin/console doctrine:database:create
-php bin/console doctrine:schema:create
-php bin/console doctrine:fixtures:load --no-interaction
-```
-
-Serve:
-```bash
-php -S localhost:8000 -t public/
-```
-App url : http://127.0.0.1:8000/

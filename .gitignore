@@ -29,7 +29,6 @@ composer.lock
 
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
-/public/build/
 /public/ckeditor4/
 npm-debug.log
 ###< symfony/webpack-encore-bundle ###

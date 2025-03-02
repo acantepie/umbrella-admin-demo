@@ -1,0 +1,21 @@
+{
+  "entrypoints": {
+    "admin": {
+      "js": [
+        "/build/runtime.620a04ca.js",
+        "/build/751.85c8ec5b.js",
+        "/build/admin.dfd44a95.js"
+      ],
+      "css": [
+        "/build/admin.45d481b7.css"
+      ]
+    },
+    "admin_ckeditor": {
+      "js": [
+        "/build/runtime.620a04ca.js",
+        "/build/971.44bdd0b7.js",
+        "/build/admin_ckeditor.60e2be45.js"
+      ]
+    }
+  }
+}

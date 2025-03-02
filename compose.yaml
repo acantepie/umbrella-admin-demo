@@ -1,0 +1,27 @@
+services:
+    web:
+        build:
+            context: ./docker/web
+        environment:
+            DATABASE_URL: "postgresql://app:pwd@database:5432/app?serverVersion=16&charset=utf8"
+        ports:
+            - "80:80"
+            - "443:443/tcp"
+            - "443:443/udp"
+        volumes:
+            - .:/app
+            - ./docker/web/php.ini:/usr/local/etc/php/php.ini:ro
+            - caddy_data:/data
+            - caddy_config:/config
+    database:
+        image: postgres:16-alpine
+        environment:
+            POSTGRES_DB: app
+            POSTGRES_USER: app
+            POSTGRES_PASSWORD: pwd
+        volumes:
+            - database_data:/var/lib/postgresql/data:rw
+volumes:
+    caddy_data:
+    caddy_config:
+    database_data:
