@@ -10,14 +10,11 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 #[AsMessageHandler]
 class CounterMessageHandler
 {
-    /**
-     * CounterMessageHandler constructor.
-     */
-    public function __construct(private EntityManagerInterface $em)
+    public function __construct(private readonly EntityManagerInterface $em)
     {
     }
 
-    public function __invoke(CounterMessage $message)
+    public function __invoke(CounterMessage $message): void
     {
         $notification = new AdminNotification();
         $notification->runningIcon();

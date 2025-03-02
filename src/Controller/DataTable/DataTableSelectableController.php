@@ -6,7 +6,8 @@ use App\DataTable\SpaceMissionSelectableTableType;
 use App\Entity\SpaceMission;
 use App\Form\SpaceMissionBulkType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 use Umbrella\CoreBundle\DataTable\Utils\DataTableActionState;
 
@@ -14,7 +15,7 @@ use Umbrella\CoreBundle\DataTable\Utils\DataTableActionState;
 class DataTableSelectableController extends BaseController
 {
     #[Route('')]
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         $table = $this->createTable(SpaceMissionSelectableTableType::class);
         $table->handleRequest($request);
@@ -44,7 +45,7 @@ class DataTableSelectableController extends BaseController
     }
 
     #[Route('/edit')]
-    public function edit(Request $request)
+    public function edit(Request $request): Response
     {
         $form = $this
             ->createForm(SpaceMissionBulkType::class)
@@ -69,7 +70,7 @@ class DataTableSelectableController extends BaseController
             return $this->js()
                 ->closeModal()
                 ->toastSuccess(sprintf('%d row.s updated', count($missions)))
-                ->clearSelectionTable()
+                ->unselectTable()
                 ->reloadTable();
         }
 
@@ -81,7 +82,7 @@ class DataTableSelectableController extends BaseController
     }
 
     #[Route('/delete')]
-    public function delete(Request $request)
+    public function delete(Request $request): Response
     {
         $missions = $this->getBulkMission($request);
         foreach ($missions as $mission) {
@@ -91,7 +92,7 @@ class DataTableSelectableController extends BaseController
 
         return $this->js()
             ->toastSuccess(sprintf('%d row.s deleted', count($missions)))
-            ->clearSelectionTable()
+            ->unselectTable()
             ->reloadTable();
     }
 }

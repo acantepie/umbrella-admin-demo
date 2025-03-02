@@ -9,7 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\Form\AutocompleteType;
-use Umbrella\CoreBundle\Form\NestedTreeType;
+use Umbrella\CoreBundle\Form\NestedEntityType;
 use Umbrella\CoreBundle\Form\UmbrellaChoiceType;
 use Umbrella\CoreBundle\Form\UmbrellaEntityType;
 use Umbrella\CoreBundle\Form\UmbrellaTagType;
@@ -18,7 +18,7 @@ class FormSelectType extends AbstractType
 {
     public const MISSION_PAGE_LENGTH = 30;
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $choices = [
             'Eel' => 'eel',
@@ -70,10 +70,10 @@ class FormSelectType extends AbstractType
             'required' => false,
         ]);
 
-        $builder->add('choiceMissionClassificationEntity', NestedTreeType::class, [
+        $builder->add('choiceMissionClassificationEntity', NestedEntityType::class, [
             'label' => 'Select on nested tree doctrine entity',
             'class' => SpaceMissionClassification::class,
-            'required' => false,
+            'required' => false
         ]);
 
         // --- select with async loading
@@ -100,20 +100,20 @@ class FormSelectType extends AbstractType
             'template' => '<span>[[text]]</span><br><span class="text-muted">[[description]]</span>',
         ]);
 
-//        $builder->add('asyncChoiceMissionPaginated', AutocompleteType::class, [
-//            'label' => 'Select with pagination',
-//            'route' => 'app_form_loadmission',
-//            'page_length' => self::MISSION_PAGE_LENGTH,
-//            'class' => SpaceMission::class,
-//            'required' => false
-//        ]);
+        //        $builder->add('asyncChoiceMissionPaginated', AutocompleteType::class, [
+        //            'label' => 'Select with pagination',
+        //            'route' => 'app_form_loadmission',
+        //            'page_length' => self::MISSION_PAGE_LENGTH,
+        //            'class' => SpaceMission::class,
+        //            'required' => false
+        //        ]);
 
         $builder->add('tags', UmbrellaTagType::class, [
             'required' => false
         ]);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefault('data_class', FormMock::class);
     }

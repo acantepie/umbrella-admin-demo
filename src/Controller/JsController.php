@@ -5,14 +5,15 @@ namespace App\Controller;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 #[Route('/js')]
 class JsController extends BaseController
 {
     #[Route('')]
-    public function index()
+    public function index(): Response
     {
         return $this->render('js/index.html.twig');
     }
@@ -20,7 +21,7 @@ class JsController extends BaseController
     // modal
 
     #[Route('/modal')]
-    public function modal()
+    public function modal(): Response
     {
         return $this->js()->modal('@UmbrellaCore/Modal/default.html.twig', [
             'title' => 'A modal',
@@ -29,7 +30,7 @@ class JsController extends BaseController
     }
 
     #[Route('/modal/small')]
-    public function smallModal()
+    public function smallModal(): Response
     {
         return $this->js()->modal('@UmbrellaCore/Modal/default.html.twig', [
             'title' => 'A modal',
@@ -39,7 +40,7 @@ class JsController extends BaseController
     }
 
     #[Route('/modal/form')]
-    public function formModal(Request $request)
+    public function formModal(Request $request): Response
     {
         $form = $this->createFormBuilder()
             ->add('Recipient', TextType::class, ['required' => false])
@@ -59,7 +60,7 @@ class JsController extends BaseController
     }
 
     #[Route('/modal/sleep')]
-    public function sleepModal()
+    public function sleepModal(): Response
     {
         \sleep(1);
 
@@ -72,7 +73,7 @@ class JsController extends BaseController
     // offcanvas
 
     #[Route('/offcanvas')]
-    public function offcanvas()
+    public function offcanvas(): Response
     {
         return $this->js()->offcanvas('@UmbrellaCore/Offcanvas/default.html.twig', [
             'title' => 'Left offcanvas',
@@ -81,7 +82,7 @@ class JsController extends BaseController
     }
 
     #[Route('/offcanvas/left')]
-    public function leftOffcanvas()
+    public function leftOffcanvas(): Response
     {
         return $this->js()->offcanvas('@UmbrellaCore/Offcanvas/default.html.twig', [
             'title' => 'Left offcanvas',
@@ -91,7 +92,7 @@ class JsController extends BaseController
     }
 
     #[Route('/offcanvas/form')]
-    public function formOffcanvas(Request $request)
+    public function formOffcanvas(Request $request): Response
     {
         $form = $this->createFormBuilder()
             ->add('Recipient', TextType::class, ['required' => false])
@@ -112,13 +113,13 @@ class JsController extends BaseController
     // toast
 
     #[Route('/toast/success')]
-    public function successToast()
+    public function successToast(): Response
     {
         return $this->js()->toastSuccess('...', 'Success toast');
     }
 
     #[Route('/toast/error')]
-    public function errorToast()
+    public function errorToast(): Response
     {
         return $this->js()->toastError('...', 'Error toast');
     }
@@ -126,16 +127,16 @@ class JsController extends BaseController
     // dom
 
     #[Route('/dom/update')]
-    public function updateDOM()
+    public function updateDOM(): Response
     {
         $now = new \DateTime();
         $h = sprintf('<div class="alert alert-info my-2">Server time %s</div>', $now->format(\DateTimeInterface::ISO8601));
 
-        return $this->js()->updateHtml('#alert-stack', $h);
+        return $this->js()->updateHtml($h, '#alert-stack');
     }
 
     #[Route('/dom/remove')]
-    public function removeDOM()
+    public function removeDOM(): Response
     {
         return $this->js()->remove('#alert-stack > *');
     }
@@ -143,15 +144,15 @@ class JsController extends BaseController
     // web components
 
     #[Route('/menu/toggle')]
-    public function toggleMenu()
+    public function toggleMenu(): Response
     {
-        return $this->js()->callWebComponent('[is=umbrella-sidebar]', 'toggle');
+        return $this->js()->call('toggle', [], '[is=umbrella-sidebar]');
     }
 
     // custom
 
     #[Route('/custom')]
-    public function custom()
+    public function custom(): Response
     {
         return $this->js()->add('alert', ['text' => '...']);
     }

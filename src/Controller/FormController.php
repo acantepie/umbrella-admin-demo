@@ -11,7 +11,8 @@ use App\Service\FileUploader;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
 use function Symfony\Component\Translation\t;
 
@@ -21,7 +22,7 @@ use Umbrella\CoreBundle\Controller\BaseController;
 class FormController extends BaseController
 {
     #[Route('/common')]
-    public function common(AppHelper $helper, FileUploader $fileUploader, Request $request)
+    public function common(AppHelper $helper, FileUploader $fileUploader, Request $request): Response
     {
         $entity = $helper->loadOne(FormMock::class);
         $form = $this->createForm(FormCommonType::class, $entity);
@@ -47,7 +48,7 @@ class FormController extends BaseController
     }
 
     #[Route('/select')]
-    public function select(AppHelper $helper, Request $request)
+    public function select(AppHelper $helper, Request $request): Response
     {
         $entity = $helper->loadOne(FormMock::class);
         $form = $this->createForm(FormSelectType::class, $entity);
@@ -66,7 +67,7 @@ class FormController extends BaseController
     }
 
     #[Route('/load-mission')]
-    public function loadMission(SpaceMissionRepository $repository, Request $request)
+    public function loadMission(SpaceMissionRepository $repository, Request $request): Response
     {
         $q = $request->query->get('q');
 

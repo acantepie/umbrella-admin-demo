@@ -116,9 +116,6 @@
             ".php-cs-fixer.dist.php"
         ]
     },
-    "friendsofphp/proxy-manager-lts": {
-        "version": "v1.0.6"
-    },
     "gedmo/doctrine-extensions": {
         "version": "v3.5.0"
     },
@@ -127,9 +124,6 @@
     },
     "knplabs/knp-time-bundle": {
         "version": "v1.18.0"
-    },
-    "laminas/laminas-code": {
-        "version": "4.5.1"
     },
     "monolog/monolog": {
         "version": "2.3.5"
@@ -510,9 +504,6 @@
         "version": "v6.0.5"
     },
     "symfony/property-info": {
-        "version": "v6.0.3"
-    },
-    "symfony/proxy-manager-bridge": {
         "version": "v6.0.3"
     },
     "symfony/rate-limiter": {

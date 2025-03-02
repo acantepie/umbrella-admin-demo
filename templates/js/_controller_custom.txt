@@ -1,6 +1,6 @@
 class MyController extends BaseController {
 
-    public function alert()
+    public function alert(): Response
     {
         return $this->js()->add('alert', ['text' => '...']);
     }

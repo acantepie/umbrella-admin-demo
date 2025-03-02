@@ -10,7 +10,7 @@ use Umbrella\CoreBundle\Form\DatepickerType;
 
 class FormThemeType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $d = $builder->create('default', FormType::class)
             ->add('text', TextType::class)

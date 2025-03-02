@@ -6,14 +6,15 @@ use App\DataTable\SpaceMissionClassificationTableType;
 use App\Entity\SpaceMissionClassification;
 use App\Repository\SpaceMissionClassificationRepository;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 #[Route('/datatable/tree')]
 class DataTableTreeController extends BaseController
 {
     #[Route('')]
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         $table = $this->createTable(SpaceMissionClassificationTableType::class);
         $table->handleRequest($request);
@@ -28,7 +29,7 @@ class DataTableTreeController extends BaseController
     }
 
     #[Route('/move/{id}/{direction}', requirements: ['id' => '\d+'])]
-    public function move(SpaceMissionClassificationRepository $repository, int $id, string $direction)
+    public function move(SpaceMissionClassificationRepository $repository, int $id, string $direction): Response
     {
         $entity = $this->findOrNotFound(SpaceMissionClassification::class, $id);
         if ('up' === $direction) {

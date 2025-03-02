@@ -1,10 +1,6 @@
-kernel:
-    resource: ../src/Kernel.php
-    type: annotation
-
 admin_:
     resource: "../src/Controller/"
-    type: annotation
+    type: attribute
     prefix: /
 
 # User Profile

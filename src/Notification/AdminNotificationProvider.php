@@ -9,7 +9,7 @@ use Umbrella\AdminBundle\Notification\BaseNotificationProvider;
 
 class AdminNotificationProvider extends BaseNotificationProvider
 {
-    public function __construct(private EntityManagerInterface $em, private Security $security)
+    public function __construct(private readonly EntityManagerInterface $em, private readonly Security $security)
     {
     }
 

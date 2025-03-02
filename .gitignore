@@ -32,5 +32,13 @@ composer.lock
 /public/build/
 /public/ckeditor4/
 npm-debug.log
-yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+###> yarn ###
+yarn-error.log
+/.pnp.cjs
+/.pnp.loader.mjs
+/.yarn/*
+!/.yarn/releases
+!/.yarn/plugins
+###< yarn ###

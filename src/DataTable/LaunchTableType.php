@@ -14,8 +14,10 @@ use Umbrella\CoreBundle\DataTable\Column\DetailsColumnType;
 use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
 use Umbrella\CoreBundle\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\DataTable\DataTableType;
+use Umbrella\CoreBundle\DataTable\DTO\DataTable;
 use Umbrella\CoreBundle\DataTable\DTO\DataTableResult;
 use Umbrella\CoreBundle\DataTable\DTO\DataTableState;
+use Umbrella\CoreBundle\DataTable\DTO\RowView;
 
 /**
  * Class LaunchTableType
@@ -25,15 +27,17 @@ class LaunchTableType extends DataTableType
     /**
      * ApiTableType constructor.
      */
-    public function __construct(private HttpClientInterface $client)
+    public function __construct(private readonly HttpClientInterface $client)
     {
     }
 
-    public function buildTable(DataTableBuilder $builder, array $options = [])
+    public function buildRowView(RowView $view, DataTable $dataTable, array $options): void
     {
-        // Define a row class depending of data
-        $builder->setRowClass(fn ($o) => $o->success ? '' : 'row-border-danger');
+        $view->attr['class'] = $view->source->success ? '' : 'row-border-danger';
+    }
 
+    public function buildTable(DataTableBuilder $builder, array $options): void
+    {
         $builder
             ->add('__more__', DetailsColumnType::class, [
                 'render_details' => function ($o) {
@@ -86,7 +90,7 @@ class LaunchTableType extends DataTableType
         });
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'orderable' => false // Disable ordering on table

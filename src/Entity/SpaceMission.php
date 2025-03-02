@@ -9,12 +9,12 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Umbrella\CoreBundle\Model\IdTrait;
 use Umbrella\CoreBundle\Model\SearchTrait;
-use Umbrella\CoreBundle\Search\Annotation\Searchable;
-use Umbrella\CoreBundle\Search\Annotation\SearchableField;
+use Umbrella\CoreBundle\Search\Attribute\Searchable;
+use Umbrella\CoreBundle\Search\Attribute\SearchableField;
 
 #[ORM\Entity(repositoryClass: SpaceMissionRepository::class)]
 #[Searchable]
-class SpaceMission implements \Stringable
+class SpaceMission
 {
     use IdTrait;
     use SearchTrait;

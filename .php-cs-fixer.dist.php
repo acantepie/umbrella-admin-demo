@@ -6,9 +6,9 @@ $finder->in(__DIR__ . '/src');
 $config = new PhpCsFixer\Config();
 
 return $config
+    ->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect())
     ->setRules([
         '@Symfony' => true,
-        '@DoctrineAnnotation' => true,
         'phpdoc_summary' => false,
         'no_unneeded_final_method' => false,
         'no_superfluous_phpdoc_tags' => true,
@@ -21,7 +21,7 @@ return $config
         'header_comment' => [
             'header' => ''
         ],
-        'blank_line_before_statement' => []
+        'blank_line_before_statement' => false
     ])
     ->setRiskyAllowed(true)
     ->setFinder($finder);

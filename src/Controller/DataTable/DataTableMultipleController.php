@@ -5,14 +5,15 @@ namespace App\Controller\DataTable;
 use App\DataTable\SpaceMissionMultipleTableType;
 use App\Enum\RocketStatus;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 #[Route('/datatable/multiple')]
 class DataTableMultipleController extends BaseController
 {
     #[Route('')]
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         $tableA = $this->createTable(SpaceMissionMultipleTableType::class, [
             'id' => 'table_active', // You must define different id it them same table was rendered multiple times on view

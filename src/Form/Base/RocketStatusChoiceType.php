@@ -9,7 +9,7 @@ use Umbrella\CoreBundle\Form\UmbrellaChoiceType;
 
 class RocketStatusChoiceType extends AbstractType
 {
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'choices' => RocketStatus::all(),

@@ -10,7 +10,7 @@ class AppExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('git_url', [$this, 'gitUrl'])
+            new TwigFunction('git_url', $this->gitUrl(...))
         ];
     }
 

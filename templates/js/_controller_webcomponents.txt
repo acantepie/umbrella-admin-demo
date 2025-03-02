@@ -1,9 +1,9 @@
 class MyController extends BaseController {
 
-    public function toggleMenu()
+    public function toggleMenu(): Response
     {
         // def :
-        // return $this->js()->callWebComponent('selector', 'function name', ...function vars);
-        return $this->js()->callWebComponent('[is=umbrella-sidebar]', 'toggle');
+        // return $this->js()->call('function name', 'function params', 'selector');
+        return $this->js()->call('toggle', [], '[is=umbrella-sidebar]');
     }
 }

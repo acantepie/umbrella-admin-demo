@@ -9,11 +9,10 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Umbrella\CoreBundle\Model\IdTrait;
-use Umbrella\CoreBundle\Model\NestedTreeEntityInterface;
 
 #[ORM\Entity(repositoryClass: SpaceMissionClassificationRepository::class)]
 #[Gedmo\Tree(type: 'nested')]
-class SpaceMissionClassification implements NestedTreeEntityInterface, \Stringable
+class SpaceMissionClassification
 {
     use IdTrait;
     public const ROOT = 'root';
@@ -45,9 +44,9 @@ class SpaceMissionClassification implements NestedTreeEntityInterface, \Stringab
     public ?SpaceMissionClassification $parent = null;
 
     /**
-     * @var SpaceMissionClassification[]|ArrayCollection
+     * @var ArrayCollection<int, SpaceMissionClassification>
      */
-    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: SpaceMissionClassification::class, cascade: ['ALL'])]
+    #[ORM\OneToMany(targetEntity: SpaceMissionClassification::class, mappedBy: 'parent', cascade: ['ALL'])]
     #[ORM\OrderBy(['left' => 'ASC'])]
     public Collection $children;
 
@@ -57,9 +56,6 @@ class SpaceMissionClassification implements NestedTreeEntityInterface, \Stringab
     #[ORM\Column(type: Types::STRING)]
     public string $type;
 
-    /**
-     * SpaceMissionClassification constructor.
-     */
     public function __construct(string $name = '', string $type = self::ROOT)
     {
         $this->name = $name;
@@ -67,67 +63,18 @@ class SpaceMissionClassification implements NestedTreeEntityInterface, \Stringab
         $this->children = new ArrayCollection();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getId(): ?int
+    public function addChild(SpaceMissionClassification $child): void
     {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getLevel(): int
-    {
-        return $this->level;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getParent(): ?SpaceMissionClassification
-    {
-        return $this->parent;
-    }
-
-    /**
-     * @param ?SpaceMissionClassification $parent
-     */
-    public function setParent(?NestedTreeEntityInterface $parent)
-    {
-        $this->parent = $parent;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getChildren(): Collection
-    {
-        return $this->children;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addChild(NestedTreeEntityInterface $child)
-    {
-        $child->setParent($this);
+        $child->parent = $this;
         $this->children->add($child);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function removeChild(NestedTreeEntityInterface $child)
+    public function removeChild(SpaceMissionClassification $child): void
     {
-        $child->setParent(null);
+        $child->parent = null;
         $this->children->removeElement($child);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function __toString(): string
     {
         return (string) $this->name;

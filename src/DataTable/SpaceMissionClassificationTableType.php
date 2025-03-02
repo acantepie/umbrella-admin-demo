@@ -10,10 +10,21 @@ use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
 use Umbrella\CoreBundle\DataTable\ColumnActionBuilder;
 use Umbrella\CoreBundle\DataTable\DataTableBuilder;
 use Umbrella\CoreBundle\DataTable\DataTableType;
+use Umbrella\CoreBundle\DataTable\DTO\DataTable;
+use Umbrella\CoreBundle\DataTable\DTO\RowView;
 
 class SpaceMissionClassificationTableType extends DataTableType
 {
-    public function buildTable(DataTableBuilder $builder, array $options)
+    public function buildRowView(RowView $view, DataTable $dataTable, array $options): void
+    {
+        /** @var SpaceMissionClassification $c */
+        $c = $view->source;
+
+        // only collapse nest element
+        $view->collapsed = $c->level > 1;
+    }
+
+    public function buildTable(DataTableBuilder $builder, array $options): void
     {
         $builder->add('name', PropertyColumnType::class, [
             'render_html' => function (SpaceMissionClassification $c) {
@@ -36,7 +47,7 @@ class SpaceMissionClassificationTableType extends DataTableType
         $builder->useNestedEntityAdapter(SpaceMissionClassification::class);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'tree' => true,

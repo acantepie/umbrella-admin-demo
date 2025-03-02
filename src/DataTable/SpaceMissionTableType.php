@@ -18,7 +18,7 @@ use Umbrella\CoreBundle\Form\SearchType;
 
 class SpaceMissionTableType extends DataTableType
 {
-    public function buildTable(DataTableBuilder $builder, array $options)
+    public function buildTable(DataTableBuilder $builder, array $options): void
     {
         // Configure Filter (i.e. Symfony Formtype)
         $builder
@@ -76,7 +76,7 @@ class SpaceMissionTableType extends DataTableType
     }
 
     // Moreover we can configure options
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
     }
 }

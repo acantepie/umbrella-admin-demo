@@ -14,7 +14,7 @@ use Umbrella\CoreBundle\Form\DatepickerType;
 
 class SpaceMissionType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('date', DatepickerType::class);
         $builder->add('companyName', TextType::class);
@@ -24,7 +24,7 @@ class SpaceMissionType extends AbstractType
         $builder->add('detail', TextType::class);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => SpaceMission::class

@@ -7,15 +7,16 @@ use App\Form\AdminNotificationType;
 use App\Form\CounterType;
 use App\Message\CounterMessage;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 
 #[Route('/notification')]
 class NotificationController extends BaseController
 {
     #[Route('')]
-    public function index(Request $request, MessageBusInterface $bus)
+    public function index(Request $request, MessageBusInterface $bus): Response
     {
         $notification = new AdminNotification();
         $notification->title = 'Hello !';

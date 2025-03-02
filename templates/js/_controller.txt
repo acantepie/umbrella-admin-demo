@@ -1,6 +1,6 @@
 class MyController extends BaseController {
 
-    public function myAction()
+    public function myAction(): Response
     {
         return new JsonResponse([
             ['action' => 'action1', 'params' => ...],

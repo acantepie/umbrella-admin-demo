@@ -6,10 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class AppHelper
 {
-    /**
-     * AppHelper constructor.
-     */
-    public function __construct(private EntityManagerInterface $em)
+    public function __construct(private readonly EntityManagerInterface $em)
     {
     }
 

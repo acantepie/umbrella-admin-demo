@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class SpaceMissionBulkType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('rocketStatus', RocketStatusChoiceType::class, [
             'required' => false

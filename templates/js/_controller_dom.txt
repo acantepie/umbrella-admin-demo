@@ -1,9 +1,9 @@
 class MyController extends BaseController {
 
-    public function alert()
+    public function alert(): Response
     {
        // update content of all HTMLElements with selector #alert-stack
-       return $this->js()->updateHtml('#alert-stack', '<div>Your alert ...</div>');
+       return $this->js()->updateHtml('<div>Your alert ...</div>', '#alert-stack');
 
        // remove all HTMLElements with selector #alert-stack > *
        return $this->js()->remove('#alert-stack > *');

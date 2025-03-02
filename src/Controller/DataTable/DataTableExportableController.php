@@ -5,7 +5,8 @@ namespace App\Controller\DataTable;
 use App\DataTable\SpaceMissionExportableTableType;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 use Umbrella\CoreBundle\Controller\BaseController;
 use Umbrella\CoreBundle\DataTable\Utils\DataTableActionState;
 use Umbrella\CoreBundle\JsResponse\JsResponse;
@@ -14,7 +15,7 @@ use Umbrella\CoreBundle\JsResponse\JsResponse;
 class DataTableExportableController extends BaseController
 {
     #[Route('')]
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         $table = $this->createTable(SpaceMissionExportableTableType::class);
         $table->handleRequest($request);
@@ -29,7 +30,7 @@ class DataTableExportableController extends BaseController
     }
 
     #[Route('/export/confirm')]
-    public function exportConfirm(Request $request)
+    public function exportConfirm(Request $request): Response
     {
         $state = DataTableActionState::createFromRequest($request);
 
@@ -39,7 +40,7 @@ class DataTableExportableController extends BaseController
     }
 
     #[Route('/export/search')]
-    public function exportSearch(Request $request)
+    public function exportSearch(Request $request): Response
     {
         $state = DataTableActionState::createFromRequest($request);
 
@@ -51,7 +52,7 @@ class DataTableExportableController extends BaseController
     }
 
     #[Route('/export/selection')]
-    public function exportSelection(Request $request)
+    public function exportSelection(Request $request): Response
     {
         $state = DataTableActionState::createFromRequest($request);
 
@@ -64,7 +65,7 @@ class DataTableExportableController extends BaseController
     }
 
     #[Route('/export/page')]
-    public function exportPage(Request $request)
+    public function exportPage(Request $request): Response
     {
         $state = DataTableActionState::createFromRequest($request);
 
@@ -76,7 +77,7 @@ class DataTableExportableController extends BaseController
     }
 
     #[Route('/export/all')]
-    public function exportAll()
+    public function exportAll(): Response
     {
         $qb = $this->createTable(SpaceMissionExportableTableType::class)
             ->getAdapterQueryBuilder();
@@ -107,7 +108,6 @@ class DataTableExportableController extends BaseController
 
         return $this->js()
             ->closeModal()
-            ->download($content, 'export.csv')
-            ->getResponse();
+            ->download($content, 'export.csv');
     }
 }

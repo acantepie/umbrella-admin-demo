@@ -9,7 +9,7 @@ use Umbrella\CoreBundle\Form\UmbrellaChoiceType;
 
 class MissionStatusChoiceType extends AbstractType
 {
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'choices' => MissionStatus::all(),

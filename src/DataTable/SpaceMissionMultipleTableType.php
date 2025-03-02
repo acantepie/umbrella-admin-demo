@@ -15,7 +15,7 @@ use Umbrella\CoreBundle\Form\SearchType;
 
 class SpaceMissionMultipleTableType extends DataTableType
 {
-    public function buildTable(DataTableBuilder $builder, array $options)
+    public function buildTable(DataTableBuilder $builder, array $options): void
     {
         $builder->addFilter('search', SearchType::class);
 
@@ -53,7 +53,7 @@ class SpaceMissionMultipleTableType extends DataTableType
         ]);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
             ->setDefault('class', 'table-sm')

@@ -27,11 +27,11 @@ class AppFixtures extends Fixture
     /**
      * AppFixtures constructor.
      */
-    public function __construct(private UserPasswordHasherInterface $userPasswordHasher, private RouterInterface $router)
+    public function __construct(private readonly UserPasswordHasherInterface $userPasswordHasher, private readonly RouterInterface $router)
     {
     }
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         if (!$manager instanceof EntityManagerInterface) {
             throw new \Exception(sprintf('Unsupported object manager, expected %s, have %s', EntityManagerInterface::class, $manager::class));
@@ -44,7 +44,7 @@ class AppFixtures extends Fixture
         $this->loadNotifications($manager);
     }
 
-    private function loadUser(EntityManagerInterface $manager)
+    private function loadUser(EntityManagerInterface $manager): void
     {
         $content = file_get_contents(__DIR__ . '/data/user.json');
         $json = json_decode($content, true);
@@ -63,7 +63,7 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadSpaceMission(EntityManagerInterface $manager)
+    private function loadSpaceMission(EntityManagerInterface $manager): void
     {
         $handle = fopen(__DIR__ . '/data/space_mission.csv', 'r');
 
@@ -95,7 +95,7 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadSpaceMissionClassification(EntityManagerInterface $manager)
+    private function loadSpaceMissionClassification(EntityManagerInterface $manager): void
     {
         $root = new SpaceMissionClassification();
 
@@ -125,7 +125,7 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadFormMock(EntityManagerInterface $manager)
+    private function loadFormMock(EntityManagerInterface $manager): void
     {
         $e = new FormMock();
         $e->date = new \DateTime();
@@ -155,7 +155,7 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function loadNotifications(EntityManagerInterface $manager)
+    private function loadNotifications(EntityManagerInterface $manager): void
     {
         $notification = new AdminNotification();
         $notification->iconColor = 'danger';

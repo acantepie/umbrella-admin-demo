@@ -76,13 +76,13 @@ class FormMock
     // Collection
 
     /**
-     * @var FormMockItem[]|ArrayCollection
+     * @var ArrayCollection<int, FormMockItem>
      */
     #[ORM\OneToMany(mappedBy: 'collectionParent', targetEntity: FormMockItem::class, cascade: ['ALL'], orphanRemoval: true)]
     public Collection $collectionItems;
 
     /**
-     * @var FormMockItem[]|ArrayCollection
+     * @var ArrayCollection<int, FormMockItem>
      */
     #[ORM\OneToMany(mappedBy: 'collectionOrderableParent', targetEntity: FormMockItem::class, cascade: ['ALL'], orphanRemoval: true)]
     #[ORM\OrderBy(['position' => 'ASC'])]
@@ -123,14 +123,14 @@ class FormMock
     public ?SpaceMission $asyncChoiceMissionPaginated = null;
 
     /**
-     * @var ArrayCollection|SpaceMission[]
+     * @var ArrayCollection<int, SpaceMission>
      */
     #[ORM\ManyToMany(targetEntity: SpaceMission::class)]
     #[ORM\JoinColumn(onDelete: 'CASCADE')]
     #[ORM\InverseJoinColumn(onDelete: 'CASCADE')]
     public Collection $asyncChoiceMissions;
 
-    #[ORM\Column(type: Types::ARRAY)]
+    #[ORM\Column(type: Types::SIMPLE_ARRAY)]
     public array $tags = [];
 
     // File

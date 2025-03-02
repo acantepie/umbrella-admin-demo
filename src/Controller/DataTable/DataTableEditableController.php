@@ -6,7 +6,8 @@ use App\DataTable\SpaceMissionEditableTableType;
 use App\Entity\SpaceMission;
 use App\Form\SpaceMissionType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
 use function Symfony\Component\Translation\t;
 
@@ -16,7 +17,7 @@ use Umbrella\CoreBundle\Controller\BaseController;
 class DataTableEditableController extends BaseController
 {
     #[Route('')]
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         $table = $this->createTable(SpaceMissionEditableTableType::class);
         $table->handleRequest($request);
@@ -31,7 +32,7 @@ class DataTableEditableController extends BaseController
     }
 
     #[Route('/edit/{id}', requirements: ['id' => '\d+'])]
-    public function edit(Request $request, ?int $id = null)
+    public function edit(Request $request, ?int $id = null): Response
     {
         if (null === $id) {
             $entity = new SpaceMission();
@@ -59,14 +60,13 @@ class DataTableEditableController extends BaseController
     }
 
     #[Route('/delete/{id}', requirements: ['id' => '\d+'])]
-    public function delete(int $id)
+    public function delete(int $id): Response
     {
         $entity = $this->findOrNotFound(SpaceMission::class, $id);
         $this->removeAndFlush($entity);
 
         return $this->js()
             ->reloadTable()
-            ->callTable(null, 'unselectRowId', $id)
             ->toastSuccess(t('Item deleted'));
     }
 }

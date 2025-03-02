@@ -1,6 +1,6 @@
 class MyController extends BaseController {
 
-    public function modal()
+    public function modal(): Response
     {
         return $this->js()->modal('@UmbrellaCore/Modal/default.html.twig', [
             'class' => ...,
@@ -10,7 +10,7 @@ class MyController extends BaseController {
         ]);
     }
 
-    public function formModal()
+    public function formModal(): Response
     {
         $form = $this->createForm(...)
 

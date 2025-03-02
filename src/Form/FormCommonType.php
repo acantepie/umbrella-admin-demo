@@ -27,7 +27,7 @@ class FormCommonType extends AbstractType
         'Option three'
     ];
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         // Simple form elements
         $builder->add('text', TextType::class, [
@@ -124,7 +124,7 @@ class FormCommonType extends AbstractType
         ]);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => FormMock::class

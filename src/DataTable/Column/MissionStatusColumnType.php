@@ -3,17 +3,19 @@
 namespace App\DataTable\Column;
 
 use App\Enum\MissionStatus;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
 
 class MissionStatusColumnType extends PropertyColumnType
 {
-    public function renderProperty($value, array $options): string
+    public function renderProperty(mixed $value, array $options): string
     {
         return $value ? MissionStatus::widget($value) : '';
     }
 
-    public function isSafeHtml(): bool
+    public function configureOptions(OptionsResolver $resolver): void
     {
-        return true;
+        parent::configureOptions($resolver);
+        $resolver->setDefault('is_safe_html', true);
     }
 }

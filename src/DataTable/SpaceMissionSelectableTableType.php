@@ -17,22 +17,26 @@ use Umbrella\CoreBundle\Form\SearchType;
 
 class SpaceMissionSelectableTableType extends DataTableType
 {
-    public function buildTable(DataTableBuilder $builder, array $options)
+    public function buildTable(DataTableBuilder $builder, array $options): void
     {
         $builder
             ->addFilter('search', SearchType::class);
 
         $builder
-            ->addBulkAction('edit', ButtonActionType::class, [
+            ->addAction('edit', ButtonActionType::class, [
                 'class' => 'btn btn-outline-primary',
                 'icon' => 'mdi mdi-pencil me-1',
-                'route' => 'app_datatable_datatableselectable_edit'
+                'route' => 'app_datatable_datatableselectable_edit',
+                'send_state' => true,
+                'display' => 'selection'
             ])
-            ->addBulkAction('delete', ButtonActionType::class, [
+            ->addAction('delete', ButtonActionType::class, [
                 'class' => 'btn btn-outline-primary',
                 'icon' => 'mdi mdi-delete me-1',
                 'confirm' => 'Delete selection ?',
-                'route' => 'app_datatable_datatableselectable_delete'
+                'route' => 'app_datatable_datatableselectable_delete',
+                'send_state' => true,
+                'display' => 'selection'
             ]);
 
         $builder
@@ -58,11 +62,11 @@ class SpaceMissionSelectableTableType extends DataTableType
         ]);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             // Enable select plugin
-            'select' => self::SELECT_MULTIPLE,
+            'selectable' => true,
         ]);
     }
 }
