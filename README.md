@@ -32,12 +32,11 @@ docker compose up -d
 # install php dependency
 docker compose exec web composer install
 
-# create database
-docker compose exec web bin/console doctrine:database:create
+# update database schema
 docker compose exec web bin/console doctrine:schema:update --force
 
 # load fixtures
-docker compose exec web bin/console doctrine:load:fixtures -n
+docker compose exec web bin/console doctrine:fixtures:load -n
 ```
 
 App url : http://localhost

@@ -2,7 +2,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "ckeditor4": "^4.21.0",
+    "ckeditor4": "4.21.0",
     "highlight.js": "^11.7.0"
   },
   "devDependencies": {

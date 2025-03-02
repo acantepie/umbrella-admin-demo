@@ -6,4 +6,4 @@ RUN install-php-extensions \
     intl \
     opcache \
     zip \
-    pgsql
+    pdo_pgsql
