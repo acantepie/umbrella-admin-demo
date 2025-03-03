@@ -9,7 +9,6 @@ Encore
     .setPublicPath('/build')
 
     .addEntry('admin', './assets/admin/main.js')
-    .addEntry('admin_ckeditor', './assets/admin/ckeditor.js')
 
     .enableSassLoader()
 

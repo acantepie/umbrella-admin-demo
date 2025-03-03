@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[558],{2152:(e,s,k)=>{k(3971);window.CKEDITOR_BASEPATH="/ckeditor4/"}},e=>{e.O(0,[971],(()=>{return s=2152,e(e.s=s);var s}));e.O()}]);

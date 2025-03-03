@@ -70,9 +70,6 @@ class FormMock
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     public ?\DateTimeInterface $dateTime = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    public ?string $richText = null;
-
     // Collection
 
     /**

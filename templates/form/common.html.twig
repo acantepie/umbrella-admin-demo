@@ -52,18 +52,16 @@
 
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Advanced form elements</h4>
+            <h4 class="card-title">Date form elements</h4>
         </div>
         <div class="card-body row">
+            <div class="mb-2">DatePickerType, based on <a href="https://flatpickr.js.org/" class="text-primary">flatpickr</a> js libarary</div>
             <div class="col-md-6">
-                <div class="mb-2">DatePickerType - use <a href="https://flatpickr.js.org/" class="text-primary">flatpickr</a> js libarary</div>
                 {{ form_row(form.date) }}
-                {{ form_row(form.dateTime) }}
-                <div class="mt-n2 mb-2">Options : <code>['enable_time' => true]</code></div>
             </div>
             <div class="col-md-6">
-                <div class="mb-2">CkeditorType - use <a href="https://ckeditor.com/" class="text-primary">ckeditor</a> js libarary</div>
-                {{ form_row(form.richText) }}
+                {{ form_row(form.dateTime) }}
+                <div class="mt-n2 mb-2">Options : <code>['enable_time' => true]</code></div>
             </div>
         </div>
     </div>
@@ -104,7 +102,7 @@
             <h4 class="card-title">Collection form elements</h4>
         </div>
         <div class="card-body row">
-            <div class="mb-2">UmbrellaCollectionType (extends <a href="https://symfony.com/doc/current/reference/forms/types/collection.html" class="text-primary">CollectionType</a>)</div>
+            <div class="mb-2">UmbrellaCollectionType, extends symfony CollectionType</div>
             <div class="col-md-6">
                 {{ form_row(form.collectionItems) }}
             </div>

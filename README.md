@@ -53,8 +53,4 @@ yarn install
 
 # build assets in prod mode
 yarn build
-
-# install ckeditor
-cp -R node_modules/ckeditor4 public
-# or yarn copy-ckeditor
 ```

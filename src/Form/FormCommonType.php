@@ -14,7 +14,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Image;
-use Umbrella\CoreBundle\Form\CkeditorType;
 use Umbrella\CoreBundle\Form\DatepickerType;
 use Umbrella\CoreBundle\Form\UmbrellaCollectionType;
 use Vich\UploaderBundle\Form\Type\VichFileType;
@@ -93,9 +92,6 @@ class FormCommonType extends AbstractType
         $builder->add('dateTime', DatepickerType::class, [
             'required' => false,
             'enable_time' => true
-        ]);
-        $builder->add('richText', CkeditorType::class, [
-            'required' => false
         ]);
 
         // Collection

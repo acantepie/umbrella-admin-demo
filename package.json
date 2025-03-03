@@ -2,7 +2,6 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "ckeditor4": "4.21.0",
     "highlight.js": "^11.7.0"
   },
   "devDependencies": {
@@ -24,7 +23,6 @@
     "dev": "encore dev",
     "watch": "encore dev --watch",
     "build": "encore production --progress",
-    "copy-ckeditor": "cp -R node_modules/ckeditor4 public",
     "lint": "eslint assets",
     "lint-fix": "eslint assets --fix"
   },

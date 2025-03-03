@@ -2639,13 +2639,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ckeditor4@npm:4.21.0":
-  version: 4.21.0
-  resolution: "ckeditor4@npm:4.21.0"
-  checksum: 10c0/d0f15b375a62488eee4eb9d886ce05047be250f23ffa5b9419c3389cd7dce1451358f6c160a14cff5b582a60b9184fd993f899cb12a8d81e4adc715e7e8a9d66
-  languageName: node
-  linkType: hard
-
 "clone-deep@npm:^4.0.1":
   version: 4.0.1
   resolution: "clone-deep@npm:4.0.1"
@@ -6080,7 +6073,6 @@ __metadata:
     "@babel/eslint-parser": "npm:^7.21.3"
     "@babel/preset-env": "npm:^7.16.0"
     "@symfony/webpack-encore": "npm:^5.0.0"
-    ckeditor4: "npm:4.21.0"
     core-js: "npm:^3.38.0"
     eslint: "npm:^8.36.0"
     highlight.js: "npm:^11.7.0"

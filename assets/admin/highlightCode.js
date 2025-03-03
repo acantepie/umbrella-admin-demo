@@ -1,5 +1,3 @@
-import './highlightCode.scss'
-
 import highlightJs from 'highlight.js/lib/core'
 
 import yaml from 'highlight.js/lib/languages/yaml';
