@@ -36,7 +36,7 @@ jobs:
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
       - name: Cache composer dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -57,8 +57,7 @@ jobs:
           bin/console doctrine:schema:create
           bin/console doctrine:fixtures:load --no-interaction
           php bin/console d:s:v --skip-sync
-      ## —— Asset mapper ————————————————————————————————————————————————————————————
-      - name: import asset
+      ## —— compile asset-map ————————————————————————————————————————————————————————————
+      - name: Compile asset-map
         run: |
-          bin/console importmap:install
           bin/console asset-map:compile
