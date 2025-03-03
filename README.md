@@ -37,20 +37,8 @@ docker compose exec web bin/console doctrine:schema:update --force
 
 # load fixtures
 docker compose exec web bin/console doctrine:fixtures:load -n
-```
 
-App url : http://localhost
-
-# Build assets
-
-### Requirements
-- node 20 or higher
-- yarn
-
-```bash
 # install assets
-yarn install
-
-# build assets in prod mode
-yarn build
+docker compose exec web bin/console importmap:install
+docker compose exec web bin/console asset-map:compile
 ```

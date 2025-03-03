@@ -15,6 +15,7 @@
         "knplabs/knp-time-bundle": "^2.4",
         "stof/doctrine-extensions-bundle": "^1.7",
         "symfony/asset": "6.4.*",
+        "symfony/asset-mapper": "6.4.*",
         "symfony/config": "6.4.*",
         "symfony/console": "6.4.*",
         "symfony/doctrine-messenger": "6.4.*",
@@ -42,7 +43,6 @@
         "symfony/twig-bundle": "6.4.*",
         "symfony/validator": "6.4.*",
         "symfony/web-link": "6.4.*",
-        "symfony/webpack-encore-bundle": "^v2.2",
         "symfony/yaml": "6.4.*",
         "twig/extra-bundle": "^3.0",
         "twig/twig": "^3.0",
@@ -96,7 +96,8 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "importmap:install": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"

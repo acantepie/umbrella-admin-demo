@@ -1,4 +1,5 @@
-import highlightJs from 'highlight.js/lib/core'
+import 'highlight.js/styles/atom-one-dark-reasonable.css';
+import highlightJs from 'highlight.js/lib/core';
 
 import yaml from 'highlight.js/lib/languages/yaml';
 highlightJs.registerLanguage('yaml', yaml);

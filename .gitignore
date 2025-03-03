@@ -27,16 +27,7 @@ composer.lock
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 
-###> symfony/webpack-encore-bundle ###
-/node_modules/
-npm-debug.log
-###< symfony/webpack-encore-bundle ###
-
-###> yarn ###
-yarn-error.log
-/.pnp.cjs
-/.pnp.loader.mjs
-/.yarn/*
-!/.yarn/releases
-!/.yarn/plugins
-###< yarn ###
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###

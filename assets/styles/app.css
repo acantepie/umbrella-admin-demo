@@ -1,5 +1,3 @@
-@use "~highlight.js/scss/atom-one-dark-reasonable";
-
 hl-code {
   display: block;
   overflow-x: auto;
