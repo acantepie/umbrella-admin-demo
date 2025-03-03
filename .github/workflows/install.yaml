@@ -44,6 +44,8 @@ jobs:
 
       - name: Install Composer dependencies
         run: composer install
+      - name: Compile assets
+        run: bin/console asset-map:compile
 
       # —— Symfony ——————————————————————————————————————————————————————————
       - name: Check the Symfony console
@@ -57,7 +59,4 @@ jobs:
           bin/console doctrine:schema:create
           bin/console doctrine:fixtures:load --no-interaction
           php bin/console d:s:v --skip-sync
-      ## —— compile asset-map ————————————————————————————————————————————————————————————
-      - name: Compile asset-map
-        run: |
-          bin/console asset-map:compile
+

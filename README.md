@@ -38,7 +38,6 @@ docker compose exec web bin/console doctrine:schema:update --force
 # load fixtures
 docker compose exec web bin/console doctrine:fixtures:load -n
 
-# install assets
-docker compose exec web bin/console importmap:install
+# Compile assets
 docker compose exec web bin/console asset-map:compile
 ```
