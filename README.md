@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-    A demo application to showcase the main features of <a href="https://github.com/acantepie/umbrella">Umbrella framework</a>.
+    A demo application to showcase the main features of <a href="https://github.com/acantepie/umbrella-admin-bundle">Umbrella Admin Bundle</a>.
 </p>
 
 <p align="center">
