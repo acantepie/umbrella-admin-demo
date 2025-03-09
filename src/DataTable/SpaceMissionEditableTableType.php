@@ -73,6 +73,7 @@ class SpaceMissionEditableTableType extends DataTableType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
+            ->setDefault('class', 'table-striped')
             ->setDefault('mission_status', null)
             ->setAllowedTypes('mission_status', ['null', 'string']);
     }

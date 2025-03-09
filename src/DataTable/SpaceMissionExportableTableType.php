@@ -65,6 +65,7 @@ class SpaceMissionExportableTableType extends DataTableType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
+            ->setDefault('class', 'table-striped')
             ->setDefault('selectable', true);
     }
 }

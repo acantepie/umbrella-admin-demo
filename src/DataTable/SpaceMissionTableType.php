@@ -78,5 +78,7 @@ class SpaceMissionTableType extends DataTableType
     // Moreover we can configure options
     public function configureOptions(OptionsResolver $resolver): void
     {
+        $resolver
+            ->setDefault('class', 'table-striped');
     }
 }
