@@ -12,6 +12,6 @@ hl-code {
 
 .content-bar {
   position: sticky;
-  top: calc(65px + 1rem); // topbar-height
+  top: calc(65px + 1rem);
   z-index: 1020;
 }
