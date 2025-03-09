@@ -8,7 +8,7 @@ class MyController extends BaseController {
         ]);
 
         // or use js() helper
-        // Your controller must extends Umbrella\CoreBundle\Controller\BaseController
+        // Your controller must extends Umbrella\AdminBundle\Lib\Controller\AdminController
         return $this->js()
             ->action1(...params)
             ->action2(...params);

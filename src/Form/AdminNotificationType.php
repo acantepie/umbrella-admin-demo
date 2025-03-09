@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\Form\UmbrellaEntityType;
+use Umbrella\AdminBundle\Lib\Form\UmbrellaEntityType;
 
 class AdminNotificationType extends AbstractType
 {

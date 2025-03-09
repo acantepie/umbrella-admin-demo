@@ -7,12 +7,11 @@ use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Umbrella\CoreBundle\Controller\BaseController;
-use Umbrella\CoreBundle\DataTable\Utils\DataTableActionState;
-use Umbrella\CoreBundle\JsResponse\JsResponse;
+use Umbrella\AdminBundle\Lib\Controller\AdminController;
+use Umbrella\AdminBundle\Lib\DataTable\Utils\DataTableActionState;
 
 #[Route('/datatable/exportable')]
-class DataTableExportableController extends BaseController
+class DataTableExportableController extends AdminController
 {
     #[Route('')]
     public function index(Request $request): Response
@@ -85,7 +84,7 @@ class DataTableExportableController extends BaseController
         return $this->exportResponse($qb);
     }
 
-    private function exportResponse(QueryBuilder $qb): JsResponse
+    private function exportResponse(QueryBuilder $qb): Response
     {
         $missions = $qb->getQuery()->getResult();
 

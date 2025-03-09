@@ -8,11 +8,11 @@ use App\Form\SpaceMissionBulkType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Umbrella\CoreBundle\Controller\BaseController;
-use Umbrella\CoreBundle\DataTable\Utils\DataTableActionState;
+use Umbrella\AdminBundle\Lib\Controller\AdminController;
+use Umbrella\AdminBundle\Lib\DataTable\Utils\DataTableActionState;
 
 #[Route('/datatable/selectable')]
-class DataTableSelectableController extends BaseController
+class DataTableSelectableController extends AdminController
 {
     #[Route('')]
     public function index(Request $request): Response
@@ -75,7 +75,7 @@ class DataTableSelectableController extends BaseController
         }
 
         return $this->js()
-            ->modal('@UmbrellaCore/Modal/form.html.twig', [
+            ->modal('@UmbrellaAdmin/lib/modal/form.html.twig', [
                 'title' => 'Bulk edition',
                 'form' => $form->createView()
             ]);

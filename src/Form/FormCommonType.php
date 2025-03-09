@@ -14,8 +14,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Image;
-use Umbrella\CoreBundle\Form\DatepickerType;
-use Umbrella\CoreBundle\Form\UmbrellaCollectionType;
+use Umbrella\AdminBundle\Lib\Form\DatepickerType;
+use Umbrella\AdminBundle\Lib\Form\UmbrellaCollectionType;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class FormCommonType extends AbstractType

@@ -5,13 +5,13 @@ namespace App\DataTable;
 use App\Entity\SpaceMissionClassification;
 use App\Enum\MissionStatus;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\DataTable\Column\ActionColumnType;
-use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
-use Umbrella\CoreBundle\DataTable\ColumnActionBuilder;
-use Umbrella\CoreBundle\DataTable\DataTableBuilder;
-use Umbrella\CoreBundle\DataTable\DataTableType;
-use Umbrella\CoreBundle\DataTable\DTO\DataTable;
-use Umbrella\CoreBundle\DataTable\DTO\RowView;
+use Umbrella\AdminBundle\Lib\DataTable\Column\ActionColumnType;
+use Umbrella\AdminBundle\Lib\DataTable\Column\PropertyColumnType;
+use Umbrella\AdminBundle\Lib\DataTable\ColumnActionBuilder;
+use Umbrella\AdminBundle\Lib\DataTable\DataTableBuilder;
+use Umbrella\AdminBundle\Lib\DataTable\DataTableType;
+use Umbrella\AdminBundle\Lib\DataTable\DTO\DataTable;
+use Umbrella\AdminBundle\Lib\DataTable\DTO\RowView;
 
 class SpaceMissionClassificationTableType extends DataTableType
 {

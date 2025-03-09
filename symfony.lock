@@ -651,6 +651,9 @@
     "twig/twig": {
         "version": "v3.3.8"
     },
+    "umbrella2/admin-bundle": {
+        "version": "dev-master"
+    },
     "umbrella2/adminbundle": {
         "version": "dev-master"
     },

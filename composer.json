@@ -46,8 +46,7 @@
         "symfony/yaml": "6.4.*",
         "twig/extra-bundle": "^3.0",
         "twig/twig": "^3.0",
-        "umbrella2/adminbundle": "dev-master",
-        "umbrella2/corebundle": "dev-master",
+        "umbrella2/admin-bundle": "dev-master",
         "vich/uploader-bundle": "^2.5"
     },
     "require-dev": {

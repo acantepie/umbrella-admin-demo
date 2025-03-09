@@ -2,7 +2,7 @@ class MyController extends BaseController {
 
     public function modal(): Response
     {
-        return $this->js()->modal('@UmbrellaCore/Modal/default.html.twig', [
+        return $this->js()->modal('@UmbrellaAdmin/lib/modal/default.html.twig', [
             'class' => ...,
             'title' => ...,
             'content' => ...,
@@ -14,7 +14,7 @@ class MyController extends BaseController {
     {
         $form = $this->createForm(...)
 
-        return $this->js()->modal('@UmbrellaCore/Modal/form.html.twig', [
+        return $this->js()->modal('@UmbrellaAdmin/lib/modal/form.html.twig', [
             'form' => $form->createView(),
             'form_layout' => 'horizontal', // or 'default'
             ...

@@ -8,10 +8,10 @@ use App\Repository\SpaceMissionClassificationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Umbrella\CoreBundle\Controller\BaseController;
+use Umbrella\AdminBundle\Lib\Controller\AdminController;
 
 #[Route('/datatable/tree')]
-class DataTableTreeController extends BaseController
+class DataTableTreeController extends AdminController
 {
     #[Route('')]
     public function index(Request $request): Response

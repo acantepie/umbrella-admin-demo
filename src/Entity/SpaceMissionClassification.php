@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Umbrella\CoreBundle\Model\IdTrait;
+use Umbrella\AdminBundle\Entity\Trait\IdTrait;
 
 #[ORM\Entity(repositoryClass: SpaceMissionClassificationRepository::class)]
 #[Gedmo\Tree(type: 'nested')]

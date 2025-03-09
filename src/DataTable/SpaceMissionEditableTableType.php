@@ -9,13 +9,13 @@ use App\DataTable\Column\RocketStatusColumnType;
 use App\Entity\SpaceMission;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\DataTable\Action\ButtonAddActionType;
-use Umbrella\CoreBundle\DataTable\Column\ActionColumnType;
-use Umbrella\CoreBundle\DataTable\Column\DateColumnType;
-use Umbrella\CoreBundle\DataTable\ColumnActionBuilder;
-use Umbrella\CoreBundle\DataTable\DataTableBuilder;
-use Umbrella\CoreBundle\DataTable\DataTableType;
-use Umbrella\CoreBundle\Form\SearchType;
+use Umbrella\AdminBundle\Lib\DataTable\Action\ButtonAddActionType;
+use Umbrella\AdminBundle\Lib\DataTable\Column\ActionColumnType;
+use Umbrella\AdminBundle\Lib\DataTable\Column\DateColumnType;
+use Umbrella\AdminBundle\Lib\DataTable\ColumnActionBuilder;
+use Umbrella\AdminBundle\Lib\DataTable\DataTableBuilder;
+use Umbrella\AdminBundle\Lib\DataTable\DataTableType;
+use Umbrella\AdminBundle\Lib\Form\SearchType;
 
 class SpaceMissionEditableTableType extends DataTableType
 {

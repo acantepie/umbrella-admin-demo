@@ -7,10 +7,10 @@ use App\Enum\RocketStatus;
 use App\Repository\SpaceMissionRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Umbrella\CoreBundle\Model\IdTrait;
-use Umbrella\CoreBundle\Model\SearchTrait;
-use Umbrella\CoreBundle\Search\Attribute\Searchable;
-use Umbrella\CoreBundle\Search\Attribute\SearchableField;
+use Umbrella\AdminBundle\Entity\Trait\IdTrait;
+use Umbrella\AdminBundle\Entity\Trait\SearchTrait;
+use Umbrella\AdminBundle\Lib\Search\Attribute\Searchable;
+use Umbrella\AdminBundle\Lib\Search\Attribute\SearchableField;
 
 #[ORM\Entity(repositoryClass: SpaceMissionRepository::class)]
 #[Searchable]

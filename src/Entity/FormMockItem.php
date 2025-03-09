@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Umbrella\CoreBundle\Model\IdTrait;
+use Umbrella\AdminBundle\Entity\Trait\IdTrait;
 
 #[ORM\Entity]
 class FormMockItem

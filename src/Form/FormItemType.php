@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\Form\DatepickerType;
+use Umbrella\AdminBundle\Lib\Form\DatepickerType;
 
 class FormItemType extends AbstractType
 {

@@ -11,10 +11,10 @@ use Symfony\Component\Routing\Attribute\Route;
 
 use function Symfony\Component\Translation\t;
 
-use Umbrella\CoreBundle\Controller\BaseController;
+use Umbrella\AdminBundle\Lib\Controller\AdminController;
 
 #[Route('/datatable/editable')]
-class DataTableEditableController extends BaseController
+class DataTableEditableController extends AdminController
 {
     #[Route('')]
     public function index(Request $request): Response

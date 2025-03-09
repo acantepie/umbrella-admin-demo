@@ -8,11 +8,11 @@ use App\Entity\SpaceMissionClassification;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\Form\AutocompleteType;
-use Umbrella\CoreBundle\Form\NestedEntityType;
-use Umbrella\CoreBundle\Form\UmbrellaChoiceType;
-use Umbrella\CoreBundle\Form\UmbrellaEntityType;
-use Umbrella\CoreBundle\Form\UmbrellaTagType;
+use Umbrella\AdminBundle\Lib\Form\AutocompleteType;
+use Umbrella\AdminBundle\Lib\Form\NestedEntityType;
+use Umbrella\AdminBundle\Lib\Form\UmbrellaChoiceType;
+use Umbrella\AdminBundle\Lib\Form\UmbrellaEntityType;
+use Umbrella\AdminBundle\Lib\Form\UmbrellaTagType;
 
 class FormSelectType extends AbstractType
 {

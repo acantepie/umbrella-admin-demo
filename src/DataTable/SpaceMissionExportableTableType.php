@@ -10,11 +10,11 @@ use App\Entity\SpaceMission;
 use App\Form\Base\MissionStatusChoiceType;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\DataTable\Action\ButtonActionType;
-use Umbrella\CoreBundle\DataTable\Column\DateColumnType;
-use Umbrella\CoreBundle\DataTable\DataTableBuilder;
-use Umbrella\CoreBundle\DataTable\DataTableType;
-use Umbrella\CoreBundle\Form\SearchType;
+use Umbrella\AdminBundle\Lib\DataTable\Action\ButtonActionType;
+use Umbrella\AdminBundle\Lib\DataTable\Column\DateColumnType;
+use Umbrella\AdminBundle\Lib\DataTable\DataTableBuilder;
+use Umbrella\AdminBundle\Lib\DataTable\DataTableType;
+use Umbrella\AdminBundle\Lib\Form\SearchType;
 
 class SpaceMissionExportableTableType extends DataTableType
 {

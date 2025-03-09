@@ -4,10 +4,10 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Umbrella\CoreBundle\Controller\BaseController;
+use Umbrella\AdminBundle\Lib\Controller\AdminController;
 
 #[Route('/')]
-class DefaultController extends BaseController
+class DefaultController extends AdminController
 {
     #[Route('')]
     public function index(): Response

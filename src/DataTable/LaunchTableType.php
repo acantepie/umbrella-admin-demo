@@ -8,16 +8,16 @@ use function Symfony\Component\String\u;
 
 use Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use Umbrella\CoreBundle\DataTable\AdapterException;
-use Umbrella\CoreBundle\DataTable\Column\BooleanColumnType;
-use Umbrella\CoreBundle\DataTable\Column\DetailsColumnType;
-use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
-use Umbrella\CoreBundle\DataTable\DataTableBuilder;
-use Umbrella\CoreBundle\DataTable\DataTableType;
-use Umbrella\CoreBundle\DataTable\DTO\DataTable;
-use Umbrella\CoreBundle\DataTable\DTO\DataTableResult;
-use Umbrella\CoreBundle\DataTable\DTO\DataTableState;
-use Umbrella\CoreBundle\DataTable\DTO\RowView;
+use Umbrella\AdminBundle\Lib\DataTable\AdapterException;
+use Umbrella\AdminBundle\Lib\DataTable\Column\BooleanColumnType;
+use Umbrella\AdminBundle\Lib\DataTable\Column\DetailsColumnType;
+use Umbrella\AdminBundle\Lib\DataTable\Column\PropertyColumnType;
+use Umbrella\AdminBundle\Lib\DataTable\DataTableBuilder;
+use Umbrella\AdminBundle\Lib\DataTable\DataTableType;
+use Umbrella\AdminBundle\Lib\DataTable\DTO\DataTable;
+use Umbrella\AdminBundle\Lib\DataTable\DTO\DataTableResult;
+use Umbrella\AdminBundle\Lib\DataTable\DTO\DataTableState;
+use Umbrella\AdminBundle\Lib\DataTable\DTO\RowView;
 
 /**
  * Class LaunchTableType

@@ -7,10 +7,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Umbrella\CoreBundle\Controller\BaseController;
+use Umbrella\AdminBundle\Lib\Controller\AdminController;
 
 #[Route('/js')]
-class JsController extends BaseController
+class JsController extends AdminController
 {
     #[Route('')]
     public function index(): Response
@@ -23,7 +23,7 @@ class JsController extends BaseController
     #[Route('/modal')]
     public function modal(): Response
     {
-        return $this->js()->modal('@UmbrellaCore/Modal/default.html.twig', [
+        return $this->js()->modal('@UmbrellaAdmin/lib/modal/default.html.twig', [
             'title' => 'A modal',
             'content' => '...'
         ]);
@@ -32,7 +32,7 @@ class JsController extends BaseController
     #[Route('/modal/small')]
     public function smallModal(): Response
     {
-        return $this->js()->modal('@UmbrellaCore/Modal/default.html.twig', [
+        return $this->js()->modal('@UmbrellaAdmin/lib/modal/default.html.twig', [
             'title' => 'A modal',
             'content' => '...',
             'class' => 'modal-sm'
@@ -52,7 +52,7 @@ class JsController extends BaseController
             return $this->js()->closeModal();
         }
 
-        return $this->js()->modal('@UmbrellaCore/Modal/form.html.twig', [
+        return $this->js()->modal('@UmbrellaAdmin/lib/modal/form.html.twig', [
             'title' => 'New message',
             'class' => 'modal-sm',
             'form' => $form->createView()
@@ -64,7 +64,7 @@ class JsController extends BaseController
     {
         \sleep(1);
 
-        return $this->js()->modal('@UmbrellaCore/Modal/default.html.twig', [
+        return $this->js()->modal('@UmbrellaAdmin/lib/modal/default.html.twig', [
             'title' => 'A modal',
             'content' => '...'
         ]);
@@ -75,7 +75,7 @@ class JsController extends BaseController
     #[Route('/offcanvas')]
     public function offcanvas(): Response
     {
-        return $this->js()->offcanvas('@UmbrellaCore/Offcanvas/default.html.twig', [
+        return $this->js()->offcanvas('@UmbrellaAdmin/lib/offcanvas/default.html.twig', [
             'title' => 'Left offcanvas',
             'content' => '...'
         ]);
@@ -84,7 +84,7 @@ class JsController extends BaseController
     #[Route('/offcanvas/left')]
     public function leftOffcanvas(): Response
     {
-        return $this->js()->offcanvas('@UmbrellaCore/Offcanvas/default.html.twig', [
+        return $this->js()->offcanvas('@UmbrellaAdmin/lib/offcanvas/default.html.twig', [
             'title' => 'Left offcanvas',
             'class' => 'offcanvas-start',
             'content' => '...'
@@ -104,7 +104,7 @@ class JsController extends BaseController
             return $this->js()->closeOffcanvas();
         }
 
-        return $this->js()->offcanvas('@UmbrellaCore/Offcanvas/form.html.twig', [
+        return $this->js()->offcanvas('@UmbrellaAdmin/lib/offcanvas/form.html.twig', [
             'title' => 'New message',
             'form' => $form->createView()
         ]);

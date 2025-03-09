@@ -4,9 +4,9 @@ namespace App\Menu;
 
 use Symfony\Bundle\SecurityBundle\Security;
 use Twig\Environment;
+use Umbrella\AdminBundle\Lib\Menu\Builder\MenuBuilder;
 use Umbrella\AdminBundle\Menu\BaseAdminMenu;
 use Umbrella\AdminBundle\UmbrellaAdminConfiguration;
-use Umbrella\CoreBundle\Menu\Builder\MenuBuilder;
 
 class AdminMenu extends BaseAdminMenu
 {
@@ -21,7 +21,7 @@ class AdminMenu extends BaseAdminMenu
 
         $r->add('documentation')
             ->icon('uil-book-reader')
-            ->url('https://acantepie.github.io/umbrella')
+            ->url('https://acantepie.github.io/umbrella-admin-bundle')
             ->target('_blank');
 
         $r->add('components');

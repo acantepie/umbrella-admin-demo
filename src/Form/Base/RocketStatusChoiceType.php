@@ -5,7 +5,7 @@ namespace App\Form\Base;
 use App\Enum\RocketStatus;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\Form\UmbrellaChoiceType;
+use Umbrella\AdminBundle\Lib\Form\UmbrellaChoiceType;
 
 class RocketStatusChoiceType extends AbstractType
 {

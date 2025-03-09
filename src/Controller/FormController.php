@@ -16,10 +16,10 @@ use Symfony\Component\Routing\Attribute\Route;
 
 use function Symfony\Component\Translation\t;
 
-use Umbrella\CoreBundle\Controller\BaseController;
+use Umbrella\AdminBundle\Lib\Controller\AdminController;
 
 #[Route('/form')]
-class FormController extends BaseController
+class FormController extends AdminController
 {
     #[Route('/common')]
     public function common(AppHelper $helper, FileUploader $fileUploader, Request $request): Response

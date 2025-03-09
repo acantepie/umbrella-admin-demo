@@ -1,4 +1,4 @@
-import AjaxUtils from 'umbrella_core/utils/AjaxUtils';
+import AjaxUtils from 'vendor/umbrella2/admin-bundle/assets/utils/AjaxUtils';
 
 AjaxUtils.request({
     'method' : 'get',

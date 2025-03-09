@@ -4,7 +4,7 @@ namespace App\DataTable\Column;
 
 use App\Enum\RocketStatus;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\CoreBundle\DataTable\Column\PropertyColumnType;
+use Umbrella\AdminBundle\Lib\DataTable\Column\PropertyColumnType;
 
 class RocketStatusColumnType extends PropertyColumnType
 {
