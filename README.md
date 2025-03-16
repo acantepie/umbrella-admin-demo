@@ -37,7 +37,6 @@ docker compose exec web bin/console doctrine:schema:update --force
 
 # load fixtures
 docker compose exec web bin/console doctrine:fixtures:load -n
-
-# Compile assets
-docker compose exec web bin/console asset-map:compile
 ```
+
+The application is available at the url : http://localhost/
