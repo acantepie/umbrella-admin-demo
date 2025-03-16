@@ -62,12 +62,6 @@
         "symfony/phpunit-bridge": "^6.4|^7.0",
         "symfony/web-profiler-bundle": "^6.4|^7.0"
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../umbrella-admin-bundle"
-        }
-    ],
     "config": {
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
