@@ -1,0 +1,51 @@
+{% extends "form/layout.html.twig" %}
+
+{% block form %}
+    {{ form_errors(form) }}
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">AutocompleteExtensionType</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(form.choiceMission) }}
+                    {{ form_row(form.choiceMissions) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.choiceMissionGrouped) }}
+                    {{ form_row(form.choiceMissionTemplated) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(form.choiceMissionEntity) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.choiceMissionClassificationEntity) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">AutoCompleteType</h4>
+        </div>
+        <div class="card-body">
+            <p>Autocomplete with <b>async</b> loading.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(form.asyncChoiceMission) }}
+                    {{ form_row(form.asyncChoiceMissions) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.asyncChoiceMissionTemplated) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ form_rest(form) }}
+{% endblock %}

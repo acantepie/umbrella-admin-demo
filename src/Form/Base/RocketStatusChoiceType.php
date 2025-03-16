@@ -4,8 +4,8 @@ namespace App\Form\Base;
 
 use App\Enum\RocketStatus;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\AdminBundle\Lib\Form\UmbrellaChoiceType;
 
 class RocketStatusChoiceType extends AbstractType
 {
@@ -14,16 +14,17 @@ class RocketStatusChoiceType extends AbstractType
         $resolver->setDefaults([
             'choices' => RocketStatus::all(),
             'translation_domain' => false,
-            'expose' => fn ($choice) => [
-                'color' => RocketStatus::color($choice)
+            'choice_attr' => fn ($choice) => [
+                'data-color' => RocketStatus::color($choice)
             ],
             'choice_label' => fn ($c) => $c,
-            'template' => '<i class="mdi mdi-circle text-[[ color ]]"></i> [[ text ]]',
+            'option_template' => '<i class="mdi mdi-circle text-{{ color }}"></i> {{ text }}',
+            'ub_autocomplete' => true
         ]);
     }
 
-    public function getParent(): ?string
+    public function getParent(): string
     {
-        return UmbrellaChoiceType::class;
+        return ChoiceType::class;
     }
 }

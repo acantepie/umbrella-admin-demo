@@ -59,8 +59,8 @@ class AdminMenu extends BaseAdminMenu
             ->add('common')
                 ->route('app_form_common')
                 ->end()
-            ->add('advanced_select')
-                ->route('app_form_select');
+            ->add('autocomplete')
+                ->route('app_form_autocomplete');
 
         $r->add('js_response')
             ->icon('uil-exchange')

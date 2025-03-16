@@ -10,8 +10,9 @@ hl-code {
   }
 }
 
-.content-bar {
+
+.topbar {
+  z-index: 1020;
   position: sticky;
   top: calc(65px + 1rem);
-  z-index: 1020;
 }

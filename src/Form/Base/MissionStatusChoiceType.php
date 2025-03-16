@@ -4,8 +4,8 @@ namespace App\Form\Base;
 
 use App\Enum\MissionStatus;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\AdminBundle\Lib\Form\UmbrellaChoiceType;
 
 class MissionStatusChoiceType extends AbstractType
 {
@@ -14,16 +14,17 @@ class MissionStatusChoiceType extends AbstractType
         $resolver->setDefaults([
             'choices' => MissionStatus::all(),
             'translation_domain' => false,
-            'expose' => fn ($choice) => [
-                'color' => MissionStatus::color($choice)
+            'choice_attr' => fn ($choice) => [
+                'data-color' => MissionStatus::color($choice)
             ],
             'choice_label' => fn ($c) => $c,
-            'template' => '<i class="mdi mdi-circle text-[[ color ]]"></i> [[ text ]]',
+            'option_template' => '<i class="mdi mdi-circle text-{{ color }}"></i> {{ text }}',
+            'ub_autocomplete' => true
         ]);
     }
 
-    public function getParent(): ?string
+    public function getParent(): string
     {
-        return UmbrellaChoiceType::class;
+        return ChoiceType::class;
     }
 }

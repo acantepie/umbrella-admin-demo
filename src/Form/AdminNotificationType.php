@@ -4,12 +4,12 @@ namespace App\Form;
 
 use App\Entity\AdminNotification;
 use App\Entity\AdminUser;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Umbrella\AdminBundle\Lib\Form\UmbrellaEntityType;
 
 class AdminNotificationType extends AbstractType
 {
@@ -19,12 +19,13 @@ class AdminNotificationType extends AbstractType
         $builder->add('text', TextareaType::class, [
             'required' => false
         ]);
-        $builder->add('users', UmbrellaEntityType::class, [
+        $builder->add('users', EntityType::class, [
             'required' => false,
             'class' => AdminUser::class,
             'multiple' => true,
             'label' => 'Recipients',
-            'help' => 'Will be sent to all if no recipient specified.'
+            'help' => 'Will be sent to all if no recipient specified.',
+            'ub_autocomplete' => true
         ]);
     }
 

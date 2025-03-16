@@ -3,8 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\FormMock;
+use App\Entity\SpaceMission;
+use App\Form\FormAutocompleteType;
 use App\Form\FormCommonType;
-use App\Form\FormSelectType;
 use App\Repository\SpaceMissionRepository;
 use App\Service\AppHelper;
 use App\Service\FileUploader;
@@ -13,9 +14,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-
-use function Symfony\Component\Translation\t;
-
 use Umbrella\AdminBundle\Lib\Controller\AdminController;
 
 #[Route('/form')]
@@ -37,7 +35,7 @@ class FormController extends AdminController
 
             $this->persistAndFlush($entity);
 
-            $this->toastSuccess(t('Item updated'));
+            $this->toastSuccess('Item updated');
             return $this->redirectToRoute('app_form_common');
         }
 
@@ -47,21 +45,21 @@ class FormController extends AdminController
         ]);
     }
 
-    #[Route('/select')]
-    public function select(AppHelper $helper, Request $request): Response
+    #[Route('/autocomplete')]
+    public function autocomplete(AppHelper $helper, Request $request): Response
     {
         $entity = $helper->loadOne(FormMock::class);
-        $form = $this->createForm(FormSelectType::class, $entity);
+        $form = $this->createForm(FormAutocompleteType::class, $entity);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->persistAndFlush($entity);
 
-            $this->toastSuccess(t('Item updated'));
-            return $this->redirectToRoute('app_form_select');
+            $this->toastSuccess('Item updated');
+            return $this->redirectToRoute('app_form_autocomplete');
         }
 
-        return $this->render('form/select.html.twig', [
+        return $this->render('form/autocomplete.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -69,24 +67,22 @@ class FormController extends AdminController
     #[Route('/load-mission')]
     public function loadMission(SpaceMissionRepository $repository, Request $request): Response
     {
-        $q = $request->query->get('q');
+        $query = $request->query->getString('query');
+        $page = max(1, $request->query->getInt('page', 1));
 
-        if ($request->query->has('p')) {
-            $results = $repository->search($q, $request->query->getInt('p', 1), FormSelectType::MISSION_PAGE_LENGTH);
-        } else {
-            $results = $repository->search($q);
-        }
+        $missions = $repository->search($query, $page, FormAutocompleteType::MISSION_PAGE_LENGTH);
 
-        $serialized = [];
+        $results = array_map(fn (SpaceMission $mission) => [
+            'value' => $mission->id,
+            'text' => $mission->detail,
+            'description' => $mission->companyName,
+        ], $missions);
 
-        foreach ($results as $mission) {
-            $serialized[] = [
-                'value' => $mission->id,
-                'text' => $mission->detail,
-                'description' => $mission->companyName,
-            ];
-        }
-
-        return new JsonResponse($serialized);
+        return new JsonResponse([
+            'results' => $results,
+            'next_url' => count($results) > 0
+                ? $this->generateUrl('app_form_loadmission', ['page' => $page + 1, 'query' => $query])
+                : null,
+        ]);
     }
 }

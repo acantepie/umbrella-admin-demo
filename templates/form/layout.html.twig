@@ -14,27 +14,26 @@
 {% endblock %}
 
 {% block content %}
-    <section class="content-bar pb-3 d-flex">
-        <div class="ms-auto">
-
-            <div class="btn-group">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Theme : {{ theme }}
-                </button>
-                <ul class="dropdown-menu">
-                    {% if theme == 'default' %}
-                        <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), {theme : 'horizontal'}) }}">Horizontal Theme</a>
-                    {% else %}
-                        <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route')) }}">Default theme</a>
-                    {% endif %}
-                </ul>
-            </div>
-
-            <button class="btn btn-primary action-save" type="submit" form="form">
-                {{ 'Save changes' | trans }}
+    <section class="pb-3 topbar float-end">
+        <div class="btn-group">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Theme : {{ theme }}
             </button>
+            <ul class="dropdown-menu">
+                {% if theme == 'default' %}
+                    <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), {theme : 'horizontal'}) }}">Horizontal Theme</a>
+                {% else %}
+                    <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route')) }}">Default theme</a>
+                {% endif %}
+            </ul>
         </div>
+
+        <button class="btn btn-primary action-save" type="submit" form="form">
+            Save changes
+        </button>
     </section>
+
+    <div class="clearfix"></div>
 
     {{ umbrella_form_theme(form, theme) }}
     {{ form_start(form, {attr: {'id': 'form'}}) }}

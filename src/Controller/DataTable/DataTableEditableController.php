@@ -8,9 +8,6 @@ use App\Form\SpaceMissionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-
-use function Symfony\Component\Translation\t;
-
 use Umbrella\AdminBundle\Lib\Controller\AdminController;
 
 #[Route('/datatable/editable')]
@@ -49,7 +46,7 @@ class DataTableEditableController extends AdminController
             return $this->js()
                 ->closeModal()
                 ->reloadTable()
-                ->toastSuccess(t('Item updated'));
+                ->toastSuccess('Item updated');
         }
 
         return $this->js()
@@ -67,6 +64,6 @@ class DataTableEditableController extends AdminController
 
         return $this->js()
             ->reloadTable()
-            ->toastSuccess(t('Item deleted'));
+            ->toastSuccess('Item deleted');
     }
 }
