@@ -75,7 +75,7 @@ class AdminMenu extends BaseAdminMenu
             ->route('umbrella_admin_login')
             ->icon('uil-layers');
         $r->add('reset password')
-            ->route('umbrella_admin_security_passwordrequest')
+            ->route('umbrella_admin_security_passwordresetrequest')
             ->icon('uil-layers');
 
         if ($this->security->getUser()) {
