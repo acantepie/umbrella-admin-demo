@@ -15,6 +15,7 @@ use Umbrella\AdminBundle\Lib\DataTable\DataTableBuilder;
 use Umbrella\AdminBundle\Lib\DataTable\DataTableType;
 use Umbrella\AdminBundle\Lib\Form\DatepickerType;
 use Umbrella\AdminBundle\Lib\Form\SearchType;
+use Umbrella\AdminBundle\Utils\DoctrineUtils;
 
 class SpaceMissionTableType extends DataTableType
 {
@@ -53,8 +54,7 @@ class SpaceMissionTableType extends DataTableType
             'class' => SpaceMission::class,
             'query' => function (QueryBuilder $qb, array $formData) {
                 if (isset($formData['search'])) {
-                    $qb->andWhere('LOWER(e.search) LIKE :search');
-                    $qb->setParameter('search', '%' . $formData['search'] . '%');
+                    DoctrineUtils::matchAll($qb, ['e.companyName', 'e.location', 'e.detail'], $formData['search']);
                 }
 
                 if (isset($formData['missionStatus'])) {
